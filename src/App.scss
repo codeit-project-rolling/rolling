@@ -1,3 +1,5 @@
+@import 'assets/styles/global.scss';
+
 .App {
   text-align: center;
 }
@@ -22,6 +24,14 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.bold14 {
+  font-size: $fontSize14;
+}
+
+.bold28 {
+  font-size: $fontSize18;
 }
 
 .App-link {
