@@ -1,0 +1,113 @@
+@import 'assets/styles/global.scss';
+.container {
+  width: 275px;
+  height: 260px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  padding: 30px 24px 20px 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  position: relative;
+  padding-bottom: 43px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.name {
+  font-weight: $fontWeightBold;
+  line-height: 36px;
+  letter-spacing: -0.24px;
+  font-size: $fontSize24;
+}
+
+.message_count {
+  line-height: 26px;
+  letter-spacing: -0.16px;
+  font-size: $fontSize16;
+  display: flex;
+  align-items: center;
+  p {
+    font-weight: $fontWeightBold;
+  }
+}
+
+.green {
+  background: $Green200;
+}
+
+.blue {
+  background: $Blue200;
+}
+
+.purple {
+  background: $Purple200;
+}
+
+.beige {
+  background: $Orange200;
+}
+
+.imagelist {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 12px 0;
+
+  img {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50px;
+    border: 1.5px solid $White;
+    background: $White;
+  }
+}
+
+.image_count {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50px;
+  border: 1.5px solid $White;
+  background: $White;
+  left: 12 * 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $fontSize12;
+  color: $Grayscale500;
+}
+
+.badge_emoji_list {
+  display: flex;
+  gap: 8px;
+  position: relative;
+}
+.badge_emoji_box {
+  display: flex;
+  padding: 8px 12px;
+  align-items: flex-start;
+  border-radius: 32px;
+  background: rgba(0, 0, 0, 0.54);
+}
+.badge_emoji {
+  font-size: $fontSize16;
+  color: $White;
+}
+
+.card_background {
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+}
