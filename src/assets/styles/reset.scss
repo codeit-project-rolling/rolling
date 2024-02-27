@@ -39,7 +39,6 @@ ol[role='list'] {
 /* 핵심 body의 기본값을 설정합니다. */
 body {
   min-height: 100vh;
-  line-height: 1.5;
 }
 
 /* input 요소의 기본 스타일을 제거합니다. */
@@ -50,17 +49,6 @@ input {
 
 input:focus {
   outline: none;
-}
-
-/* 제목 요소와 상호작용하는 요소에 대해 line-height를 더 짧게 설정합니다. */
-h1,
-h2,
-h3,
-h4,
-button,
-input,
-label {
-  line-height: 1.1;
 }
 
 /* 제목에 대한 text-wrap을 balance로 설정합니다. */
