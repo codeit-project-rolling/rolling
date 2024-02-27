@@ -1,4 +1,4 @@
-import BadgeElement from 'components/Badge/BadgeElement';
+import Badge from 'components/Badge/Badge';
 import './App.scss';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
   // );
   return (
     <div className="App">
-      <BadgeElement />
+      <Badge />
     </div>
   );
 }
