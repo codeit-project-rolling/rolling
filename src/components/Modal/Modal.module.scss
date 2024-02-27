@@ -1,1 +1,98 @@
 @import 'assets/styles/global.scss';
+
+.modal {
+  border: 1px solid magenta;
+  width: 60rem;
+  height: 47.6rem;
+  padding: 4rem;
+  border-radius: 1.6rem;
+  background: $White;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.9rem;
+
+  .profile {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+
+    .profileImg {
+      width: 5.6rem;
+      height: 5.6rem;
+      border-radius: 9999rem;
+      background: $White;
+    }
+
+    .senderContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6rem;
+      color: $Black;
+
+      .sender {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        line-height: 2.4rem;
+        letter-spacing: normal;
+
+        .senderFrom {
+          @include font20Regular;
+          line-height: inherit;
+          letter-spacing: inherit;
+        }
+
+        .senderName {
+          @include font20Bold;
+          line-height: inherit;
+          letter-spacing: inherit;
+        }
+      }
+    }
+  }
+
+  .createdDate {
+    @include font14Regular;
+    color: $Grayscale400;
+  }
+}
+
+.line {
+  height: 0.1rem;
+  background: $Grayscale200;
+  margin-bottom: 1.6rem;
+}
+
+.content {
+  @include font18Regular;
+  height: 24rem;
+  padding-right: 1.6rem;
+  text-align: left;
+  overflow: auto;
+  color: #5a5a5a;
+  margin-bottom: 2.4rem;
+
+  //스크롤바
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+
+  //스크롤바 트랙
+  // &::-webkit-scrollbar-track {
+  // }
+
+  //스크롤바 핸들
+  &::-webkit-scrollbar-thumb {
+    background: $Grayscale300;
+    border-radius: 9999rem;
+
+    //스크롤바 핸들 호버
+    // &:hover {
+    // }
+  }
+}
