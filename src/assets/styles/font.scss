@@ -1,0 +1,38 @@
+/*
+* scss font 
+* @created 02.26 류지영
+*/
+
+// 사용예시
+//  @import 'assets/styles/global.scss';
+// .클래스명 {
+//   font-size: $fontSize12;
+//   font-weight: $fontWeightBold
+
+//   display: flex;
+// }
+
+// .클래스명 {
+//   한줄로 깔끔하게할시에는
+//   @include fontStyle($fontSize12, $fontWeightBold);
+
+//   display: flex;
+
+// }
+
+$fontSize12: 12px;
+$fontSize14: 14px;
+$fontSize15: 15px;
+$fontSize16: 16px;
+$fontSize18: 18px;
+$fontSize20: 20px;
+$fontSize24: 24px;
+$fontSize28: 28px;
+
+$fontWeightRegular: 400;
+$fontWeightBold: 700;
+
+@mixin fontStyle($size, $weight: $fontWeightRegular) {
+  font-size: $size;
+  font-weight: $weight;
+}
