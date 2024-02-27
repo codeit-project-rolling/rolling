@@ -1,10 +1,10 @@
 const CardListDumpData = {
   id: 2,
   name: '강영훈',
-  backgroundColor: 'blue',
-  // backgroundImageURL:
-  //   'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
-  backgroundImageURL: null,
+  // backgroundColor: 'purple',
+  backgroundImageURL:
+    'https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8',
+  // backgroundImageURL: null,
   createdAt: '2023-10-26T13:19:31.401765Z',
   messageCount: 3,
   recentMessages: [

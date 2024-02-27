@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { cardBackgroundSvg, backGroundThemaSwith } from './cardUtils';
+import { cardBackgroundSvg, backGroundThemaSwith, backgroundUrlFontColor } from './cardUtils';
 import CardListStyle from './cardlist.module.scss';
 import CardListDumpData from './dump.data';
 
@@ -17,7 +17,9 @@ function CardList({ data }) {
       ) : null}
 
       <div className={CardListStyle.card}>
-        <div className={CardListStyle.name}>To. {data?.name}</div>
+        <div className={CardListStyle.name} style={backgroundUrlFontColor(data)}>
+          To. {data?.name}
+        </div>
         <div className={CardListStyle.imagelist}>
           {data?.recentMessages?.slice(0, 3).map((v, i) => (
             <img src={v.profileImageURL} alt="" style={{ left: `${i * 12}px` }} />
@@ -26,7 +28,7 @@ function CardList({ data }) {
             <div className={CardListStyle.image_count}>+{data.recentMessages.length - 3}</div>
           ) : null}
         </div>
-        <div className={CardListStyle.message_count}>
+        <div className={CardListStyle.message_count} style={backgroundUrlFontColor(data)}>
           <p>{data?.messageCount}</p>명이 작성했어요!
         </div>
       </div>

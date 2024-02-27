@@ -1,13 +1,13 @@
 @import 'assets/styles/global.scss';
 .container {
-  width: 275px;
-  height: 260px;
+  width: 27.5rem;
+  height: 26rem;
   flex-shrink: 0;
   border-radius: 16px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
-  padding: 30px 24px 20px 24px;
+  padding: 3rem 2.4rem 2rem 2.4rem;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -18,25 +18,29 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 1.2rem;
   align-items: flex-start;
   position: relative;
-  padding-bottom: 43px;
+  padding-bottom: 4.3rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
+
 .name {
   font-weight: $fontWeightBold;
-  line-height: 36px;
+  line-height: 3.6rem;
   letter-spacing: -0.24px;
   font-size: $fontSize24;
+  color: $Grayscale900;
 }
 
 .message_count {
-  line-height: 26px;
+  line-height: 2.6rem;
   letter-spacing: -0.16px;
   font-size: $fontSize16;
   display: flex;
   align-items: center;
+  color: $Grayscale700;
+
   p {
     font-weight: $fontWeightBold;
   }
@@ -62,13 +66,13 @@
   display: flex;
   align-items: center;
   position: relative;
-  margin: 12px 0;
-
+  margin: 1.2rem 0;
+  width: 100%;
   img {
     position: absolute;
-    width: 28px;
-    height: 28px;
-    border-radius: 50px;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 5rem;
     border: 1.5px solid $White;
     background: $White;
   }
@@ -76,9 +80,9 @@
 
 .image_count {
   position: absolute;
-  width: 28px;
-  height: 28px;
-  border-radius: 50px;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 5rem;
   border: 1.5px solid $White;
   background: $White;
   left: 12 * 3px;
@@ -91,12 +95,12 @@
 
 .badge_emoji_list {
   display: flex;
-  gap: 8px;
+  gap: 0.8rem;
   position: relative;
 }
 .badge_emoji_box {
   display: flex;
-  padding: 8px 12px;
+  padding: 0.8rem 1.2rem;
   align-items: flex-start;
   border-radius: 32px;
   background: rgba(0, 0, 0, 0.54);
