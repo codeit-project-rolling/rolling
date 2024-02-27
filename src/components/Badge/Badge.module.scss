@@ -1,8 +1,31 @@
+@import 'assets/styles/colors.scss';
+
 .badge {
+  display: inline-flex;
   padding: 0 0.8rem;
   font-size: 1.4rem;
   font-weight: 400;
   line-height: 2rem;
   letter-spacing: -0.007rem;
   border-radius: 0.4rem;
+}
+
+.other {
+  background: $Orange100;
+  color: $Orange500;
+}
+
+.coworker {
+  background: $Purple100;
+  color: $Purple600;
+}
+
+.family {
+  background: $Green100;
+  color: $Green500;
+}
+
+.friend {
+  background: $Blue100;
+  color: $Blue500;
 }

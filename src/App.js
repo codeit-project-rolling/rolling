@@ -18,7 +18,10 @@ function App() {
   // );
   return (
     <div className="App">
-      <Badge />
+      <Badge relationship="지인" />
+      <Badge relationship="동료" />
+      <Badge relationship="가족" />
+      <Badge relationship="친구" />
     </div>
   );
 }
