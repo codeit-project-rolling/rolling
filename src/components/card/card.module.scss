@@ -34,6 +34,20 @@
   align-items: start;
 }
 
+.profile_name {
+  gap: 3px;
+  display: flex;
+  color: $Black;
+  font-size: $fontSize20;
+  font-weight: $fontWeightRegular;
+  font-style: normal;
+  line-height: 24px;
+
+  p {
+    font-weight: $fontWeightBold;
+  }
+}
+
 .text_box {
   padding-top: 16px;
   display: flex;

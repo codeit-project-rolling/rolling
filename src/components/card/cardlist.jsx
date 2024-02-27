@@ -6,8 +6,6 @@ import { cardBackgroundSvg, backGroundThemaSwith } from './cardUtils';
 import CardListStyle from './cardlist.module.scss';
 import CardListDumpData from './dump.data';
 
-// import cardImg from './망곰1.jpg';
-
 function CardList({ data }) {
   return (
     <div

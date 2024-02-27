@@ -4,16 +4,17 @@ import React from 'react';
 // import { useState } from 'react';
 import CardStyle from './card.module.scss';
 import { CardDumpData } from './dump.data';
-import cardImg from './망곰1.jpg';
 
 function Card({ data }) {
   // const [a, setA] = useState('');
   return (
     <div className={CardStyle.container}>
       <div className={CardStyle.profile}>
-        <img src={cardImg} alt="귀염둥이망곰이" />
+        <img src={data?.profileImageURL} alt={`${data?.sender} 이미지`} />
         <div className={CardStyle.profile_detail}>
-          <div>From. {data?.sender}</div>
+          <div className={CardStyle.profile_name}>
+            From. <p>{data?.sender}</p>
+          </div>
           <div>{data?.relationship}(뱃지컴포넌트)</div>
         </div>
       </div>
