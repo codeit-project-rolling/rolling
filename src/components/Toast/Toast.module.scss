@@ -1,0 +1,34 @@
+@import 'assets/styles/global.scss';
+
+.toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 52.4rem;
+  height: 6.4rem;
+  padding: 1.9rem 3rem;
+  border-radius: 0.8rem;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.toastContent {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.completedIcon {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.text {
+  @include font16Regular;
+  color: $White;
+}
+
+.closeIcon {
+  width: 2.4rem;
+  height: 2.4rem;
+}
