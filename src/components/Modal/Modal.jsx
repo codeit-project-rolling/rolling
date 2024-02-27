@@ -5,9 +5,10 @@ import styles from 'components/Modal/Modal.module.scss';
 
 import formatDate from 'utils/formatDate';
 
+// 부모 요소로부터 onClick 이벤트 받아오기
 // message: api로부터 받아오는 객체
 // message = {id, recipientId, sender, profileImageURL, relationship, content, font, createdAt}
-function Modal({ message }) {
+function Modal({ message /* , onClick */ }) {
   const { sender, profileImageURL, relationship, content, createdAt } = message;
 
   const createDate = formatDate(createdAt);
