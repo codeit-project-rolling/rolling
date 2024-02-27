@@ -32,11 +32,18 @@ $fontSize28: 2.8rem;
 $fontWeightRegular: 400;
 $fontWeightBold: 700;
 
-// 폰트 사전 설정
 @mixin fontStyle($size, $weight: $fontWeightRegular) {
   font-size: $size;
   font-weight: $weight;
 }
+
+// 폰트 사전 설정
+// 사용 예시
+// @import 'assets/styles/global.scss';
+//  .class {
+//    @include font12Regular;
+//  }
+//
 
 @mixin font12Regular {
   font-size: $fontSize12;
