@@ -1,5 +1,6 @@
-import Badge from 'components/Badge/Badge';
 import './App.scss';
+import Badge from 'components/Badge/Badge';
+import BadgeEmoji from 'components/BadgeEmoji/BadgeEmoji';
 
 function App() {
   // return (
@@ -22,6 +23,7 @@ function App() {
       <Badge relationship="동료" />
       <Badge relationship="가족" />
       <Badge relationship="친구" />
+      <BadgeEmoji emoji="😀" count={14} />
     </div>
   );
 }
