@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
 
+import styles from 'components/Badge/BadgeElement.module.scss';
+
 function BadgeElement({ children }) {
-  return <div>{children}</div>;
+  const badgeElementContainerClasses = styles['badge-element-container'];
+  return <div className={badgeElementContainerClasses}>{children}뱃지</div>;
 }
 
 BadgeElement.propTypes = {
