@@ -1,0 +1,28 @@
+.headerContainer{
+    display: flex;
+    flex-direction: column;
+    .headerTop{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1.1rem 36rem;
+        .headerLogo{
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            .headerTitle{
+                font-size: 2rem;
+                font-weight: 700;
+                color: var(--gray-light-gray-90, #4A494F);
+            }
+        }
+        .addRollingBtn{
+            border-radius: 6px;
+            border: 1px solid var(--gray-300, #CCC);
+            background: var(--white, #FFF);
+            padding: 8px 16px;
+            font-weight: 700;
+        }   
+    }
+    
+}
