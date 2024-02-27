@@ -31,7 +31,7 @@ function Badge({ relationship }) {
 
   const badgeStyle = handleBadgeStyleByRelationship();
 
-  // ClassName
+  // className
   const badgeClasses = `${styles.badge} ${badgeStyle}`;
 
   return <div className={badgeClasses}>{relationship}</div>;
