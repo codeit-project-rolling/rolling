@@ -2,11 +2,9 @@
 .container {
   width: 27.5rem;
   height: 26rem;
-  flex-shrink: 0;
-  border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-
-  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  border-radius: 1.6rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0rem 0.2rem 1.2rem 0rem rgba(0, 0, 0, 0.08);
   padding: 3rem 2.4rem 2rem 2.4rem;
   position: relative;
   overflow: hidden;
@@ -22,7 +20,7 @@
   align-items: flex-start;
   position: relative;
   padding-bottom: 4.3rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.12);
 }
 
 .name {
@@ -73,7 +71,7 @@
     width: 2.8rem;
     height: 2.8rem;
     border-radius: 5rem;
-    border: 1.5px solid $White;
+    border: 0.15rem solid $White;
     background: $White;
   }
 }
@@ -83,9 +81,9 @@
   width: 2.8rem;
   height: 2.8rem;
   border-radius: 5rem;
-  border: 1.5px solid $White;
+  border: 0.15rem solid $White;
   background: $White;
-  left: 12 * 3px;
+  left: 12 * 0.3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,7 +100,7 @@
   display: flex;
   padding: 0.8rem 1.2rem;
   align-items: flex-start;
-  border-radius: 32px;
+  border-radius: 3.2rem;
   background: rgba(0, 0, 0, 0.54);
 }
 .badge_emoji {
@@ -113,5 +111,5 @@
 .card_background {
   position: absolute;
   right: 0;
-  bottom: -5px;
+  bottom: -0.5rem;
 }

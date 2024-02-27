@@ -2,15 +2,15 @@
 
 import React from 'react';
 
-import { cardBackgroundSvg, backGroundThemaSwith, backgroundUrlFontColor } from './cardUtils';
-import CardListStyle from './cardlist.module.scss';
+import CardListStyle from './Cardlist.module.scss';
+import { cardBackgroundSvg, backgroundThemaSwith, backgroundUrlFontColor } from './cardUtils';
 import CardListDumpData from './dump.data';
 
 function CardList({ data }) {
   return (
     <div
       className={[CardListStyle.container, CardListStyle[data?.backgroundColor]].join(' ')}
-      style={backGroundThemaSwith(data)}
+      style={backgroundThemaSwith(data)}
     >
       {!data?.backgroundImageURL ? (
         <div className={CardListStyle.card_background}>{cardBackgroundSvg(data?.backgroundColor)}</div>

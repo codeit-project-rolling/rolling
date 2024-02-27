@@ -4,7 +4,7 @@ import React from 'react';
 import deleteIcon from 'assets/images/deletedIcon.svg';
 
 // import { useState } from 'react';
-import CardStyle from './card.module.scss';
+import CardStyle from './Card.module.scss';
 import { CardDumpData } from './dump.data';
 
 function Card({ data, showDelteIcon }) {
@@ -30,7 +30,7 @@ function Card({ data, showDelteIcon }) {
 
       <div className={CardStyle.text_box}>
         <div className={CardStyle.text}>{data?.content}</div>
-        <div className={CardStyle.text_date}>2024.02.26</div>
+        <div className={CardStyle.text_date}>2024.02.26(데이터포맷 적용할것)</div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import './App.scss';
-import { DumpCard } from 'components/card/card';
-import { DemoCard } from 'components/card/cardlist';
+import { DumpCard } from 'components/card/Card';
+import { DemoCard } from 'components/card/Cardlist';
 
 function App() {
   return (

@@ -52,7 +52,7 @@ export const cardBackgroundSvg = (type) => {
   }
 };
 
-export const backGroundThemaSwith = (data) => {
+export const backgroundThemaSwith = (data) => {
   if (data?.backgroundImageURL) {
     return {
       background: `linear-gradient(180deg, rgba(0, 0, 0, 0.54) 0%, rgba(0, 0, 0, 0.54) 100%), url(${data?.backgroundImageURL})`,
