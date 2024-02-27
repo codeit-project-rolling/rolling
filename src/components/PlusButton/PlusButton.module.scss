@@ -1,0 +1,34 @@
+@import 'assets/styles/global.scss';
+
+@mixin buttonStyles {
+  display: flex;
+  width: 5.6rem;
+  height: 5.6rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rem;
+}
+
+.plusButton {
+  @include buttonStyles;
+  cursor: pointer;
+  background: $Grayscale500;
+
+  &:hover {
+    background: $Grayscale600;
+  }
+
+  &:active {
+    background: $Grayscale700;
+  }
+
+  &:focus {
+    border: 0.1rem solid $Grayscale800;
+    background: $Grayscale700;
+  }
+}
+
+.disabled {
+  @include buttonStyles;
+  background: $Grayscale300;
+}

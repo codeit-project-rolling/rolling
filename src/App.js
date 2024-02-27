@@ -1,19 +1,17 @@
+import LeftArrowButton from 'components/ArrowButton/LeftArrowButton';
 import './App.scss';
+import RightArrowButton from 'components/ArrowButton/RightArrowButton';
+import PlusButton from 'components/PlusButton/PlusButton';
+import ToggleButton from 'components/ToggleButton/ToggleButton';
 
 function App() {
   return (
-    <div className="App">
-      <p className="bold14">14bold</p>
-      <p className="bold28">28bold</p>
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <LeftArrowButton />
+      <RightArrowButton />
+      <ToggleButton />
+      <PlusButton buttonState="enabled" />
+    </>
   );
 }
 
