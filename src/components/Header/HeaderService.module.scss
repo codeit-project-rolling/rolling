@@ -79,6 +79,7 @@
       }
       .modalIcon {
         border: none;
+        cursor: pointer;
         background-color: $White;
       }
     }
@@ -99,6 +100,7 @@
       border: 1px solid var(--gray-300, $Grayscale300);
       background: var(--white, $White);
       padding: 6px 16px;
+      cursor: pointer;
     }
   }
 }

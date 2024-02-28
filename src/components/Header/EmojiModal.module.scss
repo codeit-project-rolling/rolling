@@ -1,6 +1,7 @@
 @import 'assets/styles/global.scss';
 .modalContainer {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   position: fixed;
   z-index: 1;
