@@ -2,15 +2,19 @@ import { useState } from 'react';
 
 import EmojiModal from './EmojiModal';
 import HeaderServiceStyles from './HeaderService.module.scss';
+import ShareModal from './ShareModal';
 import addEmojiIcon from '../../assets/images/addEmoji.png';
 import arrowDownIcon from '../../assets/images/arrow_down.png';
 import shareIcon from '../../assets/images/share.png';
 
 function HeaderService() {
   const [emojiModal, setEmojiModal] = useState(false);
-
+  const [shareModal, setShareModal] = useState(false);
   const handleEmojiModalClick = () => {
     setEmojiModal(true);
+  };
+  const handleShareModalClick = () => {
+    setShareModal(true);
   };
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
@@ -45,9 +49,10 @@ function HeaderService() {
         </div>
         <div className={HeaderServiceStyles.selectionBar} />
         <div>
-          <button type="button" className={HeaderServiceStyles.shareBtn}>
+          <button type="button" className={HeaderServiceStyles.shareBtn} onClick={handleShareModalClick}>
             <img src={shareIcon} alt="shareImg" />
           </button>
+          {shareModal && <ShareModal onClose={() => setShareModal(false)} />}
         </div>
       </div>
     </div>
