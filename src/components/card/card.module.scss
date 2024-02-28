@@ -10,6 +10,15 @@
   background: $White;
   box-shadow: 0rem 0.2rem 1.2rem 0rem rgba(0, 0, 0, 0.08);
   padding: 2.8rem 2.4rem;
+
+  @include tablet {
+    width: 35.2rem;
+    height: 28.4rem;
+  }
+  @include mobile {
+    width: 32rem;
+    height: 23rem;
+  }
 }
 
 .profileBox {
@@ -92,6 +101,11 @@
   line-height: 2.8rem;
   letter-spacing: -0.18px;
   text-align: start;
+
+  @include mobile {
+    width: 27.2rem;
+    height: 5.6rem;
+  }
 }
 
 .text_date {

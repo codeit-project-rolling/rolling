@@ -11,6 +11,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @include mobile {
+    width: 20.8rem;
+    height: 23.2rem;
+  }
 }
 
 .card {
@@ -29,6 +34,12 @@
   letter-spacing: -0.24px;
   font-size: $fontSize24;
   color: $Grayscale900;
+
+  @include mobile {
+    font-size: $fontSize18;
+    line-height: 2.8rem;
+    letter-spacing: -0.18px;
+  }
 }
 
 .message_count {
@@ -41,6 +52,12 @@
 
   p {
     font-weight: $fontWeightBold;
+  }
+
+  @include mobile {
+    font-size: $fontSize14;
+    line-height: 2rem; /* 142.857% */
+    letter-spacing: -0.07px;
   }
 }
 
@@ -102,10 +119,20 @@
   align-items: flex-start;
   border-radius: 3.2rem;
   background: rgba(0, 0, 0, 0.54);
+  font-size: $fontSize16;
+
+  @include mobile {
+    padding: 0.6rem 0.8rem;
+    font-size: $fontSize14;
+  }
 }
 .badge_emoji {
   font-size: $fontSize16;
   color: $White;
+
+  @include mobile {
+    font-size: $fontSize12;
+  }
 }
 
 .card_background {
