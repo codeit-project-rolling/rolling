@@ -24,7 +24,7 @@ function HeaderService() {
       <div className={HeaderServiceStyles.headerRight}>
         <div className={HeaderServiceStyles.howManyPerson}>
           <div className={HeaderServiceStyles.senderProfile}>
-            {userData.recentMessages.map((profileImg) => (
+            {userData.recentMessages.slice(0, 3).map((profileImg) => (
               <img
                 src={profileImg.profileImageURL}
                 alt="senderProfileImg"
@@ -32,7 +32,7 @@ function HeaderService() {
               />
             ))}
             <div className={HeaderServiceStyles.senderCount}>
-              +{userData.messageCount - userData.recentMessages.length}
+              +{userData.messageCount > 3 ? userData.messageCount - 3 : 0}
             </div>
           </div>
           <p>
@@ -41,7 +41,7 @@ function HeaderService() {
         </div>
         <div className={HeaderServiceStyles.selectionBar} />
         <div className={HeaderServiceStyles.headerEmoji}>
-          {userData.topReactions.map((reaction) => (
+          {userData.topReactions.slice(0, 3).map((reaction) => (
             <button key={reaction.id} type="button" className={HeaderServiceStyles.emojiBtn}>
               <p>
                 {reaction.emoji}
@@ -52,7 +52,7 @@ function HeaderService() {
           <button onClick={handleEmojiModalClick} type="button" className={HeaderServiceStyles.modalIcon}>
             <img src={arrowDownIcon} alt="arrowDownIcon" />
           </button>
-          {emojiModal && <EmojiModal onClose={() => setEmojiModal(false)} />}
+          {emojiModal && <EmojiModal onClose={() => setEmojiModal(false)} emojiList={userData.topReactions} />}
         </div>
         <div>
           <button type="button" className={HeaderServiceStyles.addEmojiBtn}>
