@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import styles from './PlusButton.module.scss';
 import Plus from '../../assets/images/plus.png';
 
-function PlusButton({ buttonState }) {
+function PlusButton({ buttonState, onClick }) {
   let buttonClass;
+  const handleClick = () => onClick();
 
   if (buttonState === 'enabled') {
     buttonClass = styles.plusButton;
@@ -14,7 +15,17 @@ function PlusButton({ buttonState }) {
   }
 
   return (
-    <div className={buttonClass}>
+    <div
+      className={buttonClass}
+      role="button"
+      onClick={handleClick}
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          handleClick();
+        }
+      }}
+    >
       <img src={Plus} alt="추가" />
     </div>
   );
@@ -22,6 +33,7 @@ function PlusButton({ buttonState }) {
 
 PlusButton.propTypes = {
   buttonState: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
 };
 
 PlusButton.defaultProps = {

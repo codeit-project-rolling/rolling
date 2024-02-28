@@ -1,18 +1,29 @@
+// import { ReactComponent as Icon } from 'assets/images/share.svg';
+
+import { ReactComponent as Icon } from 'assets/images/smile.svg';
+
 import LeftArrowButton from 'components/ArrowButton/LeftArrowButton';
-import './App.scss';
 import RightArrowButton from 'components/ArrowButton/RightArrowButton';
+import Button from 'components/Button/Button';
+import './App.scss';
 import PlusButton from 'components/PlusButton/PlusButton';
 import ToggleButton from 'components/ToggleButton/ToggleButton';
-import TrashButton from 'components/TrashButton/TrashButton';
 
+// disabled를 작성하면 적용되고 작성하지 않으면 enabled 상태가 적용
 function App() {
+  const handleButtonClick = () => {
+    console.log('버튼 클릭');
+  };
   return (
     <>
-      <LeftArrowButton />
-      <RightArrowButton />
-      <ToggleButton />
-      <PlusButton buttonState="enabled" />
-      <TrashButton buttonState="enabled" />
+      <Button buttonType="outlined36" onClick={handleButtonClick}>
+        <Icon fill="black" />
+        안녕
+      </Button>
+      <LeftArrowButton onClick={handleButtonClick} />
+      <RightArrowButton onClick={handleButtonClick} />
+      <PlusButton onClick={handleButtonClick} />
+      <ToggleButton onClick={handleButtonClick} />
     </>
   );
 }
