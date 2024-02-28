@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import shareModalStyles from './ShareModal.module.scss';
+import shareModalStyles from 'components/Header/ShareModal.module.scss';
 
 function ShareModal({ onClose }) {
   return (

@@ -1,6 +1,7 @@
-import HeaderStyles from './Header.module.scss';
-import HeaderService from './HeaderService';
-import LogoImg from '../../assets/images/Logo.png';
+import LogoImg from 'assets/images/Logo.png';
+
+import HeaderStyles from 'components/Header/Header.module.scss';
+import HeaderService from 'components/Header/HeaderService';
 
 function Header() {
   return (

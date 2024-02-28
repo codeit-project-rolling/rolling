@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
-import EmojiModal from './EmojiModal';
-import HeaderServiceStyles from './HeaderService.module.scss';
-import ShareModal from './ShareModal';
-import addEmojiIcon from '../../assets/images/addEmoji.png';
-import arrowDownIcon from '../../assets/images/arrow_down.png';
-import shareIcon from '../../assets/images/share.png';
+import addEmojiIcon from 'assets/images/addEmoji.png';
+import arrowDownIcon from 'assets/images/arrow_down.png';
+import shareIcon from 'assets/images/share.png';
+
+import EmojiModal from 'components/Header/EmojiModal';
+import HeaderServiceStyles from 'components/Header/HeaderService.module.scss';
+import ShareModal from 'components/Header/ShareModal';
 
 function HeaderService() {
   const [emojiModal, setEmojiModal] = useState(false);

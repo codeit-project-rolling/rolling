@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import modalStyles from './EmojiModal.module.scss';
+import modalStyles from 'components/Header/ShareModal.module.scss';
 
 function EmojiModal({ onClose }) {
   return (
