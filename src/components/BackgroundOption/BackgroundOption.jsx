@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-import checkIcon from 'assets/images/check.svg';
-
 import styles from 'components/BackgroundOption/BackgroundOption.module.scss';
+import CheckButton from 'components/CheckButton/CheckButton';
 
 function BackgroundOption({ onSelect }) {
   const [selectedColor, setSelectedColor] = useState('orange');
@@ -21,7 +20,7 @@ function BackgroundOption({ onSelect }) {
         // style={{ backgroundColor: '#FFE2AD' }}
         type="button"
       >
-        {selectedColor === 'orange' && <img src={checkIcon} alt="checkIcon" />}
+        {selectedColor === 'orange' && <CheckButton />}
       </button>
       <button
         className={`${styles.option} ${styles.purple}`}
@@ -29,7 +28,7 @@ function BackgroundOption({ onSelect }) {
         style={{ backgroundColor: '#ECD9FF' }}
         type="button"
       >
-        {selectedColor === 'purple' && <img src={checkIcon} alt="checkIcon" />}
+        {selectedColor === 'purple' && <CheckButton />}
       </button>
       <button
         className={`${styles.option} ${styles.blue}`}
@@ -37,7 +36,7 @@ function BackgroundOption({ onSelect }) {
         style={{ backgroundColor: '#B1E4FF' }}
         type="button"
       >
-        {selectedColor === 'blue' && <img src={checkIcon} alt="checkIcon" />}
+        {selectedColor === 'blue' && <CheckButton />}
       </button>
       <button
         className={`${styles.option}  ${styles.green}`}
@@ -45,7 +44,7 @@ function BackgroundOption({ onSelect }) {
         style={{ backgroundColor: '#D0F5C3' }}
         type="button"
       >
-        {selectedColor === 'green' && <img src={checkIcon} alt="checkIcon" />}
+        {selectedColor === 'green' && <CheckButton />}
       </button>
     </div>
   );
