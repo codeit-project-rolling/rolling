@@ -24,7 +24,7 @@ function Button({ buttonType, children, disabled, onClick }) {
       buttonType === 'outlined28' && typeof children.type !== 'string' && React.Children.count(children) === 1,
     [styles.disabled]: disabled,
   });
-  console.log(typeof children.type);
+
   const handleClick = () => {
     if (!disabled) {
       onClick();
