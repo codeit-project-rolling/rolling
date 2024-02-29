@@ -16,19 +16,24 @@
   display: flex;
   align-items: center;
   gap: 1.2rem;
+
+  .completedIcon {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .text {
+    @include font16Regular;
+    color: $White;
+  }
 }
 
-.completedIcon {
-  width: 2.4rem;
-  height: 2.4rem;
-}
+.closeButton {
+  background: none;
+  border: none;
 
-.text {
-  @include font16Regular;
-  color: $White;
-}
-
-.closeIcon {
-  width: 2.4rem;
-  height: 2.4rem;
+  .closeIcon {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
 }
