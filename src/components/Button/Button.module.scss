@@ -18,10 +18,10 @@
   align-items: center;
   gap: 1rem;
   border-radius: 1.2rem;
-  background: var(--Purple-600, #9935ff);
+  background: $Purple600;
   p {
     width: 16rem;
-    color: var(--white, #fff);
+    color: $White;
     text-align: center;
     font-size: $fontSize18;
     font-weight: $fontWeightBold;
@@ -30,19 +30,19 @@
   }
 
   &.disabled {
-    background: var(--gray-300, #ccc);
+    background: $Grayscale300;
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    background: var(--Purple-700, #861dee);
+    background: $Purple700;
   }
   &:not(.disabled):focus {
-    border: 0.2rem solid var(--Purple-900, #5603a7);
-    background: var(--Purple-800, #6e0ad1);
+    border: 0.2rem solid $Purple900;
+    background: $Purple800;
   }
   &:not(.disabled):active {
-    background: var(--Purple-800, #6e0ad1);
+    background: $Purple800;
     border: 0;
   }
 }
@@ -55,10 +55,10 @@
   align-items: center;
   gap: 1rem;
   border-radius: 0.6rem;
-  background: var(--Purple-600, #9935ff);
+  background: $Purple600;
   p {
     width: 9rem;
-    color: var(--white, #fff);
+    color: $White;
     text-align: center;
     font-size: $fontSize16;
     font-weight: $fontWeightRegular;
@@ -67,19 +67,19 @@
   }
 
   &.disabled {
-    background: var(--gray-300, #ccc);
+    background: $Grayscale300;
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    background: var(--Purple-700, #861dee);
+    background: $Purple700;
   }
   &:not(.disabled):focus {
-    border: 0.2rem solid var(--Purple-900, #5603a7);
-    background: var(--Purple-800, #6e0ad1);
+    border: 0.2rem solid $Purple900;
+    background: $Purple800;
   }
   &:not(.disabled):active {
-    background: var(--Purple-800, #6e0ad1);
+    background: $Purple800;
     border: 0;
   }
 }
@@ -92,11 +92,11 @@
   align-items: center;
   gap: 1rem;
   border-radius: 0.6rem;
-  border: 0.1rem solid var(--Purple-600, #9935ff);
-  background: var(--white, #fff);
+  border: 0.1rem solid $Purple600;
+  background: $White;
   p {
     width: 9rem;
-    color: var(--Purple-700, #861dee);
+    color: $Purple700;
     text-align: center;
     font-size: $fontSize16;
     font-weight: $fontWeightRegular;
@@ -105,32 +105,32 @@
   }
 
   &.disabled {
-    background: var(--gray-300, #ccc);
+    background: $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
     }
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 0.1rem solid var(--Purple-700, #861dee);
-    background: var(--Purple-100, #f8f0ff);
+    border: 0.1rem solid $Purple700;
+    background: $Purple100;
     p {
-      color: var(--Purple-600, #9935ff);
+      color: $Purple600;
     }
   }
   &:not(.disabled):focus {
-    border: 0.1rem solid var(--Purple-800, #6e0ad1);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Purple800;
+    background: $White;
     p {
       color: #9747ff;
     }
   }
   &:not(.disabled):active {
-    border: 0.1rem solid var(--Purple-800, #6e0ad1);
-    background: var(--Purple-100, #f8f0ff);
+    border: 0.1rem solid $Purple800;
+    background: $Purple100;
     p {
-      color: var(--Purple-600, #9935ff);
+      color: $Purple600;
     }
   }
 }
@@ -143,11 +143,11 @@
   align-items: center;
   gap: 1rem;
   border-radius: 1.2rem;
-  border: 0.1rem solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   p {
     width: 16rem;
-    color: var(--gray-900, #181818);
+    color: $Grayscale900;
     text-align: center;
     font-size: $fontSize18;
     font-weight: $fontWeightBold;
@@ -156,25 +156,25 @@
   }
 
   &.disabled {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
     }
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
   &:not(.disabled):focus {
-    border: 0.1rem solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
   }
   &:not(.disabled):active {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
@@ -187,12 +187,12 @@
   align-items: center;
   gap: 1rem;
   border-radius: 0.6rem;
-  border: 0.1rem solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   p {
     width: 9rem;
     height: 2.4rem;
-    color: var(--gray-900, #181818);
+    color: $Grayscale900;
     text-align: center;
     font-size: $fontSize16;
     font-weight: $fontWeightRegular;
@@ -201,25 +201,25 @@
   }
 
   &.disabled {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
     }
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
   &:not(.disabled):focus {
-    border: 0.1rem solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
   }
   &:not(.disabled):active {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
@@ -231,10 +231,10 @@
   align-items: center;
   gap: 1rem;
   border-radius: 0.6rem;
-  border: 0.1rem solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   p {
-    color: var(--gray-900, #181818);
+    color: $Grayscale900;
     font-size: $fontSize16;
     font-weight: $fontWeightRegular;
     line-height: 2.6rem; /* 150% */
@@ -246,10 +246,10 @@
   }
 
   &.disabled {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
       text-align: center;
     }
 
@@ -257,16 +257,16 @@
   }
 
   &:not(.disabled):hover {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
   &:not(.disabled):focus {
-    border: 0.1rem solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
   }
   &:not(.disabled):active {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
@@ -279,12 +279,12 @@
   align-items: center;
   gap: 1rem;
   border-radius: 0.6rem;
-  border: 0.1rem solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   p {
     width: 9rem;
     height: 2.4rem;
-    color: var(--gray-900, #181818);
+    color: $Grayscale900;
     text-align: center;
     font-size: $fontSize16;
     font-weight: 500;
@@ -292,25 +292,25 @@
   }
 
   &.disabled {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
     }
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
   &:not(.disabled):focus {
-    border: 0.1rem solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
   }
   &:not(.disabled):active {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
@@ -322,10 +322,10 @@
   align-items: center;
   gap: 0.4rem;
   border-radius: 0.6rem;
-  border: 0.1rem solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   p {
-    color: var(--gray-900, #181818);
+    color: $Grayscale900;
     font-size: $fontSize16;
     font-weight: 500;
     line-height: 2.4rem;
@@ -336,25 +336,25 @@
   }
 
   &.disabled {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
     }
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
   &:not(.disabled):focus {
-    border: 0.1rem solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
   }
   &:not(.disabled):active {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
@@ -367,12 +367,12 @@
   align-items: center;
   gap: 0.4rem;
   border-radius: 0.6rem;
-  border: 0.1rem solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   p {
     width: 9rem;
     height: 2.4rem;
-    color: var(--gray-900, #181818);
+    color: $Grayscale900;
     text-align: center;
     font-size: $fontSize14;
     font-weight: $fontWeightRegular;
@@ -381,25 +381,25 @@
   }
 
   &.disabled {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
     }
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
   &:not(.disabled):focus {
-    border: 0.1rem solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
   }
   &:not(.disabled):active {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
@@ -411,10 +411,10 @@
   align-items: center;
   gap: 0.4rem;
   border-radius: 0.6rem;
-  border: 0.1rem solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   p {
-    color: var(--gray-900, #181818);
+    color: $Grayscale900;
     font-size: $fontSize14;
     font-weight: $fontWeightRegular;
     line-height: 2rem;
@@ -426,25 +426,25 @@
   }
 
   &.disabled {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
     }
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
   &:not(.disabled):focus {
-    border: 0.1rem solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
   }
   &:not(.disabled):active {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
@@ -456,8 +456,8 @@
   align-items: center;
   gap: 1rem;
   border-radius: 0.6rem;
-  border: 0.1rem solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   div {
     display: flex;
     justify-content: center;
@@ -467,22 +467,22 @@
   }
 
   &.disabled {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
   &:not(.disabled):focus {
-    border: 0.1rem solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
   }
   &:not(.disabled):active {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
@@ -494,8 +494,8 @@
   align-items: center;
   gap: 1rem;
   border-radius: 0.6rem;
-  border: 0.1rem solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   div {
     display: flex;
     justify-content: center;
@@ -505,21 +505,21 @@
   }
 
   &.disabled {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
   &:not(.disabled):focus {
-    border: 0.1rem solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
   }
   &:not(.disabled):active {
-    border: 0.1rem solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
