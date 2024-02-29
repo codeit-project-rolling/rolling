@@ -1,10 +1,13 @@
 @import 'assets/styles/global.scss';
 
 @mixin buttonStyleDelete {
-  border: none;
-  outline: none;
-  background-color: inherit;
+  border: 0;
   cursor: pointer;
+}
+
+.basicSet {
+  display: flex;
+  gap: 10px;
 }
 
 .primaryButton56 {
@@ -16,7 +19,15 @@
   gap: 10px;
   border-radius: 12px;
   background: var(--Purple-600, #9935ff);
-  cursor: pointer;
+  p {
+    width: 160px;
+    color: var(--white, #fff);
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.18px;
+  }
 
   &.disabled {
     background: var(--gray-300, #ccc);
@@ -26,18 +37,18 @@
   &:not(.disabled):hover {
     background: var(--Purple-700, #861dee);
   }
-
-  &:not(.disabled):active {
-    background: var(--Purple-800, #6e0ad1);
-  }
-
   &:not(.disabled):focus {
     border: 2px solid var(--Purple-900, #5603a7);
     background: var(--Purple-800, #6e0ad1);
   }
+  &:not(.disabled):active {
+    background: var(--Purple-800, #6e0ad1);
+    border: 0;
+  }
 }
 
 .primaryButton40 {
+  @include buttonStyleDelete;
   display: inline-flex;
   padding: 7px 16px;
   justify-content: center;
@@ -45,7 +56,15 @@
   gap: 10px;
   border-radius: 6px;
   background: var(--Purple-600, #9935ff);
-  cursor: pointer;
+  p {
+    width: 90px;
+    color: var(--white, #fff);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.16px;
+  }
 
   &.disabled {
     background: var(--gray-300, #ccc);
@@ -55,18 +74,18 @@
   &:not(.disabled):hover {
     background: var(--Purple-700, #861dee);
   }
-
-  &:not(.disabled):active {
-    background: var(--Purple-800, #6e0ad1);
-  }
-
   &:not(.disabled):focus {
     border: 2px solid var(--Purple-900, #5603a7);
     background: var(--Purple-800, #6e0ad1);
   }
+  &:not(.disabled):active {
+    background: var(--Purple-800, #6e0ad1);
+    border: 0;
+  }
 }
 
 .secondaryButton40 {
+  @include buttonStyleDelete;
   display: inline-flex;
   padding: 7px 16px;
   justify-content: center;
@@ -75,7 +94,15 @@
   border-radius: 6px;
   border: 1px solid var(--Purple-600, #9935ff);
   background: var(--white, #fff);
-  cursor: pointer;
+  p {
+    width: 90px;
+    color: var(--Purple-700, #861dee);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.16px;
+  }
 
   &.disabled {
     background: var(--gray-300, #ccc);
@@ -92,15 +119,6 @@
       color: var(--Purple-600, #9935ff);
     }
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--Purple-800, #6e0ad1);
-    background: var(--Purple-100, #f8f0ff);
-    p {
-      color: var(--Purple-600, #9935ff);
-    }
-  }
-
   &:not(.disabled):focus {
     border: 1px solid var(--Purple-800, #6e0ad1);
     background: var(--white, #fff);
@@ -108,9 +126,17 @@
       color: #9747ff;
     }
   }
+  &:not(.disabled):active {
+    border: 1px solid var(--Purple-800, #6e0ad1);
+    background: var(--Purple-100, #f8f0ff);
+    p {
+      color: var(--Purple-600, #9935ff);
+    }
+  }
 }
 
 .outlinedButton56 {
+  @include buttonStyleDelete;
   display: inline-flex;
   padding: 14px 16px;
   justify-content: center;
@@ -119,7 +145,6 @@
   border-radius: 12px;
   border: 1px solid var(--gray-300, #ccc);
   background: var(--white, #fff);
-  cursor: pointer;
   p {
     width: 160px;
     color: var(--gray-900, #181818);
@@ -143,19 +168,18 @@
     border: 1px solid var(--gray-300, #ccc);
     background: var(--gray-100, #f6f6f6);
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
     border: 1px solid var(--gray-500, #555);
     background: var(--white, #fff);
   }
+  &:not(.disabled):active {
+    border: 1px solid var(--gray-300, #ccc);
+    background: var(--gray-100, #f6f6f6);
+  }
 }
 
 .outlinedButton40 {
+  @include buttonStyleDelete;
   display: inline-flex;
   height: 40px;
   padding: 8px 16px;
@@ -165,7 +189,6 @@
   border-radius: 6px;
   border: 1px solid var(--gray-300, #ccc);
   background: var(--white, #fff);
-  cursor: pointer;
   p {
     width: 90px;
     height: 24px;
@@ -190,19 +213,18 @@
     border: 1px solid var(--gray-300, #ccc);
     background: var(--gray-100, #f6f6f6);
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
     border: 1px solid var(--gray-500, #555);
     background: var(--white, #fff);
   }
+  &:not(.disabled):active {
+    border: 1px solid var(--gray-300, #ccc);
+    background: var(--gray-100, #f6f6f6);
+  }
 }
 
 .outlinedSmileButton40 {
+  @include buttonStyleDelete;
   display: inline-flex;
   padding: 8px 16px;
   justify-content: center;
@@ -211,16 +233,11 @@
   border-radius: 6px;
   border: 1px solid var(--gray-300, #ccc);
   background: var(--white, #fff);
-  cursor: pointer;
-  div {
-    width: 24px;
-    height: 24px;
-  }
   p {
     color: var(--gray-900, #181818);
     font-size: 16px;
-    font-weight: 500;
-    line-height: 24px; /* 150% */
+    font-weight: 400;
+    line-height: 26px; /* 150% */
     letter-spacing: -0.16px;
   }
   svg {
@@ -234,8 +251,6 @@
     p {
       color: var(--white, #fff);
       text-align: center;
-      font-weight: 400;
-      line-height: 26px;
     }
 
     cursor: auto;
@@ -244,32 +259,19 @@
   &:not(.disabled):hover {
     border: 1px solid var(--gray-300, #ccc);
     background: var(--gray-100, #f6f6f6);
-    p {
-      font-weight: 400;
-      line-height: 26px;
-    }
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-    p {
-      font-weight: 400;
-      line-height: 26px;
-    }
-  }
-
   &:not(.disabled):focus {
     border: 1px solid var(--gray-500, #555);
     background: var(--white, #fff);
-    p {
-      font-weight: 400;
-      line-height: 26px;
-    }
+  }
+  &:not(.disabled):active {
+    border: 1px solid var(--gray-300, #ccc);
+    background: var(--gray-100, #f6f6f6);
   }
 }
 
 .outlinedButton36 {
+  @include buttonStyleDelete;
   display: inline-flex;
   height: 36px;
   padding: 6px 16px;
@@ -279,7 +281,6 @@
   border-radius: 6px;
   border: 1px solid var(--gray-300, #ccc);
   background: var(--white, #fff);
-  cursor: pointer;
   p {
     width: 90px;
     height: 24px;
@@ -303,19 +304,18 @@
     border: 1px solid var(--gray-300, #ccc);
     background: var(--gray-100, #f6f6f6);
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
     border: 1px solid var(--gray-500, #555);
     background: var(--white, #fff);
   }
+  &:not(.disabled):active {
+    border: 1px solid var(--gray-300, #ccc);
+    background: var(--gray-100, #f6f6f6);
+  }
 }
 
 .outlinedSmileButton36 {
+  @include buttonStyleDelete;
   display: inline-flex;
   padding: 6px 16px;
   justify-content: center;
@@ -325,10 +325,6 @@
   border: 1px solid var(--gray-300, #ccc);
   background: var(--white, #fff);
   cursor: pointer;
-  div {
-    width: 24px;
-    height: 24px;
-  }
   p {
     color: var(--gray-900, #181818);
     font-size: 16px;
@@ -353,19 +349,18 @@
     border: 1px solid var(--gray-300, #ccc);
     background: var(--gray-100, #f6f6f6);
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
     border: 1px solid var(--gray-500, #555);
     background: var(--white, #fff);
   }
+  &:not(.disabled):active {
+    border: 1px solid var(--gray-300, #ccc);
+    background: var(--gray-100, #f6f6f6);
+  }
 }
 
 .outlinedButton28 {
+  @include buttonStyleDelete;
   display: inline-flex;
   height: 28px;
   padding: 2px 16px;
@@ -375,7 +370,6 @@
   border-radius: 6px;
   border: 1px solid var(--gray-300, #ccc);
   background: var(--white, #fff);
-  cursor: pointer;
   p {
     width: 90px;
     height: 24px;
@@ -400,19 +394,18 @@
     border: 1px solid var(--gray-300, #ccc);
     background: var(--gray-100, #f6f6f6);
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
     border: 1px solid var(--gray-500, #555);
     background: var(--white, #fff);
   }
+  &:not(.disabled):active {
+    border: 1px solid var(--gray-300, #ccc);
+    background: var(--gray-100, #f6f6f6);
+  }
 }
 
 .outlinedSmileButton28 {
+  @include buttonStyleDelete;
   display: inline-flex;
   padding: 6px 16px;
   justify-content: center;
@@ -421,11 +414,6 @@
   border-radius: 6px;
   border: 1px solid var(--gray-300, #ccc);
   background: var(--white, #fff);
-  cursor: pointer;
-  div {
-    width: 20px;
-    height: 20px;
-  }
   p {
     color: var(--gray-900, #181818);
     font-size: 14px;
@@ -451,19 +439,18 @@
     border: 1px solid var(--gray-300, #ccc);
     background: var(--gray-100, #f6f6f6);
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
     border: 1px solid var(--gray-500, #555);
     background: var(--white, #fff);
   }
+  &:not(.disabled):active {
+    border: 1px solid var(--gray-300, #ccc);
+    background: var(--gray-100, #f6f6f6);
+  }
 }
 
 .outlinedSingleButton36 {
+  @include buttonStyleDelete;
   display: inline-flex;
   padding: 6px;
   justify-content: center;
@@ -472,8 +459,7 @@
   border-radius: 6px;
   border: 1px solid var(--gray-300, #ccc);
   background: var(--white, #fff);
-  cursor: pointer;
-  p {
+  div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -491,19 +477,18 @@
     border: 1px solid var(--gray-300, #ccc);
     background: var(--gray-100, #f6f6f6);
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
     border: 1px solid var(--gray-500, #555);
     background: var(--white, #fff);
   }
+  &:not(.disabled):active {
+    border: 1px solid var(--gray-300, #ccc);
+    background: var(--gray-100, #f6f6f6);
+  }
 }
 
 .outlinedSingleButton28 {
+  @include buttonStyleDelete;
   display: inline-flex;
   padding: 6px;
   justify-content: center;
@@ -512,17 +497,12 @@
   border-radius: 6px;
   border: 1px solid var(--gray-300, #ccc);
   background: var(--white, #fff);
-  cursor: pointer;
-  p {
+  div {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 20px;
     height: 20px;
-  }
-  svg {
-    width: 100%;
-    height: 100%;
   }
 
   &.disabled {
@@ -535,14 +515,12 @@
     border: 1px solid var(--gray-300, #ccc);
     background: var(--gray-100, #f6f6f6);
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
     border: 1px solid var(--gray-500, #555);
     background: var(--white, #fff);
+  }
+  &:not(.disabled):active {
+    border: 1px solid var(--gray-300, #ccc);
+    background: var(--gray-100, #f6f6f6);
   }
 }
