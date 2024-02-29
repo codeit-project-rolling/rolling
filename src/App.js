@@ -1,22 +1,40 @@
-// import { ReactComponent as Icon } from 'assets/images/smile.svg';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import Button from 'components/Button/Button';
+import HomePage from 'pages/HomePage/HomePage';
+import ListPage from 'pages/ListPage/ListPage';
+import EditPage from 'pages/PostPage/PostIdPage/EditPage/EditPage';
+import MessagePage from 'pages/PostPage/PostIdPage/MessagePage/MessagePage';
+import PostIdPage from 'pages/PostPage/PostIdPage/PostIdPage';
+import PostPage from 'pages/PostPage/PostPage';
+
 import './App.scss';
 
-function App() {
-  const handleClick = () => {
-    console.log(1);
-  };
-  return (
-    <div className="App">
-      <Button buttonType="outlined28" onClick={handleClick}>
-        <p>enabled</p>
+function loadData() {
+  return null;
+}
 
-        {/* <Icon fill="black" />
-        <p>enabled</p> */}
-      </Button>
-    </div>
-  );
+const router = createBrowserRouter([
+  { path: '/', element: <HomePage /> },
+  { path: 'list', element: <ListPage /> },
+  {
+    path: 'post',
+    element: <PostPage />,
+    children: [
+      {
+        path: ':id',
+        element: <PostIdPage />,
+        loader: loadData, // 해당 경로에 접근했을 때 실행될 로더 함수
+        children: [
+          { path: 'edit', element: <EditPage /> },
+          { path: 'message', element: <MessagePage /> },
+        ],
+      },
+    ],
+  },
+]);
+
+function App() {
+  return <RouterProvider router={router} />;
 }
 
 export default App;
