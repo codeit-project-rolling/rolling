@@ -1,15 +1,15 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import addEmojiIcon from 'assets/images/addEmoji.png';
 import arrowDownIcon from 'assets/images/arrow_down.png';
 import shareIcon from 'assets/images/share.png';
 
-import EmojiModal from 'components/Header/EmojiModal';
-import HeaderServiceStyles from 'components/Header/HeaderService.module.scss';
-import ShareModal from 'components/Header/ShareModal';
-import userData from 'components/Header/mock.json';
+import EmojiModal from 'components/Header/HeaderComponents/EmojiModal';
+import HeaderServiceStyles from 'components/Header/HeaderComponents/HeaderService.module.scss';
+import ShareModal from 'components/Header/HeaderComponents/ShareModal';
 
-function HeaderService() {
+function HeaderService({ userData }) {
   const [emojiModal, setEmojiModal] = useState(false);
   const [shareModal, setShareModal] = useState(false);
   const handleEmojiModalClick = () => {
@@ -20,7 +20,6 @@ function HeaderService() {
   };
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
-      <p className={HeaderServiceStyles.toNickname}>To. {userData.name}</p>
       <div className={HeaderServiceStyles.headerRight}>
         <div className={HeaderServiceStyles.howManyPerson}>
           <div className={HeaderServiceStyles.senderProfile}>
@@ -71,4 +70,23 @@ function HeaderService() {
     </div>
   );
 }
+
+HeaderService.propTypes = {
+  userData: PropTypes.shape({
+    recentMessages: PropTypes.arrayOf(
+      PropTypes.shape({
+        profileImageURL: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+    messageCount: PropTypes.number.isRequired,
+    topReactions: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        emoji: PropTypes.string.isRequired,
+        count: PropTypes.number.isRequired,
+      })
+    ).isRequired,
+  }).isRequired,
+};
+
 export default HeaderService;

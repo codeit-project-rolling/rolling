@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import shareModalStyles from 'components/Header/ShareModal.module.scss';
+import shareModalStyles from 'components/Header/HeaderComponents/ShareModal.module.scss';
 
 import ModalOutsideClickHandler from 'utils/ModalOutsideClick';
 

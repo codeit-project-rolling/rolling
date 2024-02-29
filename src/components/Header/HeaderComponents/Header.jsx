@@ -1,7 +1,6 @@
 import LogoImg from 'assets/images/Logo.png';
 
-import HeaderStyles from 'components/Header/Header.module.scss';
-import HeaderService from 'components/Header/HeaderService';
+import HeaderStyles from 'components/Header/HeaderComponents/Header.module.scss';
 
 function Header() {
   return (
@@ -13,10 +12,8 @@ function Header() {
         </div>
         <button type="button" className={HeaderStyles.addRollingBtn}>
           롤링 페이퍼 만들기
+          {/* 버튼 컴포넌트 사용예정 */}
         </button>
-      </div>
-      <div className="HeaderService-Conatainer">
-        <HeaderService />
       </div>
     </div>
   );

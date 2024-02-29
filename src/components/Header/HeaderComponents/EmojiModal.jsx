@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 // import { useEffect, useRef } from 'react';
 
-import modalStyles from 'components/Header/EmojiModal.module.scss';
+import modalStyles from 'components/Header/HeaderComponents/EmojiModal.module.scss';
 
 import ModalOutsideClickHandler from 'utils/ModalOutsideClick';
 
