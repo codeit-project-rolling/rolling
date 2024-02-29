@@ -35,7 +35,7 @@ function useGetMessageList({ id, limit, offset }) {
   if (offset) queryParams.append('offset', offset);
 
   const queryString = queryParams.toString();
-  const apiEndpoint = `recipients/${id}/messages/${queryString ? `?${queryString}` : ''}/`;
+  const apiEndpoint = `recipients/${id}/messages/${queryString ? `?${queryString}` : ''}`;
 
   const { data, loading, error } = apiGet(apiEndpoint);
 
