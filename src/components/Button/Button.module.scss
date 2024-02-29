@@ -1,548 +1,533 @@
 @import 'assets/styles/global.scss';
 
 @mixin buttonStyleDelete {
-  border: none;
-  outline: none;
-  background-color: inherit;
+  border: 0;
   cursor: pointer;
+  outline: none;
+}
+
+.basicSet {
+  display: flex;
+  gap: 1rem;
 }
 
 .primaryButton56 {
   @include buttonStyleDelete;
   display: inline-flex;
-  padding: 14px 24px;
+  padding: 1.4rem 2.4rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border-radius: 12px;
-  background: var(--Purple-600, #9935ff);
-  cursor: pointer;
+  gap: 1rem;
+  border-radius: 1.2rem;
+  background: $Purple600;
+  border: 0.1rem solid $Purple600;
+  p {
+    width: 16rem;
+    color: $White;
+    text-align: center;
+    font-size: $fontSize18;
+    font-weight: $fontWeightBold;
+    line-height: 2.8rem;
+    letter-spacing: -0.018rem;
+  }
 
   &.disabled {
-    background: var(--gray-300, #ccc);
+    background: $Grayscale300;
+    border: 0.1rem solid $Grayscale300;
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    background: var(--Purple-700, #861dee);
+    background: $Purple700;
+    border: 0.1rem solid $Purple700;
   }
-
-  &:not(.disabled):active {
-    background: var(--Purple-800, #6e0ad1);
-  }
-
   &:not(.disabled):focus {
-    border: 2px solid var(--Purple-900, #5603a7);
-    background: var(--Purple-800, #6e0ad1);
+    border: 0.1rem solid $Purple900;
+    background: $Purple800;
+  }
+  &:not(.disabled):active {
+    background: $Purple800;
+    border: 0.1rem solid $Purple800;
   }
 }
 
 .primaryButton40 {
+  @include buttonStyleDelete;
   display: inline-flex;
-  padding: 7px 16px;
+  padding: 0.7rem 1.6rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border-radius: 6px;
-  background: var(--Purple-600, #9935ff);
-  cursor: pointer;
+  gap: 1rem;
+  border-radius: 0.6rem;
+  background: $Purple600;
+  border: 0.2rem solid $Purple600;
+  p {
+    width: 9rem;
+    color: $White;
+    text-align: center;
+    font-size: $fontSize16;
+    font-weight: $fontWeightRegular;
+    line-height: 2.6rem;
+    letter-spacing: -0.016rem;
+  }
 
   &.disabled {
-    background: var(--gray-300, #ccc);
+    background: $Grayscale300;
+    border: 0.2rem solid $Grayscale300;
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    background: var(--Purple-700, #861dee);
+    background: $Purple700;
+    border: 0.2rem solid $Purple700;
   }
-
-  &:not(.disabled):active {
-    background: var(--Purple-800, #6e0ad1);
-  }
-
   &:not(.disabled):focus {
-    border: 2px solid var(--Purple-900, #5603a7);
-    background: var(--Purple-800, #6e0ad1);
+    border: 0.2rem solid $Purple900;
+    background: $Purple800;
+  }
+  &:not(.disabled):active {
+    background: $Purple800;
+    border: 0.2rem solid $Purple800;
   }
 }
 
 .secondaryButton40 {
+  @include buttonStyleDelete;
   display: inline-flex;
-  padding: 7px 16px;
+  padding: 0.7rem 1.6rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border-radius: 6px;
-  border: 1px solid var(--Purple-600, #9935ff);
-  background: var(--white, #fff);
-  cursor: pointer;
+  gap: 1rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Purple600;
+  background: $White;
+  p {
+    width: 9rem;
+    color: $Purple700;
+    text-align: center;
+    font-size: $fontSize16;
+    font-weight: $fontWeightRegular;
+    line-height: 2.6rem;
+    letter-spacing: -0.016rem;
+  }
 
   &.disabled {
-    background: var(--gray-300, #ccc);
+    background: $Grayscale300;
+    border: 0.1rem solid $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
     }
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 1px solid var(--Purple-700, #861dee);
-    background: var(--Purple-100, #f8f0ff);
+    border: 0.1rem solid $Purple700;
+    background: $Purple100;
     p {
-      color: var(--Purple-600, #9935ff);
+      color: $Purple600;
     }
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--Purple-800, #6e0ad1);
-    background: var(--Purple-100, #f8f0ff);
-    p {
-      color: var(--Purple-600, #9935ff);
-    }
-  }
-
   &:not(.disabled):focus {
-    border: 1px solid var(--Purple-800, #6e0ad1);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Purple800;
+    background: $White;
     p {
       color: #9747ff;
+    }
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Purple800;
+    background: $Purple100;
+    p {
+      color: $Purple600;
     }
   }
 }
 
 .outlinedButton56 {
+  @include buttonStyleDelete;
   display: inline-flex;
-  padding: 14px 16px;
+  padding: 1.4rem 1.6rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border-radius: 12px;
-  border: 1px solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
-  cursor: pointer;
+  gap: 1rem;
+  border-radius: 1.2rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   p {
-    width: 160px;
-    color: var(--gray-900, #181818);
+    width: 16rem;
+    color: $Grayscale900;
     text-align: center;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 28px; /* 155.556% */
-    letter-spacing: -0.18px;
+    font-size: $fontSize18;
+    font-weight: $fontWeightBold;
+    line-height: 2.8rem; /* 155.556% */
+    letter-spacing: -0.018rem;
   }
 
   &.disabled {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
     }
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
-    border: 1px solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
 .outlinedButton40 {
+  @include buttonStyleDelete;
   display: inline-flex;
-  height: 40px;
-  padding: 8px 16px;
+  height: 4rem;
+  padding: 0.8rem 1.6rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border-radius: 6px;
-  border: 1px solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
-  cursor: pointer;
+  gap: 1rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   p {
-    width: 90px;
-    height: 24px;
-    color: var(--gray-900, #181818);
+    width: 9rem;
+    height: 2.4rem;
+    color: $Grayscale900;
     text-align: center;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 26px; /* 162.5% */
-    letter-spacing: -0.16px;
+    font-size: $fontSize16;
+    font-weight: $fontWeightRegular;
+    line-height: 2.6rem; /* 162.5% */
+    letter-spacing: -0.016rem;
   }
 
   &.disabled {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
     }
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
-    border: 1px solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
 .outlinedSmileButton40 {
+  @include buttonStyleDelete;
   display: inline-flex;
-  padding: 8px 16px;
+  padding: 0.8rem 1.6rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border-radius: 6px;
-  border: 1px solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
-  cursor: pointer;
-  div {
-    width: 24px;
-    height: 24px;
-  }
+  gap: 1rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   p {
-    color: var(--gray-900, #181818);
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px; /* 150% */
-    letter-spacing: -0.16px;
+    color: $Grayscale900;
+    font-size: $fontSize16;
+    font-weight: $fontWeightRegular;
+    line-height: 2.6rem; /* 150% */
+    letter-spacing: -0.016rem;
   }
   svg {
-    width: 24px;
-    height: 24px;
+    width: 2.4rem;
+    height: 2.4rem;
   }
 
   &.disabled {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
       text-align: center;
-      font-weight: 400;
-      line-height: 26px;
     }
 
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-    p {
-      font-weight: 400;
-      line-height: 26px;
-    }
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-    p {
-      font-weight: 400;
-      line-height: 26px;
-    }
-  }
-
   &:not(.disabled):focus {
-    border: 1px solid var(--gray-500, #555);
-    background: var(--white, #fff);
-    p {
-      font-weight: 400;
-      line-height: 26px;
-    }
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
 .outlinedButton36 {
+  @include buttonStyleDelete;
   display: inline-flex;
-  height: 36px;
-  padding: 6px 16px;
+  height: 3.6rem;
+  padding: 0.6rem 1.6rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border-radius: 6px;
-  border: 1px solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
-  cursor: pointer;
+  gap: 1rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   p {
-    width: 90px;
-    height: 24px;
-    color: var(--gray-900, #181818);
+    width: 9rem;
+    height: 2.4rem;
+    color: $Grayscale900;
     text-align: center;
-    font-size: 16px;
+    font-size: $fontSize16;
     font-weight: 500;
-    line-height: 24px; /* 150% */
+    line-height: 2.4rem; /* 150% */
   }
 
   &.disabled {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
     }
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
-    border: 1px solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
 .outlinedSmileButton36 {
+  @include buttonStyleDelete;
   display: inline-flex;
-  padding: 6px 16px;
+  padding: 0.6rem 1.6rem;
   justify-content: center;
   align-items: center;
-  gap: 4px;
-  border-radius: 6px;
-  border: 1px solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
-  cursor: pointer;
-  div {
-    width: 24px;
-    height: 24px;
-  }
+  gap: 0.4rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   p {
-    color: var(--gray-900, #181818);
-    font-size: 16px;
+    color: $Grayscale900;
+    font-size: $fontSize16;
     font-weight: 500;
-    line-height: 24px;
+    line-height: 2.4rem;
   }
   svg {
-    width: 24px;
-    height: 24px;
+    width: 2.4rem;
+    height: 2.4rem;
   }
 
   &.disabled {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
     }
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
-    border: 1px solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
 .outlinedButton28 {
+  @include buttonStyleDelete;
   display: inline-flex;
-  height: 28px;
-  padding: 2px 16px;
+  height: 2.8rem;
+  padding: 0.2rem 1.6rem;
   justify-content: center;
   align-items: center;
-  gap: 4px;
-  border-radius: 6px;
-  border: 1px solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
-  cursor: pointer;
+  gap: 0.4rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   p {
-    width: 90px;
-    height: 24px;
-    color: var(--gray-900, #181818);
+    width: 9rem;
+    height: 2.4rem;
+    color: $Grayscale900;
     text-align: center;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px; /* 142.857% */
-    letter-spacing: -0.07px;
+    font-size: $fontSize14;
+    font-weight: $fontWeightRegular;
+    line-height: 2rem; /* 142.857% */
+    letter-spacing: -0.007rem;
   }
 
   &.disabled {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
     }
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
-    border: 1px solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
 .outlinedSmileButton28 {
+  @include buttonStyleDelete;
   display: inline-flex;
-  padding: 6px 16px;
+  padding: 0.6rem 1.6rem;
   justify-content: center;
   align-items: center;
-  gap: 4px;
-  border-radius: 6px;
-  border: 1px solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
-  cursor: pointer;
-  div {
-    width: 20px;
-    height: 20px;
-  }
+  gap: 0.4rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
   p {
-    color: var(--gray-900, #181818);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: -0.07px;
+    color: $Grayscale900;
+    font-size: $fontSize14;
+    font-weight: $fontWeightRegular;
+    line-height: 2rem;
+    letter-spacing: -0.007rem;
   }
   svg {
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
   }
 
   &.disabled {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     p {
-      color: var(--white, #fff);
+      color: $White;
     }
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
-    border: 1px solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
 .outlinedSingleButton36 {
+  @include buttonStyleDelete;
   display: inline-flex;
-  padding: 6px;
+  padding: 0.6rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border-radius: 6px;
-  border: 1px solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
-  cursor: pointer;
-  p {
+  gap: 1rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
+  div {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 24px;
-    height: 24px;
+    width: 2.4rem;
+    height: 2.4rem;
   }
 
   &.disabled {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
-    border: 1px solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }
 
 .outlinedSingleButton28 {
+  @include buttonStyleDelete;
   display: inline-flex;
-  padding: 6px;
+  padding: 0.6rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border-radius: 6px;
-  border: 1px solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
-  cursor: pointer;
-  p {
+  gap: 1rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
+  div {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20px;
-    height: 20px;
-  }
-  svg {
-    width: 100%;
-    height: 100%;
+    width: 2rem;
+    height: 2rem;
   }
 
   &.disabled {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-300, #ccc);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
     cursor: auto;
   }
 
   &:not(.disabled):hover {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
-
-  &:not(.disabled):active {
-    border: 1px solid var(--gray-300, #ccc);
-    background: var(--gray-100, #f6f6f6);
-  }
-
   &:not(.disabled):focus {
-    border: 1px solid var(--gray-500, #555);
-    background: var(--white, #fff);
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
   }
 }

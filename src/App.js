@@ -9,6 +9,7 @@ import PostPage from 'pages/PostPage/PostPage';
 
 import './App.scss';
 
+
 function loadData() {
   return null;
 }
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
 
 function App() {
   return <RouterProvider router={router} />;
+
 }
 
 export default App;
