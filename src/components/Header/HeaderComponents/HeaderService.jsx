@@ -5,27 +5,22 @@ import addEmojiIcon from 'assets/images/addEmoji.png';
 import arrowDownIcon from 'assets/images/arrow_down.png';
 import shareIcon from 'assets/images/share.png';
 
-import EmojiModal from 'components/Header/HeaderComponents/EmojiModal';
+import EmojiDropdown from 'components/Header/HeaderComponents/EmojiDropdown';
 import HeaderServiceStyles from 'components/Header/HeaderComponents/HeaderService.module.scss';
-import ShareModal from 'components/Header/HeaderComponents/ShareModal';
+import ShareDropdown from 'components/Header/HeaderComponents/ShareDropdown';
 
 function HeaderService({ userData }) {
-  const [emojiModal, setEmojiModal] = useState(false);
-  const [shareModal, setShareModal] = useState(false);
-  const handleEmojiModalClick = () => {
-    setEmojiModal(true);
-  };
-  const handleShareModalClick = () => {
-    setShareModal(true);
-  };
+  const [emojiDropdown, setEmojiDropdown] = useState(false);
+  const [shareDropdown, setShareDropdown] = useState(false);
+
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
       <div className={HeaderServiceStyles.headerRight}>
         <div className={HeaderServiceStyles.howManyPerson}>
           <div className={HeaderServiceStyles.senderProfile}>
-            {userData.recentMessages.slice(0, 3).map((profileImg) => (
+            {userData.recentMessages.slice(0, 3).map((message) => (
               <img
-                src={profileImg.profileImageURL}
+                src={message.profileImageURL}
                 alt="senderProfileImg"
                 className={HeaderServiceStyles.senderProfileImg}
               />
@@ -35,7 +30,7 @@ function HeaderService({ userData }) {
             </div>
           </div>
           <p>
-            <span>{userData.messageCount}</span>명이 작성했어요!
+            <span>{userData?.messageCount}</span>명이 작성했어요!
           </p>
         </div>
         <div className={HeaderServiceStyles.selectionBar} />
@@ -43,15 +38,19 @@ function HeaderService({ userData }) {
           {userData.topReactions.slice(0, 3).map((reaction) => (
             <button key={reaction.id} type="button" className={HeaderServiceStyles.emojiBtn}>
               <p>
-                {reaction.emoji}
-                {reaction.count}
+                {reaction?.emoji}
+                {reaction?.count}
               </p>
             </button>
           ))}
-          <button onClick={handleEmojiModalClick} type="button" className={HeaderServiceStyles.modalIcon}>
+          <button
+            onClick={() => setEmojiDropdown(!emojiDropdown)}
+            type="button"
+            className={HeaderServiceStyles.modalIcon}
+          >
             <img src={arrowDownIcon} alt="arrowDownIcon" />
+            {emojiDropdown && <EmojiDropdown emojiList={userData.topReactions} />}
           </button>
-          {emojiModal && <EmojiModal onClose={() => setEmojiModal(false)} emojiList={userData.topReactions} />}
         </div>
         <div>
           <button type="button" className={HeaderServiceStyles.addEmojiBtn}>
@@ -60,12 +59,15 @@ function HeaderService({ userData }) {
           </button>
         </div>
         <div className={HeaderServiceStyles.selectionBar} />
-        <div>
-          <button type="button" className={HeaderServiceStyles.shareBtn} onClick={handleShareModalClick}>
-            <img src={shareIcon} alt="shareImg" />
-          </button>
-          {shareModal && <ShareModal onClose={() => setShareModal(false)} />}
-        </div>
+        <button
+          type="button"
+          onClick={() => {
+            setShareDropdown(!shareDropdown);
+          }}
+        >
+          <img src={shareIcon} alt="shareImg" />
+          {shareDropdown && <ShareDropdown />}
+        </button>
       </div>
     </div>
   );

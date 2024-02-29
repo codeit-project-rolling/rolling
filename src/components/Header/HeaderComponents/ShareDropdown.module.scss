@@ -2,10 +2,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: fixed;
+  position: absolute;
   z-index: 1;
-  right: 28rem;
-  top: 10rem;
   overflow: auto;
   border-radius: 8px;
   border: 1px solid #b6b6b6;
