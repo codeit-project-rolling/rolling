@@ -13,47 +13,50 @@ import apiPost from 'apis/apiPost';
 // 메세지 내용.
 // font: string ("Noto Sans” | "Pretendard” | "나눔명조” | "나눔손글씨 손편지체”) required
 // 메세지가 사용할 폰트. "Noto Sans” | "Pretendard” | "나눔명조” | "나눔손글씨 손편지체” 중 하나의 값이어야 합니다.
-function usePostMessage({ id = null, sender = '', profileImageURL = '', relationship = '', content = '', font = '' }) {
-  if (id === null) {
-    console.log('Error(usePostMessage): id가 없습니다.');
-    return null;
+
+const RELATIONSHIP_LIST = ['친구', '지인', '동료', '가족'];
+const FONT_LIST = ['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편지체'];
+
+// 입력 값 검증 함수
+function validateInput({ id, sender, profileImageURL, relationship, content, font }) {
+  if (!id) {
+    return 'Error(usePostMessage): id가 없습니다.';
   }
 
   if (!sender) {
-    console.log('Error(usePostMessage): sender가 없습니다.');
-    return null;
+    return 'Error(usePostMessage): sender가 없습니다.';
   }
 
   if (!profileImageURL) {
-    console.log('Error(usePostMessage): profileImageURL이 없습니다.');
-    return null;
+    return 'Error(usePostMessage): profileImageURL이 없습니다.';
   }
 
-  if (!relationship) {
-    console.log('Error(usePostMessage): relationship이 없습니다.');
-    return null;
-  }
-
-  if (relationship !== '친구' && relationship !== '지인' && relationship !== '동료' && relationship !== '가족') {
-    console.log('Error(usePostMessage): relationship이 올바르지 않습니다.');
-    return null;
+  if (!RELATIONSHIP_LIST.includes(relationship)) {
+    return 'Error(usePostMessage): relationship이 올바르지 않습니다.';
   }
 
   if (!content) {
-    console.log('Error(usePostMessage): content가 없습니다.');
-    return null;
+    return 'Error(usePostMessage): content가 없습니다.';
   }
 
-  if (!font) {
-    console.log('Error(usePostMessage): font가 없습니다.');
-    return null;
+  if (!FONT_LIST.includes(font)) {
+    return 'Error(usePostMessage): font가 올바르지 않습니다.';
   }
 
-  if (font !== 'Noto Sans' && font !== 'Pretendard' && font !== '나눔명조' && font !== '나눔손글씨 손편지체') {
-    console.log('Error(usePostMessage): font가 올바르지 않습니다.');
-    return null;
+  // 모든 검증을 통과한 경우
+  return null;
+}
+
+function usePostMessage({ id, sender, profileImageURL, relationship, content, font }) {
+  // 에러 처리
+  const errorMessage = validateInput({ id, sender, profileImageURL, relationship, content, font });
+
+  if (errorMessage) {
+    console.log(errorMessage);
+    return { data: null, loading: false, error: errorMessage };
   }
 
+  // apiPost
   const apiEndpoint = `recipients/${id}/messages/`;
   const postData = { sender, profileImageURL, relationship, content, font };
 

@@ -7,24 +7,35 @@ import apiGet from 'apis/apiGet';
 // 리턴받기 원하는 질문 대상 객체 수. 값을 전달하지 않으면 8개의 객체가 리턴됩니다.
 // offset: integer
 // 가장 앞 객체부터 건너뛰고 싶은 객체 수. 값을 전달하지 않으면 건너뛰지 않습니다.
-function useGetReactionList({ id = null, limit = null, offset = null }) {
-  if (id === null) {
-    console.log('Error(useGetReactionList): id가 없습니다.');
-    return null;
+
+// 입력 값 검증 함수
+function validateInput({ id }) {
+  if (!id) {
+    return 'Error(useGetReactionList): id가 없습니다.';
   }
 
-  const queryParams = [];
+  // 모든 검증을 통과한 경우
+  return null;
+}
 
-  if (limit !== null) {
-    queryParams.push(`limit=${limit}`);
+function useGetReactionList({ id, limit, offset }) {
+  // 에러 처리
+  const errorMessage = validateInput({ id });
+
+  if (errorMessage) {
+    console.log(errorMessage);
+    return { data: null, loading: false, error: errorMessage };
   }
 
-  if (offset !== null) {
-    queryParams.push(`offset=${offset}`);
-  }
+  // apiGet
+  // URLSearchParams 사용
+  const queryParams = new URLSearchParams();
 
-  const queryString = queryParams.join('&');
-  const apiEndpoint = `recipients/${id}/reactions/${queryString ? `?${queryString}` : ''}/`;
+  if (limit) queryParams.append('limit', limit);
+  if (offset) queryParams.append('offset', offset);
+
+  const queryString = queryParams.toString();
+  const apiEndpoint = `recipients/${id}/reactions/${queryString ? `?${queryString}` : ''}`;
 
   const { data, loading, error } = apiGet(apiEndpoint);
 

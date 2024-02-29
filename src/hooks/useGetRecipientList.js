@@ -7,22 +7,17 @@ import apiGet from 'apis/apiGet';
 // 가장 앞 객체부터 건너뛰고 싶은 객체 수. 값을 전달하지 않으면 건너뛰지 않습니다.
 // sortByLike: boolean
 // 객체 목록 정렬 기준. "like" 를 전달하면 목록이 총 리액션 수 (reactionCount) 순서대로 목록이 정렬돼서 리턴됩니다. 값을 전달하지 않으면 최신순으로 정렬됩니다. sortByLike = true 이면 "like"를 전달합니다.
-function useGetRecipientList({ limit = null, offset = null, sortByLike = false } = {}) {
-  const queryParams = [];
 
-  if (limit !== null) {
-    queryParams.push(`limit=${limit}`);
-  }
+function useGetRecipientList({ limit, offset, sortByLike } = {}) {
+  // apiGet
+  // URLSearchParams 사용
+  const queryParams = new URLSearchParams();
 
-  if (offset !== null) {
-    queryParams.push(`offset=${offset}`);
-  }
+  if (limit) queryParams.append('limit', limit);
+  if (offset) queryParams.append('offset', offset);
+  if (sortByLike) queryParams.append('sort', 'like');
 
-  if (sortByLike) {
-    queryParams.push(`sort=like`);
-  }
-
-  const queryString = queryParams.join('&');
+  const queryString = queryParams.toString();
   const apiEndpoint = `recipients/${queryString ? `?${queryString}` : ''}`;
 
   const { data, loading, error } = apiGet(apiEndpoint);
