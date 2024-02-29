@@ -30,8 +30,8 @@
     width: 9rem;
     color: $Purple700;
     text-align: center;
-    font-size: 1.6rem;
-    font-weight: 700;
+    font-size: $fontSize16;
+    font-weight: $fontWeightBold;
     line-height: 2.6rem;
     letter-spacing: -0.016rem;
   }
@@ -50,7 +50,7 @@
     color: $Grayscale900;
     text-align: center;
     font-size: 1.6rem;
-    font-weight: 400;
+    font-weight: $fontWeightRegular;
     line-height: 2.6rem;
     letter-spacing: -0.016rem;
     width: 9rem;

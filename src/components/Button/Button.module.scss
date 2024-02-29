@@ -23,8 +23,8 @@
     width: 16rem;
     color: var(--white, #fff);
     text-align: center;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: $fontSize18;
+    font-weight: $fontWeightBold;
     line-height: 2.8rem;
     letter-spacing: -0.018rem;
   }
@@ -60,8 +60,8 @@
     width: 9rem;
     color: var(--white, #fff);
     text-align: center;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: $fontSize16;
+    font-weight: $fontWeightRegular;
     line-height: 2.6rem;
     letter-spacing: -0.016rem;
   }
@@ -98,8 +98,8 @@
     width: 9rem;
     color: var(--Purple-700, #861dee);
     text-align: center;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: $fontSize16;
+    font-weight: $fontWeightRegular;
     line-height: 2.6rem;
     letter-spacing: -0.016rem;
   }
@@ -149,8 +149,8 @@
     width: 16rem;
     color: var(--gray-900, #181818);
     text-align: center;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: $fontSize18;
+    font-weight: $fontWeightBold;
     line-height: 2.8rem; /* 155.556% */
     letter-spacing: -0.018rem;
   }
@@ -194,8 +194,8 @@
     height: 2.4rem;
     color: var(--gray-900, #181818);
     text-align: center;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: $fontSize16;
+    font-weight: $fontWeightRegular;
     line-height: 2.6rem; /* 162.5% */
     letter-spacing: -0.016rem;
   }
@@ -235,8 +235,8 @@
   background: var(--white, #fff);
   p {
     color: var(--gray-900, #181818);
-    font-size: 16px;
-    font-weight: 400;
+    font-size: $fontSize16;
+    font-weight: $fontWeightRegular;
     line-height: 2.6rem; /* 150% */
     letter-spacing: -0.016rem;
   }
@@ -286,7 +286,7 @@
     height: 2.4rem;
     color: var(--gray-900, #181818);
     text-align: center;
-    font-size: 16px;
+    font-size: $fontSize16;
     font-weight: 500;
     line-height: 2.4rem; /* 150% */
   }
@@ -326,7 +326,7 @@
   background: var(--white, #fff);
   p {
     color: var(--gray-900, #181818);
-    font-size: 16px;
+    font-size: $fontSize16;
     font-weight: 500;
     line-height: 2.4rem;
   }
@@ -374,8 +374,8 @@
     height: 2.4rem;
     color: var(--gray-900, #181818);
     text-align: center;
-    font-size: 14px;
-    font-weight: 400;
+    font-size: $fontSize14;
+    font-weight: $fontWeightRegular;
     line-height: 2rem; /* 142.857% */
     letter-spacing: -0.007rem;
   }
@@ -415,8 +415,8 @@
   background: var(--white, #fff);
   p {
     color: var(--gray-900, #181818);
-    font-size: 14px;
-    font-weight: 400;
+    font-size: $fontSize14;
+    font-weight: $fontWeightRegular;
     line-height: 2rem;
     letter-spacing: -0.007rem;
   }
