@@ -32,9 +32,11 @@ function usePostReaction({ id, emoji, isIncrease }) {
   }
 
   // apiPost
-  const apiEndpoint = `recipients/${id}/reactions`;
+  const apiEndpoint = `recipients/${id}/reactions/`;
   const type = isIncrease ? 'increase' : 'decrease';
   const postData = { emoji, type };
+
+  console.log(apiEndpoint);
 
   const { data, loading, error } = apiPost(apiEndpoint, postData);
 
