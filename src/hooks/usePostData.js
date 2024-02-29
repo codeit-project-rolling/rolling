@@ -5,6 +5,7 @@ const API_URL = 'https://rolling-api.vercel.app/0-3/';
 const SUCCESS = 201;
 
 function usePostData(apiEndpoint, postData) {
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -17,6 +18,8 @@ function usePostData(apiEndpoint, postData) {
         if (response.status !== SUCCESS) {
           throw new Error(`Response error with status code: ${response.status}`);
         }
+
+        setData(response.data);
       } catch (errorData) {
         const errorMessage = errorData.response ? errorData.response.data : errorData.toString();
         setError(errorMessage);
@@ -28,7 +31,7 @@ function usePostData(apiEndpoint, postData) {
     getData();
   }, [apiEndpoint]);
 
-  return { loading, error };
+  return { data, loading, error };
 }
 
 export default usePostData;

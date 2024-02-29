@@ -19,7 +19,7 @@ function useGetData(apiEndpoint) {
           throw new Error(`Response error with status code: ${response.status}`);
         }
 
-        setData(response.data); // 응답 데이터를 설정
+        setData(response.data);
       } catch (errorData) {
         const errorMessage = errorData.response ? errorData.response.data : errorData.toString();
         setError(errorMessage);
