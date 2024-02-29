@@ -1,7 +1,5 @@
-import CheckButton from 'components/CheckButton/CheckButton';
-
 function HomePage() {
-  return <CheckButton />;
+  return <div />;
 }
 
 export default HomePage;
