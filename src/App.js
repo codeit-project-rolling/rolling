@@ -1,8 +1,7 @@
-import { ReactComponent as Icon } from 'assets/images/smile.svg';
+// import { ReactComponent as Icon } from 'assets/images/smile.svg';
 
 import Button from 'components/Button/Button';
 import './App.scss';
-import ToggleButton from 'components/ToggleButton/ToggleButton';
 
 function App() {
   const handleClick = () => {
@@ -10,11 +9,12 @@ function App() {
   };
   return (
     <div className="App">
-      <Button buttonType="outlined40" onClick={handleClick}>
-        <p>111</p>
-        <Icon fill="black" />
+      <Button buttonType="outlined28" onClick={handleClick}>
+        <p>enabled</p>
+
+        {/* <Icon fill="black" />
+        <p>enabled</p> */}
       </Button>
-      <ToggleButton />
     </div>
   );
 }
