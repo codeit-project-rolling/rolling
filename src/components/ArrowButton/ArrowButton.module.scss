@@ -1,0 +1,25 @@
+@import 'assets/styles/global.scss';
+
+.arrowButton {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+}
+
+.arrowButtonBackground {
+  width: 4rem;
+  height: 4rem;
+  fill: rgba(255, 255, 255, 0.9);
+  stroke-width: 0.1rem;
+  stroke: $Grayscale300;
+  filter: drop-shadow(0rem 0.4rem 0.8rem rgba(0, 0, 0, 0.08));
+}
+
+.arrowButtonImg {
+  position: absolute;
+  width: 1.4rem;
+  height: 1.4rem;
+  top: 1rem;
+  left: 1.2rem;
+}
