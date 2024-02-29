@@ -1,6 +1,14 @@
 @import 'assets/styles/global.scss';
 
+@mixin buttonStyleDelete {
+  border: none;
+  outline: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
 .primaryButton56 {
+  @include buttonStyleDelete;
   display: inline-flex;
   padding: 14px 24px;
   justify-content: center;
@@ -9,15 +17,6 @@
   border-radius: 12px;
   background: var(--Purple-600, #9935ff);
   cursor: pointer;
-  p {
-    width: 160px;
-    color: var(--white, #fff);
-    text-align: center;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 28px;
-    letter-spacing: -0.18px;
-  }
 
   &.disabled {
     background: var(--gray-300, #ccc);
@@ -47,15 +46,6 @@
   border-radius: 6px;
   background: var(--Purple-600, #9935ff);
   cursor: pointer;
-  p {
-    width: 90px;
-    color: var(--white, #fff);
-    text-align: center;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 26px;
-    letter-spacing: -0.16px;
-  }
 
   &.disabled {
     background: var(--gray-300, #ccc);
@@ -86,15 +76,6 @@
   border: 1px solid var(--Purple-600, #9935ff);
   background: var(--white, #fff);
   cursor: pointer;
-  p {
-    width: 90px;
-    color: var(--Purple-700, #861dee);
-    text-align: center;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 26px;
-    letter-spacing: -0.16px;
-  }
 
   &.disabled {
     background: var(--gray-300, #ccc);

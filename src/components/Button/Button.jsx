@@ -23,35 +23,10 @@ function Practice({ buttonType, children, disabled, onClick }) {
 
   const handleClick = () => onClick();
 
-  return children.length === 2 ? (
-    <div
-      className={buttonClassName}
-      role="button"
-      onClick={handleClick}
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          handleClick();
-        }
-      }}
-    >
-      <div>{children[0]}</div>
-      <p>{children[1]}</p>
-    </div>
-  ) : (
-    <div
-      className={buttonClassName}
-      role="button"
-      onClick={handleClick}
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          handleClick();
-        }
-      }}
-    >
-      <p>{children}</p>
-    </div>
+  return (
+    <button type="button" className={buttonClassName} onClick={handleClick}>
+      <div>{children}</div>
+    </button>
   );
 }
 

@@ -1,5 +1,3 @@
-// import { ReactComponent as Icon } from 'assets/images/share.svg';
-
 import { ReactComponent as Icon } from 'assets/images/smile.svg';
 
 import LeftArrowButton from 'components/ArrowButton/LeftArrowButton';
@@ -17,8 +15,8 @@ function App() {
   return (
     <>
       <Button buttonType="outlined36" onClick={handleButtonClick}>
-        <Icon fill="black" />
-        안녕
+        <Icon className="iconSize" fill="black" />
+        <p className="word">안녕</p>
       </Button>
       <LeftArrowButton onClick={handleButtonClick} />
       <RightArrowButton onClick={handleButtonClick} />
