@@ -6,6 +6,14 @@
 
 팀 미팅 끝난 뒤 각자 최우선으로 실시
 
+## 페이지 분배
+
+- 강진호 / -> 각 페이지로 이동하는 버튼 추가
+- 류지영 /list
+- 심민보 /post/{id} && /post/{id}/edit
+- 최희문 /post
+- 황은애 /post/{id}/message
+
 ## css 스타일
 
 - module, scss
