@@ -1,0 +1,38 @@
+@import 'assets/styles/global.scss';
+.modalContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+  right: 86rem;
+  top: 4rem;
+  overflow: auto;
+  border-radius: 8px;
+  border: 1px solid #b6b6b6;
+  background: #fff;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  width: 31.2rem;
+  height: 13.4rem;
+  .closeModal {
+    color: red;
+  }
+  .emojiBtnContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 2.4rem;
+  }
+  .emojiBtn {
+    display: inline-flex;
+    padding: 8px 12px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 3.2rem;
+    background-color: $Grayscale400;
+    border: none;
+    color: $White;
+  }
+}

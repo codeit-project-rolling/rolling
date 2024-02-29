@@ -1,0 +1,14 @@
+@import 'assets/styles/global.scss';
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  .headerServiceContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.1rem 36rem;
+    position: fixed;
+    top: 50px;
+    width: 100%;
+  }
+}
