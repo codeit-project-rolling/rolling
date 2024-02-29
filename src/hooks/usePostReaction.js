@@ -36,8 +36,6 @@ function usePostReaction({ id, emoji, isIncrease }) {
   const type = isIncrease ? 'increase' : 'decrease';
   const postData = { emoji, type };
 
-  console.log(apiEndpoint);
-
   const { data, loading, error } = apiPost(apiEndpoint, postData);
 
   return { data, loading, error };
