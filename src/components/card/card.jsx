@@ -4,6 +4,10 @@ import React from 'react';
 import deleteIcon from 'assets/images/deletedIcon.svg';
 
 // import { useState } from 'react';
+import Badge from 'components/Badge/Badge';
+
+import formatDate from 'utils/formatDate';
+
 import CardStyle from './Card.module.scss';
 import { CardDumpData } from './dump.data';
 
@@ -17,7 +21,7 @@ function Card({ data, showDelteIcon }) {
             <div className={CardStyle.profile_name}>
               From. <p>{data?.sender}</p>
             </div>
-            <div>{data?.relationship}(뱃지컴포넌트)</div>
+            <Badge relationship={data?.relationship} />
           </div>
         </div>
         {/* ---휴지통 버튼 온/오프 ---- */}
@@ -30,7 +34,7 @@ function Card({ data, showDelteIcon }) {
 
       <div className={CardStyle.text_box}>
         <div className={CardStyle.text}>{data?.content}</div>
-        <div className={CardStyle.text_date}>2024.02.26(데이터포맷 적용할것)</div>
+        <div className={CardStyle.text_date}>{formatDate(data?.createdAt)}</div>
       </div>
     </div>
   );
