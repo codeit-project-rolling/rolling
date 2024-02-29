@@ -1,5 +1,6 @@
 ## 코어 타임
 
+
 휴일 제외 오후 3시 ~ 오후 6시
 
 ## 코드 리뷰
@@ -13,6 +14,7 @@
 - 심민보 /post/{id} && /post/{id}/edit
 - 최희문 /post
 - 황은애 /post/{id}/message
+
 
 ## css 스타일
 
@@ -28,10 +30,31 @@
 5. pages : 각 page 별로 page 파일과 css파일
 6. utils : 데이터처리 함수
 
+
 ## 공통사항
 
 - 1rem = 10px
 - 기본 폰트: Pretendard
+
+  
+
+
+## 커밋 메시지
+
+### 타입
+feat	새로운 기능에 대한 커밋
+fix	버그 수정에 대한 커밋
+build	빌드 관련 파일 수정 / 모듈 설치 또는 삭제에 대한 커밋
+chore	그 외 자잘한 수정에 대한 커밋
+ci	ci 관련 설정 수정에 대한 커밋
+docs	문서 수정에 대한 커밋
+style	코드 스타일 혹은 포맷 등에 관한 커밋
+refactor	코드 리팩토링에 대한 커밋
+test	테스트 코드 수정에 대한 커밋
+perf	성능 개선에 대한 커밋
+
+### 규칙
+
 
 ## 커밋 메시지
 
@@ -50,6 +73,7 @@
 
 ### 규칙
 
+
 1. 제목과 본문을 빈 행으로 구분한다.
 2. 제목은 50글자 이내로 제한한다.
 3. 제목의 첫 글자는 대문자로 작성한다.
@@ -67,9 +91,11 @@ git commit -m "fix: Safari에서 모달을 띄웠을 때 스크롤 이슈 수정
 
 resolves: #1137
 
+
 ## 브랜치
 
 ### Flow
+
 
 각 브랜치 -> feature -> develop -> master
 
@@ -84,9 +110,14 @@ master: Stable한 배포 가능 코드
 develop: 개발 버전
 feature: 개발중인 기능
 
+
+
+
+
 ## 코드 컨벤션
 
 ### 파일 확장자
+
 
 - jsx 문법 쓰는 컴포넌트 확장자: ~.jsx
 - jsx 문법 사용하지 않는 js 파일: ~.js
@@ -106,6 +137,7 @@ feature: 개발중인 기능
 - 네트워크 요청 라이브러리: axios
 - fetch 사용X
 
+
 ## 이미지
 
 ### 확장자
@@ -115,10 +147,13 @@ feature: 개발중인 기능
 
 ### 파일 이름
 
+
+
 - Camel Case
 - (이름)(타입).(확장자) ex)closeIcon.svg
 
 ### Import 이름
+
 
 - Pascal Case
 - 파일 이름: closeIcon.svg -> import CloseIcon from 'assets/images/closeIcon.svg';
@@ -138,12 +173,15 @@ feature: 개발중인 기능
 3. 작업 시작
 4. 작업 단계마다 Project에서 Issue 이동
 
+
 ## 배포
 
 - 배포 서비스: Netflify
 - 개발 중일 때는 develop 배포
 - 배포 가능 단계가 되면 master 배포
 
+
 ## PR 템플릿
 
 ## Issue 템플릿
+
