@@ -2,6 +2,7 @@ import { ReactComponent as Icon } from 'assets/images/smile.svg';
 
 import Button from 'components/Button/Button';
 import './App.scss';
+import ToggleButton from 'components/ToggleButton/ToggleButton';
 
 function App() {
   const handleClick = () => {
@@ -13,6 +14,7 @@ function App() {
         <p>111</p>
         <Icon fill="black" />
       </Button>
+      <ToggleButton />
     </div>
   );
 }
