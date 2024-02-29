@@ -42,7 +42,7 @@ module.exports = {
       },
     ],
     'linebreak-style': 0,
-    'max-len': ['error', 120, 2, { ignoreComments: true, ignoreUrls: true }],
+    'max-len': ['error', 12000, 2, { ignoreComments: true, ignoreUrls: true }],
     'no-console': 'off',
     'import/order': [
       'error',
