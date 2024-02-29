@@ -1,12 +1,13 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import './App.scss';
 import HomePage from 'pages/HomePage/HomePage';
 import ListPage from 'pages/ListPage/ListPage';
 import EditPage from 'pages/PostPage/PostIdPage/EditPage/EditPage';
 import MessagePage from 'pages/PostPage/PostIdPage/MessagePage/MessagePage';
 import PostIdPage from 'pages/PostPage/PostIdPage/PostIdPage';
 import PostPage from 'pages/PostPage/PostPage';
+
+import './App.scss';
 
 function loadData() {
   return null;
