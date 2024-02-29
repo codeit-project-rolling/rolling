@@ -7,14 +7,14 @@ import apiPost from 'apis/apiPost';
 // 이모지 이름.
 // isIncrease: boolean required
 // 이모지 개수를 늘릴 건지 줄일 건지. isIncrease = true이면 type = ”increase”, isIncrease = false이면 type = “decrease” 입니다.
-function usePostRecipient({ id = null, emoji = '', isIncrease = true }) {
+function usePostReaction({ id = null, emoji = '', isIncrease = true }) {
   if (id === null) {
-    console.log('Error(usePostRecipient): id가 없습니다.');
+    console.log('Error(usePostReaction): id가 없습니다.');
     return null;
   }
 
   if (!emoji) {
-    console.log('Error(usePostRecipient): emoji가 없습니다.');
+    console.log('Error(usePostReaction): emoji가 없습니다.');
     return null;
   }
 
@@ -27,4 +27,4 @@ function usePostRecipient({ id = null, emoji = '', isIncrease = true }) {
   return { data, loading, error };
 }
 
-export default usePostRecipient;
+export default usePostReaction;
