@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const API_URL = 'https://rolling-api.vercel.app/0-3/';
-const SUCCESS = 204;
+const API_URL = 'https://rolling-api.vercel.app/4-21/';
+const SUCCESS = 200;
 
-function useDeleteData(apiEndpoint) {
+function apiGet(apiEndpoint = '') {
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -12,11 +13,13 @@ function useDeleteData(apiEndpoint) {
     const getData = async () => {
       try {
         const url = new URL(apiEndpoint, API_URL);
-        const response = await axios.delete(url);
+        const response = await axios.get(url);
 
         if (response.status !== SUCCESS) {
           throw new Error(`Response error with status code: ${response.status}`);
         }
+
+        setData(response.data);
       } catch (errorData) {
         const errorMessage = errorData.response ? errorData.response.data : errorData.toString();
         setError(errorMessage);
@@ -28,7 +31,7 @@ function useDeleteData(apiEndpoint) {
     getData();
   }, [apiEndpoint]);
 
-  return { loading, error };
+  return { data, loading, error };
 }
 
-export default useDeleteData;
+export default apiGet;

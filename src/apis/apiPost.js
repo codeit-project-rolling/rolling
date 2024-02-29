@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 const API_URL = 'https://rolling-api.vercel.app/0-3/';
 const SUCCESS = 201;
 
-function usePostData(apiEndpoint, postData) {
+function apiPost(apiEndpoint = '', postData = {}) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -34,4 +34,4 @@ function usePostData(apiEndpoint, postData) {
   return { data, loading, error };
 }
 
-export default usePostData;
+export default apiPost;
