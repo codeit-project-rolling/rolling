@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 
-import styles from './PlusButton.module.scss';
-import Plus from '../../assets/images/plus.png';
+import Plus from 'assets/images/plus.png';
+
+import styles from 'components/PlusButton/PlusButton.module.scss';
 
 function PlusButton({ buttonState, onClick }) {
   let buttonClass;

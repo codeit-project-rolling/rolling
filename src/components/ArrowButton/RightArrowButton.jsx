@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 
-import styles from './ArrowButton.module.scss';
-import Ellipse from '../../assets/images/Ellipse 1.svg';
-import RightButton from '../../assets/images/arrow_right.svg';
+import Ellipse from 'assets/images/Ellipse 1.svg';
+import RightButton from 'assets/images/arrow_right.svg';
+
+import styles from 'components/ArrowButton/ArrowButton.module.scss';
 
 function RightArrowButton({ onClick }) {
   const handleClick = () => onClick();

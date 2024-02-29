@@ -1,5 +1,10 @@
 @import 'assets/styles/global.scss';
 
+@mixin buttonStyleDelete {
+  border: 0;
+  cursor: pointer;
+}
+
 .toggleButtonBackground {
   cursor: pointer;
   width: 24.4rem;
@@ -13,6 +18,7 @@
 }
 
 .selectedButton {
+  @include buttonStyleDelete;
   display: flex;
   padding: 0.7rem 1.6rem;
   justify-content: center;
@@ -32,6 +38,7 @@
 }
 
 .unSelectedButton {
+  @include buttonStyleDelete;
   display: flex;
   height: 4rem;
   padding: 0.8rem 1.6rem;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import styles from './ToggleButton.module.scss';
+import styles from 'components/ToggleButton/ToggleButton.module.scss';
 
 function ToggleButton() {
   const [ColorSelected, setColorSelected] = useState(true);
