@@ -3,22 +3,23 @@
 * @created 02.26 류지영
 */
 
-// 사용예시
-//  @import 'assets/styles/global.scss';
-// .클래스명 {
-//   font-size: $fontSize12;
-//   font-weight: $fontWeightBold
+/* 사용예시
+ @import 'assets/styles/global.scss';
+.클래스명 {
+  font-size: $fontSize12;
+  font-weight: $fontWeightBold
 
-//   display: flex;
-// }
+  display: flex;
+}
 
-// .클래스명 {
-//   한줄로 깔끔하게할시에는
-//   @include fontStyle($fontSize12, $fontWeightBold);
+.클래스명 {
+  한줄로 깔끔하게할시에는
+  @include fontStyle($fontSize12, $fontWeightBold);
 
-//   display: flex;
+  display: flex;
 
-// }
+} 
+*/
 
 $fontSize12: 1.2rem;
 $fontSize14: 1.4rem;
