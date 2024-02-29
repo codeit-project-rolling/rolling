@@ -38,7 +38,7 @@ function Badge({ relationship }) {
 }
 
 Badge.propTypes = {
-  relationship: PropTypes.node.isRequired,
+  relationship: PropTypes.string.isRequired,
 };
 
 export default Badge;
