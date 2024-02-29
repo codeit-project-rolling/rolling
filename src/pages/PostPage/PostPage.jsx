@@ -1,4 +1,5 @@
 import BackgroundOption from 'components/BackgroundOption/BackgroundOption';
+import Button from 'components/Button/Button';
 import Header from 'components/Header/HeaderComponents/Header';
 import ToggleButton from 'components/ToggleButton/ToggleButton';
 
@@ -22,6 +23,9 @@ function PostPage() {
           <p className={styles.whichChooseText}>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</p>
           <ToggleButton />
           <BackgroundOption onSelect={onSelect} />
+          <Button buttonType="primary56">
+            <p style={{ width: '67rem' }}>생성하기</p>
+          </Button>
         </div>
       </div>
     </div>
