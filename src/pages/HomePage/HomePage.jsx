@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import ServiceMobileImg1 from 'assets/images/img-homepage-mobile-service-01.png';
 import ServiceMobileImg2 from 'assets/images/img-homepage-mobile-service-02.png';
 import ServiceImg1 from 'assets/images/img-homepage-service-01.png';
@@ -39,10 +41,6 @@ function HomePage() {
     },
   ];
 
-  const handleClickButton = () => {
-    console.log('클릭');
-  };
-
   return (
     <div className={styles.body}>
       <Header />
@@ -61,9 +59,11 @@ function HomePage() {
         ))}
       </main>
       <div className={styles.bottom}>
-        <Button className={styles.button} buttonType="primary56" onClick={handleClickButton}>
-          <p>구경해보기</p>
-        </Button>
+        <Link to="/list">
+          <Button className={styles.button} buttonType="primary56">
+            <p>구경해보기</p>
+          </Button>
+        </Link>
       </div>
     </div>
   );
