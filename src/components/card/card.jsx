@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import classNames from 'classnames';
 import React from 'react';
 
 import deleteIcon from 'assets/images/deletedIcon.svg';
@@ -11,9 +12,10 @@ import formatDate from 'utils/formatDate';
 import CardStyle from './card.module.scss';
 import { CardDumpData } from './dump.data';
 
-function Card({ data, showDeleteIcon }) {
+function Card({ data, showDeleteIcon, className }) {
+  const buttonAndCardCombinedClass = classNames(CardStyle.container, className);
   return (
-    <div className={CardStyle.container}>
+    <div className={buttonAndCardCombinedClass}>
       <div className={CardStyle.profileBox}>
         <div className={CardStyle.profile}>
           <img src={data?.profileImageURL} alt={`${data?.sender} 이미지`} />

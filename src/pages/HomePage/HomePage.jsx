@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,6 +13,7 @@ import Card from 'components/card/card';
 import styles from 'pages/HomePage/HomePage.module.scss';
 
 function HomePage() {
+  const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [exportData, setExportData] = useState([]);
@@ -34,10 +36,14 @@ function HomePage() {
       <div className={styles.heightCover} />
       <div className={styles.cardListContainer}>
         <div className={styles.cardList}>
-          <div className={styles.basicButton}>
+          <div className={buttonAndCardCombinedClass}>
             <PlusButton onClick={handleClick} />
           </div>
-          {loading ? <div>Loading...</div> : exportData?.map((item) => <Card key={item.id} data={item} />)}
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            exportData?.map((item) => <Card className={styles.card} key={item.id} data={item} />)
+          )}
         </div>
       </div>
     </>
