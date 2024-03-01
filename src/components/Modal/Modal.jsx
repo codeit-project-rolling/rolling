@@ -33,7 +33,7 @@ function Modal({ message, onClick }) {
       <div className={styles.line} />
       <p className={styles.content}>{content}</p>
       <Button className={styles.submitButton} buttonType="primary40" onClick={onClick}>
-        <p>확인확인확인확인확인</p>
+        <p>확인</p>
       </Button>
     </div>
   );
