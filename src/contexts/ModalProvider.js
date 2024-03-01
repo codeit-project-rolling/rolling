@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { useState, useMemo } from 'react';
 
-import ModalComponent from './ModalComponent';
-import { ModalStateContext } from './ModalContext';
+import ModalComponent from 'contexts/ModalComponent';
+import { ModalDispatchContext, ModalStateContext } from 'contexts/ModalContext';
 
 // 현재 열려있는 모달 상태 관리
 // children에 ModalProvider에서 Provider로 전달한 값 공유
@@ -19,6 +19,8 @@ export default function ModalProvider({ children }) {
 
     const newModal = { SelectedModal, propList };
 
+    console.log(newModal);
+
     return setOpenedModal(newModal);
   };
 
@@ -34,14 +36,18 @@ export default function ModalProvider({ children }) {
 
   return (
     <ModalStateContext.Provider value={openedModal}>
-      <ModalProvider.Provider value={dispatch}>
+      <ModalDispatchContext.Provider value={dispatch}>
         {children}
         {openedModal && <ModalComponent />}
-      </ModalProvider.Provider>
+      </ModalDispatchContext.Provider>
     </ModalStateContext.Provider>
   );
 }
 
 ModalProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
+};
+
+ModalProvider.defaultProps = {
+  children: null,
 };
