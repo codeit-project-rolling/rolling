@@ -47,7 +47,9 @@ function Modal({ message, onClose }) {
       </div>
       <div className={styles.line} />
       <p className={styles.content}>{content}</p>
-      <Button buttonType="primary40" onClick={onClose} />
+      <Button className={styles.submitButton} buttonType="primary40" onClick={onClose}>
+        <p>확인</p>
+      </Button>
     </ReactModal>
   );
 }
