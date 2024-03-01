@@ -1,13 +1,7 @@
-import Button from 'components/Button/Button';
+import HeaderLayout from 'components/Header/HeaderLayout';
 
 function HomePage() {
-  return (
-    <div style={{ width: '10rem' }}>
-      <Button buttonType="primary56" disabled>
-        <p>hello</p>
-      </Button>
-    </div>
-  );
+  return <HeaderLayout />;
 }
 
 export default HomePage;

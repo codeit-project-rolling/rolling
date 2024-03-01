@@ -12,9 +12,9 @@ function Header() {
         </div>
         <button type="button" className={HeaderStyles.addRollingBtn}>
           롤링 페이퍼 만들기
-          {/* 버튼 컴포넌트 사용예정 */}
         </button>
       </div>
+      <hr className={HeaderStyles.line} />
     </div>
   );
 }
