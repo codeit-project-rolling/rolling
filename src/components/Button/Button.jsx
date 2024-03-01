@@ -28,7 +28,7 @@ function Button({ className, buttonType, children, disabled, onClick }) {
   const buttonClassName = classNames(buttonStyle, className);
 
   const handleClick = () => {
-    if (!disabled && onClick) {
+    if (!disabled) {
       onClick();
     }
   };
@@ -45,7 +45,7 @@ Button.propTypes = {
   children: PropTypes.node,
   buttonType: PropTypes.string,
   disabled: PropTypes.bool,
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
 };
 
 Button.defaultProps = {
@@ -53,7 +53,6 @@ Button.defaultProps = {
   children: null,
   buttonType: '',
   disabled: false,
-  onClick: null,
 };
 
 export default Button;
