@@ -11,7 +11,7 @@ import formatDate from 'utils/formatDate';
 import CardStyle from './card.module.scss';
 import { CardDumpData } from './dump.data';
 
-function Card({ data, showDelteIcon }) {
+function Card({ data, showDeleteIcon }) {
   return (
     <div className={CardStyle.container}>
       <div className={CardStyle.profileBox}>
@@ -25,7 +25,7 @@ function Card({ data, showDelteIcon }) {
           </div>
         </div>
         {/* ---휴지통 버튼 온/오프 ---- */}
-        {showDelteIcon && (
+        {showDeleteIcon && (
           <div className={CardStyle.deleteIcon}>
             <img src={deleteIcon} alt="휴지통 이미지" />
           </div>
@@ -41,7 +41,7 @@ function Card({ data, showDelteIcon }) {
 }
 
 export function DumpCard() {
-  return <Card data={CardDumpData[0]} showDelteIcon={false} />;
+  return <Card data={CardDumpData[0]} showDeleteIcon={false} />;
 }
 
 export default Card;
