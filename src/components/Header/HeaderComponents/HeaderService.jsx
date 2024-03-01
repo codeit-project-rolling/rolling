@@ -16,55 +16,57 @@ function HeaderService() {
 
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
-      <p className={HeaderServiceStyles.toNickname}>To. {userData.name}</p>
-      <div className={HeaderServiceStyles.headerRight}>
-        <div className={HeaderServiceStyles.howManyPerson}>
-          <div className={HeaderServiceStyles.senderProfile}>
-            {userData.recentMessages.slice(0, 3).map((message) => (
-              <img
-                src={message.profileImageURL}
-                alt="senderProfileImg"
-                className={HeaderServiceStyles.senderProfileImg}
-              />
-            ))}
-            <div className={HeaderServiceStyles.senderCount}>
-              +{userData.messageCount > 3 ? userData.messageCount - 3 : 0}
+      <div className={HeaderServiceStyles.headerContainer}>
+        <p className={HeaderServiceStyles.toNickname}>To. {userData.name}</p>
+        <div className={HeaderServiceStyles.headerRight}>
+          <div className={HeaderServiceStyles.howManyPerson}>
+            <div className={HeaderServiceStyles.senderProfile}>
+              {userData.recentMessages.slice(0, 3).map((message) => (
+                <img
+                  src={message.profileImageURL}
+                  alt="senderProfileImg"
+                  className={HeaderServiceStyles.senderProfileImg}
+                />
+              ))}
+              <div className={HeaderServiceStyles.senderCount}>
+                +{userData.messageCount > 3 ? userData.messageCount - 3 : 0}
+              </div>
             </div>
+            <p>
+              <span>{userData?.messageCount}</span>명이 작성했어요!
+            </p>
           </div>
-          <p>
-            <span>{userData?.messageCount}</span>명이 작성했어요!
-          </p>
-        </div>
-        <div className={HeaderServiceStyles.selectionBar} />
-        <div className={HeaderServiceStyles.headerEmoji}>
-          {userData.topReactions.slice(0, 3).map((reaction) => (
-            <BadgeEmoji key={reaction.id} emoji={reaction?.emoji} count={reaction?.count} />
-          ))}
+          <div className={HeaderServiceStyles.selectionBar} />
+          <div className={HeaderServiceStyles.headerEmoji}>
+            {userData.topReactions.slice(0, 3).map((reaction) => (
+              <BadgeEmoji key={reaction.id} emoji={reaction?.emoji} count={reaction?.count} />
+            ))}
+            <button
+              onClick={() => setEmojiDropdown(!emojiDropdown)}
+              type="button"
+              className={HeaderServiceStyles.modalIcon}
+            >
+              <img src={arrowDownIcon} alt="arrowDownIcon" />
+              {emojiDropdown && <EmojiDropdown emojiList={userData.topReactions} />}
+            </button>
+          </div>
+          <div>
+            <button type="button" className={HeaderServiceStyles.addEmojiBtn}>
+              <img src={addEmojiIcon} alt="addEmojiIcon" />
+              <p>추가</p>
+            </button>
+          </div>
+          <div className={HeaderServiceStyles.selectionBar} />
           <button
-            onClick={() => setEmojiDropdown(!emojiDropdown)}
             type="button"
-            className={HeaderServiceStyles.modalIcon}
+            onClick={() => {
+              setShareDropdown(!shareDropdown);
+            }}
           >
-            <img src={arrowDownIcon} alt="arrowDownIcon" />
-            {emojiDropdown && <EmojiDropdown emojiList={userData.topReactions} />}
+            <img src={shareIcon} alt="shareImg" />
+            {shareDropdown && <ShareDropdown />}
           </button>
         </div>
-        <div>
-          <button type="button" className={HeaderServiceStyles.addEmojiBtn}>
-            <img src={addEmojiIcon} alt="addEmojiIcon" />
-            <p>추가</p>
-          </button>
-        </div>
-        <div className={HeaderServiceStyles.selectionBar} />
-        <button
-          type="button"
-          onClick={() => {
-            setShareDropdown(!shareDropdown);
-          }}
-        >
-          <img src={shareIcon} alt="shareImg" />
-          {shareDropdown && <ShareDropdown />}
-        </button>
       </div>
     </div>
   );
