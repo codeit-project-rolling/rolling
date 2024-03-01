@@ -1,4 +1,5 @@
 import ServiceImg1 from 'assets/images/img-homepage-service-01.png';
+import ServiceImg2 from 'assets/images/img-homepage-service-02.png';
 
 import Button from 'components/Button/Button';
 import Header from 'components/Header/HeaderComponents/Header';
@@ -29,7 +30,7 @@ function HomePage() {
         </>
       ),
       detail: '롤링 페이퍼에 이모지를 추가할 수 있어요.',
-      imageSrc: ServiceImg1,
+      imageSrc: ServiceImg2,
       reverse: true,
     },
   ];
