@@ -1,0 +1,41 @@
+@import 'assets/styles/global.scss';
+
+.serviceSection {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 120rem;
+  padding: 6rem 0 6rem 6rem;
+  background: $Surface;
+}
+
+.textContainer {
+}
+
+.point {
+  @include font14Bold;
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5rem;
+  background: $Purple600;
+  color: $White;
+  margin-bottom: 1.6rem;
+}
+
+.description {
+  .title {
+    @include font24Bold;
+    color: $Grayscale900;
+    margin-bottom: 0.8rem;
+  }
+
+  .detail {
+    @include font18Regular;
+    color: $Grayscale500;
+  }
+}
+
+.image {
+  max-width: 72rem;
+  height: 20.4rem;
+}
