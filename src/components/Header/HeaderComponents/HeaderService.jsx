@@ -1,20 +1,22 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import addEmojiIcon from 'assets/images/addEmoji.png';
 import arrowDownIcon from 'assets/images/arrow_down.png';
 import shareIcon from 'assets/images/share.png';
 
+import BadgeEmoji from 'components/BadgeEmoji/BadgeEmoji';
 import EmojiDropdown from 'components/Header/HeaderComponents/EmojiDropdown';
 import HeaderServiceStyles from 'components/Header/HeaderComponents/HeaderService.module.scss';
 import ShareDropdown from 'components/Header/HeaderComponents/ShareDropdown';
+import userData from 'components/Header/mock.json';
 
-function HeaderService({ userData }) {
+function HeaderService() {
   const [emojiDropdown, setEmojiDropdown] = useState(false);
   const [shareDropdown, setShareDropdown] = useState(false);
 
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
+      <p className={HeaderServiceStyles.toNickname}>To. {userData.name}</p>
       <div className={HeaderServiceStyles.headerRight}>
         <div className={HeaderServiceStyles.howManyPerson}>
           <div className={HeaderServiceStyles.senderProfile}>
@@ -36,12 +38,7 @@ function HeaderService({ userData }) {
         <div className={HeaderServiceStyles.selectionBar} />
         <div className={HeaderServiceStyles.headerEmoji}>
           {userData.topReactions.slice(0, 3).map((reaction) => (
-            <button key={reaction.id} type="button" className={HeaderServiceStyles.emojiBtn}>
-              <p>
-                {reaction?.emoji}
-                {reaction?.count}
-              </p>
-            </button>
+            <BadgeEmoji key={reaction.id} emoji={reaction?.emoji} count={reaction?.count} />
           ))}
           <button
             onClick={() => setEmojiDropdown(!emojiDropdown)}
@@ -72,23 +69,5 @@ function HeaderService({ userData }) {
     </div>
   );
 }
-
-HeaderService.propTypes = {
-  userData: PropTypes.shape({
-    recentMessages: PropTypes.arrayOf(
-      PropTypes.shape({
-        profileImageURL: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    messageCount: PropTypes.number.isRequired,
-    topReactions: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        emoji: PropTypes.string.isRequired,
-        count: PropTypes.number.isRequired,
-      })
-    ).isRequired,
-  }).isRequired,
-};
 
 export default HeaderService;

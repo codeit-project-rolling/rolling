@@ -1,13 +1,7 @@
-import Button from 'components/Button/Button';
-
-import styles from 'pages/HomePage/HomePage.module.scss';
+import HeaderLayout from 'components/Header/HeaderLayout';
 
 function HomePage() {
-  return (
-    <Button className={styles.button} buttonType="primary56">
-      <p>안녕</p>
-    </Button>
-  );
+  return <HeaderLayout />;
 }
 
 export default HomePage;
