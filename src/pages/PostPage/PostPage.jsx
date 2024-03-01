@@ -1,6 +1,7 @@
 import BackgroundOption from 'components/BackgroundOption/BackgroundOption';
 import Button from 'components/Button/Button';
-import Header from 'components/Header/HeaderComponents/Header';
+// import Header from 'components/Header/HeaderComponents/Header';
+import HeaderLayout from 'components/Header/HeaderLayout';
 import ToggleButton from 'components/ToggleButton/ToggleButton';
 
 import styles from 'pages/PostPage/PostPage.module.scss';
@@ -13,7 +14,7 @@ function PostPage() {
   return (
     <div className={styles.postPageContainer}>
       <div className={styles.headerContainer}>
-        <Header />;
+        <HeaderLayout />;
       </div>
       <div className={styles.mainContainer}>
         <div className={styles.recipientContainer}>
@@ -23,7 +24,6 @@ function PostPage() {
           <p className={styles.whichChooseText}>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</p>
           <ToggleButton />
           <BackgroundOption onSelect={onSelect} />
-
           <Button buttonType="primary56" className={styles.createBtn} disabled>
             <p>생성하기</p>
           </Button>

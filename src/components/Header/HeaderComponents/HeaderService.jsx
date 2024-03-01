@@ -1,10 +1,12 @@
 import { useState } from 'react';
 
-import addEmojiIcon from 'assets/images/addEmoji.png';
+// import addEmojiIcon from 'assets/images/addEmoji.png';
 import arrowDownIcon from 'assets/images/arrow_down.png';
-import shareIcon from 'assets/images/share.png';
+import { ReactComponent as ShareImg } from 'assets/images/share.svg';
+import { ReactComponent as SmileImg } from 'assets/images/smile.svg';
 
 import BadgeEmoji from 'components/BadgeEmoji/BadgeEmoji';
+import Button from 'components/Button/Button';
 import EmojiDropdown from 'components/Header/HeaderComponents/EmojiDropdown';
 import HeaderServiceStyles from 'components/Header/HeaderComponents/HeaderService.module.scss';
 import ShareDropdown from 'components/Header/HeaderComponents/ShareDropdown';
@@ -50,21 +52,21 @@ function HeaderService() {
           </button>
         </div>
         <div>
-          <button type="button" className={HeaderServiceStyles.addEmojiBtn}>
-            <img src={addEmojiIcon} alt="addEmojiIcon" />
+          <Button buttonType="outlined36">
+            <SmileImg fill="black" />
             <p>추가</p>
-          </button>
+          </Button>
         </div>
         <div className={HeaderServiceStyles.selectionBar} />
-        <button
-          type="button"
+        <Button
+          buttonType="outlined36"
           onClick={() => {
             setShareDropdown(!shareDropdown);
           }}
         >
-          <img src={shareIcon} alt="shareImg" />
-          {shareDropdown && <ShareDropdown />}
-        </button>
+          <ShareImg fill="black" />
+        </Button>
+        {shareDropdown && <ShareDropdown />}
       </div>
     </div>
   );
