@@ -10,7 +10,7 @@ export const modalList = {
 };
 
 // 다른 곳에서 불러올 모달 컴포넌트를 반환하는 함수
-export function ModalComponent() {
+export default function ModalComponent() {
   // ModalProvider에서 .Provider로 전달한 값 받아오기
   const openedModal = useContext(ModalStateContext);
   const { close } = useContext(ModalDispatchContext);
@@ -26,8 +26,8 @@ export function ModalComponent() {
 
   // onSubmit -> 동기/비동기 여부를 모르기 때문에 비동기로 처리
   const handleSubmit = async () => {
-    // propList와 onSubmit이 없는 경우 예외 처리
-    if (propList && propList.onSubmit) {
+    // onSubmit이 없는 경우 예외 처리
+    if (propList?.onSubmit) {
       await onSubmit();
     }
 
