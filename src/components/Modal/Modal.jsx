@@ -32,8 +32,8 @@ function Modal({ message, onClick }) {
       </div>
       <div className={styles.line} />
       <p className={styles.content}>{content}</p>
-      <Button buttonType="primary40" onClick={onClick}>
-        <p>확인</p>
+      <Button className={styles.submitButton} buttonType="primary40" onClick={onClick}>
+        <p>확인확인확인확인확인</p>
       </Button>
     </div>
   );
@@ -46,8 +46,19 @@ Modal.propTypes = {
     relationship: PropTypes.string,
     content: PropTypes.string,
     createdAt: PropTypes.string,
-  }).isRequired,
-  onClick: PropTypes.func.isRequired,
+  }),
+  onClick: PropTypes.func,
+};
+
+Modal.defaultProps = {
+  message: {
+    sender: '',
+    profileImageURL: '',
+    relationship: '',
+    content: '',
+    createdAt: '',
+  },
+  onClick: null,
 };
 
 export default Modal;
