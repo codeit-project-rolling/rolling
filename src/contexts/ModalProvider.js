@@ -19,8 +19,6 @@ export default function ModalProvider({ children }) {
 
     const newModal = { SelectedModal, propList };
 
-    console.log(newModal);
-
     return setOpenedModal(newModal);
   };
 
