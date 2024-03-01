@@ -4,6 +4,8 @@ import apiPost from 'apis/apiPost';
 // name: string required
 // 롤링 페이퍼 대상의 이름.
 // backgroundColor: string required
+// backgroundImageURL: string
+// 롤링 페이퍼 대상 게시글이 사용할 배경 사진에 대한 URL.
 // 롤링 페이퍼 대상 게시글이 사용할 배경색. “beige” | “purple” | “blue” | “green” 중 하나의 값을 사용해야 합니다.
 
 const BACKGROUND_COLOR_LIST = ['beige', 'purple', 'blue', 'green'];
@@ -26,7 +28,7 @@ function validateInput({ name, backgroundColor }) {
   return null;
 }
 
-function usePostRecipient({ name, backgroundColor }) {
+function usePostRecipient({ name, backgroundColor, backgroundImageURL }) {
   // 에러 처리
   const errorMessage = validateInput({ name, backgroundColor });
 
@@ -37,7 +39,7 @@ function usePostRecipient({ name, backgroundColor }) {
 
   // apiPost
   const apiEndpoint = 'recipients/';
-  const postData = { name, backgroundColor };
+  const postData = { name, backgroundColor, ...(backgroundImageURL ? { backgroundImageURL } : {}) };
 
   const { data, loading, error } = apiPost(apiEndpoint, postData);
 
