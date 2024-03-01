@@ -44,7 +44,7 @@ function HomePage() {
   };
 
   return (
-    <div>
+    <div className={styles.body}>
       <Header />
       <div className={styles.dummyHeader} />
       <main className={styles.main}>
