@@ -5,7 +5,7 @@ import styles from 'components/BackgroundOption/BackgroundOption.module.scss';
 import CheckButton from 'components/CheckButton/CheckButton';
 
 function BackgroundOption({ onSelect }) {
-  const [selectedColor, setSelectedColor] = useState('orange');
+  const [selectedColor, setSelectedColor] = useState('beige');
 
   const handleColorSelect = (color) => {
     setSelectedColor(color);
@@ -14,36 +14,16 @@ function BackgroundOption({ onSelect }) {
 
   return (
     <div className={styles.backgroundOption}>
-      <button
-        className={`${styles.option} ${styles.orange}`}
-        onClick={() => handleColorSelect('orange')}
-        // style={{ backgroundColor: '#FFE2AD' }}
-        type="button"
-      >
-        {selectedColor === 'orange' && <CheckButton />}
+      <button className={`${styles.option} ${styles.beige}`} onClick={() => handleColorSelect('beige')} type="button">
+        {selectedColor === 'beige' && <CheckButton />}
       </button>
-      <button
-        className={`${styles.option} ${styles.purple}`}
-        onClick={() => handleColorSelect('purple')}
-        style={{ backgroundColor: '#ECD9FF' }}
-        type="button"
-      >
+      <button className={`${styles.option} ${styles.purple}`} onClick={() => handleColorSelect('purple')} type="button">
         {selectedColor === 'purple' && <CheckButton />}
       </button>
-      <button
-        className={`${styles.option} ${styles.blue}`}
-        onClick={() => handleColorSelect('blue')}
-        style={{ backgroundColor: '#B1E4FF' }}
-        type="button"
-      >
+      <button className={`${styles.option} ${styles.blue}`} onClick={() => handleColorSelect('blue')} type="button">
         {selectedColor === 'blue' && <CheckButton />}
       </button>
-      <button
-        className={`${styles.option}  ${styles.green}`}
-        onClick={() => handleColorSelect('green')}
-        style={{ backgroundColor: '#D0F5C3' }}
-        type="button"
-      >
+      <button className={`${styles.option}  ${styles.green}`} onClick={() => handleColorSelect('green')} type="button">
         {selectedColor === 'green' && <CheckButton />}
       </button>
     </div>

@@ -1,7 +1,6 @@
 import BackgroundOption from 'components/BackgroundOption/BackgroundOption';
 import Button from 'components/Button/Button';
-// import Header from 'components/Header/HeaderComponents/Header';
-import HeaderLayout from 'components/Header/HeaderLayout';
+import Header from 'components/Header/HeaderComponents/Header';
 import ToggleButton from 'components/ToggleButton/ToggleButton';
 
 import styles from 'pages/PostPage/PostPage.module.scss';
@@ -9,12 +8,11 @@ import styles from 'pages/PostPage/PostPage.module.scss';
 function PostPage() {
   const onSelect = (color) => {
     console.log('Selected color:', color);
-    // 여기에서 선택한 색상에 대한 처리를 수행할 수 있습니다.
   };
   return (
     <div className={styles.postPageContainer}>
       <div className={styles.headerContainer}>
-        <HeaderLayout />;
+        <Header />;
       </div>
       <div className={styles.mainContainer}>
         <div className={styles.recipientContainer}>
