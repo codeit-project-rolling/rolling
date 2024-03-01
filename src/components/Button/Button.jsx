@@ -4,8 +4,8 @@ import React from 'react';
 
 import styles from 'components/Button/Button.module.scss';
 
-function Button({ buttonType, children, disabled, onClick }) {
-  const buttonClassName = classNames({
+function Button({ className, buttonType, children, disabled, onClick }) {
+  const buttonStyle = {
     [styles.primaryButton56]: buttonType === 'primary56',
     [styles.primaryButton40]: buttonType === 'primary40',
     [styles.secondaryButton40]: buttonType === 'secondary40',
@@ -23,7 +23,9 @@ function Button({ buttonType, children, disabled, onClick }) {
     [styles.outlinedSingleButton28]:
       buttonType === 'outlined28' && typeof children.type !== 'string' && React.Children.count(children) === 1,
     [styles.disabled]: disabled,
-  });
+  };
+
+  const buttonClassName = classNames(buttonStyle, className);
 
   const handleClick = () => {
     if (!disabled) {
@@ -39,14 +41,16 @@ function Button({ buttonType, children, disabled, onClick }) {
 }
 
 Button.propTypes = {
-  children: PropTypes.node,
+  className: PropTypes.string,
+  children: PropTypes.string,
   buttonType: PropTypes.string,
   disabled: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
 };
 
 Button.defaultProps = {
-  children: null,
+  className: '',
+  children: '',
   buttonType: '',
   disabled: false,
 };
