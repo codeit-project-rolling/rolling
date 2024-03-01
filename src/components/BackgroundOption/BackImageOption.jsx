@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-import styles from 'components/BackgroundOption/BackgroundOption.module.scss';
+import styles from 'components/BackgroundOption/BackImageOption.module.scss';
 import CheckButton from 'components/CheckButton/CheckButton';
 
-function BackgroundOption({ onSelect }) {
+function BackImageOption({ onSelect }) {
   const [selectedColor, setSelectedColor] = useState('beige');
 
   const handleColorSelect = (color) => {
@@ -29,7 +29,7 @@ function BackgroundOption({ onSelect }) {
     </div>
   );
 }
-BackgroundOption.propTypes = {
+BackImageOption.propTypes = {
   onSelect: PropTypes.func.isRequired,
 };
-export default BackgroundOption;
+export default BackImageOption;
