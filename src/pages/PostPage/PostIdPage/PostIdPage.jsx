@@ -1,5 +1,7 @@
+import HeaderLayout from 'components/Header/HeaderLayout';
+
 function PostIdPage() {
-  return <div />;
+  return <HeaderLayout />;
 }
 
 export default PostIdPage;

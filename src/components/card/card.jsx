@@ -8,7 +8,7 @@ import Badge from 'components/Badge/Badge';
 
 import formatDate from 'utils/formatDate';
 
-import CardStyle from './Card.module.scss';
+import CardStyle from './card.module.scss';
 import { CardDumpData } from './dump.data';
 
 function Card({ data, showDelteIcon }) {
