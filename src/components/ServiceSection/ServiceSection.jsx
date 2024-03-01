@@ -1,12 +1,15 @@
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import styles from 'components/ServiceSection/ServiceSection.module.scss';
 
-function ServiceSection({ pointNum, title, detail, imageSrc }) {
+function ServiceSection({ pointNum, title, detail, imageSrc, reverse }) {
   const pointText = `Point. ${pointNum}`;
 
+  const sectionClasses = classNames(styles.serviceSection, reverse ? styles.reverseLayout : '');
+
   return (
-    <section className={styles.serviceSection}>
+    <section className={sectionClasses}>
       <div className={styles.textContainer}>
         <div className={styles.point}>{pointText}</div>
         <div className={styles.description}>
@@ -24,6 +27,11 @@ ServiceSection.propTypes = {
   title: PropTypes.string.isRequired,
   detail: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
+  reverse: PropTypes.bool,
+};
+
+ServiceSection.defaultProps = {
+  reverse: false,
 };
 
 export default ServiceSection;

@@ -9,7 +9,13 @@
   background: $Surface;
 }
 
-.textContainer {
+.reverseLayout {
+  justify-content: normal;
+  padding: 6rem 0;
+
+  .textContainer {
+    order: 1;
+  }
 }
 
 .point {
