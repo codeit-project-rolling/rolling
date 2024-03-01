@@ -9,6 +9,23 @@
   border-radius: 1.6rem;
   background: $Surface;
   overflow: hidden;
+
+  @include tablet {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+}
+
+.textContainer {
+  @include tablet {
+    width: 100%;
+    padding: 4rem 4rem 0;
+  }
+
+  @include mobile {
+    padding: 2.4rem 2.4rem 0;
+  }
 }
 
 .reverseLayout {
@@ -17,6 +34,14 @@
 
   .textContainer {
     order: 1;
+
+    @include tablet {
+      order: 0;
+    }
+  }
+
+  @include tablet {
+    padding: 0;
   }
 }
 
@@ -28,6 +53,10 @@
   background: $Purple600;
   color: $White;
   margin-bottom: 1.6rem;
+
+  @include mobile {
+    padding: 0.4rem 1.2rem;
+  }
 }
 
 .description {
@@ -35,18 +64,46 @@
     @include font24Bold;
     color: $Grayscale900;
     margin-bottom: 0.8rem;
+
+    @include mobile {
+      @include font18Bold;
+      margin-bottom: 0.4rem;
+    }
   }
 
   .detail {
     @include font18Regular;
     color: $Grayscale500;
+
+    @include mobile {
+      @include font15Regular;
+    }
   }
 }
 
-.image {
-  max-width: 72rem;
-  height: 20.4rem;
-}
+.imageContainer {
+  width: 72rem;
 
-@media (max-width: 1200px) {
+  .image {
+    @include mobile {
+      display: none;
+    }
+  }
+
+  .imageMobile {
+    display: none;
+
+    @include mobile {
+      display: block;
+    }
+  }
+
+  @include tablet {
+    margin: 3.6rem 0 4rem;
+  }
+
+  @include mobile {
+    width: 100%;
+    margin: 5rem 0;
+  }
 }
