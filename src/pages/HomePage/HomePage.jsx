@@ -1,12 +1,12 @@
 import Button from 'components/Button/Button';
 
+import styles from 'pages/HomePage/HomePage.module.scss';
+
 function HomePage() {
   return (
-    <div style={{ width: '10rem' }}>
-      <Button buttonType="primary56" disabled>
-        <p>hello</p>
-      </Button>
-    </div>
+    <Button className={styles.button} buttonType="primary56">
+      <p>안녕</p>
+    </Button>
   );
 }
 
