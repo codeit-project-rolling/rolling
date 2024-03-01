@@ -1,5 +1,6 @@
 import LogoImg from 'assets/images/Logo.png';
 
+// import Button from 'components/Button/Button';
 import HeaderStyles from 'components/Header/HeaderComponents/Header.module.scss';
 
 function Header() {
@@ -13,6 +14,9 @@ function Header() {
         <button type="button" className={HeaderStyles.addRollingBtn}>
           롤링 페이퍼 만들기
         </button>
+        {/* <Button buttonType="outlined40">
+          <p>롤링 페이퍼 만들기</p>
+        </Button> */}
       </div>
       <hr className={HeaderStyles.line} />
     </div>
