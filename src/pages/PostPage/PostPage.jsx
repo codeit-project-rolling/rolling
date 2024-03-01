@@ -23,11 +23,10 @@ function PostPage() {
           <p className={styles.whichChooseText}>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</p>
           <ToggleButton />
           <BackgroundOption onSelect={onSelect} />
-          <div style={{ width: '72rem', marginTop: '6.9rem' }}>
-            <Button buttonType="primary56">
-              <p>생성하기</p>
-            </Button>
-          </div>
+
+          <Button buttonType="primary56" className={styles.createBtn} disabled>
+            <p>생성하기</p>
+          </Button>
         </div>
       </div>
     </div>
