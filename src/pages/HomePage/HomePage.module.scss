@@ -1,3 +1,5 @@
+@import 'assets/styles/global.scss';
+
 .dummyHeader {
   height: 6.4rem;
 }
@@ -16,9 +18,8 @@
   width: 28rem;
 }
 
-// 태블릿
-@media (max-width: 1200px) {
-  .serviceTitleBr {
+.serviceTitleBr {
+  @include tablet {
     display: none;
   }
 }
