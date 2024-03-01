@@ -26,6 +26,7 @@ function HeaderService() {
                   src={message.profileImageURL}
                   alt="senderProfileImg"
                   className={HeaderServiceStyles.senderProfileImg}
+                  key={message.id}
                 />
               ))}
               <div className={HeaderServiceStyles.senderCount}>

@@ -42,7 +42,7 @@ function Button({ className, buttonType, children, disabled, onClick }) {
 
 Button.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.node,
   buttonType: PropTypes.string,
   disabled: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
@@ -50,7 +50,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   className: '',
-  children: '',
+  children: null,
   buttonType: '',
   disabled: false,
 };
