@@ -6,7 +6,9 @@
   width: 100%;
   max-width: 120rem;
   padding: 6rem 0 6rem 6rem;
+  border-radius: 1.6rem;
   background: $Surface;
+  overflow: hidden;
 }
 
 .reverseLayout {
@@ -44,4 +46,7 @@
 .image {
   max-width: 72rem;
   height: 20.4rem;
+}
+
+@media (max-width: 1200px) {
 }

@@ -24,7 +24,7 @@ function ServiceSection({ pointNum, title, detail, imageSrc, reverse }) {
 
 ServiceSection.propTypes = {
   pointNum: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.node.isRequired,
   detail: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
   reverse: PropTypes.bool,
