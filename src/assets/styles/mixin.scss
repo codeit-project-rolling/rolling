@@ -1,17 +1,12 @@
-@mixin desktop {
-  @media (min-width: 769px) {
-    @content;
-  }
-}
-
+// PC First
 @mixin tablet {
-  @media (480px<width<769px) {
+  @media (max-width: 1199px) {
     @content;
   }
 }
 
 @mixin mobile {
-  @media (max-width: 480px) {
+  @media (max-width: 767px) {
     @content;
   }
 }
