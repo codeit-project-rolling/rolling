@@ -11,13 +11,13 @@ export default function ModalProvider({ children }) {
   const [openedModal, setOpenedModal] = useState();
 
   // 모달 열기
-  // Modal: 열고싶은 모달 컴포넌트
+  // SelectedModal: 열고싶은 모달 컴포넌트
   // propList: 모달 컴포넌트로 넘겨주는 propList
-  const open = (Modal, propList) => {
-    if (!Modal) return null;
+  const open = (SelectedModal, propList) => {
+    if (!SelectedModal) return null;
     if (openedModal) return null;
 
-    const newModal = { Modal, propList };
+    const newModal = { SelectedModal, propList };
 
     return setOpenedModal(newModal);
   };
