@@ -4,9 +4,9 @@ import apiPost from 'apis/apiPost';
 // name: string required
 // 롤링 페이퍼 대상의 이름.
 // backgroundColor: string required
+// 롤링 페이퍼 대상 게시글이 사용할 배경색. “beige” | “purple” | “blue” | “green” 중 하나의 값을 사용해야 합니다.
 // backgroundImageURL: string
 // 롤링 페이퍼 대상 게시글이 사용할 배경 사진에 대한 URL.
-// 롤링 페이퍼 대상 게시글이 사용할 배경색. “beige” | “purple” | “blue” | “green” 중 하나의 값을 사용해야 합니다.
 
 const BACKGROUND_COLOR_LIST = ['beige', 'purple', 'blue', 'green'];
 
