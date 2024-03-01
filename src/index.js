@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import ReactModal from 'react-modal';
 
+import ModalProvider from 'contexts/ModalProvider';
+
 import App from './App';
 
 import './index.scss';
@@ -12,6 +14,8 @@ ReactModal.setAppElement('#modal-root');
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ModalProvider>
+      <App />
+    </ModalProvider>
   </React.StrictMode>
 );
