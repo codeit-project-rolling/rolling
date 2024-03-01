@@ -3,7 +3,7 @@
   display: flex;
   .option {
     border: none;
-    width: 16.8rem;
+    max-width: 16.8rem;
     height: 16.8rem;
     margin-right: 1.6rem;
     margin-top: 4.5rem;
@@ -13,17 +13,5 @@
     justify-content: center;
     align-items: center;
     position: relative;
-  }
-  .beige {
-    background-color: $Orange200;
-  }
-  .purple {
-    background-color: $Purple200;
-  }
-  .blue {
-    background-color: $Blue200;
-  }
-  .green {
-    background-color: $Green200;
   }
 }
