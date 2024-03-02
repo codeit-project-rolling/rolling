@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import apiPost from 'apis/apiPost';
 import createApiRequest from 'apis/createApiRequest';
 
 // Github Wiki: API 명세 2-3) 대상에게 보내는 메세지 생성
