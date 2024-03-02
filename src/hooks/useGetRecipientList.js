@@ -13,21 +13,21 @@ import createApiRequest from 'apis/createApiRequest';
 const TEAM = process.env.REACT_APP_TEAM;
 
 function useGetRecipientList({ limit, offset, sortByLike } = {}) {
-  // api 요청
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const queryParams = new URLSearchParams();
-
-  if (limit) queryParams.append('limit', limit);
-  if (offset) queryParams.append('offset', offset);
-  if (sortByLike) queryParams.append('sort', 'like');
-
-  const queryString = queryParams.toString();
-  const apiEndpoint = `${TEAM}/recipients/${queryString ? `?${queryString}` : ''}`;
-
   const getRecipientList = useCallback(async () => {
+    // api 요청
+    const queryParams = new URLSearchParams();
+
+    if (limit) queryParams.append('limit', limit);
+    if (offset) queryParams.append('offset', offset);
+    if (sortByLike) queryParams.append('sort', 'like');
+
+    const queryString = queryParams.toString();
+    const apiEndpoint = `${TEAM}/recipients/${queryString ? `?${queryString}` : ''}`;
+
     try {
       const response = await createApiRequest().get(apiEndpoint);
       setData(response);
@@ -36,11 +36,11 @@ function useGetRecipientList({ limit, offset, sortByLike } = {}) {
     } finally {
       setLoading(false);
     }
-  });
+  }, [limit, offset, sortByLike]);
 
   useEffect(() => {
     getRecipientList();
-  }, [limit, offset, sortByLike]);
+  }, [getRecipientList]);
 
   return { getRecipientList, data, loading, error };
 }
