@@ -14,6 +14,7 @@ import apiPost from 'apis/apiPost';
 // font: string ("Noto Sans” | "Pretendard” | "나눔명조” | "나눔손글씨 손편지체”) required
 // 메세지가 사용할 폰트. "Noto Sans” | "Pretendard” | "나눔명조” | "나눔손글씨 손편지체” 중 하나의 값이어야 합니다.
 
+const TEAM = process.env.REACT_APP_TEAM;
 const RELATIONSHIP_LIST = ['친구', '지인', '동료', '가족'];
 const FONT_LIST = ['Noto Sans', 'Pretendard', '나눔명조', '나눔손글씨 손편지체'];
 
@@ -57,7 +58,7 @@ function usePostMessage({ id, sender, profileImageURL, relationship, content, fo
   }
 
   // apiPost
-  const apiEndpoint = `recipients/${id}/messages/`;
+  const apiEndpoint = `${TEAM}/recipients/${id}/messages/`;
   const postData = { sender, profileImageURL, relationship, content, font };
 
   const { data, loading, error } = apiPost(apiEndpoint, postData);
