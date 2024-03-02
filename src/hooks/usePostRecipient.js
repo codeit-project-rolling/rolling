@@ -54,7 +54,7 @@ function usePostRecipient({ name, backgroundColor, backgroundImageURL }) {
       const response = await createApiRequest().get(apiEndpoint, postData);
       setData(response?.data);
     } catch (errorData) {
-      setError(errorData?.message);
+      setError(errorData);
     } finally {
       setLoading(false);
     }
