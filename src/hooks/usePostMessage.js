@@ -69,7 +69,7 @@ function usePostMessage({ id, sender, profileImageURL, relationship, content, fo
 
   useEffect(async () => {
     try {
-      const response = await createApiRequest().get(apiEndpoint, postData);
+      const response = await createApiRequest().post(apiEndpoint, postData);
       setData(response?.data);
     } catch (errorData) {
       setError(errorData);

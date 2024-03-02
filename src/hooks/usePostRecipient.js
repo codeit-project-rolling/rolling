@@ -51,7 +51,7 @@ function usePostRecipient({ name, backgroundColor, backgroundImageURL }) {
 
   useEffect(async () => {
     try {
-      const response = await createApiRequest().get(apiEndpoint, postData);
+      const response = await createApiRequest().post(apiEndpoint, postData);
       setData(response?.data);
     } catch (errorData) {
       setError(errorData);
