@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import createApiRequest from 'apis/createApiRequest';
 
 // background-images 배열 받아오는 함수
 
 function useGetBackgroundImageList() {
-  // api 요청
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(async () => {
+  const getBackgroundImageList = useCallback(async () => {
+    // api 요청
     const apiEndpoint = `background-images/`;
 
     try {
@@ -23,7 +23,11 @@ function useGetBackgroundImageList() {
     }
   }, []);
 
-  return { data, loading, error };
+  useEffect(async () => {
+    getBackgroundImageList();
+  }, [getBackgroundImageList]);
+
+  return { getBackgroundImageList, data, loading, error };
 }
 
 export default useGetBackgroundImageList;
