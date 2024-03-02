@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const API_URL = 'https://rolling-api.vercel.app/4-21/';
+const API_URL = process.env.REACT_APP_API_URL;
 const SUCCESS = 201;
 
 function apiPost(apiEndpoint = '', postData = {}) {

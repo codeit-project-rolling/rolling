@@ -53,7 +53,7 @@ Modal.propTypes = {
     content: PropTypes.string,
     createdAt: PropTypes.string,
   }),
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
 };
 
 Modal.defaultProps = {
@@ -64,6 +64,7 @@ Modal.defaultProps = {
     content: '',
     createdAt: '',
   },
+  onClick: null,
 };
 
 export default Modal;

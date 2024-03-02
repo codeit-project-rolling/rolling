@@ -50,7 +50,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   className: '',
-  children: '',
+  children: null,
   buttonType: '',
   disabled: false,
 };
