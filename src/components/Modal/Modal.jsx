@@ -1,21 +1,28 @@
 import PropTypes from 'prop-types';
+import ReactModal from 'react-modal';
 
 import Badge from 'components/Badge/Badge';
+import Button from 'components/Button/Button';
 import styles from 'components/Modal/Modal.module.scss';
 
 import formatDate from 'utils/formatDate';
 
-// ReactModal 적용 예정
-// 부모 요소로부터 onClick 이벤트 받아오기
 // message: api로부터 받아오는 객체
 // message = {id, recipientId, sender, profileImageURL, relationship, content, font, createdAt}
-function Modal({ message /* , onClick */ }) {
+function Modal({ message, onClose }) {
   const { sender, profileImageURL, relationship, content, createdAt } = message;
-
   const createDate = formatDate(createdAt);
 
   return (
-    <div className={styles.modal}>
+    <ReactModal
+      isOpen
+      className={styles.modal}
+      overlayClassName={styles.overlay}
+      onRequestClose={onClose}
+      shouldCloseOnOverlayClick
+      shouldCloseOnEsc
+      parentSelector={() => document.querySelector('#modal-root')}
+    >
       <div className={styles.header}>
         <div className={styles.profile}>
           <img className={styles.profileImg} src={profileImageURL} alt="profile-img" />
@@ -31,8 +38,10 @@ function Modal({ message /* , onClick */ }) {
       </div>
       <div className={styles.line} />
       <p className={styles.content}>{content}</p>
-      <div>버튼 컴포넌트를 넣어주세요</div>
-    </div>
+      <Button className={styles.submitButton} buttonType="primary40" onClick={onClose}>
+        <p>확인</p>
+      </Button>
+    </ReactModal>
   );
 }
 
@@ -44,6 +53,7 @@ Modal.propTypes = {
     content: PropTypes.string,
     createdAt: PropTypes.string,
   }),
+  onClose: PropTypes.func,
 };
 
 Modal.defaultProps = {
@@ -54,6 +64,7 @@ Modal.defaultProps = {
     content: '',
     createdAt: '',
   },
+  onClose: null,
 };
 
 export default Modal;

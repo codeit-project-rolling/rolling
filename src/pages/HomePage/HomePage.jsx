@@ -1,52 +1,75 @@
-import classNames from 'classnames';
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import useGetMessageList from 'hooks/useGetMessageList';
-// import useGetRecipient from 'hooks/useGetRecipient';
-// import useGetRecipientList from 'hooks/useGetRecipientList';
+import ServiceMobileImg1 from 'assets/images/img-homepage-mobile-service-01.png';
+import ServiceMobileImg2 from 'assets/images/img-homepage-mobile-service-02.png';
+import ServiceImg1 from 'assets/images/img-homepage-service-01.png';
+import ServiceImg2 from 'assets/images/img-homepage-service-02.png';
 
-import HeaderLayout from 'components/Header/HeaderLayout';
-import PlusButton from 'components/PlusButton/PlusButton';
-import Card from 'components/card/card';
+import Button from 'components/Button/Button';
+import Header from 'components/Header/HeaderComponents/Header';
+import ServiceSection from 'components/ServiceSection/ServiceSection';
 
 import styles from 'pages/HomePage/HomePage.module.scss';
 
 function HomePage() {
-  const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
-  const [exportData, setExportData] = useState([]);
+  const serviceList = [
+    {
+      pointNum: '01',
+      title: (
+        <>
+          누구나 손쉽게, 온라인
+          <br className={styles.serviceTitleBr} /> 롤링 페이퍼를 만들 수 있어요
+        </>
+      ),
+      detail: '로그인 없이 자유롭게 만들어요.',
+      imageSrc: ServiceImg1,
+      imageMobileSrc: ServiceMobileImg1,
+      layout: 'even',
+    },
+    {
+      pointNum: '02',
+      title: (
+        <>
+          서로에게 이모지로 감정을
+          <br className={styles.serviceTitleBr} /> 표현해보세요
+        </>
+      ),
+      detail: '롤링 페이퍼에 이모지를 추가할 수 있어요.',
+      imageSrc: ServiceImg2,
+      imageMobileSrc: ServiceMobileImg2,
+      layout: 'odd',
+    },
+  ];
 
-  const { data } = useGetMessageList({ id: 3058 });
-  const handleClick = () => {
-    navigate('/post/3058/message');
+  const navigate = useNavigate();
+
+  const handleClickButton = () => {
+    navigate('/list');
   };
 
-  useEffect(() => {
-    if (data) {
-      setExportData(data.results);
-      setLoading(false);
-    }
-  }, [data]);
-
   return (
-    <>
-      <HeaderLayout />
-      <div className={styles.heightCover} />
-      <div className={styles.cardListContainer}>
-        <div className={styles.cardList}>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
-          </div>
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            exportData?.map((item) => <Card className={styles.card} key={item.id} data={item} />)
-          )}
-        </div>
+    <div className={styles.body}>
+      <Header />
+      {/* <div className={styles.dummyHeader} /> */}
+      <main className={styles.main}>
+        {serviceList.map((service) => (
+          <ServiceSection
+            key={service.pointNum}
+            pointNum={service.pointNum}
+            title={service.title}
+            detail={service.detail}
+            imageSrc={service.imageSrc}
+            imageMobileSrc={service.imageMobileSrc}
+            layout={service.layout}
+          />
+        ))}
+      </main>
+      <div className={styles.bottom}>
+        <Button className={styles.button} buttonType="primary56" onClick={handleClickButton}>
+          <p>구경해보기</p>
+        </Button>
       </div>
-    </>
+    </div>
   );
 }
 

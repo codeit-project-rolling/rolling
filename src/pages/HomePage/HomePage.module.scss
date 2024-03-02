@@ -1,51 +1,52 @@
 @import 'assets/styles/global.scss';
 
-html,
-body {
-  height: 100%;
-}
+.body {
+  margin: 0 2.4rem;
 
-.cardListContainer {
-  display: flex;
-  justify-content: center;
-  background: var(--Orange-200, #ffe2ad);
-  height: calc(100% - 12.7rem);
-}
-
-.heightCover {
-  height: 12.7rem;
-}
-
-.cardList {
-  display: grid;
-  margin-top: 11.3rem;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 2rem;
-  width: 120rem;
-  @media (max-width: 1248px) {
-    width: calc(100% - 4.8rem);
-    margin-left: 2.4rem;
-    margin-right: 2.4rem;
+  @include mobile {
+    margin: 0 2rem;
   }
 }
 
-.basicButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 38.4rem;
-  height: 28rem;
-  border-radius: 1.6rem;
-  background: $White;
-  box-shadow: 0rem 0.2rem 1.2rem 0rem rgba(0, 0, 0, 0.08);
-  padding: 2.8rem 2.4rem;
+.dummyHeader {
+  height: 6.4rem;
 }
 
-.card {
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-    z-index: 1;
+.main {
+  margin: 6rem auto 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+
+  @include tablet {
+    width: 100%;
+    max-width: 72rem;
+    margin: 4.9rem auto 4.8rem;
+  }
+
+  @include mobile {
+    margin: 4.2rem auto 3.7rem;
+  }
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.4rem 0;
+
+  .button {
+    width: 28rem;
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+}
+
+.serviceTitleBr {
+  @include tablet {
+    display: none;
   }
 }
