@@ -1,4 +1,6 @@
-import apiPost from 'apis/apiPost';
+import { useCallback, useState } from 'react';
+
+import createApiRequest from 'apis/createApiRequest';
 
 // Github Wiki: API 명세 3-3) 대상에게 리액션 달기
 // id: integer required
@@ -24,23 +26,38 @@ function validateInput({ id, emoji }) {
   return null;
 }
 
-function usePostReaction({ id, emoji, isIncrease }) {
-  // 에러 처리
-  const errorMessage = validateInput({ id, emoji });
+function usePostReaction() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (errorMessage) {
-    console.log(errorMessage);
-    return { data: null, loading: false, error: errorMessage };
-  }
+  const postReaction = useCallback(async ({ id, emoji, isIncrease }) => {
+    // 에러 처리
+    const errorMessage = validateInput({ id, emoji });
 
-  // apiPost
-  const apiEndpoint = `${TEAM}/recipients/${id}/reactions/`;
-  const type = isIncrease ? 'increase' : 'decrease';
-  const postData = { emoji, type };
+    if (errorMessage) {
+      console.log(errorMessage);
+      return { data: null, loading: false, error: errorMessage };
+    }
 
-  const { data, loading, error } = apiPost(apiEndpoint, postData);
+    // api 요청
+    const apiEndpoint = `${TEAM}/recipients/${id}/reactions/`;
+    const type = isIncrease ? 'increase' : 'decrease';
+    const postData = { emoji, type };
 
-  return { data, loading, error };
+    try {
+      const response = await createApiRequest().post(apiEndpoint, postData);
+      setData(response);
+    } catch (errorData) {
+      setError(errorData);
+    } finally {
+      setLoading(false);
+    }
+
+    return null;
+  }, []);
+
+  return { postReaction, data, loading, error };
 }
 
 export default usePostReaction;

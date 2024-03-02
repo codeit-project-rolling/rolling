@@ -1,4 +1,6 @@
-import apiGet from 'apis/apiGet';
+import { useCallback, useEffect, useState } from 'react';
+
+import createApiRequest from 'apis/createApiRequest';
 
 // Github Wiki: API 명세 3-4) 대상에게 단 리액션 조회
 // id: integer required
@@ -29,19 +31,35 @@ function useGetReactionList({ id, limit, offset }) {
     return { data: null, loading: false, error: errorMessage };
   }
 
-  // apiGet
-  // URLSearchParams 사용
-  const queryParams = new URLSearchParams();
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (limit) queryParams.append('limit', limit);
-  if (offset) queryParams.append('offset', offset);
+  const getReactionList = useCallback(async () => {
+    // api 요청
+    const queryParams = new URLSearchParams();
 
-  const queryString = queryParams.toString();
-  const apiEndpoint = `${TEAM}/recipients/${id}/reactions/${queryString ? `?${queryString}` : ''}`;
+    if (limit) queryParams.append('limit', limit);
+    if (offset) queryParams.append('offset', offset);
 
-  const { data, loading, error } = apiGet(apiEndpoint);
+    const queryString = queryParams.toString();
+    const apiEndpoint = `${TEAM}/recipients/${id}/reactions/${queryString ? `?${queryString}` : ''}`;
 
-  return { data, loading, error };
+    try {
+      const response = await createApiRequest().get(apiEndpoint);
+      setData(response);
+    } catch (errorData) {
+      setError(errorData);
+    } finally {
+      setLoading(false);
+    }
+  }, [id]);
+
+  useEffect(async () => {
+    getReactionList();
+  }, [getReactionList]);
+
+  return { getReactionList, data, loading, error };
 }
 
 export default useGetReactionList;

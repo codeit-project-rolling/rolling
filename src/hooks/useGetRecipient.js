@@ -1,4 +1,6 @@
-import apiGet from 'apis/apiGet';
+import { useCallback, useEffect, useState } from 'react';
+
+import createApiRequest from 'apis/createApiRequest';
 
 // Github Wiki: API 명세 1-5) 롤링 페이퍼 대상 조회
 // id: integer required
@@ -25,12 +27,30 @@ function useGetRecipient({ id }) {
     return { data: null, loading: false, error: errorMessage };
   }
 
-  // apiGet
-  const apiEndpoint = `${TEAM}/recipients/${id}/`;
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const { data, loading, error } = apiGet(apiEndpoint);
+  const getRecipient = useCallback(async () => {
+    // api 요청
+    const apiEndpoint = `${TEAM}/recipients/${id}/`;
 
-  return { data, loading, error };
+    try {
+      const response = await createApiRequest().get(apiEndpoint);
+      setData(response);
+    } catch (errorData) {
+      setError(errorData);
+    } finally {
+      setLoading(false);
+    }
+    return null;
+  }, [id]);
+
+  useEffect(() => {
+    getRecipient();
+  }, [getRecipient]);
+
+  return { getRecipient, data, loading, error };
 }
 
 export default useGetRecipient;

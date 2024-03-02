@@ -1,10 +1,14 @@
-import apiPost from 'apis/apiPost';
+import { useCallback, useState } from 'react';
+
+import createApiRequest from 'apis/createApiRequest';
 
 // Github Wiki: API 명세 1-3) 롤링 페이퍼 대상 생성
 // name: string required
 // 롤링 페이퍼 대상의 이름.
 // backgroundColor: string required
 // 롤링 페이퍼 대상 게시글이 사용할 배경색. “beige” | “purple” | “blue” | “green” 중 하나의 값을 사용해야 합니다.
+// backgroundImageURL: string
+// 배경 이미지 url
 
 const BACKGROUND_COLOR_LIST = ['beige', 'purple', 'blue', 'green'];
 
@@ -28,22 +32,37 @@ function validateInput({ name, backgroundColor }) {
 
 const TEAM = process.env.REACT_APP_TEAM;
 
-function usePostRecipient({ name, backgroundColor, backgroundImageURL }) {
-  // 에러 처리
-  const errorMessage = validateInput({ name, backgroundColor });
+function usePostRecipient() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (errorMessage) {
-    console.log(errorMessage);
-    return { data: null, loading: false, error: errorMessage };
-  }
+  const postRecipient = useCallback(async ({ name, backgroundColor, backgroundImageURL }) => {
+    // 에러 처리
+    const errorMessage = validateInput({ name, backgroundColor });
 
-  // apiPost
-  const apiEndpoint = `${TEAM}/recipients/`;
-  const postData = { name, backgroundColor, ...(backgroundImageURL || {}) };
+    if (errorMessage) {
+      console.log(errorMessage);
+      return setError(errorMessage);
+    }
 
-  const { data, loading, error } = apiPost(apiEndpoint, postData);
+    // api 요청
+    const apiEndpoint = `${TEAM}/recipients/`;
+    const postData = { name, backgroundColor, ...(backgroundImageURL || {}) };
 
-  return { data, loading, error };
+    try {
+      const response = await createApiRequest().post(apiEndpoint, postData);
+      setData(response);
+    } catch (errorData) {
+      setError(errorData);
+    } finally {
+      setLoading(false);
+    }
+
+    return null;
+  }, []);
+
+  return { postRecipient, data, loading, error };
 }
 
 export default usePostRecipient;
