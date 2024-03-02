@@ -10,7 +10,7 @@ import styles from 'pages/PostPage/PostPage.module.scss';
 
 function PostPage() {
   const [recipientName, setRecipientName] = useState('');
-  const [error, setError] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
   const [selectedOption, setSelectedOption] = useState('color');
 
   const handleRecipientNameChange = (event) => {
@@ -21,9 +21,9 @@ function PostPage() {
   };
   const handleBlur = () => {
     if (!recipientName.trim()) {
-      setError('받는사람을 입력해 주세요.');
+      setErrorMsg('받는사람을 입력해 주세요.');
     } else {
-      setError('');
+      setErrorMsg('');
     }
   };
   const onSelect = (color) => {
@@ -45,7 +45,7 @@ function PostPage() {
             onChange={handleRecipientNameChange}
             onBlur={handleBlur}
           />
-          {error && <p className={styles.error}>{error}</p>}
+          {errorMsg && <p className={styles.error}>{errorMsg}</p>}
           <p className={styles.chooseText}>배경화면을 선택해 주세요.</p>
           <p className={styles.whichChooseText}>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</p>
           <ToggleButton onSelect={handleToggle} selectedOption={selectedOption} />
