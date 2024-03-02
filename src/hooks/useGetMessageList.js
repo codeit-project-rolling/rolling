@@ -1,4 +1,6 @@
-import apiGet from 'apis/apiGet';
+import { useEffect, useState } from 'react';
+
+import createApiRequest from 'apis/createApiRequest';
 
 // Github Wiki: API 명세 2-4) 대상에게 보낸 메세지 목록 조회
 // id: integer required
@@ -29,7 +31,11 @@ function useGetMessageList({ id, limit, offset }) {
     return { data: null, loading: false, error: errorMessage };
   }
 
-  // apiGet
+  // api 요청
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   // URLSearchParams 사용
   const queryParams = new URLSearchParams();
 
@@ -39,7 +45,16 @@ function useGetMessageList({ id, limit, offset }) {
   const queryString = queryParams.toString();
   const apiEndpoint = `${TEAM}/recipients/${id}/messages/${queryString ? `?${queryString}` : ''}`;
 
-  const { data, loading, error } = apiGet(apiEndpoint);
+  useEffect(async () => {
+    try {
+      const response = await createApiRequest().get(apiEndpoint);
+      setData(response?.data);
+    } catch (errorData) {
+      setError(errorData);
+    } finally {
+      setLoading(false);
+    }
+  }, [apiEndpoint]);
 
   return { data, loading, error };
 }
