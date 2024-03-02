@@ -4,7 +4,7 @@ import apiGet from 'apis/apiGet';
 
 function useGetBackgroundImageList() {
   // apiGet
-  const apiEndpoint = `profile-images/`;
+  const apiEndpoint = `background-images/`;
 
   const { data, loading, error } = apiGet(apiEndpoint);
 
