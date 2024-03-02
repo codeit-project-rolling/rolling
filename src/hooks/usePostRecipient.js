@@ -1,4 +1,6 @@
-import apiPost from 'apis/apiPost';
+import { useEffect, useState } from 'react';
+
+import createApiRequest from 'apis/createApiRequest';
 
 // Github Wiki: API 명세 1-3) 롤링 페이퍼 대상 생성
 // name: string required
@@ -37,11 +39,24 @@ function usePostRecipient({ name, backgroundColor, backgroundImageURL }) {
     return { data: null, loading: false, error: errorMessage };
   }
 
-  // apiPost
-  const apiEndpoint = `${TEAM}/recipients/`;
-  const postData = { name, backgroundColor, ...(backgroundImageURL || {}) };
+  // api 요청
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const { data, loading, error } = apiPost(apiEndpoint, postData);
+  useEffect(async () => {
+    const apiEndpoint = `${TEAM}/recipients/`;
+    const postData = { name, backgroundColor, ...(backgroundImageURL || {}) };
+
+    try {
+      const response = await createApiRequest().get(apiEndpoint, postData);
+      setData(response?.data);
+    } catch (errorData) {
+      setError(errorData?.message);
+    } finally {
+      setLoading(false);
+    }
+  });
 
   return { data, loading, error };
 }
