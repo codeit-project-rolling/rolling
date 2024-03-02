@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-
-import useGetRecipient from 'hooks/useGetRecipient';
+import { useState } from 'react';
 
 import BackColorOption from 'components/BackgroundOption/BackColorOption';
 import BackImageOption from 'components/BackgroundOption/BackImageOption';
@@ -12,14 +10,9 @@ import styles from 'pages/PostPage/PostPage.module.scss';
 
 function PostPage() {
   const [recipientName, setRecipientName] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
+  const [error, setError] = useState('');
   const [selectedOption, setSelectedOption] = useState('color');
-  const { data, loading, error2 } = useGetRecipient();
-  useEffect(() => {
-    if (!loading && !error2) {
-      console.log(data);
-    }
-  });
+
   const handleRecipientNameChange = (event) => {
     setRecipientName(event.target.value);
   };
@@ -28,9 +21,9 @@ function PostPage() {
   };
   const handleBlur = () => {
     if (!recipientName.trim()) {
-      setErrorMsg('받는사람을 입력해 주세요.');
+      setError('받는사람을 입력해 주세요.');
     } else {
-      setErrorMsg('');
+      setError('');
     }
   };
   const onSelect = (color) => {
@@ -52,7 +45,7 @@ function PostPage() {
             onChange={handleRecipientNameChange}
             onBlur={handleBlur}
           />
-          {errorMsg && <p className={styles.error}>{errorMsg}</p>}
+          {error && <p className={styles.error}>{error}</p>}
           <p className={styles.chooseText}>배경화면을 선택해 주세요.</p>
           <p className={styles.whichChooseText}>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</p>
           <ToggleButton onSelect={handleToggle} selectedOption={selectedOption} />
