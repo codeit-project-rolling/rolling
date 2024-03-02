@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import createApiRequest from 'apis/createApiRequest';
 
@@ -50,35 +50,37 @@ function validateInput({ id, sender, profileImageURL, relationship, content, fon
   return null;
 }
 
-function usePostMessage({ id, sender, profileImageURL, relationship, content, font }) {
-  // 에러 처리
-  const errorMessage = validateInput({ id, sender, profileImageURL, relationship, content, font });
-
-  if (errorMessage) {
-    console.log(errorMessage);
-    return { data: null, loading: false, error: errorMessage };
-  }
-
-  // api 요청
+function usePostMessage() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(async () => {
+  const postMessage = useCallback(async ({ id, sender, profileImageURL, relationship, content, font }) => {
+    // 에러 처리
+    const errorMessage = validateInput({ id, sender, profileImageURL, relationship, content, font });
+
+    if (errorMessage) {
+      console.log(errorMessage);
+      return { data: null, loading: false, error: errorMessage };
+    }
+
+    // api 요청
     const apiEndpoint = `${TEAM}/recipients/${id}/messages/`;
     const postData = { sender, profileImageURL, relationship, content, font };
 
     try {
       const response = await createApiRequest().post(apiEndpoint, postData);
-      setData(response?.data);
+      setData(response);
     } catch (errorData) {
       setError(errorData);
     } finally {
       setLoading(false);
     }
-  }, [id, sender, profileImageURL, relationship, content, font]);
 
-  return { data, loading, error };
+    return null;
+  }, []);
+
+  return { postMessage, data, loading, error };
 }
 
 export default usePostMessage;
