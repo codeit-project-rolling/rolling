@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import usePostRecipient from 'hooks/usePostRecipient';
+
 import BackColorOption from 'components/BackgroundOption/BackColorOption';
 import BackImageOption from 'components/BackgroundOption/BackImageOption';
 import Button from 'components/Button/Button';
@@ -9,9 +11,14 @@ import ToggleButton from 'components/ToggleButton/ToggleButton';
 import styles from 'pages/PostPage/PostPage.module.scss';
 
 function PostPage() {
-  const [recipientName, setRecipientName] = useState('');
+  const [recipientName, setRecipientName] = useState(''); // 받는 사람 이름
+  const [selectedColor, setSelectedColor] = useState(''); // 선택 색상
   const [errorMsg, setErrorMsg] = useState('');
-  const [selectedOption, setSelectedOption] = useState('color');
+  const [selectedOption, setSelectedOption] = useState('color'); // 토글 기본 옵션 color
+  // const { data, loading, error } = usePostRecipient({
+  //   name: recipientName,
+  //   backgroundColor: selectedColor,
+  // });
 
   const handleRecipientNameChange = (event) => {
     setRecipientName(event.target.value);
@@ -26,10 +33,18 @@ function PostPage() {
       setErrorMsg('');
     }
   };
-  const onSelect = (color) => {
-    console.log('Selected color:', color);
+  const onSelect = (optionValue) => {
+    console.log('Selected optionValue:', recipientName, optionValue);
+    setSelectedColor(optionValue);
   };
-  const isInputEmpty = recipientName.trim() === '';
+  const isInputEmpty = recipientName.trim() === ''; // 비어 있으면 true 아니면 false
+  const handleCreateButtonClick = () => {
+    usePostRecipient({
+      name: recipientName,
+      backgroundColor: selectedColor,
+    });
+    console.log('clicked');
+  };
   return (
     <div className={styles.postPageContainer}>
       <div className={styles.headerContainer}>
@@ -55,7 +70,12 @@ function PostPage() {
             <BackImageOption onSelect={onSelect} />
           )}
 
-          <Button buttonType="primary56" className={styles.createBtn} disabled={isInputEmpty}>
+          <Button
+            buttonType="primary56"
+            className={styles.createBtn}
+            disabled={isInputEmpty}
+            onClick={handleCreateButtonClick}
+          >
             <p>생성하기</p>
           </Button>
         </div>
