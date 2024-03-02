@@ -31,12 +31,12 @@ function useGetReactionList({ id, limit, offset }) {
     return { data: null, loading: false, error: errorMessage };
   }
 
-  // api 요청
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const getReactionList = useCallback(async () => {
+    // api 요청
     const queryParams = new URLSearchParams();
 
     if (limit) queryParams.append('limit', limit);

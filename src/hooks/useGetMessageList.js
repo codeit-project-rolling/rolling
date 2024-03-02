@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import createApiRequest from 'apis/createApiRequest';
 
@@ -31,12 +31,12 @@ function useGetMessageList({ id, limit, offset }) {
     return { data: null, loading: false, error: errorMessage };
   }
 
-  // api 요청
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(async () => {
+  const getMessageList = useCallback(async () => {
+    // api 요청
     const queryParams = new URLSearchParams();
 
     if (limit) queryParams.append('limit', limit);
@@ -47,15 +47,19 @@ function useGetMessageList({ id, limit, offset }) {
 
     try {
       const response = await createApiRequest().get(apiEndpoint);
-      setData(response?.data);
+      setData(response);
     } catch (errorData) {
       setError(errorData);
     } finally {
       setLoading(false);
     }
-  }, [id, limit, offset]);
+  }, [id]);
 
-  return { data, loading, error };
+  useEffect(async () => {
+    getMessageList();
+  }, [getMessageList]);
+
+  return { getMessageList, data, loading, error };
 }
 
 export default useGetMessageList;
