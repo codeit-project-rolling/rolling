@@ -2,10 +2,8 @@
 
 .serviceSection {
   display: flex;
-  justify-content: space-between;
   width: 100%;
   max-width: 120rem;
-  padding: 6rem 0 6rem 6rem;
   border-radius: 1.6rem;
   background: $Surface;
   overflow: hidden;
@@ -13,7 +11,6 @@
   @include tablet {
     flex-direction: column;
     align-items: center;
-    padding: 0;
   }
 }
 
@@ -28,7 +25,16 @@
   }
 }
 
-.reverseLayout {
+.evenLayout {
+  justify-content: space-between;
+  padding: 6rem 0 6rem 6rem;
+
+  @include tablet {
+    padding: 0;
+  }
+}
+
+.oddLayout {
   justify-content: normal;
   padding: 6rem 0;
 

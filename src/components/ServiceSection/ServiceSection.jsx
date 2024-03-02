@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 import styles from 'components/ServiceSection/ServiceSection.module.scss';
 
-function ServiceSection({ pointNum, title, detail, imageSrc, imageMobileSrc, reverse }) {
+function ServiceSection({ pointNum, title, detail, imageSrc, imageMobileSrc, layout }) {
   const pointText = `Point. ${pointNum}`;
 
-  const sectionClasses = classNames(styles.serviceSection, reverse ? styles.reverseLayout : '');
+  const layoutStyle = layout === 'even' ? styles.evenLayout : layout === 'odd' ? styles.oddLayout : '';
+  const sectionClasses = classNames(styles.serviceSection, layoutStyle);
 
   return (
     <section className={sectionClasses}>
@@ -31,11 +32,10 @@ ServiceSection.propTypes = {
   detail: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
   imageMobileSrc: PropTypes.string,
-  reverse: PropTypes.bool,
+  layout: PropTypes.string.isRequired,
 };
 
 ServiceSection.defaultProps = {
-  reverse: false,
   imageMobileSrc: '',
 };
 

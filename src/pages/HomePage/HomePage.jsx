@@ -24,7 +24,7 @@ function HomePage() {
       detail: '로그인 없이 자유롭게 만들어요.',
       imageSrc: ServiceImg1,
       imageMobileSrc: ServiceMobileImg1,
-      reverse: false,
+      layout: 'even',
     },
     {
       pointNum: '02',
@@ -37,7 +37,7 @@ function HomePage() {
       detail: '롤링 페이퍼에 이모지를 추가할 수 있어요.',
       imageSrc: ServiceImg2,
       imageMobileSrc: ServiceMobileImg2,
-      reverse: true,
+      layout: 'odd',
     },
   ];
 
@@ -60,7 +60,7 @@ function HomePage() {
             detail={service.detail}
             imageSrc={service.imageSrc}
             imageMobileSrc={service.imageMobileSrc}
-            reverse={service.reverse}
+            layout={service.layout}
           />
         ))}
       </main>
