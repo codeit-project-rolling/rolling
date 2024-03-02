@@ -19,16 +19,14 @@ const router = createBrowserRouter([
   {
     path: 'post',
     element: <PostPage />,
+  },
+  {
+    path: 'post/:id',
+    element: <PostIdPage />,
+    loader: loadData, // 해당 경로에 접근했을 때 실행될 로더 함수
     children: [
-      {
-        path: ':id',
-        element: <PostIdPage />,
-        loader: loadData, // 해당 경로에 접근했을 때 실행될 로더 함수
-        children: [
-          { path: 'edit', element: <EditPage /> },
-          { path: 'message', element: <MessagePage /> },
-        ],
-      },
+      { path: 'edit', element: <EditPage /> },
+      { path: 'message', element: <MessagePage /> },
     ],
   },
 ]);

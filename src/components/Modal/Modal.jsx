@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 import Badge from 'components/Badge/Badge';
+import Button from 'components/Button/Button';
 import styles from 'components/Modal/Modal.module.scss';
 
 import formatDate from 'utils/formatDate';
@@ -9,7 +10,7 @@ import formatDate from 'utils/formatDate';
 // 부모 요소로부터 onClick 이벤트 받아오기
 // message: api로부터 받아오는 객체
 // message = {id, recipientId, sender, profileImageURL, relationship, content, font, createdAt}
-function Modal({ message /* , onClick */ }) {
+function Modal({ message, onClick }) {
   const { sender, profileImageURL, relationship, content, createdAt } = message;
 
   const createDate = formatDate(createdAt);
@@ -31,7 +32,9 @@ function Modal({ message /* , onClick */ }) {
       </div>
       <div className={styles.line} />
       <p className={styles.content}>{content}</p>
-      <div>버튼 컴포넌트를 넣어주세요</div>
+      <Button className={styles.submitButton} buttonType="primary40" onClick={onClick}>
+        <p>확인</p>
+      </Button>
     </div>
   );
 }
@@ -44,6 +47,7 @@ Modal.propTypes = {
     content: PropTypes.string,
     createdAt: PropTypes.string,
   }),
+  onClick: PropTypes.func,
 };
 
 Modal.defaultProps = {
@@ -54,6 +58,7 @@ Modal.defaultProps = {
     content: '',
     createdAt: '',
   },
+  onClick: null,
 };
 
 export default Modal;
