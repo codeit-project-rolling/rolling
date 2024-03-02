@@ -18,6 +18,8 @@ function validateInput({ id }) {
   return null;
 }
 
+const TEAM = process.env.REACT_APP_TEAM;
+
 function useGetMessageList({ id, limit, offset }) {
   // 에러 처리
   const errorMessage = validateInput({ id });
@@ -35,7 +37,7 @@ function useGetMessageList({ id, limit, offset }) {
   if (offset) queryParams.append('offset', offset);
 
   const queryString = queryParams.toString();
-  const apiEndpoint = `recipients/${id}/messages/${queryString ? `?${queryString}` : ''}`;
+  const apiEndpoint = `${TEAM}/recipients/${id}/messages/${queryString ? `?${queryString}` : ''}`;
 
   const { data, loading, error } = apiGet(apiEndpoint);
 

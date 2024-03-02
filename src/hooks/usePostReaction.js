@@ -8,6 +8,8 @@ import apiPost from 'apis/apiPost';
 // isIncrease: boolean required
 // 이모지 개수를 늘릴 건지 줄일 건지. isIncrease = true이면 type = ”increase”, isIncrease = false이면 type = “decrease” 입니다.
 
+const TEAM = process.env.REACT_APP_TEAM;
+
 // 입력 값 검증 함수
 function validateInput({ id, emoji }) {
   if (!id) {
@@ -32,7 +34,7 @@ function usePostReaction({ id, emoji, isIncrease }) {
   }
 
   // apiPost
-  const apiEndpoint = `recipients/${id}/reactions/`;
+  const apiEndpoint = `${TEAM}/recipients/${id}/reactions/`;
   const type = isIncrease ? 'increase' : 'decrease';
   const postData = { emoji, type };
 
