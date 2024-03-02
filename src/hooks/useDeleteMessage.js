@@ -14,6 +14,8 @@ function validateInput({ id }) {
   return null;
 }
 
+const TEAM = process.env.REACT_APP_TEAM;
+
 function useDeleteMessage({ id }) {
   // 에러 처리
   const errorMessage = validateInput({ id });
@@ -24,7 +26,7 @@ function useDeleteMessage({ id }) {
   }
 
   // apiDelete
-  const apiEndpoint = `messages/${id}/`;
+  const apiEndpoint = `${TEAM}/messages/${id}/`;
 
   const { loading, error } = apiDelete(apiEndpoint);
 

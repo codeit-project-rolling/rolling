@@ -18,6 +18,8 @@ function validateInput({ id }) {
   return null;
 }
 
+const TEAM = process.env.REACT_APP_TEAM;
+
 function useGetReactionList({ id, limit, offset }) {
   // 에러 처리
   const errorMessage = validateInput({ id });
@@ -35,7 +37,7 @@ function useGetReactionList({ id, limit, offset }) {
   if (offset) queryParams.append('offset', offset);
 
   const queryString = queryParams.toString();
-  const apiEndpoint = `recipients/${id}/reactions/${queryString ? `?${queryString}` : ''}`;
+  const apiEndpoint = `${TEAM}/recipients/${id}/reactions/${queryString ? `?${queryString}` : ''}`;
 
   const { data, loading, error } = apiGet(apiEndpoint);
 
