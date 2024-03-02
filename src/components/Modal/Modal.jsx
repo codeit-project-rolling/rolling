@@ -64,7 +64,7 @@ Modal.defaultProps = {
     content: '',
     createdAt: '',
   },
-  onClick: null,
+  onClose: null,
 };
 
 export default Modal;
