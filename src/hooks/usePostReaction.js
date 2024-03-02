@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import createApiRequest from 'apis/createApiRequest';
 
@@ -26,36 +26,38 @@ function validateInput({ id, emoji }) {
   return null;
 }
 
-function usePostReaction({ id, emoji, isIncrease }) {
-  // 에러 처리
-  const errorMessage = validateInput({ id, emoji });
-
-  if (errorMessage) {
-    console.log(errorMessage);
-    return { data: null, loading: false, error: errorMessage };
-  }
-
-  // api 요청
+function usePostReaction() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(async () => {
+  const postReaction = useCallback(async ({ id, emoji, isIncrease }) => {
+    // 에러 처리
+    const errorMessage = validateInput({ id, emoji });
+
+    if (errorMessage) {
+      console.log(errorMessage);
+      return { data: null, loading: false, error: errorMessage };
+    }
+
+    // api 요청
     const apiEndpoint = `${TEAM}/recipients/${id}/reactions/`;
     const type = isIncrease ? 'increase' : 'decrease';
     const postData = { emoji, type };
 
     try {
       const response = await createApiRequest().post(apiEndpoint, postData);
-      setData(response?.data);
+      setData(response);
     } catch (errorData) {
       setError(errorData);
     } finally {
       setLoading(false);
     }
-  }, [id, emoji, isIncrease]);
 
-  return { data, loading, error };
+    return null;
+  }, []);
+
+  return { postReaction, data, loading, error };
 }
 
 export default usePostReaction;
