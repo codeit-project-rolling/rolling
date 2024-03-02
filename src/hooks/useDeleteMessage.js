@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import createApiRequest from 'apis/createApiRequest';
 
@@ -18,20 +18,20 @@ function validateInput({ id }) {
 
 const TEAM = process.env.REACT_APP_TEAM;
 
-function useDeleteMessage({ id }) {
-  // 에러 처리
-  const errorMessage = validateInput({ id });
-
-  if (errorMessage) {
-    console.log(errorMessage);
-    return { loading: false, error: errorMessage };
-  }
-
-  // api 요청
+function useDeleteMessage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(async () => {
+  const deleteMessage = useCallback(async ({ id }) => {
+    // 에러 처리
+    const errorMessage = validateInput({ id });
+
+    if (errorMessage) {
+      console.log(errorMessage);
+      return { loading: false, error: errorMessage };
+    }
+
+    // api 요청
     const apiEndpoint = `${TEAM}/messages/${id}/`;
 
     try {
@@ -41,9 +41,11 @@ function useDeleteMessage({ id }) {
     } finally {
       setLoading(false);
     }
-  }, [id]);
 
-  return { loading, error };
+    return null;
+  }, []);
+
+  return { deleteMessage, loading, error };
 }
 
 export default useDeleteMessage;
