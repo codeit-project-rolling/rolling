@@ -1,4 +1,6 @@
-import apiPost from 'apis/apiPost';
+import { useCallback, useState } from 'react';
+
+import createApiRequest from 'apis/createApiRequest';
 
 // Github Wiki: API 명세 2-3) 대상에게 보내는 메세지 생성
 // id: integer required
@@ -48,22 +50,37 @@ function validateInput({ id, sender, profileImageURL, relationship, content, fon
   return null;
 }
 
-function usePostMessage({ id, sender, profileImageURL, relationship, content, font }) {
-  // 에러 처리
-  const errorMessage = validateInput({ id, sender, profileImageURL, relationship, content, font });
+function usePostMessage() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (errorMessage) {
-    console.log(errorMessage);
-    return { data: null, loading: false, error: errorMessage };
-  }
+  const postMessage = useCallback(async ({ id, sender, profileImageURL, relationship, content, font }) => {
+    // 에러 처리
+    const errorMessage = validateInput({ id, sender, profileImageURL, relationship, content, font });
 
-  // apiPost
-  const apiEndpoint = `${TEAM}/recipients/${id}/messages/`;
-  const postData = { sender, profileImageURL, relationship, content, font };
+    if (errorMessage) {
+      console.log(errorMessage);
+      return { data: null, loading: false, error: errorMessage };
+    }
 
-  const { data, loading, error } = apiPost(apiEndpoint, postData);
+    // api 요청
+    const apiEndpoint = `${TEAM}/recipients/${id}/messages/`;
+    const postData = { sender, profileImageURL, relationship, content, font };
 
-  return { data, loading, error };
+    try {
+      const response = await createApiRequest().post(apiEndpoint, postData);
+      setData(response);
+    } catch (errorData) {
+      setError(errorData);
+    } finally {
+      setLoading(false);
+    }
+
+    return null;
+  }, []);
+
+  return { postMessage, data, loading, error };
 }
 
 export default usePostMessage;

@@ -1,4 +1,6 @@
-import apiDelete from 'apis/apiDelete';
+import { useCallback, useState } from 'react';
+
+import createApiRequest from 'apis/createApiRequest';
 
 // Github Wiki: API 명세 1-6) 롤링 페이퍼 대상 삭제
 // id: integer required
@@ -16,21 +18,34 @@ function validateInput({ id }) {
 
 const TEAM = process.env.REACT_APP_TEAM;
 
-function useDeleteRecipient({ id } = {}) {
-  // 에러 처리
-  const errorMessage = validateInput({ id });
+function useDeleteRecipient() {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (errorMessage) {
-    console.log(errorMessage);
-    return { loading: false, error: errorMessage };
-  }
+  const deleteRecipient = useCallback(async ({ id }) => {
+    // 에러 처리
+    const errorMessage = validateInput({ id });
 
-  // apiDelete
-  const apiEndpoint = `${TEAM}/recipients/${id}/`;
+    if (errorMessage) {
+      console.log(errorMessage);
+      return { loading: false, error: errorMessage };
+    }
 
-  const { loading, error } = apiDelete(apiEndpoint);
+    // api 요청
+    const apiEndpoint = `${TEAM}/recipients/${id}/`;
 
-  return { loading, error };
+    try {
+      await createApiRequest().delete(apiEndpoint);
+    } catch (errorData) {
+      setError(errorData);
+    } finally {
+      setLoading(false);
+    }
+
+    return null;
+  }, []);
+
+  return { deleteRecipient, loading, error };
 }
 
 export default useDeleteRecipient;

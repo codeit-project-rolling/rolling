@@ -1,4 +1,6 @@
-import apiDelete from 'apis/apiDelete';
+import { useCallback, useState } from 'react';
+
+import createApiRequest from 'apis/createApiRequest';
 
 // Github Wiki: API 명세 2-5) 메세지 삭제
 // id: integer required
@@ -16,21 +18,34 @@ function validateInput({ id }) {
 
 const TEAM = process.env.REACT_APP_TEAM;
 
-function useDeleteMessage({ id }) {
-  // 에러 처리
-  const errorMessage = validateInput({ id });
+function useDeleteMessage() {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (errorMessage) {
-    console.log(errorMessage);
-    return { loading: false, error: errorMessage };
-  }
+  const deleteMessage = useCallback(async ({ id }) => {
+    // 에러 처리
+    const errorMessage = validateInput({ id });
 
-  // apiDelete
-  const apiEndpoint = `${TEAM}/messages/${id}/`;
+    if (errorMessage) {
+      console.log(errorMessage);
+      return { loading: false, error: errorMessage };
+    }
 
-  const { loading, error } = apiDelete(apiEndpoint);
+    // api 요청
+    const apiEndpoint = `${TEAM}/messages/${id}/`;
 
-  return { loading, error };
+    try {
+      await createApiRequest().delete(apiEndpoint);
+    } catch (errorData) {
+      setError(errorData);
+    } finally {
+      setLoading(false);
+    }
+
+    return null;
+  }, []);
+
+  return { deleteMessage, loading, error };
 }
 
 export default useDeleteMessage;
