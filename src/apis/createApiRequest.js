@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // axios 인스턴스를 생성하는 함수
 const createInstance = () => {
-  axios.create({
+  return axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: { 'Content-Type': 'application/json' },
     timeout: 1000,
@@ -25,7 +25,7 @@ export default function createApiRequest() {
           throw new Error(`Response error with status code: ${response.status}`);
         }
 
-        return response;
+        return response.data;
       } catch (errorData) {
         const errorMessage = errorData.response ? errorData.response.data : errorData.toString();
         throw new Error(errorMessage);
@@ -42,7 +42,7 @@ export default function createApiRequest() {
           throw new Error(`Response error with status code: ${response.status}`);
         }
 
-        return response;
+        return response.data;
       } catch (errorData) {
         const errorMessage = errorData.response ? errorData.response.data : errorData.toString();
         throw new Error(errorMessage);
