@@ -44,8 +44,7 @@ export default function createApiRequest() {
 
         return response;
       } catch (errorData) {
-        const errorMessage = errorData.response ? errorData.response.data : errorData.toString();
-        throw new Error(errorMessage);
+        throw new Error(errorData);
       }
     },
     // DELETE
