@@ -50,8 +50,6 @@ function usePostRecipient() {
     const apiEndpoint = `${TEAM}/recipients/`;
     const postData = { name, backgroundColor, ...(backgroundImageURL || {}) };
 
-    console.log('postData', postData);
-
     try {
       const response = await createApiRequest().post(apiEndpoint, postData);
       setData(response);

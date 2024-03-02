@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import createApiRequest from 'apis/createApiRequest';
 
@@ -18,20 +18,20 @@ function validateInput({ id }) {
 
 const TEAM = process.env.REACT_APP_TEAM;
 
-function useDeleteRecipient({ id } = {}) {
-  // 에러 처리
-  const errorMessage = validateInput({ id });
-
-  if (errorMessage) {
-    console.log(errorMessage);
-    return { loading: false, error: errorMessage };
-  }
-
-  // api 요청
+function useDeleteRecipient() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(async () => {
+  const deleteRecipient = useCallback(async ({ id }) => {
+    // 에러 처리
+    const errorMessage = validateInput({ id });
+
+    if (errorMessage) {
+      console.log(errorMessage);
+      return { loading: false, error: errorMessage };
+    }
+
+    // api 요청
     const apiEndpoint = `${TEAM}/recipients/${id}/`;
 
     try {
@@ -41,9 +41,11 @@ function useDeleteRecipient({ id } = {}) {
     } finally {
       setLoading(false);
     }
-  }, [id]);
 
-  return { loading, error };
+    return null;
+  }, []);
+
+  return { deleteRecipient, loading, error };
 }
 
 export default useDeleteRecipient;

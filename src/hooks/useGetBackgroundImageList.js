@@ -15,7 +15,7 @@ function useGetBackgroundImageList() {
 
     try {
       const response = await createApiRequest().get(apiEndpoint);
-      setData(response?.data);
+      setData(response);
     } catch (errorData) {
       setError(errorData);
     } finally {
