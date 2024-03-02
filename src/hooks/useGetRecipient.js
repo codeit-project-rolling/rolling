@@ -50,7 +50,7 @@ function useGetRecipient({ id }) {
     getRecipient();
   }, [getRecipient]);
 
-  return { data, loading, error };
+  return { getRecipient, data, loading, error };
 }
 
 export default useGetRecipient;

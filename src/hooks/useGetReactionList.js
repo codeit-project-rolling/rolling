@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import createApiRequest from 'apis/createApiRequest';
 
@@ -36,7 +36,7 @@ function useGetReactionList({ id, limit, offset }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(async () => {
+  const getReactionList = useCallback(async () => {
     const queryParams = new URLSearchParams();
 
     if (limit) queryParams.append('limit', limit);
@@ -47,7 +47,7 @@ function useGetReactionList({ id, limit, offset }) {
 
     try {
       const response = await createApiRequest().get(apiEndpoint);
-      setData(response?.data);
+      setData(response);
     } catch (errorData) {
       setError(errorData);
     } finally {
@@ -55,7 +55,11 @@ function useGetReactionList({ id, limit, offset }) {
     }
   }, [id]);
 
-  return { data, loading, error };
+  useEffect(async () => {
+    getReactionList();
+  }, [getReactionList]);
+
+  return { getReactionList, data, loading, error };
 }
 
 export default useGetReactionList;
