@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import createApiRequest from 'apis/createApiRequest';
 
@@ -18,31 +18,31 @@ function useGetRecipientList({ limit, offset, sortByLike } = {}) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const queryParams = new URLSearchParams();
+
+  if (limit) queryParams.append('limit', limit);
+  if (offset) queryParams.append('offset', offset);
+  if (sortByLike) queryParams.append('sort', 'like');
+
+  const queryString = queryParams.toString();
+  const apiEndpoint = `${TEAM}/recipients/${queryString ? `?${queryString}` : ''}`;
+
+  const getRecipientList = useCallback(async () => {
+    try {
+      const response = await createApiRequest().get(apiEndpoint);
+      setData(response);
+    } catch (errorData) {
+      setError(errorData);
+    } finally {
+      setLoading(false);
+    }
+  });
+
   useEffect(() => {
-    const queryParams = new URLSearchParams();
-
-    if (limit) queryParams.append('limit', limit);
-    if (offset) queryParams.append('offset', offset);
-    if (sortByLike) queryParams.append('sort', 'like');
-
-    const queryString = queryParams.toString();
-    const apiEndpoint = `${TEAM}/recipients/${queryString ? `?${queryString}` : ''}`;
-
-    const getRespose = async () => {
-      try {
-        const response = await createApiRequest().get(apiEndpoint);
-        setData(response);
-      } catch (errorData) {
-        setError(errorData);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getRespose();
+    getRecipientList();
   }, [limit, offset, sortByLike]);
 
-  return { data, loading, error };
+  return { getRecipientList, data, loading, error };
 }
 
 export default useGetRecipientList;
