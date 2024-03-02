@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import createApiRequest from 'apis/createApiRequest';
 
@@ -32,35 +32,39 @@ function validateInput({ name, backgroundColor }) {
 
 const TEAM = process.env.REACT_APP_TEAM;
 
-function usePostRecipient({ name, backgroundColor, backgroundImageURL }) {
-  // 에러 처리
-  const errorMessage = validateInput({ name, backgroundColor });
-
-  if (errorMessage) {
-    console.log(errorMessage);
-    return { data: null, loading: false, error: errorMessage };
-  }
-
+function usePostRecipient() {
   // api 요청
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(async () => {
+  const postRecipient = useCallback(async ({ name, backgroundColor, backgroundImageURL }) => {
+    // 에러 처리
+    const errorMessage = validateInput({ name, backgroundColor });
+
+    if (errorMessage) {
+      console.log(errorMessage);
+      return setError(errorMessage);
+    }
+
     const apiEndpoint = `${TEAM}/recipients/`;
     const postData = { name, backgroundColor, ...(backgroundImageURL || {}) };
 
+    console.log('postData', postData);
+
     try {
       const response = await createApiRequest().post(apiEndpoint, postData);
-      setData(response?.data);
+      setData(response);
     } catch (errorData) {
       setError(errorData);
     } finally {
       setLoading(false);
     }
-  }, [name, backgroundColor, backgroundImageURL]);
 
-  return { data, loading, error };
+    return null;
+  }, []);
+
+  return { postRecipient, data, loading, error };
 }
 
 export default usePostRecipient;
