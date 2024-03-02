@@ -1,12 +1,35 @@
 @import 'assets/styles/global.scss';
 
+.overlay {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .modal {
+  z-index: 1000;
+  position: fixed;
+  top: 34.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw; /* 화면 전체 너비 */
+  height: 100vh; /* 화면 전체 높이 */
+  background: $White;
   width: 60rem;
   height: 47.6rem;
   padding: 4rem;
   border-radius: 1.6rem;
   background: $White;
   box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
+
+  @include tablet {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .header {
