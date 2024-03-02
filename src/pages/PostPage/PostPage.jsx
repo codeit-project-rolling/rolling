@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
+import useGetBackgroundImageList from 'hooks/useGetBackgroundImageList';
 import usePostRecipient from 'hooks/usePostRecipient';
 
 import BackColorOption from 'components/BackgroundOption/BackColorOption';
@@ -12,15 +13,14 @@ import styles from 'pages/PostPage/PostPage.module.scss';
 
 function PostPage() {
   const [recipientName, setRecipientName] = useState(''); // 받는 사람 이름
-  const [selectedColor, setSelectedColor] = useState(''); // 선택 색상
+  const [selectedColor, setSelectedColor] = useState('beige'); // 선택 색상
+  const [selectedImageSrc, setSelectedImageSrc] = useState(null); // 이미지 url 기본 null
+  const [backgrounImgList, setBackgroundImgList] = useState([]);
   const [errorMsg, setErrorMsg] = useState('');
   const [selectedOption, setSelectedOption] = useState('color'); // 토글 기본 옵션 color
-  // const { data, loading, error } = usePostRecipient({
-  //   name: recipientName,
-  //   backgroundColor: selectedColor,
-  // });
+
   const { postRecipient } = usePostRecipient();
-  const postData = { name: recipientName, backgroundColor: selectedColor, backgroundImageURL: '프로필이미지' };
+  const postData = { name: recipientName, backgroundColor: selectedColor, backgroundImageURL: selectedImageSrc };
   const handleRecipientNameChange = (event) => {
     setRecipientName(event.target.value);
   };
@@ -36,8 +36,23 @@ function PostPage() {
   };
   const onSelect = (optionValue) => {
     console.log('Selected optionValue:', recipientName, optionValue);
-    setSelectedColor(optionValue);
+    if (selectedOption === 'color') {
+      setSelectedColor(optionValue);
+    } else {
+      console.log('이미지선택');
+      setSelectedImageSrc(optionValue);
+      console.log(selectedImageSrc);
+    }
   };
+  const { data, loading, error } = useGetBackgroundImageList();
+  useEffect(() => {
+    if (!loading && !error) {
+      setBackgroundImgList(data.imageUrls);
+      console.log(backgrounImgList);
+    } else {
+      console.log(error);
+    }
+  }, [data]);
   const isInputEmpty = recipientName.trim() === '';
   const handleCreateButtonClick = () => {
     postRecipient(postData);
@@ -65,7 +80,7 @@ function PostPage() {
           {selectedOption === 'color' ? (
             <BackColorOption onSelect={onSelect} />
           ) : (
-            <BackImageOption onSelect={onSelect} />
+            <BackImageOption onSelect={onSelect} backgroundImgList={backgrounImgList} />
           )}
 
           <Button
