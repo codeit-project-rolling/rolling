@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 // axios 인스턴스를 생성하는 함수
-function createInstance() {
+const createInstance = () => {
   axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: { 'Content-Type': 'application/json' },
     timeout: 1000,
   });
-}
+};
 
 // GET, POST, DELETE 리퀘스트를 생성하는 함수
 export default function createApiRequest() {
