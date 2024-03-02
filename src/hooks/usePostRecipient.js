@@ -46,10 +46,10 @@ function usePostRecipient({ name, backgroundColor, backgroundImageURL }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(async () => {
-    const apiEndpoint = `${TEAM}/recipients/`;
-    const postData = { name, backgroundColor, ...(backgroundImageURL || {}) };
+  const apiEndpoint = `${TEAM}/recipients/`;
+  const postData = { name, backgroundColor, ...(backgroundImageURL || {}) };
 
+  useEffect(async () => {
     try {
       const response = await createApiRequest().get(apiEndpoint, postData);
       setData(response?.data);
@@ -58,7 +58,7 @@ function usePostRecipient({ name, backgroundColor, backgroundImageURL }) {
     } finally {
       setLoading(false);
     }
-  });
+  }, [apiEndpoint, postData]);
 
   return { data, loading, error };
 }
