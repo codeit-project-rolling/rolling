@@ -31,9 +31,9 @@ function useDeleteMessage({ id }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const apiEndpoint = `${TEAM}/messages/${id}/`;
-
   useEffect(async () => {
+    const apiEndpoint = `${TEAM}/messages/${id}/`;
+
     try {
       await createApiRequest().delete(apiEndpoint);
     } catch (errorData) {
@@ -41,7 +41,7 @@ function useDeleteMessage({ id }) {
     } finally {
       setLoading(false);
     }
-  }, [apiEndpoint]);
+  }, [id]);
 
   return { loading, error };
 }

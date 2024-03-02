@@ -40,11 +40,11 @@ function usePostReaction({ id, emoji, isIncrease }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const apiEndpoint = `${TEAM}/recipients/${id}/reactions/`;
-  const type = isIncrease ? 'increase' : 'decrease';
-  const postData = { emoji, type };
-
   useEffect(async () => {
+    const apiEndpoint = `${TEAM}/recipients/${id}/reactions/`;
+    const type = isIncrease ? 'increase' : 'decrease';
+    const postData = { emoji, type };
+
     try {
       const response = await createApiRequest().post(apiEndpoint, postData);
       setData(response?.data);
@@ -53,7 +53,7 @@ function usePostReaction({ id, emoji, isIncrease }) {
     } finally {
       setLoading(false);
     }
-  }, [apiEndpoint, postData]);
+  }, [id, emoji, isIncrease]);
 
   return { data, loading, error };
 }

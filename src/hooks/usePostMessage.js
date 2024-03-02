@@ -64,10 +64,10 @@ function usePostMessage({ id, sender, profileImageURL, relationship, content, fo
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const apiEndpoint = `${TEAM}/recipients/${id}/messages/`;
-  const postData = { sender, profileImageURL, relationship, content, font };
-
   useEffect(async () => {
+    const apiEndpoint = `${TEAM}/recipients/${id}/messages/`;
+    const postData = { sender, profileImageURL, relationship, content, font };
+
     try {
       const response = await createApiRequest().post(apiEndpoint, postData);
       setData(response?.data);
@@ -76,7 +76,7 @@ function usePostMessage({ id, sender, profileImageURL, relationship, content, fo
     } finally {
       setLoading(false);
     }
-  }, [apiEndpoint, postData]);
+  }, [id, sender, profileImageURL, relationship, content, font]);
 
   return { data, loading, error };
 }

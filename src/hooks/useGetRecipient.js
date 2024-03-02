@@ -32,9 +32,9 @@ function useGetRecipient({ id }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const apiEndpoint = `${TEAM}/recipients/${id}/`;
-
   useEffect(async () => {
+    const apiEndpoint = `${TEAM}/recipients/${id}/`;
+
     try {
       const response = await createApiRequest().get(apiEndpoint);
       setData(response?.data);
@@ -43,7 +43,7 @@ function useGetRecipient({ id }) {
     } finally {
       setLoading(false);
     }
-  }, [apiEndpoint]);
+  }, [id]);
 
   return { data, loading, error };
 }

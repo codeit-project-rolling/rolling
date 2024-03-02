@@ -36,16 +36,15 @@ function useGetMessageList({ id, limit, offset }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // URLSearchParams 사용
-  const queryParams = new URLSearchParams();
-
-  if (limit) queryParams.append('limit', limit);
-  if (offset) queryParams.append('offset', offset);
-
-  const queryString = queryParams.toString();
-  const apiEndpoint = `${TEAM}/recipients/${id}/messages/${queryString ? `?${queryString}` : ''}`;
-
   useEffect(async () => {
+    const queryParams = new URLSearchParams();
+
+    if (limit) queryParams.append('limit', limit);
+    if (offset) queryParams.append('offset', offset);
+
+    const queryString = queryParams.toString();
+    const apiEndpoint = `${TEAM}/recipients/${id}/messages/${queryString ? `?${queryString}` : ''}`;
+
     try {
       const response = await createApiRequest().get(apiEndpoint);
       setData(response?.data);
@@ -54,7 +53,7 @@ function useGetMessageList({ id, limit, offset }) {
     } finally {
       setLoading(false);
     }
-  }, [apiEndpoint]);
+  }, [id, limit, offset]);
 
   return { data, loading, error };
 }

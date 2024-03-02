@@ -31,9 +31,9 @@ function useDeleteRecipient({ id } = {}) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const apiEndpoint = `${TEAM}/recipients/${id}/`;
-
   useEffect(async () => {
+    const apiEndpoint = `${TEAM}/recipients/${id}/`;
+
     try {
       await createApiRequest().delete(apiEndpoint);
     } catch (errorData) {
@@ -41,7 +41,7 @@ function useDeleteRecipient({ id } = {}) {
     } finally {
       setLoading(false);
     }
-  }, [apiEndpoint]);
+  }, [id]);
 
   return { loading, error };
 }

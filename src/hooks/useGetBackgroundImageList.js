@@ -10,9 +10,9 @@ function useGetBackgroundImageList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const apiEndpoint = `background-images/`;
-
   useEffect(async () => {
+    const apiEndpoint = `background-images/`;
+
     try {
       const response = await createApiRequest().get(apiEndpoint);
       setData(response?.data);
@@ -21,7 +21,7 @@ function useGetBackgroundImageList() {
     } finally {
       setLoading(false);
     }
-  }, [apiEndpoint]);
+  }, []);
 
   return { data, loading, error };
 }
