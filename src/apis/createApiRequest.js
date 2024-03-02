@@ -44,7 +44,8 @@ export default function createApiRequest() {
 
         return response;
       } catch (errorData) {
-        throw new Error(errorData);
+        const errorMessage = errorData.response ? errorData.response.data : errorData.toString();
+        throw new Error(errorMessage);
       }
     },
     // DELETE
@@ -52,13 +53,11 @@ export default function createApiRequest() {
       const SUCCESS = 204;
 
       try {
-        const response = await instance.get(apiEndpoint);
+        const response = await instance.delete(apiEndpoint);
 
         if (response.status !== SUCCESS) {
           throw new Error(`Response error with status code: ${response.status}`);
         }
-
-        return response;
       } catch (errorData) {
         const errorMessage = errorData.response ? errorData.response.data : errorData.toString();
         throw new Error(errorMessage);
