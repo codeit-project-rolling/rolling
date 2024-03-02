@@ -55,7 +55,7 @@ function useGetMessageList({ id, limit, offset }) {
     }
   }, [id]);
 
-  useEffect(async () => {
+  useEffect(() => {
     getMessageList();
   }, [getMessageList]);
 
