@@ -18,26 +18,29 @@ function useGetRecipientList({ limit, offset, sortByLike } = {}) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // URLSearchParams 사용
-  const queryParams = new URLSearchParams();
+  useEffect(() => {
+    const queryParams = new URLSearchParams();
 
-  if (limit) queryParams.append('limit', limit);
-  if (offset) queryParams.append('offset', offset);
-  if (sortByLike) queryParams.append('sort', 'like');
+    if (limit) queryParams.append('limit', limit);
+    if (offset) queryParams.append('offset', offset);
+    if (sortByLike) queryParams.append('sort', 'like');
 
-  const queryString = queryParams.toString();
-  const apiEndpoint = `${TEAM}/recipients/${queryString ? `?${queryString}` : ''}`;
+    const queryString = queryParams.toString();
+    const apiEndpoint = `${TEAM}/recipients/${queryString ? `?${queryString}` : ''}`;
 
-  useEffect(async () => {
-    try {
-      const response = await createApiRequest().get(apiEndpoint);
-      setData(response?.data);
-    } catch (errorData) {
-      setError(errorData);
-    } finally {
-      setLoading(false);
-    }
-  }, [apiEndpoint]);
+    const getRespose = async () => {
+      try {
+        const response = await createApiRequest().get(apiEndpoint);
+        setData(response);
+      } catch (errorData) {
+        setError(errorData);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getRespose();
+  }, [limit, offset, sortByLike]);
 
   return { data, loading, error };
 }
