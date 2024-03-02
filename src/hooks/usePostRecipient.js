@@ -48,7 +48,7 @@ function usePostRecipient() {
 
     // api 요청
     const apiEndpoint = `${TEAM}/recipients/`;
-    const postData = { name, backgroundColor, ...(backgroundImageURL || {}) };
+    const postData = { name, backgroundColor, backgroundImageURL };
 
     try {
       const response = await createApiRequest().post(apiEndpoint, postData);
