@@ -28,7 +28,7 @@ function validateInput({ name, backgroundColor }) {
 
 const TEAM = process.env.REACT_APP_TEAM;
 
-function usePostRecipient({ name, backgroundColor }) {
+function usePostRecipient({ name, backgroundColor, backgroundImageURL }) {
   // 에러 처리
   const errorMessage = validateInput({ name, backgroundColor });
 
@@ -39,7 +39,7 @@ function usePostRecipient({ name, backgroundColor }) {
 
   // apiPost
   const apiEndpoint = `${TEAM}/recipients/`;
-  const postData = { name, backgroundColor };
+  const postData = { name, backgroundColor, ...(backgroundImageURL || {}) };
 
   const { data, loading, error } = apiPost(apiEndpoint, postData);
 
