@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react';
+
 import apiPost from 'apis/apiPost';
+import createApiRequest from 'apis/createApiRequest';
 
 // Github Wiki: API 명세 2-3) 대상에게 보내는 메세지 생성
 // id: integer required
@@ -57,11 +60,24 @@ function usePostMessage({ id, sender, profileImageURL, relationship, content, fo
     return { data: null, loading: false, error: errorMessage };
   }
 
-  // apiPost
+  // api 요청
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const apiEndpoint = `${TEAM}/recipients/${id}/messages/`;
   const postData = { sender, profileImageURL, relationship, content, font };
 
-  const { data, loading, error } = apiPost(apiEndpoint, postData);
+  useEffect(async () => {
+    try {
+      const response = await createApiRequest().get(apiEndpoint, postData);
+      setData(response?.data);
+    } catch (errorData) {
+      setError(errorData);
+    } finally {
+      setLoading(false);
+    }
+  }, [apiEndpoint, postData]);
 
   return { data, loading, error };
 }
