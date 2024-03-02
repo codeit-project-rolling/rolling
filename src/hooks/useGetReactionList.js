@@ -55,7 +55,7 @@ function useGetReactionList({ id, limit, offset }) {
     }
   }, [id]);
 
-  useEffect(async () => {
+  useEffect(() => {
     getReactionList();
   }, [getReactionList]);
 

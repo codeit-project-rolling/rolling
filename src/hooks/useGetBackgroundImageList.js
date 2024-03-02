@@ -23,7 +23,7 @@ function useGetBackgroundImageList() {
     }
   }, []);
 
-  useEffect(async () => {
+  useEffect(() => {
     getBackgroundImageList();
   }, [getBackgroundImageList]);
 
