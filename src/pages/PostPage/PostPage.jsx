@@ -19,7 +19,8 @@ function PostPage() {
   //   name: recipientName,
   //   backgroundColor: selectedColor,
   // });
-
+  const { postRecipient } = usePostRecipient();
+  const postData = { name: recipientName, backgroundColor: selectedColor, backgroundImageURL: '프로필이미지' };
   const handleRecipientNameChange = (event) => {
     setRecipientName(event.target.value);
   };
@@ -37,12 +38,9 @@ function PostPage() {
     console.log('Selected optionValue:', recipientName, optionValue);
     setSelectedColor(optionValue);
   };
-  const isInputEmpty = recipientName.trim() === ''; // 비어 있으면 true 아니면 false
+  const isInputEmpty = recipientName.trim() === '';
   const handleCreateButtonClick = () => {
-    usePostRecipient({
-      name: recipientName,
-      backgroundColor: selectedColor,
-    });
+    postRecipient(postData);
     console.log('clicked');
   };
   return (
