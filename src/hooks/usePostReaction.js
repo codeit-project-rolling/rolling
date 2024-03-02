@@ -1,4 +1,6 @@
-import apiPost from 'apis/apiPost';
+import { useEffect, useState } from 'react';
+
+import createApiRequest from 'apis/createApiRequest';
 
 // Github Wiki: API 명세 3-3) 대상에게 리액션 달기
 // id: integer required
@@ -33,12 +35,25 @@ function usePostReaction({ id, emoji, isIncrease }) {
     return { data: null, loading: false, error: errorMessage };
   }
 
-  // apiPost
+  // api 요청
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const apiEndpoint = `${TEAM}/recipients/${id}/reactions/`;
   const type = isIncrease ? 'increase' : 'decrease';
   const postData = { emoji, type };
 
-  const { data, loading, error } = apiPost(apiEndpoint, postData);
+  useEffect(async () => {
+    try {
+      const response = await createApiRequest().get(apiEndpoint, postData);
+      setData(response?.data);
+    } catch (errorData) {
+      setError(errorData);
+    } finally {
+      setLoading(false);
+    }
+  }, [apiEndpoint, postData]);
 
   return { data, loading, error };
 }
