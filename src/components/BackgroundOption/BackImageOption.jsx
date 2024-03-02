@@ -5,7 +5,7 @@ import styles from 'components/BackgroundOption/BackImageOption.module.scss';
 import CheckButton from 'components/CheckButton/CheckButton';
 
 function BackImageOption({ onSelect, backgroundImgList }) {
-  const [selectedImg, setSelectedImage] = useState('image1');
+  const [selectedImg, setSelectedImage] = useState(backgroundImgList[0]);
 
   const handleImageSelect = (image) => {
     setSelectedImage(image);
@@ -15,35 +15,35 @@ function BackImageOption({ onSelect, backgroundImgList }) {
   return (
     <div className={styles.backgroundOption}>
       <button
-        className={`${styles.option} ${selectedImg === 'image1' ? styles.selected : ''}`}
+        className={`${styles.option} ${selectedImg === backgroundImgList[0] ? styles.selected : ''}`}
         onClick={() => handleImageSelect(backgroundImgList[0])}
         type="button"
       >
         <img src={backgroundImgList[0]} alt="image1" className={styles.image} />
-        {selectedImg === 'image1' && <CheckButton />}
+        {selectedImg === backgroundImgList[0] && <CheckButton />}
       </button>
       <button
-        className={`${styles.option} ${styles.image2} ${selectedImg === 'image2' ? styles.selected : ''}`}
+        className={`${styles.option} ${styles.image2} ${selectedImg === backgroundImgList[1] ? styles.selected : ''}`}
         onClick={() => handleImageSelect(backgroundImgList[1])}
         type="button"
       >
-        {selectedImg === 'image2' && <CheckButton />}
+        {selectedImg === backgroundImgList[1] && <CheckButton />}
         <img src={backgroundImgList[1]} alt="image2" className={styles.image} />
       </button>
       <button
-        className={`${styles.option} ${styles.image3} ${selectedImg === 'image3' ? styles.selected : ''}`}
+        className={`${styles.option} ${styles.image3} ${selectedImg === backgroundImgList[2] ? styles.selected : ''}`}
         onClick={() => handleImageSelect(backgroundImgList[2])}
         type="button"
       >
-        {selectedImg === 'image3' && <CheckButton />}
+        {selectedImg === backgroundImgList[2] && <CheckButton />}
         <img src={backgroundImgList[2]} alt="image3" className={styles.image} />
       </button>
       <button
-        className={`${styles.option} ${styles.image4} ${selectedImg === 'image4' ? styles.selected : ''}`}
+        className={`${styles.option} ${styles.image4} ${selectedImg === backgroundImgList[3] ? styles.selected : ''}`}
         onClick={() => handleImageSelect(backgroundImgList[3])}
         type="button"
       >
-        {selectedImg === 'image4' && <CheckButton />}
+        {selectedImg === backgroundImgList[3] && <CheckButton />}
         <img src={backgroundImgList[3]} alt="image4" className={styles.image} />
       </button>
     </div>
