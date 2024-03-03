@@ -12,10 +12,15 @@ import formatDate from 'utils/formatDate';
 import CardStyle from './card.module.scss';
 import { CardDumpData } from './dump.data';
 
-function Card({ data, showDeleteIcon, className }) {
+function Card({ data, showDeleteIcon, className, onClick }) {
   const buttonAndCardCombinedClass = classNames(CardStyle.container, className);
+
+  const handleClick = () => {
+    onClick();
+  };
+
   return (
-    <div className={buttonAndCardCombinedClass}>
+    <button type="button" className={buttonAndCardCombinedClass} onClick={handleClick}>
       <div className={CardStyle.profileBox}>
         <div className={CardStyle.profile}>
           <img src={data?.profileImageURL} alt={`${data?.sender} 이미지`} />
@@ -38,7 +43,7 @@ function Card({ data, showDeleteIcon, className }) {
         <div className={CardStyle.text}>{data?.content}</div>
         <div className={CardStyle.text_date}>{formatDate(data?.createdAt)}</div>
       </div>
-    </div>
+    </button>
   );
 }
 
