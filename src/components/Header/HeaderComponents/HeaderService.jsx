@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import EmojiPicker from 'emoji-picker-react';
 import { useState } from 'react';
 
 import addEmojiIcon from 'assets/images/addEmoji.png';
@@ -7,13 +9,17 @@ import shareIcon from 'assets/images/share.png';
 import BadgeEmoji from 'components/BadgeEmoji/BadgeEmoji';
 import EmojiDropdown from 'components/Header/HeaderComponents/EmojiDropdown';
 import HeaderServiceStyles from 'components/Header/HeaderComponents/HeaderService.module.scss';
+// eslint-disable-next-line import/no-cycle
 import ShareDropdown from 'components/Header/HeaderComponents/ShareDropdown';
 import userData from 'components/Header/mock.json';
 
 function HeaderService() {
   const [emojiDropdown, setEmojiDropdown] = useState(false);
   const [shareDropdown, setShareDropdown] = useState(false);
-
+  const [emojiSelectDropdown, setEmojiSelectDropdown] = useState(false);
+  const handleEmojiClick = (emojiObject) => {
+    console.log(emojiObject.emoji);
+  };
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
       <div className={HeaderServiceStyles.headerContainer}>
@@ -52,11 +58,21 @@ function HeaderService() {
             </button>
           </div>
           <div>
-            <button type="button" className={HeaderServiceStyles.addEmojiBtn}>
+            <button
+              onClick={() => {
+                setEmojiSelectDropdown(!emojiSelectDropdown);
+              }}
+              type="button"
+              className={HeaderServiceStyles.addEmojiBtn}
+            >
               <img src={addEmojiIcon} alt="addEmojiIcon" />
               <p>추가</p>
             </button>
+            <div className={HeaderServiceStyles.emojiSelect}>
+              {emojiSelectDropdown && <EmojiPicker autoFocusSearch={false} onEmojiClick={handleEmojiClick} />}
+            </div>
           </div>
+
           <div className={HeaderServiceStyles.selectionBar} />
           <button
             type="button"
