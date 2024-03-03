@@ -4,7 +4,6 @@ import React from 'react';
 
 import CardListStyle from './Cardlist.module.scss';
 import { cardBackgroundSvg, backgroundThemaSwith, backgroundUrlFontColor } from './cardUtils';
-import CardListDumpData from './dump.data';
 
 function CardList({ data }) {
   return (
@@ -43,8 +42,8 @@ function CardList({ data }) {
   );
 }
 
-export function DemoCard() {
-  return <CardList data={CardListDumpData} />;
-}
+// export function DemoCard() {
+//   return <CardList data={data} />;
+// }
 
 export default CardList;
