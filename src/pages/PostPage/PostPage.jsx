@@ -41,13 +41,10 @@ function PostPage() {
   };
 
   const onSelect = (optionValue) => {
-    console.log('Selected optionValue:', recipientName, optionValue);
     if (selectedOption === 'color') {
       setSelectedColor(optionValue);
     } else {
-      console.log('이미지선택');
       setSelectedImageSrc(optionValue);
-      console.log(selectedImageSrc);
     }
   };
 
@@ -55,9 +52,8 @@ function PostPage() {
   useEffect(() => {
     if (!loading && !error) {
       setBackgroundImgList(data.imageUrls);
-      console.log(backgrounImgList);
     } else {
-      console.log(error);
+      console.error(error);
     }
   }, [data]);
 
