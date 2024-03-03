@@ -10,6 +10,22 @@
     justify-content: space-between;
     align-items: center;
     width: 120rem;
+    @include mobile {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    .lineOnMobile {
+      display: none;
+      border: none;
+      height: 0.1rem;
+      width: 100%;
+      background-color: #ededed;
+      @include mobile {
+        display: block;
+        margin: 1.1rem 0;
+      }
+    }
   }
   .toNickname {
     font-size: 2.8rem;
@@ -25,6 +41,9 @@
     .howManyPerson {
       margin: 0 2.8rem 0 0;
       display: flex;
+      @include tablet {
+        display: none;
+      }
       p {
         color: var(--gray-900, $Grayscale900);
         font-size: 1.8rem;
@@ -67,11 +86,24 @@
       width: 0.1rem;
       height: 2.8rem;
       background-color: var(--gray-200, #eee);
+      @include tablet {
+        display: none;
+      }
+    }
+    .selectionBar2 {
+      width: 0.1rem;
+      height: 2.8rem;
+      background-color: var(--gray-200, #eee);
+      margin: 0 1.2rem;
     }
     .headerEmoji {
       display: flex;
       margin: 0 0 0 2.8rem;
       gap: 0.8rem;
+      @include mobile {
+        margin: 0;
+        margin-right: 0.8rem;
+      }
       .emojiBtn {
         display: inline-flex;
         padding: 8px 12px;
@@ -107,5 +139,10 @@
       background: var(--white, $White);
       padding: 6px 16px;
     }
+  }
+}
+.onMobileHide {
+  @include mobile {
+    display: none;
   }
 }

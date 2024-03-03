@@ -11,7 +11,6 @@ import Button from 'components/Button/Button';
 import EmojiDropdown from 'components/Header/HeaderComponents/EmojiDropdown';
 import HeaderServiceStyles from 'components/Header/HeaderComponents/HeaderService.module.scss';
 import ShareDropdown from 'components/Header/HeaderComponents/ShareDropdown';
-// import userData from 'components/Header/mock.json';
 
 function HeaderService() {
   const [emojiDropdown, setEmojiDropdown] = useState(false);
@@ -21,13 +20,13 @@ function HeaderService() {
   useEffect(() => {
     if (data) {
       setRecipienData(data);
-      console.log(recipientData.name);
     }
   }, [data]);
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
       <div className={HeaderServiceStyles.headerContainer}>
         <p className={HeaderServiceStyles.toNickname}>To. {recipientData.name}</p>
+        <hr className={HeaderServiceStyles.lineOnMobile} />
         <div className={HeaderServiceStyles.headerRight}>
           <div className={HeaderServiceStyles.howManyPerson}>
             <div className={HeaderServiceStyles.senderProfile}>
@@ -72,10 +71,10 @@ function HeaderService() {
           <div>
             <Button buttonType="outlined36">
               <SmileImg fill="black" />
-              <p>추가</p>
+              <p className={HeaderServiceStyles.onMobileHide}>추가</p>
             </Button>
           </div>
-          <div className={HeaderServiceStyles.selectionBar} />
+          <div className={HeaderServiceStyles.selectionBar2} />
           <Button
             buttonType="outlined36"
             onClick={() => {

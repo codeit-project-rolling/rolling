@@ -6,7 +6,9 @@ import styles from 'components/Header/HeaderLayout.module.scss';
 function HeaderLayout() {
   return (
     <div className={styles.headerContainer}>
-      <Header />
+      <div className={styles.headerHideOnMobile}>
+        <Header />
+      </div>
       <HeaderService />
     </div>
   );
