@@ -5,12 +5,18 @@
   }
   .headerContainer {
     width: 100%;
+    @include mobile {
+      display: none;
+    }
   }
   .mainContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 12.2rem;
+    @include mobile {
+      margin-top: 5rem;
+    }
     .recipientContainer {
       .toText {
         font-size: 2.4rem;
