@@ -1,0 +1,54 @@
+@import 'assets/styles/global.scss';
+.sliderRoot {
+  position: relative;
+}
+.sliderWrapper {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  user-select: none;
+  position: relative;
+}
+.sliderWrapper::-webkit-scrollbar {
+  display: none;
+}
+.sliderContainer {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.sliderItem {
+  display: inline-block;
+  margin-left: 2rem;
+
+  @include mobile {
+    margin-left: 1.2rem;
+  }
+}
+
+.sliderButtonLeft {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  @include tablet {
+    display: none;
+  }
+  @include mobile {
+    display: none;
+  }
+}
+.sliderButtonRight {
+  position: absolute;
+  top: 50%;
+  right: -1.5%;
+  @include tablet {
+    display: none;
+  }
+  @include mobile {
+    display: none;
+  }
+}
