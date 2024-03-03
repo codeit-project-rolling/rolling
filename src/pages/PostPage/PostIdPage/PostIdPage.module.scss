@@ -18,6 +18,7 @@ body {
 }
 
 .cardList {
+  position: relative;
   display: grid;
   margin-top: 11.3rem;
   grid-template-columns: 1fr 1fr 1fr;
@@ -56,4 +57,10 @@ body {
   bottom: 7rem;
   width: 52.4rem;
   height: 6.4rem;
+}
+
+.editButton {
+  position: absolute;
+  top: -5rem;
+  right: 0;
 }

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import useGetMessageList from 'hooks/useGetMessageList';
 import useModal from 'hooks/useModal';
 
+import Button from 'components/Button/Button';
 // eslint-disable-next-line import/no-cycle
 import HeaderLayout from 'components/Header/HeaderLayout';
 import PlusButton from 'components/PlusButton/PlusButton';
@@ -38,6 +39,10 @@ function PostIdPage() {
 
   const handleClick = () => {
     navigate('/post/3058/message');
+  };
+
+  const handleEditClick = () => {
+    navigate('/post/3058/edit');
   };
 
   const handleCardClick = (clickedItem) => {
@@ -78,6 +83,9 @@ function PostIdPage() {
               <Card onClick={() => handleCardClick(item)} className={styles.card} key={item.id} data={item} />
             ))
           )}
+          <Button className={styles.editButton} buttonType="secondary40" onClick={handleEditClick}>
+            <p>편집하기</p>
+          </Button>
         </div>
         <div className={styles.toast}>{showToast && <Toast onClick={handleUrlClick} />}</div>
       </div>
