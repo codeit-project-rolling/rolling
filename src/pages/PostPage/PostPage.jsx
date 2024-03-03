@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import useGetBackgroundImageList from 'hooks/useGetBackgroundImageList';
 import usePostRecipient from 'hooks/usePostRecipient';
@@ -12,21 +13,25 @@ import ToggleButton from 'components/ToggleButton/ToggleButton';
 import styles from 'pages/PostPage/PostPage.module.scss';
 
 function PostPage() {
+  const navigate = useNavigate();
   const [recipientName, setRecipientName] = useState(''); // 받는 사람 이름
   const [selectedColor, setSelectedColor] = useState('beige'); // 선택 색상
   const [selectedImageSrc, setSelectedImageSrc] = useState(null); // 이미지 url 기본 null
   const [backgrounImgList, setBackgroundImgList] = useState([]);
   const [errorMsg, setErrorMsg] = useState('');
   const [selectedOption, setSelectedOption] = useState('color'); // 토글 기본 옵션 color
+  const [createdRecipientId, setCreatedRecipientId] = useState(null);
 
   const { postRecipient } = usePostRecipient();
   const postData = { name: recipientName, backgroundColor: selectedColor, backgroundImageURL: selectedImageSrc };
   const handleRecipientNameChange = (event) => {
     setRecipientName(event.target.value);
   };
+
   const handleToggle = (option) => {
     setSelectedOption(option);
   };
+
   const handleBlur = () => {
     if (!recipientName.trim()) {
       setErrorMsg('받는사람을 입력해 주세요.');
@@ -34,6 +39,7 @@ function PostPage() {
       setErrorMsg('');
     }
   };
+
   const onSelect = (optionValue) => {
     console.log('Selected optionValue:', recipientName, optionValue);
     if (selectedOption === 'color') {
@@ -44,7 +50,8 @@ function PostPage() {
       console.log(selectedImageSrc);
     }
   };
-  const { data, loading, error } = useGetBackgroundImageList();
+
+  const { data, loading, error } = useGetBackgroundImageList(); // backgroundImgUrl 불러오기
   useEffect(() => {
     if (!loading && !error) {
       setBackgroundImgList(data.imageUrls);
@@ -53,11 +60,19 @@ function PostPage() {
       console.log(error);
     }
   }, [data]);
-  const isInputEmpty = recipientName.trim() === '';
-  const handleCreateButtonClick = () => {
-    postRecipient(postData);
-    console.log('clicked');
+
+  useEffect(() => {
+    // createdRecipientId 업데이트될때마다
+  }, [createdRecipientId]);
+  const handleCreateButtonClick = async () => {
+    const createdId = await postRecipient(postData);
+    if (createdId) {
+      setCreatedRecipientId(createdId);
+      navigate(`/post/${createdId}`);
+    }
   };
+
+  const isInputEmpty = recipientName.trim() === '';
   return (
     <div className={styles.postPageContainer}>
       <div className={styles.headerContainer}>

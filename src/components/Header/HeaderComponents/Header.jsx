@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import LogoImg from 'assets/images/Logo.png';
@@ -5,13 +6,13 @@ import LogoImg from 'assets/images/Logo.png';
 import Button from 'components/Button/Button';
 import HeaderStyles from 'components/Header/HeaderComponents/Header.module.scss';
 
-function Header() {
+function Header({ postId }) {
   const navigate = useNavigate();
   const location = useLocation();
   const handleRollingButtonClick = () => {
     navigate('/post');
   };
-  const id = '3058';
+  const id = postId;
   return (
     <>
       <div className={HeaderStyles.headerContainer}>
@@ -33,4 +34,10 @@ function Header() {
     </>
   );
 }
+Header.propTypes = {
+  postId: PropTypes.string,
+};
+Header.defaultProps = {
+  postId: null, // postId의 기본값 설정
+};
 export default Header;

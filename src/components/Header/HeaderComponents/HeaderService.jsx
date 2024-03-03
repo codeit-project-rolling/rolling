@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
 import arrowDownIcon from 'assets/images/arrow_down.png';
@@ -12,11 +13,11 @@ import EmojiDropdown from 'components/Header/HeaderComponents/EmojiDropdown';
 import HeaderServiceStyles from 'components/Header/HeaderComponents/HeaderService.module.scss';
 import ShareDropdown from 'components/Header/HeaderComponents/ShareDropdown';
 
-function HeaderService() {
+function HeaderService({ postId }) {
   const [emojiDropdown, setEmojiDropdown] = useState(false);
   const [shareDropdown, setShareDropdown] = useState(false);
   const [recipientData, setRecipienData] = useState([]);
-  const { data } = useGetRecipient({ id: 3058 });
+  const { data } = useGetRecipient({ id: postId });
   useEffect(() => {
     if (data) {
       setRecipienData(data);
@@ -52,22 +53,21 @@ function HeaderService() {
             </p>
           </div>
           <div className={HeaderServiceStyles.selectionBar} />
-          <div className={HeaderServiceStyles.headerEmoji}>
-            {recipientData &&
-              recipientData.topReactions &&
-              recipientData.topReactions.length > 0 &&
-              recipientData.topReactions
-                .slice(0, 3)
-                .map((reaction) => <BadgeEmoji key={reaction.id} emoji={reaction?.emoji} count={reaction?.count} />)}
-            <button
-              onClick={() => setEmojiDropdown(!emojiDropdown)}
-              type="button"
-              className={HeaderServiceStyles.modalIcon}
-            >
-              <img src={arrowDownIcon} alt="arrowDownIcon" />
-              {emojiDropdown && <EmojiDropdown emojiList={recipientData?.topReactions || []} />}
-            </button>
-          </div>
+          {recipientData && recipientData.topReactions && recipientData.topReactions.length > 0 && (
+            <div className={HeaderServiceStyles.headerEmoji}>
+              {recipientData.topReactions.slice(0, 3).map((reaction) => (
+                <BadgeEmoji key={reaction.id} emoji={reaction?.emoji} count={reaction?.count} />
+              ))}
+              <button
+                onClick={() => setEmojiDropdown(!emojiDropdown)}
+                type="button"
+                className={HeaderServiceStyles.modalIcon}
+              >
+                <img src={arrowDownIcon} alt="arrowDownIcon" />
+                {emojiDropdown && <EmojiDropdown emojiList={recipientData?.topReactions || []} />}
+              </button>
+            </div>
+          )}
           <div>
             <Button buttonType="outlined36">
               <SmileImg fill="black" />
@@ -89,5 +89,7 @@ function HeaderService() {
     </div>
   );
 }
-
+HeaderService.propTypes = {
+  postId: PropTypes.string.isRequired,
+};
 export default HeaderService;
