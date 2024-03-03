@@ -4,9 +4,8 @@ import Check from 'assets/images/check.svg';
 
 import styles from 'components/CheckButton/CheckButton.module.scss';
 
-function CheckButton({ buttonState, onClick }) {
+function CheckButton({ buttonState }) {
   let buttonClass;
-  const handleClick = () => onClick();
 
   if (buttonState === 'enabled') {
     buttonClass = styles.checkButton;
@@ -16,17 +15,7 @@ function CheckButton({ buttonState, onClick }) {
   }
 
   return (
-    <div
-      className={buttonClass}
-      role="button"
-      onClick={handleClick}
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          handleClick();
-        }
-      }}
-    >
+    <div className={buttonClass} role="button" tabIndex={0}>
       <img src={Check} alt="추가" />
     </div>
   );
@@ -34,7 +23,6 @@ function CheckButton({ buttonState, onClick }) {
 
 CheckButton.propTypes = {
   buttonState: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
 };
 
 CheckButton.defaultProps = {

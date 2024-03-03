@@ -11,20 +11,42 @@ function BackColorOption({ onSelect }) {
     setSelectedColor(color);
     onSelect(color);
   };
+  const clolrList = {
+    beige: 'beige',
+    purple: 'purple',
+    blue: 'blue',
+    green: 'green',
+  };
 
   return (
     <div className={styles.backgroundOption}>
-      <button className={`${styles.option} ${styles.beige}`} onClick={() => handleColorSelect('beige')} type="button">
-        {selectedColor === 'beige' && <CheckButton />}
+      <button
+        className={`${styles.option} ${styles.beige}`}
+        onClick={() => handleColorSelect(clolrList.beige)}
+        type="button"
+      >
+        {selectedColor === clolrList.beige && <CheckButton />}
       </button>
-      <button className={`${styles.option} ${styles.purple}`} onClick={() => handleColorSelect('purple')} type="button">
-        {selectedColor === 'purple' && <CheckButton />}
+      <button
+        className={`${styles.option} ${styles.purple}`}
+        onClick={() => handleColorSelect(clolrList.purple)}
+        type="button"
+      >
+        {selectedColor === clolrList.purple && <CheckButton />}
       </button>
-      <button className={`${styles.option} ${styles.blue}`} onClick={() => handleColorSelect('blue')} type="button">
-        {selectedColor === 'blue' && <CheckButton />}
+      <button
+        className={`${styles.option} ${styles.blue}`}
+        onClick={() => handleColorSelect(clolrList.blue)}
+        type="button"
+      >
+        {selectedColor === clolrList.blue && <CheckButton />}
       </button>
-      <button className={`${styles.option}  ${styles.green}`} onClick={() => handleColorSelect('green')} type="button">
-        {selectedColor === 'green' && <CheckButton />}
+      <button
+        className={`${styles.option}  ${styles.green}`}
+        onClick={() => handleColorSelect(clolrList.green)}
+        type="button"
+      >
+        {selectedColor === clolrList.green && <CheckButton />}
       </button>
     </div>
   );
