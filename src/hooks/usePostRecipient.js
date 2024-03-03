@@ -53,7 +53,6 @@ function usePostRecipient() {
     try {
       const response = await createApiRequest().post(apiEndpoint, postData);
       setData(response);
-      console.log('id출력', response.id);
       return response.id;
     } catch (errorData) {
       setError(errorData);
