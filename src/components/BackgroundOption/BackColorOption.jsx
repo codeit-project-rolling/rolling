@@ -20,34 +20,16 @@ function BackColorOption({ onSelect }) {
 
   return (
     <div className={styles.backgroundOption}>
-      <button
-        className={`${styles.option} ${styles.beige}`}
-        onClick={() => handleColorSelect(clolrList.beige)}
-        type="button"
-      >
-        {selectedColor === clolrList.beige && <CheckButton />}
-      </button>
-      <button
-        className={`${styles.option} ${styles.purple}`}
-        onClick={() => handleColorSelect(clolrList.purple)}
-        type="button"
-      >
-        {selectedColor === clolrList.purple && <CheckButton />}
-      </button>
-      <button
-        className={`${styles.option} ${styles.blue}`}
-        onClick={() => handleColorSelect(clolrList.blue)}
-        type="button"
-      >
-        {selectedColor === clolrList.blue && <CheckButton />}
-      </button>
-      <button
-        className={`${styles.option}  ${styles.green}`}
-        onClick={() => handleColorSelect(clolrList.green)}
-        type="button"
-      >
-        {selectedColor === clolrList.green && <CheckButton />}
-      </button>
+      {Object.keys(clolrList).map((color) => (
+        <button
+          key={color}
+          className={`${styles.option} ${styles[color]}`}
+          onClick={() => handleColorSelect(clolrList[color])}
+          type="button"
+        >
+          {selectedColor === clolrList[color] && <CheckButton />}
+        </button>
+      ))}
     </div>
   );
 }

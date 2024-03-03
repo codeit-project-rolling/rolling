@@ -1,4 +1,8 @@
+@import 'assets/styles/global.scss';
 .postPageContainer {
+  @include mobile {
+    margin: 0 2rem;
+  }
   .headerContainer {
     width: 100%;
   }
@@ -21,6 +25,9 @@
         margin-top: 1.2rem;
         margin-bottom: 1rem;
         width: 72rem;
+        @include mobile {
+          width: 32rem;
+        }
         padding: 1.2rem 1.6rem;
         font-size: 1.6rem;
         font-weight: 400;
@@ -43,6 +50,13 @@
       .createBtn {
         margin-top: 6.9rem;
         width: 72rem;
+        @include tablet {
+          margin-top: 34rem;
+        }
+        @include mobile {
+          margin-top: 8.2rem;
+          width: 32rem;
+        }
       }
     }
   }

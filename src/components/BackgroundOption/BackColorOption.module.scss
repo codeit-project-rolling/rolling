@@ -1,6 +1,12 @@
 @import 'assets/styles/global.scss';
 .backgroundOption {
   display: flex;
+  @include mobile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 두 개의 열 생성 */
+    grid-gap: 1.2rem; /* 그리드 간격 설정 */
+  }
+
   .option {
     border: none;
     width: 16.8rem;
@@ -13,6 +19,11 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    cursor: pointer;
+    @include mobile {
+      width: 15.4rem;
+      height: 15.4rem;
+    }
   }
   .beige {
     background-color: $Orange200;

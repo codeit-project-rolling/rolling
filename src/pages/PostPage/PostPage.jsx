@@ -61,7 +61,7 @@ function PostPage() {
   return (
     <div className={styles.postPageContainer}>
       <div className={styles.headerContainer}>
-        <Header />;
+        <Header />
       </div>
       <div className={styles.mainContainer}>
         <div className={styles.recipientContainer}>
