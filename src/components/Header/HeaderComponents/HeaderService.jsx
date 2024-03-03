@@ -59,7 +59,10 @@ function HeaderService({ postId }) {
                 <BadgeEmoji key={reaction.id} emoji={reaction?.emoji} count={reaction?.count} />
               ))}
               <button
-                onClick={() => setEmojiDropdown(!emojiDropdown)}
+                onClick={() => {
+                  setEmojiDropdown(!emojiDropdown);
+                  setShareDropdown(false);
+                }}
                 type="button"
                 className={HeaderServiceStyles.modalIcon}
               >
@@ -79,11 +82,12 @@ function HeaderService({ postId }) {
             buttonType="outlined36"
             onClick={() => {
               setShareDropdown(!shareDropdown);
+              setEmojiDropdown(false);
             }}
           >
             <ShareImg fill="black" />
+            {shareDropdown && <ShareDropdown />}
           </Button>
-          {shareDropdown && <ShareDropdown />}
         </div>
       </div>
     </div>

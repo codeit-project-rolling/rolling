@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import modalStyles from 'components/Header/HeaderComponents/EmojiDropdown.module.scss';
 
-function EmojiModal({ emojiList }) {
+function EmojiDropdown({ emojiList }) {
   return (
     <div className={modalStyles.modalContainer}>
       <div className={modalStyles.emojiBtnContainer}>
@@ -19,7 +19,7 @@ function EmojiModal({ emojiList }) {
   );
 }
 
-EmojiModal.propTypes = {
+EmojiDropdown.propTypes = {
   emojiList: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -29,4 +29,4 @@ EmojiModal.propTypes = {
   ).isRequired,
 };
 
-export default EmojiModal;
+export default EmojiDropdown;
