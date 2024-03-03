@@ -6,6 +6,7 @@ body {
 }
 
 .cardListContainer {
+  position: relative;
   display: flex;
   justify-content: center;
   background: var(--Orange-200, #ffe2ad);
@@ -48,4 +49,11 @@ body {
     transform: scale(1.1);
     z-index: 1;
   }
+}
+
+.toast {
+  position: absolute;
+  bottom: 7rem;
+  width: 52.4rem;
+  height: 6.4rem;
 }

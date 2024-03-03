@@ -1,17 +1,21 @@
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useGetMessageList from 'hooks/useGetMessageList';
 import useModal from 'hooks/useModal';
 
+// eslint-disable-next-line import/no-cycle
 import HeaderLayout from 'components/Header/HeaderLayout';
 import PlusButton from 'components/PlusButton/PlusButton';
+import Toast from 'components/Toast/Toast';
 import Card from 'components/card/card';
 
 import { modalList } from 'contexts/ModalComponent';
 
 import styles from 'pages/PostPage/PostIdPage/PostIdPage.module.scss';
+
+export const UserContext = React.createContext();
 
 function PostIdPage() {
   const { openModal } = useModal();
@@ -21,6 +25,17 @@ function PostIdPage() {
   const [exportData, setExportData] = useState([]);
 
   const { data } = useGetMessageList({ id: 3058 });
+
+  const [showToast, setShowToast] = useState(false);
+
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
+  const handleUrlClick = () => {
+    const link = 'https://your-shared-link.com';
+    navigator.clipboard.writeText(link);
+    setShowToast(!showToast);
+    setTimeout(() => setShowToast(false), 5000);
+  };
+
   const handleClick = () => {
     navigate('/post/3058/message');
   };
@@ -44,9 +59,12 @@ function PostIdPage() {
       setLoading(false);
     }
   }, [data]);
+
   return (
     <>
-      <HeaderLayout />
+      <UserContext.Provider value={handleUrlClick}>
+        <HeaderLayout />
+      </UserContext.Provider>
       <div className={styles.heightCover} />
       <div className={styles.cardListContainer}>
         <div className={styles.cardList}>
@@ -61,6 +79,7 @@ function PostIdPage() {
             ))
           )}
         </div>
+        <div className={styles.toast}>{showToast && <Toast onClick={handleUrlClick} />}</div>
       </div>
     </>
   );
