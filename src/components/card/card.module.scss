@@ -42,17 +42,10 @@
 }
 
 .deleteIcon {
+  position: absolute;
   width: 4rem;
   height: 4rem;
-  padding: 0.8rem;
-  border-radius: 0.6rem;
-  border: 0.1rem solid $Grayscale300;
-  background: $White;
-
-  img {
-    width: 2.4rem;
-    height: 2.4rem;
-  }
+  right: 2.4rem;
 }
 
 .profile_detail {

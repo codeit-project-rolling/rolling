@@ -6,6 +6,7 @@ import deleteIcon from 'assets/images/deletedIcon.svg';
 
 // import { useState } from 'react';
 import Badge from 'components/Badge/Badge';
+import Button from 'components/Button/Button';
 
 import formatDate from 'utils/formatDate';
 
@@ -32,12 +33,12 @@ function Card({ data, showDeleteIcon, className, onClick }) {
           </div>
         </div>
         {/* ---휴지통 버튼 온/오프 ---- */}
-        {showDeleteIcon && (
-          <div className={CardStyle.deleteIcon}>
-            <img src={deleteIcon} alt="휴지통 이미지" />
-          </div>
-        )}
       </div>
+      {showDeleteIcon && (
+        <Button className={CardStyle.deleteIcon} buttonType="outlined36">
+          <img src={deleteIcon} alt="휴지통 이미지" />
+        </Button>
+      )}
 
       <div className={CardStyle.text_box}>
         <div className={CardStyle.text}>{data?.content}</div>

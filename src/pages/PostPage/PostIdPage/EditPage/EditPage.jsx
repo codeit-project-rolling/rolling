@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import useGetMessageList from 'hooks/useGetMessageList';
 import useModal from 'hooks/useModal';
 
+import Button from 'components/Button/Button';
 // eslint-disable-next-line import/no-cycle
 import HeaderLayout from 'components/Header/HeaderLayout';
 import PlusButton from 'components/PlusButton/PlusButton';
@@ -13,9 +14,9 @@ import Card from 'components/card/card';
 
 import { modalList } from 'contexts/ModalComponent';
 
-import styles from 'pages/PostPage/PostIdPage/PostIdPage.module.scss';
+import styles from 'pages/PostPage/PostIdPage/EditPage/EditPage.module.scss';
 
-export const UserContext = React.createContext();
+export const UserDeleteContext = React.createContext();
 
 function EditPage() {
   const { openModal } = useModal();
@@ -40,6 +41,10 @@ function EditPage() {
     navigate('/post/3058/message');
   };
 
+  const handleDeleteClick = () => {
+    console.log('삭제');
+  };
+
   const handleCardClick = (clickedItem) => {
     openModal(modalList.Modal, {
       onSubmit: null,
@@ -62,9 +67,9 @@ function EditPage() {
 
   return (
     <>
-      <UserContext.Provider value={handleUrlClick}>
+      <UserDeleteContext.Provider value={handleUrlClick}>
         <HeaderLayout />
-      </UserContext.Provider>
+      </UserDeleteContext.Provider>
       <div className={styles.heightCover} />
       <div className={styles.cardListContainer}>
         <div className={styles.cardList}>
@@ -75,9 +80,18 @@ function EditPage() {
             <div>Loading...</div>
           ) : (
             exportData?.map((item) => (
-              <Card onClick={() => handleCardClick(item)} className={styles.card} key={item.id} data={item} />
+              <Card
+                showDeleteIcon
+                onClick={() => handleCardClick(item)}
+                className={styles.card}
+                key={item.id}
+                data={item}
+              />
             ))
           )}
+          <Button className={styles.editButton} buttonType="primary40" onClick={handleDeleteClick}>
+            <p>삭제하기</p>
+          </Button>
         </div>
         <div className={styles.toast}>{showToast && <Toast onClick={handleUrlClick} />}</div>
       </div>
