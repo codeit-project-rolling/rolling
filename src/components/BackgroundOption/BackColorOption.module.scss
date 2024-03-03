@@ -3,8 +3,8 @@
   display: flex;
   @include mobile {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 두 개의 열 생성 */
-    grid-gap: 1.2rem; /* 그리드 간격 설정 */
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.2rem;
   }
 
   .option {

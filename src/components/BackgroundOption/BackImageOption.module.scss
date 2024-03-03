@@ -1,6 +1,11 @@
 @import 'assets/styles/global.scss';
 .backgroundOption {
   display: flex;
+  @include mobile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.2rem;
+  }
   .option {
     border: none;
     max-width: 16.8rem;
@@ -14,6 +19,10 @@
     align-items: center;
     position: relative;
     cursor: pointer;
+    @include mobile {
+      width: 15.4rem;
+      height: 15.4rem;
+    }
     .image {
       width: 100%;
       height: 100%;
