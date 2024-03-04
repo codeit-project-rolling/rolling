@@ -36,6 +36,7 @@ function EditPage() {
 
   const handleDeleteClick = () => {
     deleteRecipient({ id });
+    navigate(`/list`);
   };
 
   const handleCardClick = (clickedItem) => {
@@ -64,42 +65,6 @@ function EditPage() {
       <div className={styles.heightCover} />
       <div style={{ backgroundColor: color }} className={styles.cardListContainer}>
         <div className={styles.cardList}>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
-          </div>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
-          </div>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
-          </div>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
-          </div>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
-          </div>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
-          </div>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
-          </div>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
-          </div>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
-          </div>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
-          </div>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
-          </div>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
-          </div>
           <div className={buttonAndCardCombinedClass}>
             <PlusButton onClick={handleClick} />
           </div>

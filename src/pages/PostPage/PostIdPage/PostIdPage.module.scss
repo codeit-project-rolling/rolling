@@ -28,6 +28,17 @@ body {
     width: calc(100% - 4.8rem);
     margin-left: 2.4rem;
     margin-right: 2.4rem;
+    margin-top: 9.3rem;
+  }
+  @include tablet {
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 9.3rem;
+  }
+  @include mobile {
+    width: 100%;
+    grid-template-columns: 1fr;
+    margin-top: 3.2rem;
   }
 }
 
@@ -41,9 +52,14 @@ body {
   background: $White;
   box-shadow: 0rem 0.2rem 1.2rem 0rem rgba(0, 0, 0, 0.08);
   padding: 2.8rem 2.4rem;
+  @include tablet {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .card {
+  position: relative;
   transition: transform 0.3s ease;
   &:hover {
     transform: scale(1.1);
@@ -62,4 +78,12 @@ body {
   position: absolute;
   top: -5rem;
   right: 0;
+  @include tablet {
+    position: fixed;
+    z-index: 1;
+    bottom: 2.4rem;
+    right: auto;
+    top: auto;
+    width: calc(100% - 4.8rem);
+  }
 }
