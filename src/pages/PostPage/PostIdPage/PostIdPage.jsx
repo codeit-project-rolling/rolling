@@ -29,9 +29,7 @@ function PostIdPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [exportData, setExportData] = useState([]);
-
   const { data } = useGetMessageList({ id });
-
   const [showToast, setShowToast] = useState(false);
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
@@ -43,11 +41,11 @@ function PostIdPage() {
   };
   console.log('getData', recipientInfo);
   const handleClick = () => {
-    navigate('/post/3058/message');
+    navigate(`/post/${id}/message`);
   };
 
   const handleEditClick = () => {
-    navigate('/post/3058/edit');
+    navigate(`/post/${id}/edit`);
   };
 
   const handleCardClick = (clickedItem) => {

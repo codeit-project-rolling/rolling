@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import useGetMessageList from 'hooks/useGetMessageList';
 import useModal from 'hooks/useModal';
@@ -15,19 +15,17 @@ import { modalList } from 'contexts/ModalComponent';
 
 import styles from 'pages/PostPage/PostIdPage/EditPage/EditPage.module.scss';
 
-export const UserDeleteContext = React.createContext();
-
 function EditPage() {
+  const { id } = useParams();
   const { openModal } = useModal();
   const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [exportData, setExportData] = useState([]);
-
-  const { data } = useGetMessageList({ id: 3058 });
+  const { data } = useGetMessageList({ id });
 
   const handleClick = () => {
-    navigate('/post/3058/message');
+    navigate(`/post/${id}/message`);
   };
 
   const handleDeleteClick = () => {
