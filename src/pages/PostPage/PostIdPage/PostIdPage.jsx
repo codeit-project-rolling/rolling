@@ -29,7 +29,7 @@ function PostIdPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [exportData, setExportData] = useState([]);
-  const { data } = useGetMessageList({ id });
+  const { data } = useGetMessageList({ id, limit: 20 });
   const [showToast, setShowToast] = useState(false);
 
   const { backgroundColor } = recipientInfo;

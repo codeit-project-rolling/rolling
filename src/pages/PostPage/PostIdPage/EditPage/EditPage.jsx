@@ -25,7 +25,7 @@ function EditPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [exportData, setExportData] = useState([]);
-  const { data } = useGetMessageList({ id });
+  const { data } = useGetMessageList({ id, limit: 20 });
   const { backgroundColor } = recipientInfo;
   const { backgroundImageURL } = recipientInfo;
   const { deleteRecipient } = useDeleteRecipient();
