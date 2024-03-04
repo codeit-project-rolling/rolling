@@ -9,7 +9,6 @@ import Button from 'components/Button/Button';
 // eslint-disable-next-line import/no-cycle
 import HeaderLayout from 'components/Header/HeaderLayout';
 import PlusButton from 'components/PlusButton/PlusButton';
-import Toast from 'components/Toast/Toast';
 import Card from 'components/card/card';
 
 import { modalList } from 'contexts/ModalComponent';
@@ -26,16 +25,6 @@ function EditPage() {
   const [exportData, setExportData] = useState([]);
 
   const { data } = useGetMessageList({ id: 3058 });
-
-  const [showToast, setShowToast] = useState(false);
-
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
-  const handleUrlClick = () => {
-    const link = 'https://your-shared-link.com';
-    navigator.clipboard.writeText(link);
-    setShowToast(!showToast);
-    setTimeout(() => setShowToast(false), 5000);
-  };
 
   const handleClick = () => {
     navigate('/post/3058/message');
@@ -67,9 +56,7 @@ function EditPage() {
 
   return (
     <>
-      <UserDeleteContext.Provider value={handleUrlClick}>
-        <HeaderLayout />
-      </UserDeleteContext.Provider>
+      <HeaderLayout />
       <div className={styles.heightCover} />
       <div className={styles.cardListContainer}>
         <div className={styles.cardList}>
@@ -93,7 +80,6 @@ function EditPage() {
             <p>삭제하기</p>
           </Button>
         </div>
-        <div className={styles.toast}>{showToast && <Toast onClick={handleUrlClick} />}</div>
       </div>
     </>
   );
