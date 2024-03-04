@@ -8,7 +8,8 @@ body {
 .cardListContainer {
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   background: var(--Orange-200, #ffe2ad);
   height: calc(100% - 12.7rem);
 }

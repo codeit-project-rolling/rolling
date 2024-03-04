@@ -1,9 +1,10 @@
 import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import useGetMessageList from 'hooks/useGetMessageList';
 import useGetRecipient from 'hooks/useGetRecipient';
+import useIntersectionObserver from 'hooks/useIntersectionObserver';
 import useModal from 'hooks/useModal';
 
 import Button from 'components/Button/Button';
@@ -20,14 +21,24 @@ import styles from 'pages/PostPage/PostIdPage/PostIdPage.module.scss';
 export const UserContext = React.createContext();
 
 function PostIdPage() {
+  // 무한 스크롤
+  const limit = 2;
+  const [offset, setOffset] = useState(0);
+  const loadMoreMessageList = useCallback(() => {
+    setOffset((prevOffset) => prevOffset + limit);
+  }, [limit]);
+  const setObservationTarget = useIntersectionObserver(loadMoreMessageList);
+
+  // 일반
   const { id } = useParams();
   const { data: recipientInfo } = useGetRecipient({ id });
-  const { data: messageList, loading } = useGetMessageList({ id });
+  const { data: messageList, loading } = useGetMessageList({ id, limit, offset });
   const [showToast, setShowToast] = useState(false);
   const { openModal } = useModal();
   const navigate = useNavigate();
 
-  const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
+  // 데이터 저장할 배열
+  const [loadedMessageList, setLoadedMessageList] = useState([]);
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const handleUrlClick = () => {
@@ -59,8 +70,16 @@ function PostIdPage() {
   };
 
   useEffect(() => {
-    console.log('getData', recipientInfo);
-  }, [recipientInfo]);
+    const currentMessageList = loadedMessageList;
+    const nextMessageList = messageList?.results;
+    if (nextMessageList) {
+      const allMessageList = [...currentMessageList, ...nextMessageList];
+      setLoadedMessageList(allMessageList);
+    }
+  }, [recipientInfo, offset]);
+
+  // ClassNames
+  const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
 
   return (
     <>
@@ -73,7 +92,7 @@ function PostIdPage() {
           <div className={buttonAndCardCombinedClass}>
             <PlusButton onClick={handleClick} />
           </div>
-          {messageList?.results?.map((item) => (
+          {loadedMessageList?.map((item) => (
             <Card onClick={() => handleCardClick(item)} className={styles.card} key={item.id} data={item} />
           ))}
           {loading && <div>Loading...</div>}
@@ -81,6 +100,8 @@ function PostIdPage() {
             <p>편집하기</p>
           </Button>
         </div>
+        {/* 옵저버에 등록될 엔트리 */}
+        {!loading && <div ref={setObservationTarget}>옵저버</div>}
         <div className={styles.toast}>{showToast && <Toast onClick={handleUrlClick} />}</div>
       </div>
     </>
