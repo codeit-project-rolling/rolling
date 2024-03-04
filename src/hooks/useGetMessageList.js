@@ -1,4 +1,6 @@
-import apiGet from 'apis/apiGet';
+import { useCallback, useEffect, useState } from 'react';
+
+import createApiRequest from 'apis/createApiRequest';
 
 // Github Wiki: API 명세 2-4) 대상에게 보낸 메세지 목록 조회
 // id: integer required
@@ -18,6 +20,8 @@ function validateInput({ id }) {
   return null;
 }
 
+const TEAM = process.env.REACT_APP_TEAM;
+
 function useGetMessageList({ id, limit, offset }) {
   // 에러 처리
   const errorMessage = validateInput({ id });
@@ -27,19 +31,35 @@ function useGetMessageList({ id, limit, offset }) {
     return { data: null, loading: false, error: errorMessage };
   }
 
-  // apiGet
-  // URLSearchParams 사용
-  const queryParams = new URLSearchParams();
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (limit) queryParams.append('limit', limit);
-  if (offset) queryParams.append('offset', offset);
+  const getMessageList = useCallback(async () => {
+    // api 요청
+    const queryParams = new URLSearchParams();
 
-  const queryString = queryParams.toString();
-  const apiEndpoint = `recipients/${id}/messages/${queryString ? `?${queryString}` : ''}`;
+    if (limit) queryParams.append('limit', limit);
+    if (offset) queryParams.append('offset', offset);
 
-  const { data, loading, error } = apiGet(apiEndpoint);
+    const queryString = queryParams.toString();
+    const apiEndpoint = `${TEAM}/recipients/${id}/messages/${queryString ? `?${queryString}` : ''}`;
 
-  return { data, loading, error };
+    try {
+      const response = await createApiRequest().get(apiEndpoint);
+      setData(response);
+    } catch (errorData) {
+      setError(errorData);
+    } finally {
+      setLoading(false);
+    }
+  }, [id]);
+
+  useEffect(() => {
+    getMessageList();
+  }, [getMessageList]);
+
+  return { getMessageList, data, loading, error };
 }
 
 export default useGetMessageList;

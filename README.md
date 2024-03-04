@@ -14,7 +14,6 @@
 - 최희문 /post
 - 황은애 /post/{id}/message
 
-
 ## 🎨 css 스타일
 
 - module, scss
@@ -28,14 +27,13 @@
 4. hooks : 커스텀 hook
 5. pages : 각 page 별로 page 파일과 css파일
 6. utils : 데이터처리 함수
-
+7. contexts: context api와 관련된 전역 데이터 관리 함수
 
 ## 📢 공통사항
 
 - 1rem = 10px
 - 기본 폰트: Pretendard
 
-  
 ## ✔ 커밋 메시지
 
 ### 💡 타입
@@ -74,7 +72,6 @@ resolves: #1137
 
 ### Flow
 
-
 각 브랜치 -> feature -> develop -> master
 
 ### 브랜치 이름
@@ -88,11 +85,9 @@ master: Stable한 배포 가능 코드
 develop: 개발 버전
 feature: 개발중인 기능
 
-
 ## 🔥 코드 컨벤션
 
 ### 파일 확장자
-
 
 - jsx 문법 쓰는 컴포넌트 확장자: ~.jsx
 - jsx 문법 사용하지 않는 js 파일: ~.js
@@ -111,7 +106,6 @@ feature: 개발중인 기능
 - await async 사용
 - 네트워크 요청 라이브러리: axios
 - fetch 사용X
-
 
 ## 📸 이미지
 
@@ -145,15 +139,12 @@ feature: 개발중인 기능
 3. 작업 시작
 4. 작업 단계마다 Project에서 Issue 이동
 
-
 ## 🌍 배포
 
-- 배포 서비스: Netflify
+- 배포 서비스: Vercel
 - 개발 중일 때는 develop 배포
 - 배포 가능 단계가 되면 master 배포
-
 
 ## PR 템플릿
 
 ## Issue 템플릿
-

@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types'; // PropTypes를 import
 import React, { useState } from 'react';
 
 import styles from 'components/ToggleButton/ToggleButton.module.scss';
 
-function ToggleButton() {
+function ToggleButton({ onSelect }) {
   const [ColorSelected, setColorSelected] = useState(true);
 
   const handleButtonClick = (isColor) => {
@@ -11,6 +12,7 @@ function ToggleButton() {
     } else {
       setColorSelected(false);
     }
+    onSelect(isColor ? 'color' : 'image');
   };
 
   return (
@@ -32,5 +34,10 @@ function ToggleButton() {
     </div>
   );
 }
+
+// PropTypes 정의
+ToggleButton.propTypes = {
+  onSelect: PropTypes.func.isRequired,
+};
 
 export default ToggleButton;

@@ -1,8 +1,18 @@
+@import 'assets/styles/global.scss';
 .shareModalContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: absolute;
+  top: 4rem;
+  right: 0;
+  @include tablet {
+    right: 0;
+  }
+  @include mobile {
+    top: 11rem;
+    right: auto;
+  }
   z-index: 1;
   overflow: auto;
   border-radius: 8px;
