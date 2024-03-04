@@ -35,7 +35,6 @@ function PostIdPage() {
   const { backgroundColor } = recipientInfo;
   const { backgroundImageURL } = recipientInfo;
 
-  const color = !backgroundImageURL ? backgroundColor : backgroundImageURL;
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const handleUrlClick = () => {
     const link = `http://localhost:3000/post/${id}`;
@@ -43,7 +42,6 @@ function PostIdPage() {
     setShowToast(!showToast);
     setTimeout(() => setShowToast(false), 5000);
   };
-
   const handleClick = () => {
     navigate(`/post/${id}/message`);
   };
@@ -78,7 +76,14 @@ function PostIdPage() {
         <HeaderLayout postId={id} />
       </UserContext.Provider>
       <div className={styles.heightCover} />
-      <div style={{ backgroundColor: color }} className={styles.cardListContainer}>
+      <div
+        style={{
+          backgroundColor: backgroundColor || 'transparent',
+          background: `url(${backgroundImageURL}) no-repeat center fixed`,
+          backgroundSize: 'cover',
+        }}
+        className={styles.cardListContainer}
+      >
         <div className={styles.cardList}>
           <div className={buttonAndCardCombinedClass}>
             <PlusButton onClick={handleClick} />

@@ -29,7 +29,7 @@ function EditPage() {
   const { backgroundColor } = recipientInfo;
   const { backgroundImageURL } = recipientInfo;
   const { deleteRecipient } = useDeleteRecipient();
-  const color = !backgroundImageURL ? backgroundColor : backgroundImageURL;
+
   const handleClick = () => {
     navigate(`/post/${id}/message`);
   };
@@ -63,7 +63,14 @@ function EditPage() {
     <>
       <HeaderLayout postId={id} />
       <div className={styles.heightCover} />
-      <div style={{ backgroundColor: color }} className={styles.cardListContainer}>
+      <div
+        style={{
+          backgroundColor: backgroundColor || 'transparent',
+          background: `url(${backgroundImageURL}) no-repeat center fixed`,
+          backgroundSize: 'cover',
+        }}
+        className={styles.cardListContainer}
+      >
         <div className={styles.cardList}>
           <div className={buttonAndCardCombinedClass}>
             <PlusButton onClick={handleClick} />
