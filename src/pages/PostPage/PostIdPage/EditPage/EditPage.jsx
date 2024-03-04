@@ -54,7 +54,7 @@ function EditPage() {
 
   return (
     <>
-      <HeaderLayout />
+      <HeaderLayout postId={id} />
       <div className={styles.heightCover} />
       <div className={styles.cardListContainer}>
         <div className={styles.cardList}>
