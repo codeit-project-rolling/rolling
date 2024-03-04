@@ -21,7 +21,7 @@ export const UserContext = React.createContext();
 
 function PostIdPage() {
   // 무한 스크롤
-  const limit = 2;
+  const limit = 12;
   const [offset, setOffset] = useState(0);
   const loadMoreMessageList = useCallback(() => {
     setOffset((prevOffset) => prevOffset + limit);
@@ -68,7 +68,6 @@ function PostIdPage() {
   };
 
   useEffect(() => {
-    console.log(limit, offset);
     const currentMessageList = loadedMessageList;
     const nextMessageList = messageList?.results;
     if (nextMessageList) {
