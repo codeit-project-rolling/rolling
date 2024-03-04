@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-// import EmojiPicker from 'emoji-picker-react';
+import EmojiPicker from 'emoji-picker-react';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
@@ -21,6 +21,12 @@ function HeaderService({ postId }) {
   const [shareDropdown, setShareDropdown] = useState(false);
   const [recipientData, setRecipienData] = useState({});
   const { recipientInfo } = useGetRecipient({ id: postId });
+  const [emojiSelectDropdown, setEmojiSelectDropdown] = useState(false);
+
+  const handleEmojiClick = (emojiObject) => {
+    console.log(emojiObject.emoji);
+  };
+
   useEffect(() => {
     if (recipientInfo) {
       setRecipienData(recipientInfo);
@@ -75,10 +81,18 @@ function HeaderService({ postId }) {
             </div>
           )}
           <div>
-            <Button buttonType="outlined36">
+            <Button
+              buttonType="outlined36"
+              onClick={() => {
+                setEmojiSelectDropdown(!emojiSelectDropdown);
+              }}
+            >
               <SmileImg fill="black" />
               <p className={HeaderServiceStyles.onMobileHide}>추가</p>
             </Button>
+            <div className={HeaderServiceStyles.emojiSelect}>
+              {emojiSelectDropdown && <EmojiPicker autoFocusSearch={false} onEmojiClick={handleEmojiClick} />}
+            </div>
           </div>
           <div className={HeaderServiceStyles.selectionBar2} />
           <Button
