@@ -22,7 +22,7 @@ function HeaderService({ postId }) {
   const [shareDropdown, setShareDropdown] = useState(false);
   const [recipientData, setRecipienData] = useState([]);
   const [emojiSelectDropdown, setEmojiSelectDropdown] = useState(false);
-  const { recipientInfo, loading, error } = useGetRecipient({ id: postId });
+  const { getRecipient, data: recipientInfo, loading, error } = useGetRecipient({ id: postId });
 
   useEffect(() => {
     if (!loading && !error && recipientInfo) {
@@ -32,9 +32,10 @@ function HeaderService({ postId }) {
   }, [recipientInfo, loading, error]);
 
   const { postReaction } = usePostReaction();
-  const handleClickBadge = (emoji) => async () => {
+  const handleClickBadge = (emoji) => {
     const postData = { id: postId, emoji, isIncrease: true };
-    await postReaction(postData);
+    postReaction(postData);
+    getRecipient();
   };
   // useEffect(() => {
   //   console.log('rerender');
