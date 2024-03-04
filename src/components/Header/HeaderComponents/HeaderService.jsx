@@ -6,6 +6,7 @@ import { ReactComponent as ShareImg } from 'assets/images/share.svg';
 import { ReactComponent as SmileImg } from 'assets/images/smile.svg';
 
 import useGetRecipient from 'hooks/useGetRecipient';
+import usePostReaction from 'hooks/usePostReaction';
 
 import BadgeEmoji from 'components/BadgeEmoji/BadgeEmoji';
 import Button from 'components/Button/Button';
@@ -17,12 +18,17 @@ function HeaderService({ postId }) {
   const [emojiDropdown, setEmojiDropdown] = useState(false);
   const [shareDropdown, setShareDropdown] = useState(false);
   const [recipientData, setRecipienData] = useState([]);
-  const { data } = useGetRecipient({ id: postId });
+  const { data, loading, error } = useGetRecipient({ id: postId });
   useEffect(() => {
-    if (data) {
+    if (!loading && !error && data) {
       setRecipienData(data);
     }
-  }, [data]);
+  }, [data, loading, error]);
+  const { postReaction } = usePostReaction();
+  const handleClickBadge = (emoji) => async () => {
+    const postData = { id: postId, emoji, isIncrease: true };
+    await postReaction(postData);
+  };
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
       <div className={HeaderServiceStyles.headerContainer}>
@@ -56,7 +62,15 @@ function HeaderService({ postId }) {
           {recipientData && recipientData.topReactions && recipientData.topReactions.length > 0 && (
             <div className={HeaderServiceStyles.headerEmoji}>
               {recipientData.topReactions.slice(0, 3).map((reaction) => (
-                <BadgeEmoji key={reaction.id} emoji={reaction?.emoji} count={reaction?.count} />
+                <button
+                  type="button"
+                  onClick={handleClickBadge(reaction.emoji)}
+                  aria-label={`React with ${reaction.name}`}
+                  key={reaction.emoji}
+                  className={HeaderServiceStyles.badgeBtn}
+                >
+                  <BadgeEmoji emoji={reaction?.emoji} count={reaction?.count} />
+                </button>
               ))}
               <button
                 onClick={() => {

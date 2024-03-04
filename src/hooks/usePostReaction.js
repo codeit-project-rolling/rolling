@@ -48,6 +48,7 @@ function usePostReaction() {
     try {
       const response = await createApiRequest().post(apiEndpoint, postData);
       setData(response);
+      return response.id;
     } catch (errorData) {
       setError(errorData);
     } finally {
