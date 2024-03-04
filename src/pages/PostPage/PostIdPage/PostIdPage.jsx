@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import useGetMessageList from 'hooks/useGetMessageList';
-import useGetRecipient from 'hooks/useGetRecipient';
 import useIntersectionObserver from 'hooks/useIntersectionObserver';
 import useModal from 'hooks/useModal';
 
@@ -31,7 +30,6 @@ function PostIdPage() {
 
   // 일반
   const { id } = useParams();
-  const { data: recipientInfo } = useGetRecipient({ id });
   const { data: messageList, loading } = useGetMessageList({ id, limit, offset });
   const [showToast, setShowToast] = useState(false);
   const { openModal } = useModal();
@@ -70,13 +68,14 @@ function PostIdPage() {
   };
 
   useEffect(() => {
+    console.log(limit, offset);
     const currentMessageList = loadedMessageList;
     const nextMessageList = messageList?.results;
     if (nextMessageList) {
       const allMessageList = [...currentMessageList, ...nextMessageList];
       setLoadedMessageList(allMessageList);
     }
-  }, [recipientInfo, offset]);
+  }, [offset]);
 
   // ClassNames
   const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
