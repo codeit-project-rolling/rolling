@@ -8,8 +8,7 @@ import Badge from 'components/Badge/Badge';
 
 import formatDate from 'utils/formatDate';
 
-import CardStyle from './card.module.scss';
-import { CardDumpData } from './dump.data';
+import CardStyle from './Card.module.scss';
 
 function Card({ data, showDelteIcon }) {
   return (
@@ -38,10 +37,6 @@ function Card({ data, showDelteIcon }) {
       </div>
     </div>
   );
-}
-
-export function DumpCard() {
-  return <Card data={CardDumpData[0]} showDelteIcon={false} />;
 }
 
 export default Card;

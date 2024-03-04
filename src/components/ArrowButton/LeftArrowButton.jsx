@@ -6,7 +6,9 @@ import LeftButton from 'assets/images/arrow_left.svg';
 import styles from 'components/ArrowButton/ArrowButton.module.scss';
 
 function LeftArrowButton({ onClick }) {
-  const handleClick = () => onClick();
+  const handleClick = () => {
+    onClick();
+  };
 
   return (
     <div
