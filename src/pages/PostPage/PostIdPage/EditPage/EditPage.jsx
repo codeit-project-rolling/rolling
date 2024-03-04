@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import useDeleteRecipient from 'hooks/useDeleteRecipient';
 import useGetMessageList from 'hooks/useGetMessageList';
 import useGetRecipient from 'hooks/useGetRecipient';
 import useModal from 'hooks/useModal';
@@ -27,14 +28,14 @@ function EditPage() {
   const { data } = useGetMessageList({ id });
   const { backgroundColor } = recipientInfo;
   const { backgroundImageURL } = recipientInfo;
-
+  const { deleteRecipient } = useDeleteRecipient();
   const color = !backgroundImageURL ? backgroundColor : backgroundImageURL;
   const handleClick = () => {
     navigate(`/post/${id}/message`);
   };
 
   const handleDeleteClick = () => {
-    console.log('삭제');
+    deleteRecipient({ id });
   };
 
   const handleCardClick = (clickedItem) => {
@@ -63,6 +64,42 @@ function EditPage() {
       <div className={styles.heightCover} />
       <div style={{ backgroundColor: color }} className={styles.cardListContainer}>
         <div className={styles.cardList}>
+          <div className={buttonAndCardCombinedClass}>
+            <PlusButton onClick={handleClick} />
+          </div>
+          <div className={buttonAndCardCombinedClass}>
+            <PlusButton onClick={handleClick} />
+          </div>
+          <div className={buttonAndCardCombinedClass}>
+            <PlusButton onClick={handleClick} />
+          </div>
+          <div className={buttonAndCardCombinedClass}>
+            <PlusButton onClick={handleClick} />
+          </div>
+          <div className={buttonAndCardCombinedClass}>
+            <PlusButton onClick={handleClick} />
+          </div>
+          <div className={buttonAndCardCombinedClass}>
+            <PlusButton onClick={handleClick} />
+          </div>
+          <div className={buttonAndCardCombinedClass}>
+            <PlusButton onClick={handleClick} />
+          </div>
+          <div className={buttonAndCardCombinedClass}>
+            <PlusButton onClick={handleClick} />
+          </div>
+          <div className={buttonAndCardCombinedClass}>
+            <PlusButton onClick={handleClick} />
+          </div>
+          <div className={buttonAndCardCombinedClass}>
+            <PlusButton onClick={handleClick} />
+          </div>
+          <div className={buttonAndCardCombinedClass}>
+            <PlusButton onClick={handleClick} />
+          </div>
+          <div className={buttonAndCardCombinedClass}>
+            <PlusButton onClick={handleClick} />
+          </div>
           <div className={buttonAndCardCombinedClass}>
             <PlusButton onClick={handleClick} />
           </div>
