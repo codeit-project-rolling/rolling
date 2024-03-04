@@ -6,9 +6,7 @@ import useGetMessageList from 'hooks/useGetMessageList';
 import useGetRecipient from 'hooks/useGetRecipient';
 import useModal from 'hooks/useModal';
 
-// eslint-disable-next-line import/order
 import Button from 'components/Button/Button';
-
 // eslint-disable-next-line import/no-cycle
 import HeaderLayout from 'components/Header/HeaderLayout';
 import PlusButton from 'components/PlusButton/PlusButton';
@@ -23,14 +21,13 @@ export const UserContext = React.createContext();
 
 function PostIdPage() {
   const { id } = useParams();
-  const { recipientInfo } = useGetRecipient({ id });
-  const { openModal } = useModal();
-  const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
-  const [exportData, setExportData] = useState([]);
-  const { data } = useGetMessageList({ id });
+  const { data: recipientInfo } = useGetRecipient({ id });
+  const { data: messageList, loading } = useGetMessageList({ id });
   const [showToast, setShowToast] = useState(false);
+  const { openModal } = useModal();
+  const navigate = useNavigate();
+
+  const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const handleUrlClick = () => {
@@ -39,7 +36,7 @@ function PostIdPage() {
     setShowToast(!showToast);
     setTimeout(() => setShowToast(false), 5000);
   };
-  console.log('getData', recipientInfo);
+
   const handleClick = () => {
     navigate(`/post/${id}/message`);
   };
@@ -62,11 +59,8 @@ function PostIdPage() {
   };
 
   useEffect(() => {
-    if (data) {
-      setExportData(data.results);
-      setLoading(false);
-    }
-  }, [data]);
+    console.log('getData', recipientInfo);
+  }, [recipientInfo]);
 
   return (
     <>
@@ -79,13 +73,10 @@ function PostIdPage() {
           <div className={buttonAndCardCombinedClass}>
             <PlusButton onClick={handleClick} />
           </div>
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            exportData?.map((item) => (
-              <Card onClick={() => handleCardClick(item)} className={styles.card} key={item.id} data={item} />
-            ))
-          )}
+          {loading && <div>Loading...</div>}
+          {messageList?.results?.map((item) => (
+            <Card onClick={() => handleCardClick(item)} className={styles.card} key={item.id} data={item} />
+          ))}
           <Button className={styles.editButton} buttonType="secondary40" onClick={handleEditClick}>
             <p>편집하기</p>
           </Button>
