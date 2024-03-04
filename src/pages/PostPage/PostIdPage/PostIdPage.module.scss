@@ -22,9 +22,9 @@ body {
   display: grid;
   margin-top: 11.3rem;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
   gap: 2rem;
   width: 120rem;
+  grid-auto-rows: 28rem;
   @media (max-width: 1248px) {
     width: calc(100% - 4.8rem);
     margin-left: 2.4rem;
