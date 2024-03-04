@@ -5,7 +5,7 @@ import Button from 'components/Button/Button';
 function ListPage() {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/post/3058');
+    navigate('/post/4142');
   };
   return (
     <Button onClick={handleClick} buttonType="primary56">

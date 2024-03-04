@@ -20,16 +20,8 @@ import ShareDropdown from 'components/Header/HeaderComponents/ShareDropdown';
 function HeaderService({ postId }) {
   const [emojiDropdown, setEmojiDropdown] = useState(false);
   const [shareDropdown, setShareDropdown] = useState(false);
-  const [recipientData, setRecipienData] = useState([]);
   const [emojiSelectDropdown, setEmojiSelectDropdown] = useState(false);
-  const { getRecipient, data: recipientInfo, loading, error } = useGetRecipient({ id: postId });
-
-  useEffect(() => {
-    if (!loading && !error && recipientInfo) {
-      setRecipienData(recipientInfo);
-      console.log(recipientData);
-    }
-  }, [recipientInfo, loading, error]);
+  const { getRecipient, data: recipientInfo, loading } = useGetRecipient({ id: postId });
 
   const { postReaction } = usePostReaction();
   const handleClickBadge = (emoji) => {
@@ -37,9 +29,6 @@ function HeaderService({ postId }) {
     postReaction(postData);
     getRecipient();
   };
-  // useEffect(() => {
-  //   console.log('rerender');
-  // }, [postReaction]);
 
   const handleEmojiClick = (emojiObject) => {
     console.log(emojiObject.emoji);
@@ -48,22 +37,20 @@ function HeaderService({ postId }) {
   };
 
   useEffect(() => {
-    if (recipientInfo) {
-      setRecipienData(recipientInfo);
+    if (!loading) {
+      console.log(recipientInfo);
     }
-  }, [recipientInfo]);
+  }, [recipientInfo, loading]);
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
       <div className={HeaderServiceStyles.headerContainer}>
-        <p className={HeaderServiceStyles.toNickname}>To. {recipientData.name}</p>
+        <p className={HeaderServiceStyles.toNickname}>To. {recipientInfo?.name}</p>
         <hr className={HeaderServiceStyles.lineOnMobile} />
         <div className={HeaderServiceStyles.headerRight}>
           <div className={HeaderServiceStyles.howManyPerson}>
             <div className={HeaderServiceStyles.senderProfile}>
-              {recipientData &&
-                recipientData.recentMessages &&
-                recipientData.recentMessages.length > 0 &&
-                recipientData.recentMessages
+              {recipientInfo?.recentMessages?.length > 0 &&
+                recipientInfo.recentMessages
                   .slice(0, 3)
                   .map((message) => (
                     <img
@@ -73,21 +60,19 @@ function HeaderService({ postId }) {
                       key={message.id}
                     />
                   ))}
-              <div className={HeaderServiceStyles.senderCount}>
-                +{recipientData.messageCount > 3 ? recipientData.messageCount - 3 : 0}
-              </div>
+              <div className={HeaderServiceStyles.senderCount}>+{recipientInfo?.messageCount}</div>
             </div>
             <p>
-              <span>{recipientData?.messageCount}</span>명이 작성했어요!
+              <span>{recipientInfo?.messageCount}</span>명이 작성했어요!
             </p>
           </div>
           <div className={HeaderServiceStyles.selectionBar} />
-          {recipientData && recipientData.topReactions && recipientData.topReactions.length > 0 && (
+          {recipientInfo && recipientInfo.topReactions && recipientInfo.topReactions.length > 0 && (
             <div className={HeaderServiceStyles.headerEmoji}>
-              {recipientData.topReactions.slice(0, 3).map((reaction) => (
+              {recipientInfo.topReactions.slice(0, 3).map((reaction) => (
                 <button
                   type="button"
-                  onClick={handleClickBadge(reaction.emoji)}
+                  onClick={() => handleClickBadge(reaction.emoji)}
                   aria-label={`React with ${reaction.name}`}
                   key={reaction.emoji}
                   className={HeaderServiceStyles.badgeBtn}
