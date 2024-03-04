@@ -19,13 +19,13 @@ import ShareDropdown from 'components/Header/HeaderComponents/ShareDropdown';
 function HeaderService({ postId }) {
   const [emojiDropdown, setEmojiDropdown] = useState(false);
   const [shareDropdown, setShareDropdown] = useState(false);
-  const [recipientData, setRecipienData] = useState([]);
-  const { data } = useGetRecipient({ id: postId });
+  const [recipientData, setRecipienData] = useState({});
+  const { recipientInfo } = useGetRecipient({ id: postId });
   useEffect(() => {
-    if (data) {
-      setRecipienData(data);
+    if (recipientInfo) {
+      setRecipienData(recipientInfo);
     }
-  }, [data]);
+  }, [recipientInfo]);
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
       <div className={HeaderServiceStyles.headerContainer}>

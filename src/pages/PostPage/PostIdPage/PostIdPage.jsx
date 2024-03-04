@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import useGetMessageList from 'hooks/useGetMessageList';
+import useGetRecipient from 'hooks/useGetRecipient';
 import useModal from 'hooks/useModal';
 
 // eslint-disable-next-line import/order
 import Button from 'components/Button/Button';
 
+// eslint-disable-next-line import/no-cycle
 import HeaderLayout from 'components/Header/HeaderLayout';
 import PlusButton from 'components/PlusButton/PlusButton';
 import Toast from 'components/Toast/Toast';
@@ -21,13 +23,14 @@ export const UserContext = React.createContext();
 
 function PostIdPage() {
   const { id } = useParams();
+  const { recipientInfo } = useGetRecipient({ id });
   const { openModal } = useModal();
   const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [exportData, setExportData] = useState([]);
 
-  const { data } = useGetMessageList({ id: 3058 });
+  const { data } = useGetMessageList({ id });
 
   const [showToast, setShowToast] = useState(false);
 
@@ -38,7 +41,7 @@ function PostIdPage() {
     setShowToast(!showToast);
     setTimeout(() => setShowToast(false), 5000);
   };
-
+  console.log('getData', recipientInfo);
   const handleClick = () => {
     navigate('/post/3058/message');
   };
