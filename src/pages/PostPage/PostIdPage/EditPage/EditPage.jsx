@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import useGetMessageList from 'hooks/useGetMessageList';
+import useGetRecipient from 'hooks/useGetRecipient';
 import useModal from 'hooks/useModal';
 
 import Button from 'components/Button/Button';
@@ -17,13 +18,17 @@ import styles from 'pages/PostPage/PostIdPage/EditPage/EditPage.module.scss';
 
 function EditPage() {
   const { id } = useParams();
+  const { recipientInfo } = useGetRecipient({ id });
   const { openModal } = useModal();
   const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [exportData, setExportData] = useState([]);
   const { data } = useGetMessageList({ id });
+  const { backgroundColor } = recipientInfo;
+  const { backgroundImageURL } = recipientInfo;
 
+  const color = !backgroundImageURL ? backgroundColor : backgroundImageURL;
   const handleClick = () => {
     navigate(`/post/${id}/message`);
   };
@@ -56,7 +61,7 @@ function EditPage() {
     <>
       <HeaderLayout postId={id} />
       <div className={styles.heightCover} />
-      <div className={styles.cardListContainer}>
+      <div style={{ backgroundColor: color }} className={styles.cardListContainer}>
         <div className={styles.cardList}>
           <div className={buttonAndCardCombinedClass}>
             <PlusButton onClick={handleClick} />
