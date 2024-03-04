@@ -34,7 +34,7 @@ function PostIdPage() {
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const handleUrlClick = () => {
-    const link = 'https://your-shared-link.com';
+    const link = `http://localhost:3000/post/${id}`;
     navigator.clipboard.writeText(link);
     setShowToast(!showToast);
     setTimeout(() => setShowToast(false), 5000);
