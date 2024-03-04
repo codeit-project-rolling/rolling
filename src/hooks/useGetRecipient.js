@@ -27,7 +27,7 @@ function useGetRecipient({ id }) {
     return { data: null, loading: false, error: errorMessage };
   }
 
-  const [data, setData] = useState(null);
+  const [recipientInfo, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -50,7 +50,7 @@ function useGetRecipient({ id }) {
     getRecipient();
   }, [getRecipient]);
 
-  return { getRecipient, data, loading, error };
+  return { getRecipient, recipientInfo, loading, error };
 }
 
 export default useGetRecipient;

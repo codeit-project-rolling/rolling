@@ -6,7 +6,7 @@ function EmojiDropdown({ emojiList }) {
   return (
     <div className={modalStyles.modalContainer}>
       <div className={modalStyles.emojiBtnContainer}>
-        {emojiList.map((reaction) => (
+        {emojiList.slice(0, 8).map((reaction) => (
           <button key={reaction.id} type="button" className={modalStyles.emojiBtn}>
             <p>
               {reaction?.emoji}
