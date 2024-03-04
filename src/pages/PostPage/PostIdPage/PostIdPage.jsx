@@ -1,12 +1,13 @@
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import useGetMessageList from 'hooks/useGetMessageList';
 import useModal from 'hooks/useModal';
 
+// eslint-disable-next-line import/order
 import Button from 'components/Button/Button';
-// eslint-disable-next-line import/no-cycle
+
 import HeaderLayout from 'components/Header/HeaderLayout';
 import PlusButton from 'components/PlusButton/PlusButton';
 import Toast from 'components/Toast/Toast';
@@ -19,6 +20,7 @@ import styles from 'pages/PostPage/PostIdPage/PostIdPage.module.scss';
 export const UserContext = React.createContext();
 
 function PostIdPage() {
+  const { id } = useParams();
   const { openModal } = useModal();
   const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
   const navigate = useNavigate();
@@ -68,7 +70,7 @@ function PostIdPage() {
   return (
     <>
       <UserContext.Provider value={handleUrlClick}>
-        <HeaderLayout />
+        <HeaderLayout postId={id} />
       </UserContext.Provider>
       <div className={styles.heightCover} />
       <div className={styles.cardListContainer}>

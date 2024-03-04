@@ -1,92 +1,102 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import EmojiPicker from 'emoji-picker-react';
-import { useState } from 'react';
+// import EmojiPicker from 'emoji-picker-react';
+import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 
-import addEmojiIcon from 'assets/images/addEmoji.png';
 import arrowDownIcon from 'assets/images/arrow_down.png';
-import shareIcon from 'assets/images/share.png';
+import { ReactComponent as ShareImg } from 'assets/images/share.svg';
+import { ReactComponent as SmileImg } from 'assets/images/smile.svg';
+
+import useGetRecipient from 'hooks/useGetRecipient';
 
 import BadgeEmoji from 'components/BadgeEmoji/BadgeEmoji';
+import Button from 'components/Button/Button';
 import EmojiDropdown from 'components/Header/HeaderComponents/EmojiDropdown';
 import HeaderServiceStyles from 'components/Header/HeaderComponents/HeaderService.module.scss';
 // eslint-disable-next-line import/no-cycle
 import ShareDropdown from 'components/Header/HeaderComponents/ShareDropdown';
-import userData from 'components/Header/mock.json';
 
-function HeaderService() {
+function HeaderService({ postId }) {
   const [emojiDropdown, setEmojiDropdown] = useState(false);
   const [shareDropdown, setShareDropdown] = useState(false);
-  const [emojiSelectDropdown, setEmojiSelectDropdown] = useState(false);
-  const handleEmojiClick = (emojiObject) => {
-    console.log(emojiObject.emoji);
-  };
+  const [recipientData, setRecipienData] = useState([]);
+  const { data } = useGetRecipient({ id: postId });
+  useEffect(() => {
+    if (data) {
+      setRecipienData(data);
+    }
+  }, [data]);
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
       <div className={HeaderServiceStyles.headerContainer}>
-        <p className={HeaderServiceStyles.toNickname}>To. {userData.name}</p>
+        <p className={HeaderServiceStyles.toNickname}>To. {recipientData.name}</p>
+        <hr className={HeaderServiceStyles.lineOnMobile} />
         <div className={HeaderServiceStyles.headerRight}>
           <div className={HeaderServiceStyles.howManyPerson}>
             <div className={HeaderServiceStyles.senderProfile}>
-              {userData.recentMessages.slice(0, 3).map((message) => (
-                <img
-                  src={message.profileImageURL}
-                  alt="senderProfileImg"
-                  className={HeaderServiceStyles.senderProfileImg}
-                  key={message.id}
-                />
-              ))}
+              {recipientData &&
+                recipientData.recentMessages &&
+                recipientData.recentMessages.length > 0 &&
+                recipientData.recentMessages
+                  .slice(0, 3)
+                  .map((message) => (
+                    <img
+                      src={message.profileImageURL}
+                      alt="senderProfileImg"
+                      className={HeaderServiceStyles.senderProfileImg}
+                      key={message.id}
+                    />
+                  ))}
               <div className={HeaderServiceStyles.senderCount}>
-                +{userData.messageCount > 3 ? userData.messageCount - 3 : 0}
+                +{recipientData.messageCount > 3 ? recipientData.messageCount - 3 : 0}
               </div>
             </div>
             <p>
-              <span>{userData?.messageCount}</span>명이 작성했어요!
+              <span>{recipientData?.messageCount}</span>명이 작성했어요!
             </p>
           </div>
           <div className={HeaderServiceStyles.selectionBar} />
-          <div className={HeaderServiceStyles.headerEmoji}>
-            {userData.topReactions.slice(0, 3).map((reaction) => (
-              <BadgeEmoji key={reaction.id} emoji={reaction?.emoji} count={reaction?.count} />
-            ))}
-            <button
-              onClick={() => setEmojiDropdown(!emojiDropdown)}
-              type="button"
-              className={HeaderServiceStyles.modalIcon}
-            >
-              <img src={arrowDownIcon} alt="arrowDownIcon" />
-              {emojiDropdown && <EmojiDropdown emojiList={userData.topReactions} />}
-            </button>
-          </div>
-          <div>
-            <button
-              onClick={() => {
-                setEmojiSelectDropdown(!emojiSelectDropdown);
-              }}
-              type="button"
-              className={HeaderServiceStyles.addEmojiBtn}
-            >
-              <img src={addEmojiIcon} alt="addEmojiIcon" />
-              <p>추가</p>
-            </button>
-            <div className={HeaderServiceStyles.emojiSelect}>
-              {emojiSelectDropdown && <EmojiPicker autoFocusSearch={false} onEmojiClick={handleEmojiClick} />}
+          {recipientData && recipientData.topReactions && recipientData.topReactions.length > 0 && (
+            <div className={HeaderServiceStyles.headerEmoji}>
+              {recipientData.topReactions.slice(0, 3).map((reaction) => (
+                <BadgeEmoji key={reaction.id} emoji={reaction?.emoji} count={reaction?.count} />
+              ))}
+              <button
+                onClick={() => {
+                  setEmojiDropdown(!emojiDropdown);
+                  setShareDropdown(false);
+                }}
+                type="button"
+                className={HeaderServiceStyles.modalIcon}
+              >
+                <img src={arrowDownIcon} alt="arrowDownIcon" />
+                {emojiDropdown && <EmojiDropdown emojiList={recipientData?.topReactions || []} />}
+              </button>
             </div>
+          )}
+          <div>
+            <Button buttonType="outlined36">
+              <SmileImg fill="black" />
+              <p className={HeaderServiceStyles.onMobileHide}>추가</p>
+            </Button>
           </div>
-
-          <div className={HeaderServiceStyles.selectionBar} />
-          <button
-            type="button"
+          <div className={HeaderServiceStyles.selectionBar2} />
+          <Button
+            buttonType="outlined36"
             onClick={() => {
               setShareDropdown(!shareDropdown);
+              setEmojiDropdown(false);
             }}
           >
-            <img src={shareIcon} alt="shareImg" />
+            <ShareImg fill="black" />
             {shareDropdown && <ShareDropdown />}
-          </button>
+          </Button>
         </div>
       </div>
     </div>
   );
 }
-
+HeaderService.propTypes = {
+  postId: PropTypes.string.isRequired,
+};
 export default HeaderService;
