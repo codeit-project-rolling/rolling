@@ -29,6 +29,12 @@ function EditPage() {
   const { backgroundColor } = recipientInfo;
   const { backgroundImageURL } = recipientInfo;
   const { deleteRecipient } = useDeleteRecipient();
+  const [isDeleted, setIsDeleted] = useState(false);
+
+  const handleDelete = () => {
+    setIsDeleted(!isDeleted);
+    console.log(isDeleted);
+  };
 
   const handleClick = () => {
     navigate(`/post/${id}/message`);
@@ -85,6 +91,7 @@ function EditPage() {
                 className={styles.card}
                 key={item.id}
                 data={item}
+                onDelete={handleDelete}
               />
             ))
           )}
