@@ -73,10 +73,10 @@ function PostIdPage() {
           <div className={buttonAndCardCombinedClass}>
             <PlusButton onClick={handleClick} />
           </div>
-          {loading && <div>Loading...</div>}
           {messageList?.results?.map((item) => (
             <Card onClick={() => handleCardClick(item)} className={styles.card} key={item.id} data={item} />
           ))}
+          {loading && <div>Loading...</div>}
           <Button className={styles.editButton} buttonType="secondary40" onClick={handleEditClick}>
             <p>편집하기</p>
           </Button>
