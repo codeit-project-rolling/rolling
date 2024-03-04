@@ -20,7 +20,6 @@ function PostPage() {
   const [backgrounImgList, setBackgroundImgList] = useState([]);
   const [errorMsg, setErrorMsg] = useState('');
   const [selectedOption, setSelectedOption] = useState('color'); // 토글 기본 옵션 color
-  const [createdRecipientId, setCreatedRecipientId] = useState(null);
 
   const { postRecipient } = usePostRecipient();
   const postData = { name: recipientName, backgroundColor: selectedColor, backgroundImageURL: selectedImageSrc };
@@ -57,13 +56,9 @@ function PostPage() {
     }
   }, [data]);
 
-  useEffect(() => {
-    // createdRecipientId 업데이트될때마다
-  }, [createdRecipientId]);
   const handleCreateButtonClick = async () => {
     const createdId = await postRecipient(postData);
     if (createdId) {
-      setCreatedRecipientId(createdId);
       navigate(`/post/${createdId}`);
     }
   };
