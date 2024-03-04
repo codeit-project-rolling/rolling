@@ -53,7 +53,7 @@ function useGetMessageList({ id, limit, offset }) {
     } finally {
       setLoading(false);
     }
-  }, [id]);
+  }, [id, limit, offset]);
 
   useEffect(() => {
     getMessageList();
