@@ -21,14 +21,16 @@ function HeaderService({ postId }) {
   const [emojiDropdown, setEmojiDropdown] = useState(false);
   const [shareDropdown, setShareDropdown] = useState(false);
   const [recipientData, setRecipienData] = useState([]);
-  const { data, loading, error } = useGetRecipient({ id: postId });
+  const [emojiSelectDropdown, setEmojiSelectDropdown] = useState(false);
+  const { recipientInfo, loading, error } = useGetRecipient({ id: postId });
 
   useEffect(() => {
-    if (!loading && !error && data) {
-      setRecipienData(data);
+    if (!loading && !error && recipientInfo) {
+      setRecipienData(recipientInfo);
       console.log(recipientData);
     }
-  }, [data, loading, error]);
+  }, [recipientInfo, loading, error]);
+
   const { postReaction } = usePostReaction();
   const handleClickBadge = (emoji) => async () => {
     const postData = { id: postId, emoji, isIncrease: true };
@@ -38,11 +40,10 @@ function HeaderService({ postId }) {
   //   console.log('rerender');
   // }, [postReaction]);
 
-  const { recipientInfo } = useGetRecipient({ id: postId });
-  const [emojiSelectDropdown, setEmojiSelectDropdown] = useState(false);
-
   const handleEmojiClick = (emojiObject) => {
     console.log(emojiObject.emoji);
+    const postData = { id: postId, emoji: emojiObject.emoji, isIncrease: true };
+    postReaction(postData);
   };
 
   useEffect(() => {
@@ -97,6 +98,7 @@ function HeaderService({ postId }) {
                 onClick={() => {
                   setEmojiDropdown(!emojiDropdown);
                   setShareDropdown(false);
+                  setEmojiSelectDropdown(false);
                 }}
                 type="button"
                 className={HeaderServiceStyles.modalIcon}
@@ -111,6 +113,8 @@ function HeaderService({ postId }) {
               buttonType="outlined36"
               onClick={() => {
                 setEmojiSelectDropdown(!emojiSelectDropdown);
+                setEmojiDropdown(false);
+                setShareDropdown(false);
               }}
             >
               <SmileImg fill="black" />
@@ -126,6 +130,7 @@ function HeaderService({ postId }) {
             onClick={() => {
               setShareDropdown(!shareDropdown);
               setEmojiDropdown(false);
+              setEmojiSelectDropdown(false);
             }}
           >
             <ShareImg fill="black" />
