@@ -19,6 +19,7 @@ function HeaderService({ postId }) {
   const [shareDropdown, setShareDropdown] = useState(false);
   const [recipientData, setRecipienData] = useState([]);
   const { data, loading, error } = useGetRecipient({ id: postId });
+
   useEffect(() => {
     if (!loading && !error && data) {
       setRecipienData(data);
@@ -30,6 +31,9 @@ function HeaderService({ postId }) {
     const postData = { id: postId, emoji, isIncrease: true };
     await postReaction(postData);
   };
+  // useEffect(() => {
+  //   console.log('rerender');
+  // }, [postReaction]);
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
       <div className={HeaderServiceStyles.headerContainer}>
