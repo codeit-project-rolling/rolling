@@ -22,6 +22,7 @@ function HeaderService({ postId }) {
   useEffect(() => {
     if (!loading && !error && data) {
       setRecipienData(data);
+      console.log(recipientData);
     }
   }, [data, loading, error]);
   const { postReaction } = usePostReaction();
@@ -81,7 +82,7 @@ function HeaderService({ postId }) {
                 className={HeaderServiceStyles.modalIcon}
               >
                 <img src={arrowDownIcon} alt="arrowDownIcon" />
-                {emojiDropdown && <EmojiDropdown emojiList={recipientData?.topReactions || []} />}
+                {emojiDropdown && <EmojiDropdown recipienId={postId} />}
               </button>
             </div>
           )}
