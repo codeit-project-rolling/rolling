@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
+// callback: 정해진 조건을 만족했을 때 호출할 콜백 함수
 export default function useIntersectionObserver(callback) {
   const [observationTarget, setObservationTarget] = useState(null);
 
