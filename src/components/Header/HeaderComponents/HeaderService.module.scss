@@ -34,6 +34,7 @@
     letter-spacing: -0.28px;
   }
   .headerRight {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -109,6 +110,7 @@
         cursor: pointer;
       }
       .modalIcon {
+        position: relative;
         border: none;
         background-color: $White;
       }
@@ -132,6 +134,12 @@
       padding: 6px 16px;
     }
   }
+}
+
+.emojiSelect {
+  position: absolute;
+  top: 4rem;
+  right: 5rem;
 }
 .onMobileHide {
   @include mobile {

@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import EmojiPicker from 'emoji-picker-react';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
@@ -12,6 +14,7 @@ import BadgeEmoji from 'components/BadgeEmoji/BadgeEmoji';
 import Button from 'components/Button/Button';
 import EmojiDropdown from 'components/Header/HeaderComponents/EmojiDropdown';
 import HeaderServiceStyles from 'components/Header/HeaderComponents/HeaderService.module.scss';
+// eslint-disable-next-line import/no-cycle
 import ShareDropdown from 'components/Header/HeaderComponents/ShareDropdown';
 
 function HeaderService({ postId }) {
@@ -34,6 +37,19 @@ function HeaderService({ postId }) {
   // useEffect(() => {
   //   console.log('rerender');
   // }, [postReaction]);
+
+  const { recipientInfo } = useGetRecipient({ id: postId });
+  const [emojiSelectDropdown, setEmojiSelectDropdown] = useState(false);
+
+  const handleEmojiClick = (emojiObject) => {
+    console.log(emojiObject.emoji);
+  };
+
+  useEffect(() => {
+    if (recipientInfo) {
+      setRecipienData(recipientInfo);
+    }
+  }, [recipientInfo]);
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
       <div className={HeaderServiceStyles.headerContainer}>
@@ -91,10 +107,18 @@ function HeaderService({ postId }) {
             </div>
           )}
           <div>
-            <Button buttonType="outlined36">
+            <Button
+              buttonType="outlined36"
+              onClick={() => {
+                setEmojiSelectDropdown(!emojiSelectDropdown);
+              }}
+            >
               <SmileImg fill="black" />
               <p className={HeaderServiceStyles.onMobileHide}>추가</p>
             </Button>
+            <div className={HeaderServiceStyles.emojiSelect}>
+              {emojiSelectDropdown && <EmojiPicker autoFocusSearch={false} onEmojiClick={handleEmojiClick} />}
+            </div>
           </div>
           <div className={HeaderServiceStyles.selectionBar2} />
           <Button

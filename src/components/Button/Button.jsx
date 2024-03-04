@@ -13,15 +13,15 @@ function Button({ className, buttonType, children, disabled, onClick }) {
     [styles.outlinedButton40]: buttonType === 'outlined40' && React.Children.count(children) === 1,
     [styles.outlinedSmileButton40]: buttonType === 'outlined40' && React.Children.count(children) > 1,
     [styles.outlinedButton36]:
-      buttonType === 'outlined36' && typeof children[0] !== 'string' && React.Children.count(children) === 1,
+      buttonType === 'outlined36' && children[0] === 'p' && React.Children.count(children) === 1,
     [styles.outlinedSmileButton36]: buttonType === 'outlined36' && React.Children.count(children) > 1,
     [styles.outlinedButton28]:
-      buttonType === 'outlined28' && typeof children[0] !== 'string' && React.Children.count(children) === 1,
+      buttonType === 'outlined28' && children[0] === 'p' && React.Children.count(children) === 1,
     [styles.outlinedSmileButton28]: buttonType === 'outlined28' && React.Children.count(children) > 1,
     [styles.outlinedSingleButton36]:
-      buttonType === 'outlined36' && typeof children.type !== 'string' && React.Children.count(children) === 1,
+      buttonType === 'outlined36' && children.type !== 'p' && React.Children.count(children) === 1,
     [styles.outlinedSingleButton28]:
-      buttonType === 'outlined28' && typeof children.type !== 'string' && React.Children.count(children) === 1,
+      buttonType === 'outlined28' && children.type !== 'p' && React.Children.count(children) === 1,
     [styles.disabled]: disabled,
   };
 
