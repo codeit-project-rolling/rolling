@@ -10,7 +10,6 @@
   background: $White;
   box-shadow: 0rem 0.2rem 1.2rem 0rem rgba(0, 0, 0, 0.08);
   padding: 2.8rem 2.4rem;
-  border: 0;
 
   @include tablet {
     width: 35.2rem;
@@ -25,6 +24,8 @@
 .profileBox {
   display: flex;
   justify-content: space-between;
+  border: 0;
+  background-color: transparent;
 }
 
 .profile {
@@ -77,6 +78,8 @@
   align-items: start;
   gap: 1.4rem;
   border-top: 0.1rem solid $Grayscale200;
+  border: 0;
+  background-color: transparent;
 }
 
 .text {

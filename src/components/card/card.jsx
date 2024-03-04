@@ -21,8 +21,8 @@ function Card({ data, showDeleteIcon, className, onClick }) {
   };
 
   return (
-    <button type="button" className={buttonAndCardCombinedClass} onClick={handleClick}>
-      <div className={CardStyle.profileBox}>
+    <div className={buttonAndCardCombinedClass}>
+      <button type="button" className={CardStyle.profileBox} onClick={handleClick}>
         <div className={CardStyle.profile}>
           <img src={data?.profileImageURL} alt={`${data?.sender} 이미지`} />
           <div className={CardStyle.profile_detail}>
@@ -32,19 +32,18 @@ function Card({ data, showDeleteIcon, className, onClick }) {
             <Badge relationship={data?.relationship} />
           </div>
         </div>
-        {/* ---휴지통 버튼 온/오프 ---- */}
-      </div>
+      </button>
       {showDeleteIcon && (
         <Button className={CardStyle.deleteIcon} buttonType="outlined36">
           <img src={deleteIcon} alt="휴지통 이미지" />
         </Button>
       )}
 
-      <div className={CardStyle.text_box}>
+      <button type="button" className={CardStyle.text_box} onClick={handleClick}>
         <div className={CardStyle.text}>{data?.content}</div>
         <div className={CardStyle.text_date}>{formatDate(data?.createdAt)}</div>
-      </div>
-    </button>
+      </button>
+    </div>
   );
 }
 
