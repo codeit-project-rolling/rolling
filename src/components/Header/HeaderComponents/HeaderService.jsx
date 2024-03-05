@@ -94,7 +94,7 @@ function HeaderService({ postId }) {
               </button>
             </div>
           )}
-          <div className={HeaderServiceStyles.onMobileStyle}>
+          <div>
             <Button
               buttonType="outlined36"
               onClick={() => {
