@@ -34,6 +34,7 @@ function HeaderService({ postId }) {
     console.log(emojiObject.emoji);
     const postData = { id: postId, emoji: emojiObject.emoji, isIncrease: true };
     postReaction(postData);
+    getRecipient();
   };
 
   useEffect(() => {

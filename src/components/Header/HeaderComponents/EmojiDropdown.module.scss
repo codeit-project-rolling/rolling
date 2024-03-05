@@ -20,6 +20,7 @@
     right: 20rem;
     top: 11rem;
   }
+
   @include mobile {
     position: fixed;
     width: 20.3rem;
@@ -34,16 +35,19 @@
     flex-wrap: wrap;
     gap: 0.8rem;
     margin: 2.4rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    justify-content: center;
+    &.tabletEmojiBtn {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
+
   .emojiBtn {
-    display: inline-flex;
-    padding: 8px 12px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
     gap: 10px;
     border-radius: 3.2rem;
-    background-color: $Grayscale400;
+    background-color: $White;
     border: none;
     color: $White;
     cursor: pointer;
