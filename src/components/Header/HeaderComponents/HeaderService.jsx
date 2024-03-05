@@ -31,7 +31,6 @@ function HeaderService({ postId }) {
   };
 
   const handleEmojiClick = (emojiObject) => {
-    console.log(emojiObject.emoji);
     const postData = { id: postId, emoji: emojiObject.emoji, isIncrease: true };
     postReaction(postData);
     getRecipient();
@@ -51,7 +50,7 @@ function HeaderService({ postId }) {
           <div className={HeaderServiceStyles.howManyPerson}>
             <div className={HeaderServiceStyles.senderProfile}>
               {recipientInfo?.recentMessages?.length > 0 &&
-                recipientInfo.recentMessages
+                recipientInfo?.recentMessages
                   .slice(0, 3)
                   .map((message) => (
                     <img
@@ -61,7 +60,9 @@ function HeaderService({ postId }) {
                       key={message.id}
                     />
                   ))}
-              <div className={HeaderServiceStyles.senderCount}>+{recipientInfo?.messageCount}</div>
+              <div className={HeaderServiceStyles.senderCount}>
+                +{recipientInfo?.messageCount > 3 ? recipientInfo.messageCount - 3 : 0}
+              </div>
             </div>
             <p>
               <span>{recipientInfo?.messageCount}</span>명이 작성했어요!
