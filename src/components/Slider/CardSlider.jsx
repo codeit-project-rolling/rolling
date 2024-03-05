@@ -36,13 +36,21 @@ function CardSlider({ children }) {
   useEffect(() => {
     const updateItemWidth = () => {
       const firstItem = sliderRef.current?.children[0];
-      setItemWidth(firstItem ? firstItem.offsetWidth + 20 : 0);
+      if (firstItem) {
+        const style = window.getComputedStyle(firstItem);
+        const marginLeft = parseInt(style.marginLeft, 10);
+        const marginRight = parseInt(style.marginRight, 10);
+        const totalWidth = firstItem.offsetWidth + marginLeft + marginRight;
+        setItemWidth(totalWidth);
+      } else {
+        setItemWidth(0);
+      }
     };
     const updateButtonVisibility = () => {
       const isScrollable =
-        containerRef.current.scrollWidth - 20 > containerRef.current.scrollLeft + sliderRef.current.offsetWidth;
+        containerRef.current.scrollWidth - 2 > containerRef.current.scrollLeft + sliderRef.current.offsetWidth;
       setShowRightButton(isScrollable && childrenArray.length > 4);
-      setShowLeftButton(containerRef.current.scrollLeft > 0);
+      setShowLeftButton(containerRef.current.scrollLeft > 2);
     };
 
     updateItemWidth();
@@ -83,14 +91,28 @@ function CardSlider({ children }) {
    */
   const scroll = (direction) => {
     if (!containerRef.current) return;
-    const currentScroll = containerRef.current.scrollLeft;
-    // 침범한 스크롤 수치
-    const remainingScroll = Math.round(currentScroll % itemWidth);
-    const newScrollPosition =
-      direction > 0 ? currentScroll + (itemWidth - remainingScroll) : currentScroll - remainingScroll;
-    const maxScroll = containerRef.current.scrollWidth - containerRef.current.clientWidth;
-    const finalScrollPosition = Math.min(Math.max(newScrollPosition, 0), maxScroll);
-    containerRef.current.scrollTo({ left: finalScrollPosition, behavior: 'smooth' });
+
+    const container = containerRef.current;
+    const currentScroll = Math.round(container.scrollLeft);
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    // 현재 스크롤 위치와 가장 가까운 아이템 경계까지의 남은 스크롤 거리를 계산
+    const remainingScroll = currentScroll % itemWidth;
+    let newScrollPosition;
+    if (direction > 0) {
+      // 오른쪽으로 이동
+      newScrollPosition = currentScroll + itemWidth - remainingScroll;
+    } else {
+      // 왼쪽으로 이동
+      newScrollPosition = currentScroll - (remainingScroll === 0 ? itemWidth : remainingScroll);
+    }
+    // 스크롤 범위를 넘지 않도록 조정
+    newScrollPosition = Math.max(0, Math.min(newScrollPosition, maxScrollLeft));
+
+    // 스크롤 실행
+    container.scrollTo({
+      left: newScrollPosition,
+      behavior: 'smooth',
+    });
   };
   /**
    * 터치 및, 드래그가 끝나면 scroll함수를 실행하고, dragState를 업데이트한다.

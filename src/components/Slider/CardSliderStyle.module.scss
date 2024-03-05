@@ -32,8 +32,8 @@
 
 .sliderButtonLeft {
   position: absolute;
-  top: 50%;
-  left: 0%;
+  top: 45%;
+  left: -1%;
   @include tablet {
     display: none;
   }
@@ -43,8 +43,8 @@
 }
 .sliderButtonRight {
   position: absolute;
-  top: 50%;
-  right: -1.5%;
+  top: 45%;
+  right: -2.5%;
   @include tablet {
     display: none;
   }
