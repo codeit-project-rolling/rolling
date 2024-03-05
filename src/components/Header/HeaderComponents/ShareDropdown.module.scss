@@ -10,8 +10,7 @@
     right: 0;
   }
   @include mobile {
-    top: 11rem;
-    right: auto;
+    right: 0;
   }
   z-index: 1;
   overflow: auto;
