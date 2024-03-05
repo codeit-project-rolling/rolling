@@ -18,15 +18,13 @@ function ListPage() {
   const { data: likeList, loading } = useGetRecipientList({
     sortByLike: true,
   });
+
   const { loading: recentLoding, data: recentList } = useGetRecipientList();
   const navigate = useNavigate();
   const handleMoveLink = () => {
+    // e.stopPropagation();
     navigate('/post');
   };
-  // useEffect(() => {
-  //   // 임의로 로딩 상태 표현
-  //   setTimeout(() => setLoading(false), 3000);
-  // }, []);
 
   return (
     <div className={ListCardStyle.container}>
@@ -38,7 +36,7 @@ function ListPage() {
         ) : (
           <CardSlider itemsPerPage={4}>
             {likeList?.results?.map((v) => (
-              <CardList data={v} />
+              <CardList data={v} stopPropagation />
             ))}
           </CardSlider>
         )}
@@ -50,7 +48,7 @@ function ListPage() {
         ) : (
           <CardSlider itemsPerPage={4}>
             {recentList?.results?.map((v) => (
-              <CardList data={v} />
+              <CardList data={v} stopPropagation />
             ))}
           </CardSlider>
         )}

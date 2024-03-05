@@ -1,20 +1,29 @@
 /* eslint-disable react/prop-types */
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import CardListStyle from './Cardlist.module.scss';
 import { cardBackgroundSvg, backgroundThemaSwith, backgroundUrlFontColor } from './cardUtils';
 
 function CardList({ data }) {
+  const { id } = data;
+  const navigate = useNavigate();
+  const handleMoveLink = () => {
+    navigate(`/post/${id}`);
+  };
+  console.log('data>>', data);
   return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       className={[CardListStyle.container, CardListStyle[data?.backgroundColor]].join(' ')}
       style={backgroundThemaSwith(data)}
+      onClick={handleMoveLink}
+      onKeyDown={handleMoveLink}
     >
       {!data?.backgroundImageURL ? (
         <div className={CardListStyle.card_background}>{cardBackgroundSvg(data?.backgroundColor)}</div>
       ) : null}
-
       <div className={CardListStyle.card}>
         <div className={CardListStyle.name} style={backgroundUrlFontColor(data)}>
           To. {data?.name}
