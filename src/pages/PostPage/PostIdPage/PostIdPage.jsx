@@ -95,7 +95,7 @@ function PostIdPage() {
               <Card onClick={() => handleCardClick(item)} className={styles.card} key={item.id} data={item} />
             ))
           )}
-          <Button className={styles.editButton} buttonType="secondary40" onClick={handleEditClick}>
+          <Button className={styles.editButton} buttonType="primary40" onClick={handleEditClick}>
             <p>편집하기</p>
           </Button>
         </div>
