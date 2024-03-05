@@ -21,8 +21,9 @@ function Card({ data, showDeleteIcon, className, onClick, onDelete }) {
   const handleClick = () => {
     onClick();
   };
-  const handleDeleteClick = () => {
-    deleteMessage({ id: data.id });
+
+  const handleDeleteClick = async () => {
+    await deleteMessage({ id: data.id });
     onDelete();
   };
 
