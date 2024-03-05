@@ -60,9 +60,9 @@ function HeaderService({ postId }) {
                       key={message.id}
                     />
                   ))}
-              <div className={HeaderServiceStyles.senderCount}>
-                +{recipientInfo?.messageCount > 3 ? recipientInfo.messageCount - 3 : 0}
-              </div>
+              {recipientInfo?.messageCount > 3 && (
+                <div className={HeaderServiceStyles.senderCount}>+{recipientInfo.messageCount - 3}</div>
+              )}
             </div>
             <p>
               <span>{recipientInfo?.messageCount}</span>명이 작성했어요!
