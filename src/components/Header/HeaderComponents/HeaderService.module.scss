@@ -39,6 +39,12 @@
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    @include mobile {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-left: auto;
+    }
     .howManyPerson {
       margin: 0 2.8rem 0 0;
       display: flex;
@@ -147,7 +153,4 @@
   }
 }
 .onMobileStyle {
-  @include mobile {
-    margin-left: 20rem;
-  }
 }
