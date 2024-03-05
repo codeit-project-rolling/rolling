@@ -9,17 +9,47 @@ import { cardBackgroundSvg, backgroundThemaSwith, backgroundUrlFontColor } from 
 function CardList({ data }) {
   const { id } = data;
   const navigate = useNavigate();
-  const handleMoveLink = () => {
-    navigate(`/post/${id}`);
+  let xDown = null;
+  let xUp = null;
+  // eslint-disable-next-line prefer-const
+  let selectedCardId = null; // 선택된 카드의 ID를 저장하는 변수
+
+  const handleMouseDown = (e) => {
+    xDown = e.clientX;
+    // console.log('xDown', xDown);
   };
-  console.log('data>>', data);
+
+  const handleMouseUP = (e) => {
+    xUp = e.clientX;
+    // console.log('xUp', xUp);
+  };
+
+  const handleMoveLink = () => {
+    let xDiff = xDown - xUp;
+
+    if (Math.abs(xDiff) === 0 && id) {
+      selectedCardId = id;
+      navigate(`/post/${selectedCardId}`);
+    } else if (Math.abs(xDiff) > 0) {
+      // e.preventDefault();
+      return;
+    }
+    xDown = null;
+    xUp = null;
+    xDiff = null;
+  };
+
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       className={[CardListStyle.container, CardListStyle[data?.backgroundColor]].join(' ')}
+      key={id}
+      id={id}
       style={backgroundThemaSwith(data)}
-      onClick={handleMoveLink}
-      onKeyDown={handleMoveLink}
+      onClick={() => handleMoveLink(id)}
+      onKeyDown={handleMouseDown}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUP}
     >
       {!data?.backgroundImageURL ? (
         <div className={CardListStyle.card_background}>{cardBackgroundSvg(data?.backgroundColor)}</div>
