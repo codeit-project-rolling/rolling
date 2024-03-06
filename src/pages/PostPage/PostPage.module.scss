@@ -30,15 +30,6 @@
       .recipientNickname {
         margin-top: 1.2rem;
         margin-bottom: 1rem;
-        width: 72rem;
-        @include mobile {
-          width: 32rem;
-        }
-        padding: 1.2rem 1.6rem;
-        font-size: 1.6rem;
-        font-weight: 400;
-        border-radius: 8px;
-        border: 1px #cccccc solid;
       }
       .chooseText {
         font-size: 2.4rem;

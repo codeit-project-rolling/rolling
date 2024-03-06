@@ -8,6 +8,7 @@ import BackColorOption from 'components/BackgroundOption/BackColorOption';
 import BackImageOption from 'components/BackgroundOption/BackImageOption';
 import Button from 'components/Button/Button';
 import Header from 'components/Header/HeaderComponents/Header';
+import InputText from 'components/Input/InputText';
 import ToggleButton from 'components/ToggleButton/ToggleButton';
 
 import styles from 'pages/PostPage/PostPage.module.scss';
@@ -18,7 +19,7 @@ function PostPage() {
   const [selectedColor, setSelectedColor] = useState('beige'); // 선택 색상
   const [selectedImageSrc, setSelectedImageSrc] = useState(null); // 이미지 url 기본 null
   const [backgrounImgList, setBackgroundImgList] = useState([]);
-  const [errorMsg, setErrorMsg] = useState('');
+  // const [errorMsg, setErrorMsg] = useState('');
   const [selectedOption, setSelectedOption] = useState('color'); // 토글 기본 옵션 color
 
   const { postRecipient } = usePostRecipient();
@@ -31,13 +32,13 @@ function PostPage() {
     setSelectedOption(option);
   };
 
-  const handleBlur = () => {
-    if (!recipientName.trim()) {
-      setErrorMsg('받는사람을 입력해 주세요.');
-    } else {
-      setErrorMsg('');
-    }
-  };
+  // const handleBlur = () => {
+  //   if (!recipientName.trim()) {
+  //     setErrorMsg('받는사람을 입력해 주세요.');
+  //   } else {
+  //     setErrorMsg('');
+  //   }
+  // };
 
   const onSelect = (optionValue) => {
     if (selectedOption === 'color') {
@@ -51,8 +52,6 @@ function PostPage() {
   useEffect(() => {
     if (!loading && !error) {
       setBackgroundImgList(data.imageUrls);
-    } else {
-      console.error(error);
     }
   }, [data]);
 
@@ -72,14 +71,21 @@ function PostPage() {
       <div className={styles.mainContainer}>
         <div className={styles.recipientContainer}>
           <p className={styles.toText}>To.</p>
-          <input
+          {/* <input
             className={styles.recipientNickname}
             placeholder="받는 사람 이름을 입력해주세요. "
             value={recipientName}
             onChange={handleRecipientNameChange}
             onBlur={handleBlur}
+          /> */}
+          <InputText
+            inputvalue={recipientName}
+            onInputChange={handleRecipientNameChange}
+            placeholder="받는 사람 이름을 입력해주세요."
+            errormsg="값을 입력해주세요."
+            className={styles.recipientNickname}
           />
-          {errorMsg && <p className={styles.error}>{errorMsg}</p>}
+          {/* {errorMsg && <p className={styles.error}>{errorMsg}</p>} */}
           <p className={styles.chooseText}>배경화면을 선택해 주세요.</p>
           <p className={styles.whichChooseText}>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</p>
           <ToggleButton onSelect={handleToggle} selectedOption={selectedOption} />
