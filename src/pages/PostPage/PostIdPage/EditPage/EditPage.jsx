@@ -11,7 +11,7 @@ import Button from 'components/Button/Button';
 // eslint-disable-next-line import/no-cycle
 import HeaderLayout from 'components/Header/HeaderLayout';
 import PlusButton from 'components/PlusButton/PlusButton';
-import Card from 'components/card/card';
+import Card from 'components/card/Card';
 
 import { modalList } from 'contexts/ModalComponent';
 
