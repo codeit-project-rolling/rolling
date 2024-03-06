@@ -16,17 +16,20 @@ function Header({ postId }) {
   return (
     <>
       <div className={HeaderStyles.headerContainer}>
-        <Link to="/" style={{ textDecoration: 'none' }}>
-          <div className={HeaderStyles.headerLogo}>
-            <img src={LogoImg} alt="LogoImg" />
-            <p className={HeaderStyles.headerTitle}>Rolling</p>
-          </div>
-        </Link>
-        {location.pathname !== `/post/${id}` && ( // 현재 경로가 '/post/:id'가 아닐 때에만 렌더링
-          <Button buttonType="outlined40" onClick={handleRollingButtonClick}>
-            <p>롤링 페이퍼 만들기</p>
-          </Button>
-        )}
+        <div className={HeaderStyles.headerTop}>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <div className={HeaderStyles.headerLogo}>
+              <img src={LogoImg} alt="LogoImg" />
+              <p className={HeaderStyles.headerTitle}>Rolling</p>
+            </div>
+          </Link>
+          {location.pathname !== `/post/${id}` &&
+            location.pathname !== `/post/${id}/edit` && ( // 현재 경로가 '/post/:id'가 아닐 때에만 렌더링
+              <Button buttonType="outlined40" onClick={handleRollingButtonClick}>
+                <p>롤링 페이퍼 만들기</p>
+              </Button>
+            )}
+        </div>
       </div>
       <hr className={HeaderStyles.line} />
     </>

@@ -2,6 +2,7 @@
 import EmojiPicker from 'emoji-picker-react';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import arrowDownIcon from 'assets/images/arrow_down.png';
 import { ReactComponent as ShareImg } from 'assets/images/share.svg';
@@ -30,6 +31,8 @@ function HeaderService({ postId }) {
     getRecipient();
   };
 
+  const location = useLocation();
+  // const id = postId;
   const handleEmojiClick = (emojiObject) => {
     const postData = { id: postId, emoji: emojiObject.emoji, isIncrease: true };
     postReaction(postData);
@@ -113,17 +116,33 @@ function HeaderService({ postId }) {
             </div>
           </div>
           <div className={HeaderServiceStyles.selectionBar2} />
-          <Button
-            buttonType="outlined36"
-            onClick={() => {
-              setShareDropdown(!shareDropdown);
-              setEmojiDropdown(false);
-              setEmojiSelectDropdown(false);
-            }}
-          >
-            <ShareImg fill="black" />
-            {shareDropdown && <ShareDropdown />}
-          </Button>
+
+          {location.pathname === `/post/${postId}/edit` ? (
+            <Button
+              disabled
+              buttonType="outlined36"
+              onClick={() => {
+                setShareDropdown(!shareDropdown);
+                setEmojiDropdown(false);
+                setEmojiSelectDropdown(false);
+              }}
+            >
+              <ShareImg fill="white" />
+              {shareDropdown && <ShareDropdown />}
+            </Button>
+          ) : (
+            <Button
+              buttonType="outlined36"
+              onClick={() => {
+                setShareDropdown(!shareDropdown);
+                setEmojiDropdown(false);
+                setEmojiSelectDropdown(false);
+              }}
+            >
+              <ShareImg fill="black" />
+              {shareDropdown && <ShareDropdown />}
+            </Button>
+          )}
         </div>
       </div>
     </div>

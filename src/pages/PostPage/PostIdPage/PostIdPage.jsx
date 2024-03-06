@@ -29,8 +29,11 @@ function PostIdPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [exportData, setExportData] = useState([]);
-  const { data } = useGetMessageList({ id });
+  const { data } = useGetMessageList({ id, limit: 20 });
   const [showToast, setShowToast] = useState(false);
+
+  const { backgroundColor } = recipientInfo;
+  const { backgroundImageURL } = recipientInfo;
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const handleUrlClick = () => {
@@ -39,7 +42,6 @@ function PostIdPage() {
     setShowToast(!showToast);
     setTimeout(() => setShowToast(false), 5000);
   };
-  console.log('getData', recipientInfo);
   const handleClick = () => {
     navigate(`/post/${id}/message`);
   };
@@ -74,7 +76,14 @@ function PostIdPage() {
         <HeaderLayout postId={id} />
       </UserContext.Provider>
       <div className={styles.heightCover} />
-      <div className={styles.cardListContainer}>
+      <div
+        style={{
+          backgroundColor: backgroundColor || 'transparent',
+          background: `url(${backgroundImageURL}) no-repeat center fixed`,
+          backgroundSize: 'cover',
+        }}
+        className={styles.cardListContainer}
+      >
         <div className={styles.cardList}>
           <div className={buttonAndCardCombinedClass}>
             <PlusButton onClick={handleClick} />
@@ -86,7 +95,7 @@ function PostIdPage() {
               <Card onClick={() => handleCardClick(item)} className={styles.card} key={item.id} data={item} />
             ))
           )}
-          <Button className={styles.editButton} buttonType="secondary40" onClick={handleEditClick}>
+          <Button className={styles.editButton} buttonType="primary40" onClick={handleEditClick}>
             <p>편집하기</p>
           </Button>
         </div>
