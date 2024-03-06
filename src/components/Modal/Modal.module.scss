@@ -30,6 +30,12 @@
     top: 50%;
     transform: translate(-50%, -50%);
   }
+  @include mobile {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40rem;
+    height: 47.6rem;
+  }
 }
 
 .header {
