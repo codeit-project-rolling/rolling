@@ -13,7 +13,7 @@ import Button from 'components/Button/Button';
 import HeaderLayout from 'components/Header/HeaderLayout';
 import PlusButton from 'components/PlusButton/PlusButton';
 import Toast from 'components/Toast/Toast';
-import Card from 'components/card/card';
+import Card from 'components/card/Card';
 
 import { modalList } from 'contexts/ModalComponent';
 
