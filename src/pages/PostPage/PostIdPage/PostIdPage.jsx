@@ -20,20 +20,21 @@ import styles from 'pages/PostPage/PostIdPage/PostIdPage.module.scss';
 export const UserContext = React.createContext();
 
 function PostIdPage() {
-  // 무한 스크롤
-  const limit = 12;
-  const [offset, setOffset] = useState(0);
-  const loadMoreMessageList = useCallback(() => {
-    setOffset((prevOffset) => prevOffset + limit);
-  }, [limit]);
-  const setObservationTarget = useIntersectionObserver(loadMoreMessageList);
-
   // 일반
+  const limit = 8;
+  const [offset, setOffset] = useState(0);
   const { id } = useParams();
   const { data: messageList, loading } = useGetMessageList({ id, limit, offset });
   const [showToast, setShowToast] = useState(false);
   const { openModal } = useModal();
   const navigate = useNavigate();
+
+  // 무한 스크롤
+  const loadMoreMessageList = useCallback(() => {
+    setOffset((prevOffset) => prevOffset + limit);
+  }, [limit]);
+
+  const setObservationTarget = useIntersectionObserver(loadMoreMessageList);
 
   // 데이터 저장할 배열
   const [loadedMessageList, setLoadedMessageList] = useState([]);
@@ -71,8 +72,11 @@ function PostIdPage() {
     const currentMessageList = loadedMessageList;
     const nextMessageList = messageList?.results;
     if (nextMessageList) {
-      const allMessageList = [...currentMessageList, ...nextMessageList];
-      setLoadedMessageList(allMessageList);
+      if (!loading) {
+        console.log('offset;', offset);
+        const allMessageList = [...currentMessageList, ...nextMessageList];
+        setLoadedMessageList(allMessageList);
+      }
     }
   }, [offset]);
 
