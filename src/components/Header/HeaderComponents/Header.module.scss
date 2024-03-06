@@ -1,12 +1,16 @@
 @import 'assets/styles/global.scss';
 .headerContainer {
   display: flex;
-  width: 100%;
-  margin: 0 auto;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 1.1rem 0;
-  width: 120rem;
+  width: 100%;
+  .headerTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 0;
+    width: 120rem;
+  }
   background: var(--white, #fff);
   @include tablet {
     margin: 0 2.4rem;
