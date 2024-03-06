@@ -2,6 +2,7 @@
 import EmojiPicker from 'emoji-picker-react';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import arrowDownIcon from 'assets/images/arrow_down.png';
 import { ReactComponent as ShareImg } from 'assets/images/share.svg';
@@ -22,7 +23,8 @@ function HeaderService({ postId }) {
   const [recipientData, setRecipienData] = useState({});
   const { recipientInfo } = useGetRecipient({ id: postId });
   const [emojiSelectDropdown, setEmojiSelectDropdown] = useState(false);
-
+  const location = useLocation();
+  const id = postId;
   const handleEmojiClick = (emojiObject) => {
     console.log(emojiObject.emoji);
   };
@@ -95,16 +97,31 @@ function HeaderService({ postId }) {
             </div>
           </div>
           <div className={HeaderServiceStyles.selectionBar2} />
-          <Button
-            buttonType="outlined36"
-            onClick={() => {
-              setShareDropdown(!shareDropdown);
-              setEmojiDropdown(false);
-            }}
-          >
-            <ShareImg fill="black" />
-            {shareDropdown && <ShareDropdown />}
-          </Button>
+
+          {location.pathname === `/post/${id}/edit` ? (
+            <Button
+              disabled
+              buttonType="outlined36"
+              onClick={() => {
+                setShareDropdown(!shareDropdown);
+                setEmojiDropdown(false);
+              }}
+            >
+              <ShareImg fill="white" />
+              {shareDropdown && <ShareDropdown />}
+            </Button>
+          ) : (
+            <Button
+              buttonType="outlined36"
+              onClick={() => {
+                setShareDropdown(!shareDropdown);
+                setEmojiDropdown(false);
+              }}
+            >
+              <ShareImg fill="black" />
+              {shareDropdown && <ShareDropdown />}
+            </Button>
+          )}
         </div>
       </div>
     </div>

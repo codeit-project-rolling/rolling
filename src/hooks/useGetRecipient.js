@@ -27,7 +27,7 @@ function useGetRecipient({ id }) {
     return { data: null, loading: false, error: errorMessage };
   }
 
-  const [recipientInfo, setData] = useState(null);
+  const [recipientInfo, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 

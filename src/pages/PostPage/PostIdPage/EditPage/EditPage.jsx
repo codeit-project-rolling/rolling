@@ -2,7 +2,9 @@ import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import useDeleteRecipient from 'hooks/useDeleteRecipient';
 import useGetMessageList from 'hooks/useGetMessageList';
+import useGetRecipient from 'hooks/useGetRecipient';
 import useModal from 'hooks/useModal';
 
 import Button from 'components/Button/Button';
@@ -17,19 +19,29 @@ import styles from 'pages/PostPage/PostIdPage/EditPage/EditPage.module.scss';
 
 function EditPage() {
   const { id } = useParams();
+  const { recipientInfo } = useGetRecipient({ id });
   const { openModal } = useModal();
   const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [exportData, setExportData] = useState([]);
-  const { data } = useGetMessageList({ id });
+  const { data, getMessageList } = useGetMessageList({ id, limit: 20 });
+  const { backgroundColor } = recipientInfo;
+  const { backgroundImageURL } = recipientInfo;
+  const { deleteRecipient } = useDeleteRecipient();
+  const [isDeleted, setIsDeleted] = useState(false);
+
+  const handleDelete = () => {
+    setIsDeleted(!isDeleted);
+  };
 
   const handleClick = () => {
     navigate(`/post/${id}/message`);
   };
 
   const handleDeleteClick = () => {
-    console.log('삭제');
+    deleteRecipient({ id });
+    navigate(`/list`);
   };
 
   const handleCardClick = (clickedItem) => {
@@ -46,6 +58,10 @@ function EditPage() {
   };
 
   useEffect(() => {
+    getMessageList();
+  }, [isDeleted]);
+
+  useEffect(() => {
     if (data) {
       setExportData(data.results);
       setLoading(false);
@@ -56,7 +72,14 @@ function EditPage() {
     <>
       <HeaderLayout postId={id} />
       <div className={styles.heightCover} />
-      <div className={styles.cardListContainer}>
+      <div
+        style={{
+          backgroundColor: backgroundColor || 'transparent',
+          background: `url(${backgroundImageURL}) no-repeat center fixed`,
+          backgroundSize: 'cover',
+        }}
+        className={styles.cardListContainer}
+      >
         <div className={styles.cardList}>
           <div className={buttonAndCardCombinedClass}>
             <PlusButton onClick={handleClick} />
@@ -71,6 +94,7 @@ function EditPage() {
                 className={styles.card}
                 key={item.id}
                 data={item}
+                onDelete={handleDelete}
               />
             ))
           )}
