@@ -4,8 +4,8 @@
 import { React, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import CardListStyle from './Cardlist.module.scss';
 import { cardBackgroundSvg, backgroundThemaSwith, backgroundUrlFontColor } from './cardUtils';
+import CardListStyle from './cardlist.module.scss';
 
 function CardList({ data }) {
   const { id } = data;
