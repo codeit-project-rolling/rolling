@@ -1,0 +1,115 @@
+@import 'assets/styles/global.scss';
+
+.serviceSection {
+  display: flex;
+  width: 100%;
+  max-width: 120rem;
+  border-radius: 1.6rem;
+  background: $Surface;
+  overflow: hidden;
+
+  @include tablet {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.textContainer {
+  @include tablet {
+    width: 100%;
+    padding: 4rem 4rem 0;
+  }
+
+  @include mobile {
+    padding: 2.4rem 2.4rem 0;
+  }
+}
+
+.evenLayout {
+  justify-content: space-between;
+  padding: 6rem 0 6rem 6rem;
+
+  @include tablet {
+    padding: 0;
+  }
+}
+
+.oddLayout {
+  justify-content: normal;
+  padding: 6rem 0;
+
+  .textContainer {
+    order: 1;
+
+    @include tablet {
+      order: 0;
+    }
+  }
+
+  @include tablet {
+    padding: 0;
+  }
+}
+
+.point {
+  @include font14Bold;
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5rem;
+  background: $Purple600;
+  color: $White;
+  margin-bottom: 1.6rem;
+
+  @include mobile {
+    padding: 0.4rem 1.2rem;
+  }
+}
+
+.description {
+  .title {
+    @include font24Bold;
+    color: $Grayscale900;
+    margin-bottom: 0.8rem;
+
+    @include mobile {
+      @include font18Bold;
+      margin-bottom: 0.4rem;
+    }
+  }
+
+  .detail {
+    @include font18Regular;
+    color: $Grayscale500;
+
+    @include mobile {
+      @include font15Regular;
+    }
+  }
+}
+
+.imageContainer {
+  width: 72rem;
+
+  .image {
+    @include mobile {
+      display: none;
+    }
+  }
+
+  .imageMobile {
+    display: none;
+
+    @include mobile {
+      display: block;
+    }
+  }
+
+  @include tablet {
+    margin: 3.6rem 0 4rem;
+  }
+
+  @include mobile {
+    width: 100%;
+    margin: 5rem 0;
+  }
+}

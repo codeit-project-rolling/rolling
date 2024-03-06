@@ -1,0 +1,38 @@
+@import 'assets/styles/global.scss';
+.shareModalContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 4rem;
+  right: 0;
+  @include tablet {
+    right: 0;
+  }
+  @include mobile {
+    right: 0;
+  }
+  z-index: 1;
+  overflow: auto;
+  border-radius: 8px;
+  border: 1px solid #b6b6b6;
+  background: #fff;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  width: 14rem;
+  height: 12rem;
+  .shareKakao,
+  .shareUrl {
+    width: 13.8rem;
+    height: 5rem;
+    padding: 1.6rem 1.2rem;
+    background-color: #ffffff;
+    font-weight: 400;
+    line-height: 26px;
+    font-size: 1.6rem;
+    border: none;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: #f6f6f6;
+    }
+  }
+}

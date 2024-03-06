@@ -1,0 +1,19 @@
+@import 'assets/styles/global.scss';
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: white;
+  .headerHideOnMobile {
+    @include mobile {
+      display: none;
+    }
+  }
+  @media (max-width: 1248px) {
+    width: calc(100% - 48px);
+    margin-left: 2.4rem;
+    margin-right: 2.4rem;
+  }
+}

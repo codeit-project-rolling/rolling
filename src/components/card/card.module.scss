@@ -1,0 +1,116 @@
+@import 'assets/styles/global.scss';
+// 1rem = 10px
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  width: 38.4rem;
+  height: 28rem;
+  border-radius: 1.6rem;
+  background: $White;
+  box-shadow: 0rem 0.2rem 1.2rem 0rem rgba(0, 0, 0, 0.08);
+  padding: 2.8rem 2.4rem;
+
+  @include tablet {
+    width: 100%;
+    height: 100%;
+  }
+  @include mobile {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.profileBox {
+  display: flex;
+  justify-content: space-between;
+  border: 0;
+  background-color: transparent;
+}
+
+.profile {
+  display: flex;
+  gap: 1.4rem;
+  margin-bottom: 1.5rem;
+
+  img {
+    width: 5.6rem;
+    height: 5.6rem;
+    border-radius: 10rem;
+    border: 0.1rem solid $Grayscale200;
+    background: $White;
+  }
+}
+
+.deleteIcon {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  right: 2.4rem;
+}
+
+.profile_detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 0.6rem;
+}
+
+.profile_name {
+  gap: 0.6rem;
+  display: flex;
+  color: $Black;
+  font-size: $fontSize20;
+  font-weight: $fontWeightRegular;
+  font-style: normal;
+  line-height: 2.4rem;
+
+  p {
+    font-weight: $fontWeightBold;
+  }
+}
+
+.text_box {
+  padding-top: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1.4rem;
+  border-top: 0.1rem solid $Grayscale200;
+  border: 0;
+  background-color: transparent;
+}
+
+.text {
+  width: 33.6rem;
+  height: 10.6rem;
+  flex-shrink: 0;
+
+  overflow: hidden;
+  color: $Grayscale600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-family: Pretendard;
+  font-size: $fontSize18;
+  font-weight: $fontWeightRegular;
+  line-height: 2.8rem;
+  letter-spacing: -0.18px;
+  text-align: start;
+
+  @include mobile {
+    width: 27.2rem;
+    height: 5.6rem;
+  }
+}
+
+.text_date {
+  color: $Grayscale400;
+  font-family: Pretendard;
+  font-size: $fontSize12;
+  font-style: normal;
+  font-weight: $fontWeightRegular;
+  line-height: 1.8rem;
+  letter-spacing: -0.06px;
+}

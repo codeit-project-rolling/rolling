@@ -1,0 +1,39 @@
+@import 'assets/styles/global.scss';
+.backgroundOption {
+  display: flex;
+  @include mobile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.2rem;
+  }
+  .option {
+    border: none;
+    width: 16.8rem;
+    height: 16.8rem;
+    margin-right: 1.6rem;
+    margin-top: 4.5rem;
+    border-radius: 1.6rem;
+    border: 1px rgba(0, 0, 0, 0.08) solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    @include mobile {
+      width: 15.4rem;
+      height: 15.4rem;
+    }
+  }
+  .beige {
+    background-color: $Orange200;
+  }
+  .purple {
+    background-color: $Purple200;
+  }
+  .blue {
+    background-color: $Blue200;
+  }
+  .green {
+    background-color: $Green200;
+  }
+}

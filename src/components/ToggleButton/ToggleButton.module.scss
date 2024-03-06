@@ -1,0 +1,59 @@
+@import 'assets/styles/global.scss';
+
+@mixin buttonStyleDelete {
+  border: 0;
+  cursor: pointer;
+}
+
+.toggleButtonBackground {
+  cursor: pointer;
+  width: 24.4rem;
+  height: 4rem;
+  border-radius: 0.6rem;
+  background: $Grayscale100;
+  display: flex;
+  div {
+    width: 50%;
+  }
+}
+
+.selectedButton {
+  @include buttonStyleDelete;
+  display: flex;
+  padding: 0.7rem 1.6rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.6rem;
+  border: 0.2rem solid $Purple600;
+  background: $White;
+  p {
+    width: 9rem;
+    color: $Purple700;
+    text-align: center;
+    font-size: $fontSize16;
+    font-weight: $fontWeightBold;
+    line-height: 2.6rem;
+    letter-spacing: -0.016rem;
+  }
+}
+
+.unSelectedButton {
+  @include buttonStyleDelete;
+  display: flex;
+  height: 4rem;
+  padding: 0.8rem 1.6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 0.6rem;
+  p {
+    color: $Grayscale900;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: $fontWeightRegular;
+    line-height: 2.6rem;
+    letter-spacing: -0.016rem;
+    width: 9rem;
+    height: 2.4rem;
+  }
+}
