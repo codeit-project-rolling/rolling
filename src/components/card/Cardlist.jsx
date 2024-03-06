@@ -1,6 +1,7 @@
+/* eslint-disable prefer-const */
 /* eslint-disable react/prop-types */
 
-import React from 'react';
+import { React, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import CardListStyle from './Cardlist.module.scss';
@@ -9,34 +10,33 @@ import { cardBackgroundSvg, backgroundThemaSwith, backgroundUrlFontColor } from 
 function CardList({ data }) {
   const { id } = data;
   const navigate = useNavigate();
-  let xDown = null;
-  let xUp = null;
-  // eslint-disable-next-line prefer-const
-  let selectedCardId = null; // 선택된 카드의 ID를 저장하는 변수
+  // const [xDown, setXDown] = useState(null);
+  // const [xUp, setXUp] = useState(null);
+  const xDown = useRef(null);
+  const xUp = useRef(null);
 
   const handleMouseDown = (e) => {
-    xDown = e.clientX;
-    // console.log('xDown', xDown);
+    xDown.current = e.clientX;
+    // setXDown(e.clientX);
   };
 
   const handleMouseUP = (e) => {
-    xUp = e.clientX;
-    // console.log('xUp', xUp);
+    xUp.current = e.clientX;
+    // setXUp(e.clientX);
   };
 
   const handleMoveLink = () => {
-    let xDiff = xDown - xUp;
-
+    // const xDiff = xDown - xUp;
+    const xDiff = xDown.current - xUp.current;
     if (Math.abs(xDiff) === 0 && id) {
-      selectedCardId = id;
-      navigate(`/post/${selectedCardId}`);
+      navigate(`/post/${id}`);
     } else if (Math.abs(xDiff) > 0) {
-      // e.preventDefault();
       return;
     }
-    xDown = null;
-    xUp = null;
-    xDiff = null;
+    // setXDown(null);
+    // setXUp(null);
+    xDown.current = null;
+    xUp.current = null;
   };
 
   return (
@@ -80,9 +80,5 @@ function CardList({ data }) {
     </div>
   );
 }
-
-// export function DemoCard() {
-//   return <CardList data={data} />;
-// }
 
 export default CardList;
