@@ -34,6 +34,7 @@ function PostIdPage() {
 
   const { backgroundColor } = recipientInfo;
   const { backgroundImageURL } = recipientInfo;
+  const cardClassName = classNames(styles.cardListOverContainer, styles[backgroundColor]);
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const handleUrlClick = () => {
@@ -69,7 +70,6 @@ function PostIdPage() {
       setLoading(false);
     }
   }, [data]);
-
   return (
     <>
       <UserContext.Provider value={handleUrlClick}>
@@ -78,28 +78,29 @@ function PostIdPage() {
       <div className={styles.heightCover} />
       <div
         style={{
-          backgroundColor: backgroundColor || 'transparent',
-          background: `url(${backgroundImageURL}) no-repeat center fixed`,
-          backgroundSize: 'cover',
+          background: backgroundImageURL && `url(${backgroundImageURL}) no-repeat center fixed`,
+          backgroundSize: backgroundImageURL && 'cover',
         }}
-        className={styles.cardListContainer}
+        className={cardClassName}
       >
-        <div className={styles.cardList}>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
+        <div className={styles.cardListContainer}>
+          <div className={styles.cardList}>
+            <div className={buttonAndCardCombinedClass}>
+              <PlusButton onClick={handleClick} />
+            </div>
+            {loading ? (
+              <div>Loading...</div>
+            ) : (
+              exportData?.map((item) => (
+                <Card onClick={() => handleCardClick(item)} className={styles.card} key={item.id} data={item} />
+              ))
+            )}
+            <Button className={styles.editButton} buttonType="primary40" onClick={handleEditClick}>
+              <p>편집하기</p>
+            </Button>
           </div>
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            exportData?.map((item) => (
-              <Card onClick={() => handleCardClick(item)} className={styles.card} key={item.id} data={item} />
-            ))
-          )}
-          <Button className={styles.editButton} buttonType="primary40" onClick={handleEditClick}>
-            <p>편집하기</p>
-          </Button>
+          <div className={styles.toast}>{showToast && <Toast onClick={handleUrlClick} />}</div>
         </div>
-        <div className={styles.toast}>{showToast && <Toast onClick={handleUrlClick} />}</div>
       </div>
     </>
   );

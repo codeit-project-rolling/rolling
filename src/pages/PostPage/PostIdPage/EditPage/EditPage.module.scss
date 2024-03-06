@@ -5,12 +5,29 @@ body {
   height: 100%;
 }
 
+.cardListOverContainer {
+  height: calc(100% - 12.7rem);
+}
+
 .cardListContainer {
   position: relative;
   display: flex;
   justify-content: center;
+  height: 100%;
+  overflow: scroll;
 }
-
+.beige {
+  background-color: $Orange200;
+}
+.purple {
+  background-color: $Purple200;
+}
+.blue {
+  background-color: $Blue200;
+}
+.green {
+  background-color: $Green200;
+}
 .heightCover {
   height: 12.7rem;
 }

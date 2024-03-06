@@ -30,6 +30,7 @@ function EditPage() {
   const { backgroundImageURL } = recipientInfo;
   const { deleteRecipient } = useDeleteRecipient();
   const [isDeleted, setIsDeleted] = useState(false);
+  const cardClassName = classNames(styles.cardListOverContainer, styles[backgroundColor]);
 
   const handleDelete = () => {
     setIsDeleted(!isDeleted);
@@ -74,33 +75,34 @@ function EditPage() {
       <div className={styles.heightCover} />
       <div
         style={{
-          backgroundColor: backgroundColor || 'transparent',
-          background: `url(${backgroundImageURL}) no-repeat center fixed`,
-          backgroundSize: 'cover',
+          background: backgroundImageURL && `url(${backgroundImageURL}) no-repeat center fixed`,
+          backgroundSize: backgroundImageURL && 'cover',
         }}
-        className={styles.cardListContainer}
+        className={cardClassName}
       >
-        <div className={styles.cardList}>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
+        <div className={styles.cardListContainer}>
+          <div className={styles.cardList}>
+            <div className={buttonAndCardCombinedClass}>
+              <PlusButton onClick={handleClick} />
+            </div>
+            {loading ? (
+              <div>Loading...</div>
+            ) : (
+              exportData?.map((item) => (
+                <Card
+                  showDeleteIcon
+                  onClick={() => handleCardClick(item)}
+                  className={styles.card}
+                  key={item.id}
+                  data={item}
+                  onDelete={handleDelete}
+                />
+              ))
+            )}
+            <Button className={styles.editButton} buttonType="primary40" onClick={handleDeleteClick}>
+              <p>삭제하기</p>
+            </Button>
           </div>
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            exportData?.map((item) => (
-              <Card
-                showDeleteIcon
-                onClick={() => handleCardClick(item)}
-                className={styles.card}
-                key={item.id}
-                data={item}
-                onDelete={handleDelete}
-              />
-            ))
-          )}
-          <Button className={styles.editButton} buttonType="primary40" onClick={handleDeleteClick}>
-            <p>삭제하기</p>
-          </Button>
         </div>
       </div>
     </>
