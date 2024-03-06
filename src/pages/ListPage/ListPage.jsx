@@ -10,7 +10,7 @@ import Button from 'components/Button/Button';
 import Header from 'components/Header/HeaderComponents/Header';
 import CardSlider from 'components/Slider/CardSlider';
 import CardSkeleton from 'components/Slider/Skeleton';
-import CardList from 'components/card/Cardlist';
+import CardList from 'components/card/cardlist';
 
 import ListCardStyle from './ListPage.module.scss';
 
