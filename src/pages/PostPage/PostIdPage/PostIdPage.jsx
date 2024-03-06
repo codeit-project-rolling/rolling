@@ -23,7 +23,7 @@ export const UserContext = React.createContext();
 
 function PostIdPage() {
   const { id } = useParams();
-  const { recipientInfo } = useGetRecipient({ id });
+  const { data: recipientInfo } = useGetRecipient({ id });
   const { openModal } = useModal();
   const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
   const navigate = useNavigate();

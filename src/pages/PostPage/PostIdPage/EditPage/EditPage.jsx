@@ -19,7 +19,7 @@ import styles from 'pages/PostPage/PostIdPage/EditPage/EditPage.module.scss';
 
 function EditPage() {
   const { id } = useParams();
-  const { recipientInfo } = useGetRecipient({ id });
+  const { data: recipientInfo } = useGetRecipient({ id });
   const { openModal } = useModal();
   const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
   const navigate = useNavigate();
