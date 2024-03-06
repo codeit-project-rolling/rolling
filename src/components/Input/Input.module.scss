@@ -1,0 +1,12 @@
+@import 'assets/styles/global.scss';
+.inputContaienr {
+  border-radius: 8px;
+  border: 1px solid var(--gray-300, #ccc);
+  background: var(--white, #fff);
+  width: 72rem;
+  height: 5rem;
+  .errorMsg {
+    color: red;
+    font-size: 1.6rem;
+  }
+}

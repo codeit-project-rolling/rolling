@@ -51,8 +51,6 @@ function PostPage() {
   useEffect(() => {
     if (!loading && !error) {
       setBackgroundImgList(data.imageUrls);
-    } else {
-      console.error(error);
     }
   }, [data]);
 
