@@ -12,7 +12,7 @@ import Button from 'components/Button/Button';
 
 import formatDate from 'utils/formatDate';
 
-import CardStyle from './Card.module.scss';
+import CardStyle from './card.module.scss';
 
 function Card({ data, showDeleteIcon, className, onClick, onDelete }) {
   const buttonAndCardCombinedClass = classNames(CardStyle.container, className);

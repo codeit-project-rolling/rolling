@@ -25,17 +25,17 @@ function HeaderService({ postId }) {
   const { getRecipient, data: recipientInfo, loading } = useGetRecipient({ id: postId });
 
   const { postReaction } = usePostReaction();
-  const handleClickBadge = (emoji) => {
+  const handleClickBadge = async (emoji) => {
     const postData = { id: postId, emoji, isIncrease: true };
-    postReaction(postData);
+    await postReaction(postData);
     getRecipient();
   };
 
   const location = useLocation();
   // const id = postId;
-  const handleEmojiClick = (emojiObject) => {
+  const handleEmojiClick = async (emojiObject) => {
     const postData = { id: postId, emoji: emojiObject.emoji, isIncrease: true };
-    postReaction(postData);
+    await postReaction(postData);
     getRecipient();
   };
 
