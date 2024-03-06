@@ -64,6 +64,18 @@ body {
     transform: scale(1.1);
     z-index: 1;
   }
+  @include tablet {
+    &:hover {
+      transform: scale(1);
+      z-index: 0;
+    }
+  }
+  @include mobile {
+    &:hover {
+      transform: scale(1);
+      z-index: 0;
+    }
+  }
 }
 
 .toast {
