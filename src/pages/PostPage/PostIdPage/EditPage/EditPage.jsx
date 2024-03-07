@@ -10,7 +10,6 @@ import useModal from 'hooks/useModal';
 import Button from 'components/Button/Button';
 // eslint-disable-next-line import/no-cycle
 import HeaderLayout from 'components/Header/HeaderLayout';
-import PlusButton from 'components/PlusButton/PlusButton';
 import Card from 'components/card/card';
 
 import { modalList } from 'contexts/ModalComponent';
@@ -21,7 +20,6 @@ function EditPage() {
   const { id } = useParams();
   const { data: recipientInfo } = useGetRecipient({ id });
   const { openModal } = useModal();
-  const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [exportData, setExportData] = useState([]);
@@ -34,10 +32,6 @@ function EditPage() {
 
   const handleDelete = () => {
     setIsDeleted(!isDeleted);
-  };
-
-  const handleClick = () => {
-    navigate(`/post/${id}/message`);
   };
 
   const handleDeleteClick = () => {
@@ -82,9 +76,6 @@ function EditPage() {
       >
         <div className={styles.cardListContainer}>
           <div className={styles.cardList}>
-            <div className={buttonAndCardCombinedClass}>
-              <PlusButton onClick={handleClick} />
-            </div>
             {loading ? (
               <div>Loading...</div>
             ) : (
