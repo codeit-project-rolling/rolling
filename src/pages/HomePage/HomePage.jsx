@@ -53,15 +53,7 @@ function HomePage() {
       {/* <div className={styles.dummyHeader} /> */}
       <main className={styles.main}>
         {serviceList.map((service) => (
-          <ServiceSection
-            key={service.pointNum}
-            pointNum={service.pointNum}
-            title={service.title}
-            detail={service.detail}
-            imageSrc={service.imageSrc}
-            imageMobileSrc={service.imageMobileSrc}
-            layout={service.layout}
-          />
+          <ServiceSection service={service} key={service.pointNum} />
         ))}
       </main>
       <div className={styles.bottom}>
