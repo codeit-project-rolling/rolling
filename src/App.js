@@ -16,6 +16,7 @@ function loadData() {
 const router = createBrowserRouter([
   { path: '/', element: <HomePage /> },
   { path: 'list', element: <ListPage /> },
+
   {
     path: 'post',
     element: <PostPage />,

@@ -46,6 +46,11 @@ function CardSlider({ children }) {
         setItemWidth(0);
       }
     };
+
+    /**
+     * 카드가 4개 이상일때 오른쪽 버튼 나타내고 카드가 2개이상일때 왼쪽버튼 보여줌.
+     * 만약 스크롤이 왼쪽으로 이동할 수 있는 여유 공간이 있다면 왼쪽 버튼을 보여줍니다.
+     */
     const updateButtonVisibility = () => {
       const isScrollable =
         containerRef.current.scrollWidth - 2 > containerRef.current.scrollLeft + sliderRef.current.offsetWidth;
@@ -94,10 +99,10 @@ function CardSlider({ children }) {
 
     const container = containerRef.current;
     const currentScroll = Math.round(container.scrollLeft);
-    const maxScrollLeft = container.scrollWidth - container.clientWidth;
-    // 현재 스크롤 위치와 가장 가까운 아이템 경계까지의 남은 스크롤 거리를 계산
-    const remainingScroll = currentScroll % itemWidth;
+    const maxScrollLeft = container.scrollWidth - container.clientWidth; // 스크롤 가능한 최대 왼쪽 위치
+    const remainingScroll = currentScroll % itemWidth; //  현재 스크롤 위치에서 가장 가까운 카드 아이템의 경계까지의 거리를 나타냅니다.
     let newScrollPosition;
+    // 스크롤 방향에 따라 새로운 스크롤 위치를 계산
     if (direction > 0) {
       // 오른쪽으로 이동
       newScrollPosition = currentScroll + itemWidth - remainingScroll;
@@ -105,10 +110,10 @@ function CardSlider({ children }) {
       // 왼쪽으로 이동
       newScrollPosition = currentScroll - (remainingScroll === 0 ? itemWidth : remainingScroll);
     }
-    // 스크롤 범위를 넘지 않도록 조정
+    //  스크롤이 컨테이너의 끝을 넘어가지 않도록 제한
     newScrollPosition = Math.max(0, Math.min(newScrollPosition, maxScrollLeft));
 
-    // 스크롤 실행
+    // 계산된 새로운 스크롤 위치로 스크롤을 이동
     container.scrollTo({
       left: newScrollPosition,
       behavior: 'smooth',
