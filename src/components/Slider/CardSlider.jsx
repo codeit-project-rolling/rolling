@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import { Children, useRef, useEffect, useState } from 'react';
 
 import LeftArrowButton from 'components/ArrowButton/LeftArrowButton';
@@ -98,9 +98,9 @@ function CardSlider({ children }) {
     if (!containerRef.current) return;
 
     const container = containerRef.current;
-    const currentScroll = Math.round(container.scrollLeft);
+    const currentScroll = Math.ceil(container.scrollLeft);
     const maxScrollLeft = container.scrollWidth - container.clientWidth; // 스크롤 가능한 최대 왼쪽 위치
-    const remainingScroll = currentScroll % itemWidth; //  현재 스크롤 위치에서 가장 가까운 카드 아이템의 경계까지의 거리를 나타냅니다.
+    const remainingScroll = Math.ceil(currentScroll % itemWidth); //  현재 스크롤 위치에서 가장 가까운 카드 아이템의 경계까지의 거리를 나타냅니다.
     let newScrollPosition;
     // 스크롤 방향에 따라 새로운 스크롤 위치를 계산
     if (direction > 0) {
@@ -163,5 +163,11 @@ function CardSlider({ children }) {
     </div>
   );
 }
+CardSlider.propTypes = {
+  children: PropTypes.node,
+};
 
+CardSlider.defaultProps = {
+  children: null,
+};
 export default CardSlider;

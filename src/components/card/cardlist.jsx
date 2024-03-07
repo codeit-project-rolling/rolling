@@ -14,7 +14,6 @@ function CardList({ data }) {
   // const [xUp, setXUp] = useState(null);
   const xDown = useRef(null);
   const xUp = useRef(null);
-
   const handleMouseDown = (e) => {
     xDown.current = e.clientX;
     // setXDown(e.clientX);
@@ -60,7 +59,7 @@ function CardList({ data }) {
         </div>
         <div className={CardListStyle.imagelist}>
           {data?.recentMessages?.slice(0, 3).map((v, i) => (
-            <img src={v.profileImageURL} alt="" style={{ left: `${i * 12}px` }} />
+            <img src={v.profileImageURL} alt="" style={{ left: `${i * 12}px` }} key={v.id} />
           ))}
           {data?.recentMessages?.length > 3 ? (
             <div className={CardListStyle.image_count}>+{data.recentMessages.length - 3}</div>
@@ -72,7 +71,7 @@ function CardList({ data }) {
       </div>
       <div className={CardListStyle.badge_emoji_list}>
         {data?.topReactions?.slice(0, 3)?.map((v) => (
-          <div className={CardListStyle.badge_emoji_box}>
+          <div className={CardListStyle.badge_emoji_box} key={v.emoji}>
             <div className={CardListStyle.badge_emoji}>{`${v.emoji} ${v.count}`}</div>
           </div>
         ))}

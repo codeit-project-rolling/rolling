@@ -7,8 +7,10 @@ function CardSkeleton({ data }) {
     <div style={{ display: 'flex', width: '100%', margin: '0' }}>
       {Array(data)
         .fill(0)
-        .map((item) => (
+        .map((item, index) => (
           <Skeleton
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
             data={item}
             style={{ width: '27.5rem', height: '26rem', marginLeft: '2rem', borderRadius: '1.6rem', display: 'flex' }}
           />
