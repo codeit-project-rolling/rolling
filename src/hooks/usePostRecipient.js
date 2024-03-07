@@ -10,7 +10,7 @@ import createApiRequest from 'apis/createApiRequest';
 // backgroundImageURL: string
 // 배경 이미지 url
 
-const BACKGROUND_COLOR_LIST = ['beige', 'purple', 'blue', 'green'];
+const BACKGROUND_COLOR_LIST = ['beige', 'purple', 'blue', 'green', 'yellow', 'red', 'gray'];
 
 // 입력 값 검증 함수
 function validateInput({ name, backgroundColor }) {

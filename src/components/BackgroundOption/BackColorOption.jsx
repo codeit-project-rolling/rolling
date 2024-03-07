@@ -6,28 +6,30 @@ import CheckButton from 'components/CheckButton/CheckButton';
 
 function BackColorOption({ onSelect }) {
   const [selectedColor, setSelectedColor] = useState('beige');
-
   const handleColorSelect = (color) => {
     setSelectedColor(color);
     onSelect(color);
   };
-  const clolrList = {
+  const colorList = {
     beige: 'beige',
     purple: 'purple',
     blue: 'blue',
     green: 'green',
+    yellow: 'yellow',
+    red: 'red',
+    gray: 'gray',
   };
 
   return (
     <div className={styles.backgroundOption}>
-      {Object.keys(clolrList).map((color) => (
+      {Object.keys(colorList).map((color) => (
         <button
           key={color}
           className={`${styles.option} ${styles[color]}`}
-          onClick={() => handleColorSelect(clolrList[color])}
+          onClick={() => handleColorSelect(colorList[color])}
           type="button"
         >
-          {selectedColor === clolrList[color] && <CheckButton />}
+          {selectedColor === colorList[color] && <CheckButton />}
         </button>
       ))}
     </div>
