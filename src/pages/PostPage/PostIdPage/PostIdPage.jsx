@@ -21,7 +21,7 @@ export const UserContext = React.createContext();
 
 function PostIdPage() {
   // 일반
-  const limit = 3;
+  const limit = 15;
   const [offset, setOffset] = useState(0);
   const { id } = useParams();
   const { data: messageList, loading } = useGetMessageList({ id, limit, offset });
