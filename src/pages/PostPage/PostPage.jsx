@@ -18,7 +18,7 @@ function PostPage() {
   const [recipientName, setRecipientName] = useState(''); // 받는 사람 이름
   const [selectedColor, setSelectedColor] = useState('beige'); // 선택 색상
   const [selectedImageSrc, setSelectedImageSrc] = useState(null); // 이미지 url 기본 null
-  const [backgrounImgList, setBackgroundImgList] = useState([]);
+  const [backgroundImgList, setBackgroundImgList] = useState([]);
   // const [errorMsg, setErrorMsg] = useState('');
   const [selectedOption, setSelectedOption] = useState('color'); // 토글 기본 옵션 color
 
@@ -76,7 +76,7 @@ function PostPage() {
           {selectedOption === 'color' ? (
             <BackColorOption onSelect={onSelect} />
           ) : (
-            <BackImageOption onSelect={onSelect} backgroundImgList={backgrounImgList} />
+            <BackImageOption onSelect={onSelect} backgroundImgList={backgroundImgList} />
           )}
 
           <Button
