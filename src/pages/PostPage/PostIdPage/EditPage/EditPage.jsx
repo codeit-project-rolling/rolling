@@ -16,6 +16,7 @@ import { modalList } from 'contexts/ModalComponent';
 
 import styles from 'pages/PostPage/PostIdPage/EditPage/EditPage.module.scss';
 
+export const UserContext = React.createContext();
 function EditPage() {
   const { id } = useParams();
   const { data: recipientInfo } = useGetRecipient({ id });
@@ -65,7 +66,9 @@ function EditPage() {
 
   return (
     <>
-      <HeaderLayout postId={id} />
+      <UserContext.Provider value={isDeleted}>
+        <HeaderLayout postId={id} />
+      </UserContext.Provider>
       <div className={styles.heightCover} />
       <div
         style={{

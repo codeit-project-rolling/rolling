@@ -32,14 +32,6 @@ function PostPage() {
     setSelectedOption(option);
   };
 
-  // const handleBlur = () => {
-  //   if (!recipientName.trim()) {
-  //     setErrorMsg('받는사람을 입력해 주세요.');
-  //   } else {
-  //     setErrorMsg('');
-  //   }
-  // };
-
   const onSelect = (optionValue) => {
     if (selectedOption === 'color') {
       setSelectedColor(optionValue);
@@ -71,13 +63,6 @@ function PostPage() {
       <div className={styles.mainContainer}>
         <div className={styles.recipientContainer}>
           <p className={styles.toText}>To.</p>
-          {/* <input
-            className={styles.recipientNickname}
-            placeholder="받는 사람 이름을 입력해주세요. "
-            value={recipientName}
-            onChange={handleRecipientNameChange}
-            onBlur={handleBlur}
-          /> */}
           <InputText
             inputvalue={recipientName}
             onInputChange={handleRecipientNameChange}
@@ -85,7 +70,6 @@ function PostPage() {
             errormsg="값을 입력해주세요."
             className={styles.recipientNickname}
           />
-          {/* {errorMsg && <p className={styles.error}>{errorMsg}</p>} */}
           <p className={styles.chooseText}>배경화면을 선택해 주세요.</p>
           <p className={styles.whichChooseText}>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</p>
           <ToggleButton onSelect={handleToggle} selectedOption={selectedOption} />

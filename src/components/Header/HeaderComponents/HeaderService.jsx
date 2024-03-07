@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import EmojiPicker from 'emoji-picker-react';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import arrowDownIcon from 'assets/images/arrow_down.png';
@@ -18,12 +18,14 @@ import HeaderServiceStyles from 'components/Header/HeaderComponents/HeaderServic
 // eslint-disable-next-line import/no-cycle
 import ShareDropdown from 'components/Header/HeaderComponents/ShareDropdown';
 
+import { UserContext } from 'pages/PostPage/PostIdPage/EditPage/EditPage';
+
 function HeaderService({ postId }) {
   const [emojiDropdown, setEmojiDropdown] = useState(false);
   const [shareDropdown, setShareDropdown] = useState(false);
   const [emojiSelectDropdown, setEmojiSelectDropdown] = useState(false);
-  const { getRecipient, data: recipientInfo, loading } = useGetRecipient({ id: postId });
-
+  const { getRecipient, data: recipientInfo } = useGetRecipient({ id: postId });
+  const isEdit = React.useContext(UserContext);
   const { postReaction } = usePostReaction();
   const handleClickBadge = async (emoji) => {
     const postData = { id: postId, emoji, isIncrease: true };
@@ -40,10 +42,8 @@ function HeaderService({ postId }) {
   };
 
   useEffect(() => {
-    if (!loading) {
-      console.log(recipientInfo);
-    }
-  }, [recipientInfo, loading]);
+    getRecipient();
+  }, [isEdit]);
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
       <div className={HeaderServiceStyles.headerContainer}>
