@@ -1,5 +1,5 @@
 function MessagePage() {
-  return <div>message페이지</div>;
+  return <div />;
 }
 
 export default MessagePage;

@@ -44,6 +44,10 @@ function PostIdPage() {
   // 데이터 저장할 배열
   const [loadedMessageList, setLoadedMessageList] = useState([]);
 
+  const { backgroundColor } = recipientInfo;
+  const { backgroundImageURL } = recipientInfo;
+  const cardClassName = classNames(styles.cardListOverContainer, styles[backgroundColor]);
+
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const handleUrlClick = () => {
     const link = `http://localhost:3000/post/${id}`;
@@ -51,7 +55,7 @@ function PostIdPage() {
     setShowToast(!showToast);
     setTimeout(() => setShowToast(false), 5000);
   };
-
+  
   const handleClick = () => {
     navigate(`/post/${id}/message`);
   };
@@ -105,22 +109,30 @@ function PostIdPage() {
         <HeaderLayout postId={id} />
       </UserContext.Provider>
       <div className={styles.heightCover} />
-      <div className={styles.cardListContainer}>
-        <div className={styles.cardList}>
-          <div className={buttonAndCardCombinedClass}>
-            <PlusButton onClick={handleClick} />
+      <div
+        style={{
+          background: backgroundImageURL && `url(${backgroundImageURL}) no-repeat center fixed`,
+          backgroundSize: backgroundImageURL && 'cover',
+        }}
+        className={cardClassName}
+      >
+        <div className={styles.cardListContainer}>
+          <div className={styles.cardList}>
+            <div className={buttonAndCardCombinedClass}>
+              <PlusButton onClick={handleClick} />
+            </div>
+            {loadedMessageList?.map((item) => (
+              <Card onClick={() => handleCardClick(item)} className={styles.card} key={item.id} data={item} />
+            ))}
+            {loading && <div>Loading...</div>}
+            <Button className={styles.editButton} buttonType="secondary40" onClick={handleEditClick}>
+              <p>편집하기</p>
+            </Button>
           </div>
-          {loadedMessageList?.map((item) => (
-            <Card onClick={() => handleCardClick(item)} className={styles.card} key={item.id} data={item} />
-          ))}
-          {loading && <div>Loading...</div>}
-          <Button className={styles.editButton} buttonType="secondary40" onClick={handleEditClick}>
-            <p>편집하기</p>
-          </Button>
+          {/* 옵저버에 등록될 엔트리 */}
+          {!loading && <div ref={setObservationTarget} />}
+          <div className={styles.toast}>{showToast && <Toast onClick={handleUrlClick} />}</div>
         </div>
-        {/* 옵저버에 등록될 엔트리 */}
-        {!loading && <div ref={setObservationTarget} />}
-        <div className={styles.toast}>{showToast && <Toast onClick={handleUrlClick} />}</div>
       </div>
     </>
   );

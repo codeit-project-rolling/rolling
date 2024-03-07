@@ -1,0 +1,39 @@
+@import 'assets/styles/global.scss';
+
+.container {
+  width: 100%;
+}
+
+.cardSection {
+  margin: 6rem auto;
+  max-width: 1180px;
+
+  .title {
+    @include font24Bold;
+    margin-bottom: 1.5rem;
+    margin-left: 2.4rem;
+  }
+
+  // @include tablet {
+  //   margin-left: 2.4rem;
+  // }
+}
+
+.buttonBox {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 2.4rem auto;
+}
+
+.button {
+  width: 28rem;
+  padding: 1.4rem 2.4rem;
+
+  @include tablet {
+    width: calc(100% - 2.4rem * 2);
+  }
+  @include mobile {
+    width: calc(100% - 2rem * 2);
+  }
+}

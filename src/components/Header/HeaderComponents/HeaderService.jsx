@@ -1,13 +1,15 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import EmojiPicker from 'emoji-picker-react';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import arrowDownIcon from 'assets/images/arrow_down.png';
 import { ReactComponent as ShareImg } from 'assets/images/share.svg';
 import { ReactComponent as SmileImg } from 'assets/images/smile.svg';
 
 import useGetRecipient from 'hooks/useGetRecipient';
+import usePostReaction from 'hooks/usePostReaction';
 
 import BadgeEmoji from 'components/BadgeEmoji/BadgeEmoji';
 import Button from 'components/Button/Button';
@@ -16,34 +18,42 @@ import HeaderServiceStyles from 'components/Header/HeaderComponents/HeaderServic
 // eslint-disable-next-line import/no-cycle
 import ShareDropdown from 'components/Header/HeaderComponents/ShareDropdown';
 
+import { UserContext } from 'pages/PostPage/PostIdPage/EditPage/EditPage';
+
 function HeaderService({ postId }) {
   const [emojiDropdown, setEmojiDropdown] = useState(false);
   const [shareDropdown, setShareDropdown] = useState(false);
-  const [recipientData, setRecipienData] = useState({});
-  const { recipientInfo } = useGetRecipient({ id: postId });
   const [emojiSelectDropdown, setEmojiSelectDropdown] = useState(false);
+  const { getRecipient, data: recipientInfo } = useGetRecipient({ id: postId });
+  const isEdit = React.useContext(UserContext);
+  const { postReaction } = usePostReaction();
+  const handleClickBadge = async (emoji) => {
+    const postData = { id: postId, emoji, isIncrease: true };
+    await postReaction(postData);
+    getRecipient();
+  };
 
-  const handleEmojiClick = (emojiObject) => {
-    console.log(emojiObject.emoji);
+  const location = useLocation();
+  // const id = postId;
+  const handleEmojiClick = async (emojiObject) => {
+    const postData = { id: postId, emoji: emojiObject.emoji, isIncrease: true };
+    await postReaction(postData);
+    getRecipient();
   };
 
   useEffect(() => {
-    if (recipientInfo) {
-      setRecipienData(recipientInfo);
-    }
-  }, [recipientInfo]);
+    getRecipient();
+  }, [isEdit]);
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
       <div className={HeaderServiceStyles.headerContainer}>
-        <p className={HeaderServiceStyles.toNickname}>To. {recipientData.name}</p>
+        <p className={HeaderServiceStyles.toNickname}>To. {recipientInfo?.name}</p>
         <hr className={HeaderServiceStyles.lineOnMobile} />
         <div className={HeaderServiceStyles.headerRight}>
           <div className={HeaderServiceStyles.howManyPerson}>
             <div className={HeaderServiceStyles.senderProfile}>
-              {recipientData &&
-                recipientData.recentMessages &&
-                recipientData.recentMessages.length > 0 &&
-                recipientData.recentMessages
+              {recipientInfo?.recentMessages?.length > 0 &&
+                recipientInfo?.recentMessages
                   .slice(0, 3)
                   .map((message) => (
                     <img
@@ -53,30 +63,39 @@ function HeaderService({ postId }) {
                       key={message.id}
                     />
                   ))}
-              <div className={HeaderServiceStyles.senderCount}>
-                +{recipientData.messageCount > 3 ? recipientData.messageCount - 3 : 0}
-              </div>
+              {recipientInfo?.messageCount > 3 && (
+                <div className={HeaderServiceStyles.senderCount}>+{recipientInfo.messageCount - 3}</div>
+              )}
             </div>
             <p>
-              <span>{recipientData?.messageCount}</span>명이 작성했어요!
+              <span>{recipientInfo?.messageCount}</span>명이 작성했어요!
             </p>
           </div>
           <div className={HeaderServiceStyles.selectionBar} />
-          {recipientData && recipientData.topReactions && recipientData.topReactions.length > 0 && (
+          {recipientInfo && recipientInfo.topReactions && recipientInfo.topReactions.length > 0 && (
             <div className={HeaderServiceStyles.headerEmoji}>
-              {recipientData.topReactions.slice(0, 3).map((reaction) => (
-                <BadgeEmoji key={reaction.id} emoji={reaction?.emoji} count={reaction?.count} />
+              {recipientInfo.topReactions.slice(0, 3).map((reaction) => (
+                <button
+                  type="button"
+                  onClick={() => handleClickBadge(reaction.emoji)}
+                  aria-label={`React with ${reaction.name}`}
+                  key={reaction.emoji}
+                  className={HeaderServiceStyles.badgeBtn}
+                >
+                  <BadgeEmoji emoji={reaction?.emoji} count={reaction?.count} />
+                </button>
               ))}
               <button
                 onClick={() => {
                   setEmojiDropdown(!emojiDropdown);
                   setShareDropdown(false);
+                  setEmojiSelectDropdown(false);
                 }}
                 type="button"
                 className={HeaderServiceStyles.modalIcon}
               >
                 <img src={arrowDownIcon} alt="arrowDownIcon" />
-                {emojiDropdown && <EmojiDropdown emojiList={recipientData?.topReactions || []} />}
+                {emojiDropdown && <EmojiDropdown recipienId={postId} />}
               </button>
             </div>
           )}
@@ -85,6 +104,8 @@ function HeaderService({ postId }) {
               buttonType="outlined36"
               onClick={() => {
                 setEmojiSelectDropdown(!emojiSelectDropdown);
+                setEmojiDropdown(false);
+                setShareDropdown(false);
               }}
             >
               <SmileImg fill="black" />
@@ -95,16 +116,33 @@ function HeaderService({ postId }) {
             </div>
           </div>
           <div className={HeaderServiceStyles.selectionBar2} />
-          <Button
-            buttonType="outlined36"
-            onClick={() => {
-              setShareDropdown(!shareDropdown);
-              setEmojiDropdown(false);
-            }}
-          >
-            <ShareImg fill="black" />
-            {shareDropdown && <ShareDropdown />}
-          </Button>
+
+          {location.pathname === `/post/${postId}/edit` ? (
+            <Button
+              disabled
+              buttonType="outlined36"
+              onClick={() => {
+                setShareDropdown(!shareDropdown);
+                setEmojiDropdown(false);
+                setEmojiSelectDropdown(false);
+              }}
+            >
+              <ShareImg fill="white" />
+              {shareDropdown && <ShareDropdown />}
+            </Button>
+          ) : (
+            <Button
+              buttonType="outlined36"
+              onClick={() => {
+                setShareDropdown(!shareDropdown);
+                setEmojiDropdown(false);
+                setEmojiSelectDropdown(false);
+              }}
+            >
+              <ShareImg fill="black" />
+              {shareDropdown && <ShareDropdown />}
+            </Button>
+          )}
         </div>
       </div>
     </div>

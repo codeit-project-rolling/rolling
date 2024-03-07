@@ -1,21 +1,59 @@
+/* eslint-disable prefer-const */
 /* eslint-disable react/prop-types */
 
-import React from 'react';
+import { React, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import CardListStyle from './Cardlist.module.scss';
 import { cardBackgroundSvg, backgroundThemaSwith, backgroundUrlFontColor } from './cardUtils';
-import CardListDumpData from './dump.data';
+import CardListStyle from './cardlist.module.scss';
 
 function CardList({ data }) {
+  const { id } = data;
+  const navigate = useNavigate();
+  // const [xDown, setXDown] = useState(null);
+  // const [xUp, setXUp] = useState(null);
+  const xDown = useRef(null);
+  const xUp = useRef(null);
+
+  const handleMouseDown = (e) => {
+    xDown.current = e.clientX;
+    // setXDown(e.clientX);
+  };
+
+  const handleMouseUP = (e) => {
+    xUp.current = e.clientX;
+    // setXUp(e.clientX);
+  };
+
+  const handleMoveLink = () => {
+    // const xDiff = xDown - xUp;
+    const xDiff = xDown.current - xUp.current;
+    if (Math.abs(xDiff) === 0 && id) {
+      navigate(`/post/${id}`);
+    } else if (Math.abs(xDiff) > 0) {
+      return;
+    }
+    // setXDown(null);
+    // setXUp(null);
+    xDown.current = null;
+    xUp.current = null;
+  };
+
   return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       className={[CardListStyle.container, CardListStyle[data?.backgroundColor]].join(' ')}
+      key={id}
+      id={id}
       style={backgroundThemaSwith(data)}
+      onClick={() => handleMoveLink(id)}
+      onKeyDown={handleMouseDown}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUP}
     >
       {!data?.backgroundImageURL ? (
         <div className={CardListStyle.card_background}>{cardBackgroundSvg(data?.backgroundColor)}</div>
       ) : null}
-
       <div className={CardListStyle.card}>
         <div className={CardListStyle.name} style={backgroundUrlFontColor(data)}>
           To. {data?.name}
@@ -41,10 +79,6 @@ function CardList({ data }) {
       </div>
     </div>
   );
-}
-
-export function DemoCard() {
-  return <CardList data={CardListDumpData} />;
 }
 
 export default CardList;
