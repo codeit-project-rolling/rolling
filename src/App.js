@@ -7,8 +7,6 @@ import MessagePage from 'pages/PostPage/PostIdPage/MessagePage/MessagePage';
 import PostIdPage from 'pages/PostPage/PostIdPage/PostIdPage';
 import PostPage from 'pages/PostPage/PostPage';
 
-import './App.scss';
-
 function loadData() {
   return null;
 }
