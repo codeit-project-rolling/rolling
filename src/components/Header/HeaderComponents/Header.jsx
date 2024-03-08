@@ -23,8 +23,7 @@ function Header({ postId }) {
           </div>
         </Link>
         {location.pathname !== `/post/${id}` &&
-          location.pathname !== `/post/${id}/edit` &&
-          location.pathname !== `/post/${id}/message` && ( // 현재 경로가 '/post/:id'가 아닐 때에만 렌더링
+          location.pathname !== `/post/${id}/edit` && ( // 현재 경로가 '/post/:id'가 아닐 때에만 렌더링
             <Button buttonType="outlined40" onClick={handleRollingButtonClick}>
               <p>롤링 페이퍼 만들기</p>
             </Button>
