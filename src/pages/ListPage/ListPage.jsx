@@ -36,7 +36,7 @@ function ListPage() {
         ) : (
           <CardSlider itemsPerPage={4}>
             {likeList?.results?.map((v) => (
-              <CardList data={v} stopPropagation />
+              <CardList key={v.id} data={v} stopPropagation />
             ))}
           </CardSlider>
         )}
@@ -48,7 +48,7 @@ function ListPage() {
         ) : (
           <CardSlider itemsPerPage={4}>
             {recentList?.results?.map((v) => (
-              <CardList data={v} stopPropagation />
+              <CardList key={v.id} data={v} stopPropagation />
             ))}
           </CardSlider>
         )}
