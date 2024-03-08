@@ -5,17 +5,33 @@ import Header from 'components/Header/HeaderComponents/Header';
 import HeaderService from 'components/Header/HeaderComponents/HeaderService';
 import styles from 'components/Header/HeaderLayout.module.scss';
 
-function HeaderLayout({ postId }) {
+function HeaderLayout({ postId, displayService }) {
   return (
-    <div className={styles.headerContainer}>
-      <div className={styles.headerHideOnMobile}>
-        <Header postId={postId} />
+    <>
+      <div className={styles.headerContainer}>
+        <div className={displayService ? styles.headerHideOnMobile : ''}>
+          <Header postId={postId} />
+          <div className={styles.dummyHeader} />
+        </div>
+        {postId && displayService && (
+          <div>
+            <HeaderService postId={postId} />
+            <div className={styles.dummyHeaderService} />
+          </div>
+        )}
       </div>
-      <HeaderService postId={postId} />
-    </div>
+      {displayService ? <div className={styles.dummyService} /> : <div className={styles.dummy} />}
+    </>
   );
 }
 HeaderLayout.propTypes = {
-  postId: PropTypes.string.isRequired,
+  postId: PropTypes.string,
+  displayService: PropTypes.bool,
 };
+
+HeaderLayout.defaultProps = {
+  postId: '',
+  displayService: false,
+};
+
 export default HeaderLayout;

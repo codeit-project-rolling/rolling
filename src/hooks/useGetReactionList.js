@@ -53,7 +53,7 @@ function useGetReactionList({ id, limit, offset }) {
     } finally {
       setLoading(false);
     }
-  }, [id]);
+  }, [id, limit, offset]);
 
   useEffect(() => {
     getReactionList();

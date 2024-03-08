@@ -1,21 +1,20 @@
 @import 'assets/styles/global.scss';
 
-html,
-body {
-  height: 100%;
-}
-
 .cardListOverContainer {
-  height: calc(100% - 12.7rem);
+  display: flex;
+  padding: 11.2rem 2.4rem 13.5rem;
+  min-height: calc(100vh - 11.9rem);
+
+  @include tablet {
+    padding: 9.2rem 2.4rem 13.5rem;
+  }
+
+  @include mobile {
+    padding: 3.2rem 2rem 13.5rem;
+    min-height: calc(100vh - 10.4rem);
+  }
 }
 
-.cardListContainer {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  overflow: scroll;
-}
 .beige {
   background-color: $Orange200;
 }
@@ -28,33 +27,28 @@ body {
 .green {
   background-color: $Green200;
 }
-.heightCover {
-  height: 12.7rem;
+
+.contentContainer {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 120rem;
 }
 
 .cardList {
-  position: relative;
   display: grid;
-  margin-top: 11.3rem;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
-  width: 120rem;
-  grid-auto-rows: 28rem;
+  width: 100%;
+
   @media (max-width: 1248px) {
-    width: calc(100% - 4.8rem);
-    margin-left: 2.4rem;
-    margin-right: 2.4rem;
-    margin-top: 9.3rem;
   }
+
   @include tablet {
-    width: 100%;
     grid-template-columns: 1fr 1fr;
-    margin-top: 9.3rem;
   }
+
   @include mobile {
-    width: 100%;
     grid-template-columns: 1fr;
-    margin-top: 3.2rem;
   }
 }
 
@@ -62,15 +56,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38.4rem;
-  height: 28rem;
+  width: 100%;
+  height: 28.1rem;
   border-radius: 1.6rem;
   background: $White;
   box-shadow: 0rem 0.2rem 1.2rem 0rem rgba(0, 0, 0, 0.08);
   padding: 2.8rem 2.4rem;
-  @include tablet {
-    width: 100%;
-    height: 100%;
+
+  @include mobile {
+    height: 23.1rem;
   }
 }
 
@@ -111,16 +105,27 @@ body {
   }
 }
 
-.editButton {
-  position: absolute;
-  top: -5rem;
-  right: 0;
+.editButtonDesktop {
+  float: right;
+  margin-bottom: 2.4rem;
+
   @include tablet {
+    display: none;
+  }
+}
+
+.editButton {
+  display: none;
+
+  @include tablet {
+    display: flex;
     position: fixed;
     z-index: 1;
     bottom: 2.4rem;
-    right: auto;
-    top: auto;
     width: calc(100% - 4.8rem);
+  }
+
+  @include mobile {
+    width: calc(100% - 4rem);
   }
 }
