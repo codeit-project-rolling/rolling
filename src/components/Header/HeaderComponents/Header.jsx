@@ -1,6 +1,7 @@
-import LogoImg from 'assets/images/logo.svg';
 import PropTypes from 'prop-types';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+import LogoImg from 'assets/images/logo.svg';
 
 import Button from 'components/Button/Button';
 import HeaderStyles from 'components/Header/HeaderComponents/Header.module.scss';
