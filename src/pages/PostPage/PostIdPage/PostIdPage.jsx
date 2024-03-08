@@ -26,7 +26,7 @@ function PostIdPage() {
   const [offset, setOffset] = useState(0);
   const { id } = useParams();
   const { data: recipientInfo } = useGetRecipient({ id });
-  const { data: messageList, loading } = useGetMessageList({ id, limit, offset });
+  const { getMessageList, data: messageList, loading } = useGetMessageList({ id, limit, offset });
   const [showToast, setShowToast] = useState(false);
   const { openModal } = useModal();
   const navigate = useNavigate();
@@ -84,8 +84,8 @@ function PostIdPage() {
     // console.log(`!!! useEffect -> offset = ${offset} loading = ${loading}`);
     // console.log('    messageList', messageList?.results);
     // console.log('    loadedMessageList', loadedMessageList);
-    // 로딩이 완료된 후에만 로직을 실행합니다.
     if (!loading && messageList) {
+      getMessageList();
       const nextMessageList = messageList?.results ?? [];
       const maxMessageListCount = messageList?.count ?? 0;
 

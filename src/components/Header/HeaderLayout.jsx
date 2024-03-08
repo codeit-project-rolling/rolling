@@ -9,7 +9,7 @@ function HeaderLayout({ postId, displayService }) {
   return (
     <>
       <div className={styles.headerContainer}>
-        <div className={displayService && styles.headerHideOnMobile}>
+        <div className={displayService ? styles.headerHideOnMobile : ''}>
           <Header postId={postId} />
           <div className={styles.dummyHeader} />
         </div>
