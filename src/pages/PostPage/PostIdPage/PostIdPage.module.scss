@@ -90,18 +90,21 @@
 }
 
 .toast {
+  z-index: 2;
   position: fixed;
   bottom: 7rem;
   width: 52.4rem;
   height: 6.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+
   @include tablet {
     position: fixed;
-    bottom: 7rem;
+    bottom: 8.8rem;
   }
+
   @include mobile {
-    position: fixed;
-    bottom: 7rem;
-    width: calc(100% - 4.8rem);
+    width: calc(100% - 4rem);
   }
 }
 
