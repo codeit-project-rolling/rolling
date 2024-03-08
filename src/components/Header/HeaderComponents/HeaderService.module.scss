@@ -1,15 +1,22 @@
 @import 'assets/styles/global.scss';
 .headerServiceContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding: 1.1rem 0;
+  padding: 1.3rem 0;
   width: 100%;
+
+  @include mobile {
+    padding: 0.8rem 0 1.2rem;
+  }
 
   .headerContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 124.8rem;
+    width: 100%;
+    max-width: 124.8rem;
+
     @include mobile {
       flex-direction: column;
       justify-content: flex-start;
@@ -25,7 +32,7 @@
 
       @include mobile {
         display: block;
-        margin: 1.1rem 0;
+        margin: 1.2rem 0 0.8rem;
       }
     }
   }
@@ -190,4 +197,11 @@
   @include mobile {
     display: none;
   }
+}
+
+.line {
+  border: none;
+  height: 0.1rem;
+  margin-top: 1.2rem;
+  background-color: #ededed;
 }

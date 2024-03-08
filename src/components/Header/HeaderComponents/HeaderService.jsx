@@ -170,6 +170,7 @@ function HeaderService({ postId }) {
           )}
         </div>
       </div>
+      <hr className={HeaderServiceStyles.line} />
     </div>
   );
 }

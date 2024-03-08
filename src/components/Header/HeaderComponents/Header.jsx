@@ -30,7 +30,6 @@ function Header({ postId }) {
           )}
       </div>
       <hr className={HeaderStyles.line} />
-      <div className={HeaderStyles.dummy} />
     </div>
   );
 }
