@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import useGetMessageList from 'hooks/useGetMessageList';
+import useGetRecipient from 'hooks/useGetRecipient';
 import useIntersectionObserver from 'hooks/useIntersectionObserver';
 import useModal from 'hooks/useModal';
 
@@ -21,9 +22,10 @@ export const UserContext = React.createContext();
 
 function PostIdPage() {
   // 일반
-  const limit = 15;
+  const limit = 5;
   const [offset, setOffset] = useState(0);
   const { id } = useParams();
+  const { data: recipientInfo } = useGetRecipient({ id });
   const { data: messageList, loading } = useGetMessageList({ id, limit, offset });
   const [showToast, setShowToast] = useState(false);
   const { openModal } = useModal();
@@ -33,7 +35,9 @@ function PostIdPage() {
   const hasMoreMessageListRef = useRef(true); // 아직 불러오지 않은 메세지가 있는지 여부
 
   const loadMoreMessageList = useCallback(() => {
+    // console.log(`... loadMoreMessageList`);
     setOffset((prevOffset) => {
+      // console.log(`... setOffset`);
       if (!hasMoreMessageListRef.current) return prevOffset;
       return prevOffset + limit;
     });
@@ -55,7 +59,7 @@ function PostIdPage() {
     setShowToast(!showToast);
     setTimeout(() => setShowToast(false), 5000);
   };
-  
+
   const handleClick = () => {
     navigate(`/post/${id}/message`);
   };
@@ -78,10 +82,15 @@ function PostIdPage() {
   };
 
   useEffect(() => {
+    // console.log(`!!! useEffect -> offset = ${offset} loading = ${loading}`);
+    // console.log('    messageList', messageList?.results);
+    // console.log('    loadedMessageList', loadedMessageList);
     // 로딩이 완료된 후에만 로직을 실행합니다.
-    if (!loading) {
+    if (!loading && messageList) {
       const nextMessageList = messageList?.results ?? [];
       const maxMessageListCount = messageList?.count ?? 0;
+
+      // console.log('    nextMessageList', nextMessageList);
 
       // 새로운 메시지 리스트를 기존 메시지 리스트에 추가합니다.
       const updatedMessageList = [...loadedMessageList, ...nextMessageList];
@@ -130,7 +139,7 @@ function PostIdPage() {
             </Button>
           </div>
           {/* 옵저버에 등록될 엔트리 */}
-          {!loading && <div ref={setObservationTarget} />}
+          {!loading && <div style={{ height: `1rem` }} ref={setObservationTarget} />}
           <div className={styles.toast}>{showToast && <Toast onClick={handleUrlClick} />}</div>
         </div>
       </div>
