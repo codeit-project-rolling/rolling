@@ -6,7 +6,7 @@ import ServiceImg1 from 'assets/images/img-homepage-service-01.png';
 import ServiceImg2 from 'assets/images/img-homepage-service-02.png';
 
 import Button from 'components/Button/Button';
-import Header from 'components/Header/HeaderComponents/Header';
+import HeaderLayout from 'components/Header/HeaderLayout';
 import ServiceSection from 'components/ServiceSection/ServiceSection';
 
 import styles from 'pages/HomePage/HomePage.module.scss';
@@ -49,8 +49,7 @@ function HomePage() {
 
   return (
     <div className={styles.body}>
-      <Header />
-      {/* <div className={styles.dummyHeader} /> */}
+      <HeaderLayout />
       <main className={styles.main}>
         {serviceList.map((service) => (
           <ServiceSection

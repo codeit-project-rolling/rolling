@@ -17,9 +17,6 @@ import CardStyle from './card.module.scss';
 function Card({ data, showDeleteIcon, className, onClick, onDelete }) {
   const buttonAndCardCombinedClass = classNames(CardStyle.container, className);
   const { deleteMessage } = useDeleteMessage();
-  const handleClick = () => {
-    onClick();
-  };
 
   const handleDeleteClick = async () => {
     await deleteMessage({ id: data.id });
@@ -27,8 +24,8 @@ function Card({ data, showDeleteIcon, className, onClick, onDelete }) {
   };
 
   return (
-    <div className={buttonAndCardCombinedClass}>
-      <button type="button" className={CardStyle.profileBox} onClick={handleClick}>
+    <button type="button" className={buttonAndCardCombinedClass} onClick={onClick}>
+      <div className={CardStyle.profileBox}>
         <div className={CardStyle.profile}>
           <img src={data?.profileImageURL} alt={`${data?.sender} 이미지`} />
           <div className={CardStyle.profile_detail}>
@@ -38,18 +35,18 @@ function Card({ data, showDeleteIcon, className, onClick, onDelete }) {
             <Badge relationship={data?.relationship} />
           </div>
         </div>
-      </button>
+      </div>
       {showDeleteIcon && (
         <Button className={CardStyle.deleteIcon} buttonType="outlined36" onClick={handleDeleteClick}>
           <img src={deleteIcon} alt="휴지통 이미지" />
         </Button>
       )}
 
-      <button type="button" className={CardStyle.text_box} onClick={handleClick}>
+      <div className={CardStyle.text_box}>
         <div className={CardStyle.text}>{data?.content}</div>
         <div className={CardStyle.text_date}>{formatDate(data?.createdAt)}</div>
-      </button>
-    </div>
+      </div>
+    </button>
   );
 }
 

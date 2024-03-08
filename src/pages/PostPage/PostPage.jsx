@@ -7,7 +7,7 @@ import usePostRecipient from 'hooks/usePostRecipient';
 import BackColorOption from 'components/BackgroundOption/BackColorOption';
 import BackImageOption from 'components/BackgroundOption/BackImageOption';
 import Button from 'components/Button/Button';
-import Header from 'components/Header/HeaderComponents/Header';
+import HeaderLayout from 'components/Header/HeaderLayout';
 import InputText from 'components/Input/InputText';
 import ToggleButton from 'components/ToggleButton/ToggleButton';
 
@@ -58,7 +58,7 @@ function PostPage() {
   return (
     <div className={styles.postPageContainer}>
       <div className={styles.headerContainer}>
-        <Header />
+        <HeaderLayout />
       </div>
       <div className={styles.mainContainer}>
         <div className={styles.recipientContainer}>

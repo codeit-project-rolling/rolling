@@ -1,19 +1,29 @@
 @import 'assets/styles/global.scss';
 .headerContainer {
-  display: flex;
-  flex-direction: column;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 9998;
   background-color: white;
+
   .headerHideOnMobile {
     @include mobile {
       display: none;
     }
   }
-  @media (max-width: 1248px) {
-    width: calc(100% - 48px);
-    margin-left: 2.4rem;
-    margin-right: 2.4rem;
+}
+
+.dummy {
+  width: 100%;
+  height: 6.4rem;
+}
+
+.dummyService {
+  width: 100%;
+  height: 11.9rem;
+
+  @include mobile {
+    height: 10.4rem;
   }
 }
