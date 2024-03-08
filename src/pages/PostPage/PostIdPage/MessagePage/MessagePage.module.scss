@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4.7rem;
+}
+
+.messageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 72rem;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contentTitle {
+  color: var(--gray-900, #181818);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px; /* 150% */
+  letter-spacing: -0.24px;
+}
+
+.buttonContainer {
+  margin-top: 20rem;
+  margin-bottom: 6rem;
+}
+
+.button {
+  width: 100%;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}

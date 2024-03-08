@@ -2,7 +2,6 @@
 
 .container {
   box-sizing: border-box;
-  margin-left: 50px;
   position: relative;
   cursor: pointer;
   width: 32rem;
@@ -13,6 +12,7 @@
   gap: 1.9rem;
   border-radius: 0.8rem;
   border: 1px solid $Grayscale300;
+  z-index: 1;
   @include font16Regular;
   button {
     color: $Grayscale500;
