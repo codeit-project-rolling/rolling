@@ -22,7 +22,7 @@ export const UserContext = React.createContext();
 
 function PostIdPage() {
   // 일반
-  const limit = 5;
+  const limit = 6;
   const [offset, setOffset] = useState(0);
   const { id } = useParams();
   const { data: recipientInfo } = useGetRecipient({ id });
@@ -50,7 +50,6 @@ function PostIdPage() {
 
   const { backgroundColor } = recipientInfo;
   const { backgroundImageURL } = recipientInfo;
-  const cardClassName = classNames(styles.cardListOverContainer, styles[backgroundColor]);
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const handleUrlClick = () => {
@@ -110,6 +109,7 @@ function PostIdPage() {
   }, [offset]);
 
   // ClassNames
+  const cardClassName = classNames(styles.cardListOverContainer, styles[backgroundColor]);
   const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
 
   return (
@@ -124,7 +124,10 @@ function PostIdPage() {
         }}
         className={cardClassName}
       >
-        <div className={styles.cardListContainer}>
+        <div className={styles.contentContainer}>
+          <Button className={styles.editButton} buttonType="secondary40" onClick={handleEditClick}>
+            <p>편집하기</p>
+          </Button>
           <div className={styles.cardList}>
             <div className={buttonAndCardCombinedClass}>
               <PlusButton onClick={handleClick} />
@@ -133,9 +136,6 @@ function PostIdPage() {
               <Card onClick={() => handleCardClick(item)} className={styles.card} key={item.id} data={item} />
             ))}
             {loading && <div>Loading...</div>}
-            <Button className={styles.editButton} buttonType="secondary40" onClick={handleEditClick}>
-              <p>편집하기</p>
-            </Button>
           </div>
           {/* 옵저버에 등록될 엔트리 */}
           {!loading && <div style={{ height: `1rem` }} ref={setObservationTarget} />}
