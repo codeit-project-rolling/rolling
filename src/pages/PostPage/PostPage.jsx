@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import useGetBackgroundImageList from 'hooks/useGetBackgroundImageList';
+// import useGetBackgroundImageList from 'hooks/useGetBackgroundImageList';
 import usePostRecipient from 'hooks/usePostRecipient';
 
 import BackColorOption from 'components/BackgroundOption/BackColorOption';
@@ -18,7 +18,7 @@ function PostPage() {
   const [recipientName, setRecipientName] = useState(''); // 받는 사람 이름
   const [selectedColor, setSelectedColor] = useState('beige'); // 선택 색상
   const [selectedImageSrc, setSelectedImageSrc] = useState(null); // 이미지 url 기본 null
-  const [backgroundImgList, setBackgroundImgList] = useState([]);
+  // const [backgroundImgList, setBackgroundImgList] = useState([]);
   // const [errorMsg, setErrorMsg] = useState('');
   const [selectedOption, setSelectedOption] = useState('color'); // 토글 기본 옵션 color
 
@@ -40,12 +40,12 @@ function PostPage() {
     }
   };
 
-  const { data, loading, error } = useGetBackgroundImageList(); // backgroundImgUrl 불러오기
-  useEffect(() => {
-    if (!loading && !error) {
-      setBackgroundImgList(data.imageUrls);
-    }
-  }, [data]);
+  // const { data, loading, error } = useGetBackgroundImageList(); // backgroundImgUrl 불러오기
+  // useEffect(() => {
+  //   if (!loading && !error) {
+  //     setBackgroundImgList(data.imageUrls);
+  //   }
+  // }, [data]);
 
   const handleCreateButtonClick = async () => {
     const createdId = await postRecipient(postData);
@@ -76,7 +76,7 @@ function PostPage() {
           {selectedOption === 'color' ? (
             <BackColorOption onSelect={onSelect} />
           ) : (
-            <BackImageOption onSelect={onSelect} backgroundImgList={backgroundImgList} />
+            <BackImageOption onSelect={onSelect} />
           )}
 
           <Button
