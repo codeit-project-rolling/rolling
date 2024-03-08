@@ -125,6 +125,9 @@ function PostIdPage() {
         className={cardClassName}
       >
         <div className={styles.contentContainer}>
+          <Button className={styles.editButtonDesktop} buttonType="primary40" onClick={handleEditClick}>
+            <p>편집하기</p>
+          </Button>
           <Button className={styles.editButton} buttonType="primary56" onClick={handleEditClick}>
             <p>편집하기</p>
           </Button>
