@@ -58,7 +58,9 @@ function MessagePage() {
 
   return (
     <>
-      <Header postId={id} />
+      <div className={styles.headerContainer}>
+        <Header postId={id} />
+      </div>
       <div className={styles.container}>
         <div className={styles.messageContainer}>
           <div className={styles.contentContainer}>

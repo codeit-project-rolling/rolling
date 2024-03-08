@@ -21,7 +21,7 @@ function ProfileImg({ onChange, selectedImgUrl }) {
   };
   return (
     <div className={styles.profileContainer}>
-      <div>
+      <div className={styles.defaultProfileImgContainer}>
         <img className={styles.defaultProfileImg} alt="기본 프로필" src={selectedImgUrl} />
       </div>
       <div className={styles.profileContent}>
