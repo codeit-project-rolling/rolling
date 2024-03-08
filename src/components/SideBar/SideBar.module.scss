@@ -1,0 +1,142 @@
+@import 'assets/styles/global.scss';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+$navWidth: 92px;
+img {
+  width: 3rem;
+  height: 3rem;
+}
+.navbar {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 19px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $navWidth;
+  height: 100%;
+  background-color: $Grayscale100;
+  color: $Grayscale900;
+  padding: 1.5rem 2.5rem;
+  transition: 0.5s;
+  // border: 2px solid $Purple700;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.expander {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 19px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: $Grayscale100;
+  color: $Grayscale900;
+  padding: 1.5rem 2.5rem;
+  transition: 0.5s;
+  // border: 2px solid $Purple700;
+  border-radius: 0 0.5rem 0.5rem 0;
+  width: calc(#{$navWidth} + 20rem);
+}
+.nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.navBrand {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  color: $Purple700;
+  justify-content: space-between;
+  margin-bottom: 6rem;
+  cursor: pointer;
+  padding: 1rem 1rem;
+}
+
+.navListBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-bottom: 1rem;
+  transition: 0.3s;
+}
+
+.navList {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: 0.3s;
+  padding: 1rem 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  &:hover {
+    border-radius: 1rem;
+    background-color: $Purple400;
+    color: $White;
+  }
+  // margin-bottom: 2.5rem;
+}
+.navListDrop {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  width: 100%;
+  height: 5rem;
+  align-items: center;
+  gap: 1rem;
+  transition: 0.3s;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover {
+    border-radius: 1rem;
+    background-color: $Purple400;
+    color: $White;
+  }
+}
+
+.collapseMenu {
+  list-style-type: none;
+  overflow: hidden;
+  position: absolute;
+  padding: 1rem;
+  border-radius: 8px;
+  max-height: 300px;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease-in;
+  background-color: aqua;
+  width: 100%;
+  top: 50px;
+  left: 0;
+
+  li {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    // bottom:;
+  }
+}
+
+.downIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.MenuToggle {
+}
+.textBox {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
