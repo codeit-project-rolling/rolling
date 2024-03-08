@@ -77,10 +77,12 @@
       }
 
       p {
+        margin-left: 1.1rem;
         color: var(--gray-900, $Grayscale900);
         font-size: 1.8rem;
         font-weight: 400;
         line-height: 2.7rem;
+
         span {
           font-weight: 700;
         }
