@@ -30,8 +30,6 @@
   }
   @include mobile {
     width: calc(100% - 4rem);
-    max-width: 40rem;
-    height: 47.6rem;
     padding: 3.2rem;
   }
 }
