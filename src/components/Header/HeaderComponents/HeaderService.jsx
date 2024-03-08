@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React, { useState, useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import arrowDownIcon from 'assets/images/arrow_down.png';
+import arrowDownIcon from 'assets/images/arrow_down.svg';
 import { ReactComponent as ShareImg } from 'assets/images/share.svg';
 import { ReactComponent as SmileImg } from 'assets/images/smile.svg';
 
