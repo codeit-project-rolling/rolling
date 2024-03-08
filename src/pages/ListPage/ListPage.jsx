@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import useGetRecipientList from 'hooks/useGetRecipientList';
 
 import Button from 'components/Button/Button';
-import Header from 'components/Header/HeaderComponents/Header';
+import HeaderLayout from 'components/Header/HeaderLayout';
 import CardSlider from 'components/Slider/CardSlider';
 import CardSkeleton from 'components/Slider/Skeleton';
 import CardList from 'components/card/cardlist';
@@ -28,7 +28,7 @@ function ListPage() {
 
   return (
     <div className={ListCardStyle.container}>
-      <Header />
+      <HeaderLayout />
       <div className={ListCardStyle.cardSection}>
         <div className={ListCardStyle.title}>인기 롤링 페이퍼 🔥</div>
         {loading ? (

@@ -115,9 +115,8 @@ function PostIdPage() {
   return (
     <>
       <UserContext.Provider value={handleUrlClick}>
-        <HeaderLayout postId={id} />
+        <HeaderLayout postId={id} displayService />
       </UserContext.Provider>
-      <div className={styles.heightCover} />
       <div
         style={{
           background: backgroundImageURL && `url(${backgroundImageURL}) no-repeat center fixed`,

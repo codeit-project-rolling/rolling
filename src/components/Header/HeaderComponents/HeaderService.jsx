@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import EmojiPicker from 'emoji-picker-react';
 import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import arrowDownIcon from 'assets/images/arrow_down.png';
@@ -21,11 +21,12 @@ import ShareDropdown from 'components/Header/HeaderComponents/ShareDropdown';
 import { UserContext } from 'pages/PostPage/PostIdPage/EditPage/EditPage';
 
 function HeaderService({ postId }) {
+  const [buttonType, setButtonType] = useState('outlined36');
   const [emojiDropdown, setEmojiDropdown] = useState(false);
   const [shareDropdown, setShareDropdown] = useState(false);
   const [emojiSelectDropdown, setEmojiSelectDropdown] = useState(false);
   const { getRecipient, data: recipientInfo } = useGetRecipient({ id: postId });
-  const isEdit = React.useContext(UserContext);
+  const isEdit = useContext(UserContext);
   const { postReaction } = usePostReaction();
   const handleClickBadge = async (emoji) => {
     const postData = { id: postId, emoji, isIncrease: true };
@@ -44,10 +45,32 @@ function HeaderService({ postId }) {
   useEffect(() => {
     getRecipient();
   }, [isEdit]);
+
+  // 뷰포트 너비에 따라 buttonType 상태를 업데이트하는 효과
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 768) {
+        setButtonType('outlined28');
+      } else {
+        setButtonType('outlined36');
+      }
+    }
+
+    // 컴포넌트 마운트 시점에 리사이즈 이벤트 리스너 추가
+    window.addEventListener('resize', handleResize);
+    // 초기 설정을 위해 한 번 호출
+    handleResize();
+
+    // 컴포넌트 언마운트 시점에 리사이즈 이벤트 리스너 제거
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className={HeaderServiceStyles.headerServiceContainer}>
       <div className={HeaderServiceStyles.headerContainer}>
-        <p className={HeaderServiceStyles.toNickname}>To. {recipientInfo?.name}</p>
+        <div className={HeaderServiceStyles.headerNickName}>
+          <p className={HeaderServiceStyles.toNickname}>To. {recipientInfo?.name}</p>
+        </div>
         <hr className={HeaderServiceStyles.lineOnMobile} />
         <div className={HeaderServiceStyles.headerRight}>
           <div className={HeaderServiceStyles.howManyPerson}>
@@ -94,14 +117,15 @@ function HeaderService({ postId }) {
                 type="button"
                 className={HeaderServiceStyles.modalIcon}
               >
-                <img src={arrowDownIcon} alt="arrowDownIcon" />
+                <img className={HeaderServiceStyles.arrowDownIcon} src={arrowDownIcon} alt="arrowDownIcon" />
                 {emojiDropdown && <EmojiDropdown recipienId={postId} />}
               </button>
             </div>
           )}
           <div>
             <Button
-              buttonType="outlined36"
+              className={HeaderServiceStyles.headerRightButton}
+              buttonType={buttonType}
               onClick={() => {
                 setEmojiSelectDropdown(!emojiSelectDropdown);
                 setEmojiDropdown(false);
@@ -116,11 +140,11 @@ function HeaderService({ postId }) {
             </div>
           </div>
           <div className={HeaderServiceStyles.selectionBar2} />
-
           {location.pathname === `/post/${postId}/edit` ? (
             <Button
+              className={HeaderServiceStyles.headerRightButton}
               disabled
-              buttonType="outlined36"
+              buttonType={buttonType}
               onClick={() => {
                 setShareDropdown(!shareDropdown);
                 setEmojiDropdown(false);
@@ -132,7 +156,8 @@ function HeaderService({ postId }) {
             </Button>
           ) : (
             <Button
-              buttonType="outlined36"
+              className={HeaderServiceStyles.headerRightButton}
+              buttonType={buttonType}
               onClick={() => {
                 setShareDropdown(!shareDropdown);
                 setEmojiDropdown(false);
@@ -148,7 +173,9 @@ function HeaderService({ postId }) {
     </div>
   );
 }
+
 HeaderService.propTypes = {
   postId: PropTypes.string.isRequired,
 };
+
 export default HeaderService;

@@ -14,7 +14,7 @@ function Header({ postId }) {
   };
   const id = postId;
   return (
-    <>
+    <div style={{ position: `relative` }}>
       <div className={HeaderStyles.headerContainer}>
         <Link to="/" style={{ textDecoration: 'none' }}>
           <div className={HeaderStyles.headerLogo}>
@@ -29,9 +29,9 @@ function Header({ postId }) {
             </Button>
           )}
       </div>
-
       <hr className={HeaderStyles.line} />
-    </>
+      <div className={HeaderStyles.dummy} />
+    </div>
   );
 }
 Header.propTypes = {

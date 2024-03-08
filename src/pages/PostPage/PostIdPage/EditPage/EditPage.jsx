@@ -67,7 +67,7 @@ function EditPage() {
   return (
     <>
       <UserContext.Provider value={isDeleted}>
-        <HeaderLayout postId={id} />
+        <HeaderLayout postId={id} displayService />
       </UserContext.Provider>
       <div className={styles.heightCover} />
       <div
