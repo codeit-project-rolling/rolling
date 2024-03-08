@@ -26,7 +26,7 @@ function PostIdPage() {
   const [offset, setOffset] = useState(0);
   const { id } = useParams();
   const { data: recipientInfo } = useGetRecipient({ id });
-  const { getMessageList, data: messageList, loading } = useGetMessageList({ id, limit, offset });
+  const { data: messageList, loading } = useGetMessageList({ id, limit, offset });
   const [showToast, setShowToast] = useState(false);
   const { openModal } = useModal();
   const navigate = useNavigate();
@@ -85,7 +85,6 @@ function PostIdPage() {
     // console.log('    messageList', messageList?.results);
     // console.log('    loadedMessageList', loadedMessageList);
     if (!loading && messageList) {
-      getMessageList();
       const nextMessageList = messageList?.results ?? [];
       const maxMessageListCount = messageList?.count ?? 0;
 
