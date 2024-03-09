@@ -26,7 +26,7 @@ function PostIdPage() {
   const [offset, setOffset] = useState(0);
   const { id } = useParams();
   const { data: recipientInfo } = useGetRecipient({ id });
-  const { data: messageList, loading } = useGetMessageList({ id, limit, offset });
+  const { data: messageList, loading, error } = useGetMessageList({ id, limit, offset });
   const [showToast, setShowToast] = useState(false);
   const { openModal } = useModal();
   const navigate = useNavigate();
@@ -35,9 +35,7 @@ function PostIdPage() {
   const hasMoreMessageListRef = useRef(true); // 아직 불러오지 않은 메세지가 있는지 여부
 
   const loadMoreMessageList = useCallback(() => {
-    // console.log(`... loadMoreMessageList`);
     setOffset((prevOffset) => {
-      // console.log(`... setOffset`);
       if (!hasMoreMessageListRef.current) return prevOffset;
       return prevOffset + limit;
     });
@@ -81,32 +79,36 @@ function PostIdPage() {
     });
   };
 
+  // 특정 id가 객체를 저장하는 배열 array에 존재하면 true, 아니면 false를 반환하는 함수
+  const containsId = (array, findId) => {
+    if (array.length === 0) return false;
+    return array.some((element) => element.id === findId);
+  };
+
   useEffect(() => {
-    // console.log(`!!! useEffect -> offset = ${offset} loading = ${loading}`);
-    // console.log('    messageList', messageList?.results);
-    // console.log('    loadedMessageList', loadedMessageList);
-    if (!loading && messageList) {
-      const nextMessageList = messageList?.results ?? [];
-      const maxMessageListCount = messageList?.count ?? 0;
+    if (!loading && !error) {
+      const nextMessageList = messageList?.results ?? []; // 추가할 메세지 리스트; messageList.results
+      const maxMessageListCount = messageList?.count ?? 0; // 최대 메세지 수; messageList.count
 
-      // console.log('    nextMessageList', nextMessageList);
+      // nextMessageList가 기존 loadedMessageList에 추가된 배열인지 확인
+      const isExistId = containsId(loadedMessageList, nextMessageList[0]?.id);
 
-      // 새로운 메시지 리스트를 기존 메시지 리스트에 추가합니다.
-      const updatedMessageList = [...loadedMessageList, ...nextMessageList];
-      // console.log(`setLoadedMessageList(updatedMessageList)`);
-      setLoadedMessageList(updatedMessageList);
+      // 추가된 적 없는 새로운 배열이면 nextMessageList를 loadedMessageList에 추가
+      if (!isExistId) {
+        const updatedMessageList = [...loadedMessageList, ...nextMessageList];
+        setLoadedMessageList(updatedMessageList);
 
-      // 만약 더 불러올 메시지가 없다면 (즉, 로드된 메시지 수가 최대 메시지 수에 도달하거나, 마지막 로딩에서 메시지 수가 limit보다 적은 경우)
-      // hasMoreMessageList를 false로 설정하여 더 이상 메시지를 로드하지 않습니다.
-      if (
-        (hasMoreMessageListRef.current && updatedMessageList.length >= maxMessageListCount) ||
-        nextMessageList.length < limit
-      ) {
-        // console.log(`hasMoreMessageList.current = false`);
-        hasMoreMessageListRef.current = false;
+        // 만약 더 불러올 메시지가 없다면 (로드된 메시지 수가 최대 메시지 수에 도달하거나, 마지막 로딩에서 메시지 수가 limit보다 적은 경우)
+        // hasMoreMessageList를 false로 설정하여 더 이상 메시지를 로드하지 않습니다.
+        if (
+          (hasMoreMessageListRef.current && updatedMessageList.length >= maxMessageListCount) ||
+          nextMessageList.length < limit
+        ) {
+          hasMoreMessageListRef.current = false;
+        }
       }
     }
-  }, [offset]);
+  }, [messageList, loading, error]);
 
   // ClassNames
   const cardClassName = classNames(styles.cardListOverContainer, styles[backgroundColor]);

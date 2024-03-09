@@ -23,7 +23,7 @@ import { UserContext } from 'pages/PostPage/PostIdPage/EditPage/EditPage';
 function HeaderService({ postId }) {
   const [buttonType, setButtonType] = useState('outlined36');
   const { getRecipient, data: recipientInfo } = useGetRecipient({ id: postId });
-  const isEdit = useContext(UserContext);
+  const isEditLoading = useContext(UserContext);
   const { postReaction } = usePostReaction();
 
   const emojiDropdownRef = useRef(null);
@@ -48,8 +48,10 @@ function HeaderService({ postId }) {
   };
 
   useEffect(() => {
-    getRecipient();
-  }, [isEdit]);
+    if (!isEditLoading) {
+      getRecipient();
+    }
+  }, [isEditLoading]);
 
   // 드롭다운 외부 클릭해서 닫기
   useEffect(() => {

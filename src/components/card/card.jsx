@@ -3,9 +3,6 @@ import React from 'react';
 
 import deleteIcon from 'assets/images/deletedIcon.svg';
 
-// import { useState } from 'react';
-import useDeleteMessage from 'hooks/useDeleteMessage';
-
 import Badge from 'components/Badge/Badge';
 import Button from 'components/Button/Button';
 
@@ -21,11 +18,8 @@ function Card({ data, showDeleteIcon, onClick, onDelete }) {
     '나눔손글씨 손편지체': 'Handletter',
   };
 
-  const { deleteMessage } = useDeleteMessage();
-
   const handleDeleteClick = async (e) => {
     e.stopPropagation();
-    await deleteMessage({ id: data.id });
     onDelete();
   };
 
@@ -52,7 +46,7 @@ function Card({ data, showDeleteIcon, onClick, onDelete }) {
         </div>
       </button>
       {showDeleteIcon && (
-        <Button className={CardStyle.deleteIcon} buttonType="outlined36" onClick={handleDeleteClick}>
+        <Button className={CardStyle.deleteIcon} buttonType="outlined36" onClick={(e) => handleDeleteClick(e)}>
           <img src={deleteIcon} alt="휴지통 이미지" />
         </Button>
       )}
