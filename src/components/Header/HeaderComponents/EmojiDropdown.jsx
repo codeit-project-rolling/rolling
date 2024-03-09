@@ -25,6 +25,7 @@ function EmojiDropdown({ recipienId }) {
     const postData = { id: recipienId, emoji, isIncrease: true };
     await postReaction(postData);
   };
+
   return (
     <div className={modalStyles.modalContainer}>
       <div className={`${modalStyles.emojiBtnContainer} ${isTablet ? modalStyles.tabletEmojiBtn : ''}`}>

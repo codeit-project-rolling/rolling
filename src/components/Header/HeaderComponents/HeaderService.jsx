@@ -118,8 +118,8 @@ function HeaderService({ postId }) {
                 className={HeaderServiceStyles.modalIcon}
               >
                 <img className={HeaderServiceStyles.arrowDownIcon} src={arrowDownIcon} alt="arrowDownIcon" />
-                {emojiDropdown && <EmojiDropdown recipienId={postId} />}
               </button>
+              {emojiDropdown && <EmojiDropdown recipienId={postId} />}
             </div>
           )}
           <div>
