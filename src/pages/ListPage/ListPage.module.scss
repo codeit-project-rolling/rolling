@@ -6,17 +6,13 @@
 
 .cardSection {
   margin: 6rem auto;
-  max-width: 1180px;
+  max-width: 118rem;
 
   .title {
     @include font24Bold;
     margin-bottom: 1.5rem;
     margin-left: 2.4rem;
   }
-
-  // @include tablet {
-  //   margin-left: 2.4rem;
-  // }
 }
 
 .buttonBox {

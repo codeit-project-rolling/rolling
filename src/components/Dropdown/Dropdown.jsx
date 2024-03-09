@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { React, useState, useEffect, useRef } from 'react';
 
 import downIcon from 'assets/images/arrow_down.svg';
@@ -5,14 +6,8 @@ import upIcon from 'assets/images/arrow_top.svg';
 
 import style from './Dropdown.module.scss';
 
-function Dropdown() {
-  const options = [
-    { id: 1, name: '친구' },
-    { id: 2, name: '지인' },
-    { id: 3, name: '동료' },
-    { id: 4, name: '가족' },
-  ];
-  const [Selected, setSelected] = useState('지인');
+function Dropdown({ options, onChange }) {
+  const [Selected, setSelected] = useState(options[0].name);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -36,6 +31,7 @@ function Dropdown() {
   const handleSelect = (option) => {
     setSelected(option.name);
     setIsOpen(false);
+    onChange(option.name);
   };
 
   return (
@@ -69,5 +65,11 @@ function Dropdown() {
     </div>
   );
 }
+
+Dropdown.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  options: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default Dropdown;

@@ -1,7 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable import/no-extraneous-dependencies */
-
-// import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useGetRecipientList from 'hooks/useGetRecipientList';
@@ -22,7 +18,6 @@ function ListPage() {
   const { loading: recentLoding, data: recentList } = useGetRecipientList();
   const navigate = useNavigate();
   const handleMoveLink = () => {
-    // e.stopPropagation();
     navigate('/post');
   };
 
