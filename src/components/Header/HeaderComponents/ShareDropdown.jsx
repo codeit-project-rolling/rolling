@@ -27,7 +27,7 @@ function ShareDropdown() {
       content: {
         title: '롤링페이퍼',
         description: '지인들과 롤링페이퍼를 작성해보세요',
-        imageUrl: 'https://ibb.co/8zmcyq6',
+        imageUrl: 'https://ibb.co/KFyQrnF',
         link: {
           mobileWebUrl: realUrl,
         },
