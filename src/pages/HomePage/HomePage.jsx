@@ -52,15 +52,7 @@ function HomePage() {
       <HeaderLayout />
       <main className={styles.main}>
         {serviceList.map((service) => (
-          <ServiceSection
-            key={service.pointNum}
-            pointNum={service.pointNum}
-            title={service.title}
-            detail={service.detail}
-            imageSrc={service.imageSrc}
-            imageMobileSrc={service.imageMobileSrc}
-            layout={service.layout}
-          />
+          <ServiceSection key={service.pointNum} service={service} />
         ))}
       </main>
       <div className={styles.bottom}>

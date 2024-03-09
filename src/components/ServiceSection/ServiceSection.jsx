@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import styles from 'components/ServiceSection/ServiceSection.module.scss';
 
-function ServiceSection({ pointNum, title, detail, imageSrc, imageMobileSrc, layout }) {
+function ServiceSection({ service }) {
+  const { pointNum, title, detail, imageSrc, imageMobileSrc, layout } = service;
   const pointText = `Point. ${pointNum}`;
 
   const layoutStyle = layout === 'even' ? styles.evenLayout : layout === 'odd' ? styles.oddLayout : '';
@@ -27,16 +28,8 @@ function ServiceSection({ pointNum, title, detail, imageSrc, imageMobileSrc, lay
 }
 
 ServiceSection.propTypes = {
-  pointNum: PropTypes.string.isRequired,
-  title: PropTypes.node.isRequired,
-  detail: PropTypes.string.isRequired,
-  imageSrc: PropTypes.string.isRequired,
-  imageMobileSrc: PropTypes.string,
-  layout: PropTypes.string.isRequired,
-};
-
-ServiceSection.defaultProps = {
-  imageMobileSrc: '',
+  // eslint-disable-next-line react/forbid-prop-types
+  service: PropTypes.object.isRequired,
 };
 
 export default ServiceSection;
