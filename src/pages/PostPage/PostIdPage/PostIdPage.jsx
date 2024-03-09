@@ -76,6 +76,7 @@ function PostIdPage() {
         relationship: clickedItem.relationship,
         content: clickedItem.content,
         createdAt: clickedItem.createdAt,
+        font: clickedItem.font,
       },
     });
   };
