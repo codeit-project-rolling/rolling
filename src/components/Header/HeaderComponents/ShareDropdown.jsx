@@ -10,7 +10,7 @@ const JS_KEY = process.env.REACT_APP_JS_KEY;
 function ShareDropdown() {
   const editValue = React.useContext(UserContext);
   const { Kakao } = window;
-  const realUrl = 'https://rollingpaperpage.netlify.app';
+  const realUrl = 'https://rolling-ryu-ji-youngs-projects.vercel.app/';
   // 로컬 주소 (localhost 3000 같은거)
   // const resultUrl = window.location.href;
   useEffect(() => {

@@ -53,7 +53,7 @@ function PostIdPage() {
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const handleUrlClick = () => {
-    const link = `http://localhost:3000/post/${id}`;
+    const link = `https://rolling-ryu-ji-youngs-projects.vercel.app/post/${id}`;
     navigator.clipboard.writeText(link);
     setShowToast(!showToast);
     setTimeout(() => setShowToast(false), 5000);
