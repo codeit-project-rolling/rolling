@@ -13,19 +13,23 @@
     width: 100%;
   }
 }
-.inputContainer:focus {
-  border: 0.2rem solid $Grayscale700;
-}
 .inputContainer:hover {
   border: 0.1rem solid $Grayscale500;
+  padding: 1.2rem 1.6rem;
+}
+.inputContainer:focus {
+  border: 0.2rem solid $Grayscale700;
+  padding: 1.1rem 1.5rem;
 }
 .isInputValue {
   border: 0.2rem solid $Grayscale700;
+  padding: 1.1rem 1.5rem;
 }
 .error {
   border: 0.1rem solid $Error;
 }
 .errorMsg {
-  color: red;
-  font-size: 1.6rem;
+  @include font12Regular;
+  color: $Error;
+  margin-top: 0.4rem;
 }

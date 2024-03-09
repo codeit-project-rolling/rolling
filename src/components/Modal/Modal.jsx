@@ -10,7 +10,14 @@ import formatDate from 'utils/formatDate';
 // message: api로부터 받아오는 객체
 // message = {id, recipientId, sender, profileImageURL, relationship, content, font, createdAt}
 function Modal({ message, onClose }) {
-  const { sender, profileImageURL, relationship, content, createdAt } = message;
+  const fontList = {
+    'Noto Sans': 'Noto Sans',
+    Pretendard: 'Pretendard',
+    나눔명조: 'Nanum Myeongjo',
+    '나눔손글씨 손편지체': 'Handletter',
+  };
+
+  const { sender, profileImageURL, relationship, content, createdAt, font } = message;
   const createDate = formatDate(createdAt);
 
   return (
@@ -37,7 +44,9 @@ function Modal({ message, onClose }) {
         <p className={styles.createdDate}>{createDate}</p>
       </div>
       <div className={styles.line} />
-      <p className={styles.content}>{content}</p>
+      <p className={styles.content} style={{ fontFamily: fontList[font] }}>
+        {content}
+      </p>
       <Button className={styles.submitButton} buttonType="primary40" onClick={onClose}>
         <p>확인</p>
       </Button>
@@ -52,6 +61,7 @@ Modal.propTypes = {
     relationship: PropTypes.string,
     content: PropTypes.string,
     createdAt: PropTypes.string,
+    font: PropTypes.string,
   }),
   onClose: PropTypes.func,
 };
@@ -63,6 +73,7 @@ Modal.defaultProps = {
     relationship: '',
     content: '',
     createdAt: '',
+    font: '',
   },
   onClose: null,
 };

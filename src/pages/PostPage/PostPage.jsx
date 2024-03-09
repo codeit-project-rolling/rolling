@@ -18,12 +18,11 @@ function PostPage() {
   const [recipientName, setRecipientName] = useState(''); // 받는 사람 이름
   const [selectedColor, setSelectedColor] = useState('beige'); // 선택 색상
   const [selectedImageSrc, setSelectedImageSrc] = useState(null); // 이미지 url 기본 null
-  const [backgrounImgList, setBackgroundImgList] = useState([]);
+  const [backgroundImgList, setBackgroundImgList] = useState([]);
   // const [errorMsg, setErrorMsg] = useState('');
   const [selectedOption, setSelectedOption] = useState('color'); // 토글 기본 옵션 color
 
   const { postRecipient } = usePostRecipient();
-  const postData = { name: recipientName, backgroundColor: selectedColor, backgroundImageURL: selectedImageSrc };
   const handleRecipientNameChange = (event) => {
     setRecipientName(event.target.value);
   };
@@ -32,7 +31,7 @@ function PostPage() {
     setSelectedOption(option);
   };
 
-  const onSelect = (optionValue) => {
+  const handleSelect = (optionValue) => {
     if (selectedOption === 'color') {
       setSelectedColor(optionValue);
     } else {
@@ -40,19 +39,29 @@ function PostPage() {
     }
   };
 
-  const { data, loading, error } = useGetBackgroundImageList(); // backgroundImgUrl 불러오기
-  useEffect(() => {
-    if (!loading && !error) {
-      setBackgroundImgList(data.imageUrls);
-    }
-  }, [data]);
-
   const handleCreateButtonClick = async () => {
+    const postData = { name: recipientName, backgroundColor: selectedColor, backgroundImageURL: selectedImageSrc };
     const createdId = await postRecipient(postData);
     if (createdId) {
       navigate(`/post/${createdId}`);
     }
   };
+
+  const { data, loading, error } = useGetBackgroundImageList(); // backgroundImgUrl 불러오기
+
+  useEffect(() => {
+    if (!loading && !error) {
+      setBackgroundImgList(data.imageUrls);
+    }
+  }, [loading, error]);
+
+  useEffect(() => {
+    if (selectedOption === 'color') {
+      setSelectedImageSrc(null);
+    } else {
+      setSelectedImageSrc(backgroundImgList[0]);
+    }
+  }, [selectedOption]);
 
   const isInputEmpty = recipientName.trim() === '';
   return (
@@ -74,9 +83,9 @@ function PostPage() {
           <p className={styles.whichChooseText}>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</p>
           <ToggleButton onSelect={handleToggle} selectedOption={selectedOption} />
           {selectedOption === 'color' ? (
-            <BackColorOption onSelect={onSelect} />
+            <BackColorOption onSelect={handleSelect} />
           ) : (
-            <BackImageOption onSelect={onSelect} backgroundImgList={backgrounImgList} />
+            <BackImageOption onSelect={handleSelect} backgroundImgList={backgroundImgList} />
           )}
 
           <Button

@@ -34,6 +34,12 @@
   letter-spacing: -0.24px;
   font-size: $fontSize24;
   color: $Grayscale900;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 
   @include mobile {
     font-size: $fontSize18;

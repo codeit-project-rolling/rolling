@@ -1,6 +1,22 @@
 @import 'assets/styles/global.scss';
 // 1rem = 10px
+
 .container {
+  position: relative;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.1);
+    z-index: 1;
+  }
+  @include tablet {
+    &:hover {
+      transform: scale(1);
+      z-index: 0;
+    }
+  }
+}
+
+.content {
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -38,7 +54,9 @@
   position: absolute;
   width: 4rem;
   height: 4rem;
+  top: 2.8rem;
   right: 2.4rem;
+  z-index: 1;
 }
 
 .profile_detail {
@@ -57,9 +75,15 @@
   font-weight: $fontWeightRegular;
   font-style: normal;
   line-height: 2.4rem;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
   p {
     font-weight: $fontWeightBold;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
   }
 }
 
@@ -77,30 +101,25 @@
 
 .text {
   height: 10.6rem;
-
-  overflow: hidden;
   color: $Grayscale600;
+  white-space: normal;
+  overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-break: anywhere;
 
-  font-family: Pretendard;
-  font-size: $fontSize18;
-  font-weight: $fontWeightRegular;
-  line-height: 2.8rem;
-  letter-spacing: -0.18px;
+  @include font18Regular;
   text-align: start;
 
   @include mobile {
     height: 5.6rem;
+    -webkit-line-clamp: 2;
   }
 }
 
 .text_date {
   color: $Grayscale400;
-  font-family: Pretendard;
-  font-size: $fontSize12;
-  font-style: normal;
-  font-weight: $fontWeightRegular;
-  line-height: 1.8rem;
-  letter-spacing: -0.06px;
+  @include font12Regular;
 }
