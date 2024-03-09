@@ -4,8 +4,8 @@ import useGetRecipientList from 'hooks/useGetRecipientList';
 
 import Button from 'components/Button/Button';
 import HeaderLayout from 'components/Header/HeaderLayout';
+import CardSkeleton from 'components/Slider/CardSkeleton';
 import CardSlider from 'components/Slider/CardSlider';
-import CardSkeleton from 'components/Slider/Skeleton';
 import CardList from 'components/card/cardlist';
 
 import ListCardStyle from './ListPage.module.scss';
