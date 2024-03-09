@@ -101,7 +101,6 @@
 
 .text {
   height: 10.6rem;
-
   color: $Grayscale600;
   white-space: normal;
   overflow: hidden;
@@ -110,11 +109,7 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
 
-  font-family: Pretendard;
-  font-size: $fontSize18;
-  font-weight: $fontWeightRegular;
-  line-height: 2.8rem;
-  letter-spacing: -0.18px;
+  @include font18Regular;
   text-align: start;
 
   @include mobile {
@@ -125,10 +120,5 @@
 
 .text_date {
   color: $Grayscale400;
-  font-family: Pretendard;
-  font-size: $fontSize12;
-  font-style: normal;
-  font-weight: $fontWeightRegular;
-  line-height: 1.8rem;
-  letter-spacing: -0.06px;
+  @include font12Regular;
 }

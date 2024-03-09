@@ -14,6 +14,13 @@ import formatDate from 'utils/formatDate';
 import CardStyle from './card.module.scss';
 
 function Card({ data, showDeleteIcon, onClick, onDelete }) {
+  const fontList = {
+    'Noto Sans': 'Noto Sans',
+    Pretendard: 'Pretendard',
+    나눔명조: 'Nanum Myeongjo',
+    '나눔손글씨 손편지체': 'Handletter',
+  };
+
   const { deleteMessage } = useDeleteMessage();
 
   const handleDeleteClick = async (e) => {
@@ -38,7 +45,9 @@ function Card({ data, showDeleteIcon, onClick, onDelete }) {
         </div>
 
         <div className={CardStyle.text_box}>
-          <div className={CardStyle.text}>{data?.content}</div>
+          <div style={{ fontFamily: fontList[data?.font] }} className={CardStyle.text}>
+            {data?.content}
+          </div>
           <div className={CardStyle.text_date}>{formatDate(data?.createdAt)}</div>
         </div>
       </button>
@@ -59,6 +68,7 @@ Card.propTypes = {
     relationship: PropTypes.string,
     content: PropTypes.string,
     createdAt: PropTypes.string,
+    font: PropTypes.string,
   }),
   showDeleteIcon: PropTypes.bool,
   onClick: PropTypes.func,
@@ -73,6 +83,7 @@ Card.defaultProps = {
     relationship: '',
     content: '',
     createdAt: '',
+    font: '',
   }),
   showDeleteIcon: false,
   onClick: null,
