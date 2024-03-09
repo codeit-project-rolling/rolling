@@ -41,7 +41,7 @@ function Dropdown({ options, onChange }) {
         className={style.container}
         onClick={() => setIsOpen(!isOpen)}
         ref={dropdownRef}
-        style={isOpen ? { border: '0.2rem solid #222' } : {}}
+        style={isOpen ? { border: '0.2rem solid #222', margin: `-0.1rem` } : {}}
       >
         <button className={style.button} type="button" value={selected}>
           {selected || `Placeholder`}

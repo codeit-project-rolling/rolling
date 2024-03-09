@@ -39,6 +39,7 @@
 
   &:focus {
     border: 0.2rem solid $Grayscale500;
+    margin: -0.1rem;
     button {
       color: $Grayscale900;
     }
@@ -46,6 +47,7 @@
 
   &:active {
     border: 0.2rem solid $Grayscale500;
+    margin: -0.1rem;
     button {
       color: $Grayscale900;
     }
