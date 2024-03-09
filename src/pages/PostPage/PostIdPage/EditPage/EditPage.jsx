@@ -35,8 +35,8 @@ function EditPage() {
     setIsDeleted(!isDeleted);
   };
 
-  const handleDeleteClick = () => {
-    deleteRecipient({ id });
+  const handleDeleteClick = async () => {
+    await deleteRecipient({ id });
     navigate(`/list`);
   };
 
