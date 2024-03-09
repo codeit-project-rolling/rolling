@@ -19,7 +19,6 @@
 
     @include mobile {
       flex-direction: column;
-      justify-content: flex-start;
       align-items: flex-start;
     }
 
@@ -56,28 +55,65 @@
   .headerRight {
     position: relative;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 0 2.4rem;
 
     @include mobile {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
       margin-left: auto;
       padding: 0 2rem;
     }
 
     .howManyPerson {
-      margin: 0 2.8rem 0 0;
+      margin-right: 2.8rem;
       display: flex;
 
       @include tablet {
         display: none;
       }
 
+      .senderProfile {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-right: 1.1rem;
+
+        .senderProfileImg {
+          width: 2.8rem;
+          height: 2.8rem;
+          margin-right: -1.6rem;
+          border-radius: 14rem;
+          border: 0.14rem $White solid;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+
+        .disableMarginRight {
+          margin-right: 0;
+        }
+
+        .senderCount {
+          width: 2.8rem;
+          height: 2.8rem;
+          border-radius: 14rem;
+          border: 0.1rem #e3e3e3 solid;
+          background-color: $White;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2rem;
+          font-weight: 500;
+          line-height: 1.8rem;
+          color: #484848;
+        }
+      }
+
       p {
-        margin-left: 1.1rem;
+        z-index: 1;
         color: var(--gray-900, $Grayscale900);
         font-size: 1.8rem;
         font-weight: 400;
@@ -85,36 +121,6 @@
 
         span {
           font-weight: 700;
-        }
-      }
-
-      .senderProfile {
-        position: relative;
-        display: flex;
-        left: -1.5rem;
-
-        .senderProfileImg {
-          width: 2.8rem;
-          height: 2.8rem;
-          border-radius: 14rem;
-          margin-right: -1.3rem;
-          border: 1.4px $White solid;
-        }
-
-        .senderCount {
-          width: 2.8rem;
-          height: 2.8rem;
-          border-radius: 14rem;
-          margin-right: -1.3rem;
-          border: 1px #e3e3e3 solid;
-          background-color: $White;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.2rem;
-          font-weight: 500;
-          line-height: 18px;
-          color: #484848;
         }
       }
     }
