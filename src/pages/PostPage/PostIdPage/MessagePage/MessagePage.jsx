@@ -94,7 +94,7 @@ function MessagePage() {
                 <p>롤링 페이퍼 만들기</p>
               </Button>
             ) : (
-              <Button className={styles.button} buttonType="primary56" disabled>
+              <Button onClick={handlebuttonClick} className={styles.button} buttonType="primary56" disabled>
                 <p>롤링 페이퍼 만들기</p>
               </Button>
             )}
