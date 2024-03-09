@@ -78,10 +78,13 @@
 .text {
   height: 10.6rem;
 
-  overflow: hidden;
   color: $Grayscale600;
+  white-space: normal;
+  overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
 
   font-family: Pretendard;
   font-size: $fontSize18;
@@ -92,6 +95,7 @@
 
   @include mobile {
     height: 5.6rem;
+    -webkit-line-clamp: 2;
   }
 }
 
