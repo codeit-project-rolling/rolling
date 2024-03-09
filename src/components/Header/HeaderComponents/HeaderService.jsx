@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import EmojiPicker from 'emoji-picker-react';
 import PropTypes from 'prop-types';
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import arrowDownIcon from 'assets/images/arrow_down.svg';
@@ -23,7 +23,7 @@ import { UserContext } from 'pages/PostPage/PostIdPage/EditPage/EditPage';
 
 function HeaderService({ postId }) {
   const [buttonType, setButtonType] = useState('outlined36');
-  const { getRecipient, data: recipientInfo } = useGetRecipient({ id: postId });
+  const { getRecipient, data: recipientInfo, loading, error } = useGetRecipient({ id: postId });
   const isEditLoading = useContext(UserContext);
   const { postReaction } = usePostReaction();
 
@@ -34,25 +34,25 @@ function HeaderService({ postId }) {
   const [emojiSelectDropdown, setEmojiSelectDropdown] = useState(false);
   const [shareDropdown, setShareDropdown] = useState(false);
 
-  const handleClickBadge = async (emoji) => {
+  const handleClickBadge = (emoji) => {
     const postData = { id: postId, emoji, isIncrease: true };
-    await postReaction(postData);
+    postReaction(postData);
     getRecipient();
   };
 
   const location = useLocation();
   // const id = postId;
-  const handleEmojiClick = async (emojiObject) => {
+  const handleEmojiClick = (emojiObject) => {
     const postData = { id: postId, emoji: emojiObject.emoji, isIncrease: true };
-    await postReaction(postData);
+    postReaction(postData);
     getRecipient();
   };
 
   useEffect(() => {
-    if (!isEditLoading) {
+    if (!isEditLoading && !loading && !error) {
       getRecipient();
     }
-  }, [isEditLoading]);
+  }, [isEditLoading, loading, error]);
 
   // 드롭다운 외부 클릭해서 닫기
   useEffect(() => {
@@ -128,9 +128,9 @@ function HeaderService({ postId }) {
             </p>
           </div>
           <div className={HeaderServiceStyles.selectionBar} />
-          {recipientInfo && recipientInfo.topReactions && recipientInfo.topReactions.length > 0 && (
+          {recipientInfo?.topReactions?.length > 0 && (
             <div className={HeaderServiceStyles.headerEmoji}>
-              {recipientInfo.topReactions.slice(0, 3).map((reaction) => (
+              {recipientInfo?.topReactions.slice(0, 3).map((reaction) => (
                 <button
                   type="button"
                   onClick={() => handleClickBadge(reaction.emoji)}
@@ -151,7 +151,7 @@ function HeaderService({ postId }) {
                 >
                   <img className={HeaderServiceStyles.arrowDownIcon} src={arrowDownIcon} alt="arrowDownIcon" />
                 </button>
-                {emojiDropdown && <EmojiDropdown recipienId={postId} />}
+                {emojiDropdown && <EmojiDropdown recipienId={postId} getRecipient={getRecipient} />}
               </div>
             </div>
           )}

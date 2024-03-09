@@ -8,7 +8,7 @@ import usePostReaction from 'hooks/usePostReaction';
 import BadgeEmoji from 'components/BadgeEmoji/BadgeEmoji';
 import modalStyles from 'components/Header/HeaderComponents/EmojiDropdown.module.scss';
 
-function EmojiDropdown({ recipienId }) {
+function EmojiDropdown({ recipienId, getRecipient }) {
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.down('lg'));
   const { data: getData, loading: getLoading, error: getError } = useGetReactionList({ id: recipienId });
@@ -18,6 +18,7 @@ function EmojiDropdown({ recipienId }) {
   const handleClickBadge = (emoji) => () => {
     const post = { id: recipienId, emoji, isIncrease: true };
     postReaction(post);
+    getRecipient();
   };
 
   useEffect(() => {
@@ -66,6 +67,7 @@ function EmojiDropdown({ recipienId }) {
 
 EmojiDropdown.propTypes = {
   recipienId: PropTypes.string.isRequired,
+  getRecipient: PropTypes.func.isRequired,
 };
 
 export default EmojiDropdown;
