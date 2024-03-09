@@ -189,7 +189,7 @@ function HeaderService({ postId }) {
               >
                 <ShareImg fill="black" />
               </Button>
-              {shareDropdown && <ShareDropdown />}
+              {shareDropdown && <ShareDropdown onClose={() => setShareDropdown(false)} />}
             </div>
           )}
         </div>

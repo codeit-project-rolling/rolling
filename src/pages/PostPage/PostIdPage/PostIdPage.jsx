@@ -53,7 +53,6 @@ function PostIdPage() {
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const handleUrlClick = () => {
-    console.log('클릭');
     const link = `http://localhost:3000/post/${id}`;
     navigator.clipboard.writeText(link);
     setShowToast(!showToast);
