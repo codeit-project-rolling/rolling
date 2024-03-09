@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useGetRecipientList from 'hooks/useGetRecipientList';
@@ -11,22 +12,42 @@ import CardList from 'components/card/cardlist';
 import ListCardStyle from './ListPage.module.scss';
 
 function ListPage() {
-  const { data: likeList, loading } = useGetRecipientList({
-    sortByLike: true,
-  });
-
-  const { loading: recentLoding, data: recentList } = useGetRecipientList();
+  const {
+    getRecipientList: getRecipientListLike,
+    data: likeList,
+    loading: likeListLoading,
+    error: likeListError,
+  } = useGetRecipientList({ sortByLike: true });
+  const {
+    getRecipientList,
+    data: recentList,
+    loading: recentListLoding,
+    error: recentListError,
+  } = useGetRecipientList();
   const navigate = useNavigate();
+
   const handleMoveLink = () => {
     navigate('/post');
   };
+
+  useEffect(() => {
+    if (!likeListLoading && !likeListError) {
+      getRecipientListLike();
+    }
+  }, [likeListLoading, likeListError]);
+
+  useEffect(() => {
+    if (!recentListLoding && !recentListError) {
+      getRecipientList();
+    }
+  }, [recentListLoding, recentListError]);
 
   return (
     <div className={ListCardStyle.container}>
       <HeaderLayout />
       <div className={ListCardStyle.cardSection}>
         <div className={ListCardStyle.title}>인기 롤링 페이퍼 🔥</div>
-        {loading ? (
+        {likeListLoading ? (
           <CardSkeleton data={4} />
         ) : (
           <CardSlider itemsPerPage={4}>
@@ -38,7 +59,7 @@ function ListPage() {
       </div>
       <div className={ListCardStyle.cardSection}>
         <div className={ListCardStyle.title}>최근에 만든 롤링 페이퍼 ⭐️️</div>
-        {recentLoding ? (
+        {recentListLoding ? (
           <CardSkeleton data={4} />
         ) : (
           <CardSlider itemsPerPage={4}>
