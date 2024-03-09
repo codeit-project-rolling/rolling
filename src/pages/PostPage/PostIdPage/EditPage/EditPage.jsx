@@ -17,7 +17,7 @@ import Card from 'components/card/card';
 
 import { modalList } from 'contexts/ModalComponent';
 
-import styles from 'pages/PostPage/PostIdPage/PostIdPage.module.scss';
+import styles from 'pages/PostPage/PostIdPage/EditPage/EditPage.module.scss';
 
 export const UserContext = React.createContext();
 
@@ -71,6 +71,10 @@ function PostIdPage() {
   const handleClickDeleteRecipient = () => {
     deleteRecipient({ id });
     navigate(`/list`);
+  };
+
+  const handleClickFinishDelete = () => {
+    navigate(`/post/${id}`);
   };
 
   const handleCardClick = (clickedItem) => {
@@ -143,12 +147,22 @@ function PostIdPage() {
         className={cardClassName}
       >
         <div className={styles.contentContainer}>
-          <Button className={styles.editButtonDesktop} buttonType="primary40" onClick={handleClickDeleteRecipient}>
-            <p>삭제하기</p>
-          </Button>
-          <Button className={styles.editButton} buttonType="primary56" onClick={handleClickDeleteRecipient}>
-            <p>삭제하기</p>
-          </Button>
+          <div>
+            <Button className={styles.editButtonDesktop} buttonType="primary40" onClick={handleClickFinishDelete}>
+              <p>편집종료</p>
+            </Button>
+            <Button className={styles.editButtonDesktop} buttonType="primary40" onClick={handleClickDeleteRecipient}>
+              <p>삭제하기</p>
+            </Button>
+          </div>
+          <div className={styles.editButtonContainer}>
+            <Button className={styles.editButton} buttonType="primary56" onClick={handleClickDeleteRecipient}>
+              <p>삭제하기</p>
+            </Button>
+            <Button className={styles.editButton} buttonType="primary56" onClick={handleClickFinishDelete}>
+              <p>편집종료</p>
+            </Button>
+          </div>
           <div className={styles.cardList}>
             {loadedMessageList?.map((item) => (
               <Card
