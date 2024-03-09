@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
@@ -9,10 +10,17 @@ import HeaderStyles from 'components/Header/HeaderComponents/Header.module.scss'
 function Header({ postId }) {
   const navigate = useNavigate();
   const location = useLocation();
+
   const handleRollingButtonClick = () => {
     navigate('/post');
   };
+
   const id = postId;
+  const buttonClasses = classNames(
+    HeaderStyles.button,
+    location.pathname === `/post/${id}` && HeaderStyles.visibilityHidden
+  );
+
   return (
     <div style={{ position: `relative` }}>
       <div className={HeaderStyles.headerContainer}>
@@ -22,12 +30,10 @@ function Header({ postId }) {
             <p className={HeaderStyles.headerTitle}>Rolling</p>
           </div>
         </Link>
-        {location.pathname !== `/post/${id}` &&
-          location.pathname !== `/post/${id}/edit` && ( // 현재 경로가 '/post/:id'가 아닐 때에만 렌더링
-            <Button buttonType="outlined40" onClick={handleRollingButtonClick}>
-              <p>롤링 페이퍼 만들기</p>
-            </Button>
-          )}
+
+        <Button className={buttonClasses} buttonType="outlined40" onClick={handleRollingButtonClick}>
+          <p>롤링 페이퍼 만들기</p>
+        </Button>
       </div>
       <hr className={HeaderStyles.line} />
     </div>
