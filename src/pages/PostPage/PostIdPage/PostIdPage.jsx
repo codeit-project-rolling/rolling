@@ -109,7 +109,6 @@ function PostIdPage() {
 
   // ClassNames
   const cardClassName = classNames(styles.cardListOverContainer, styles[backgroundColor]);
-  const buttonAndCardCombinedClass = classNames(styles.basicButton, styles.card);
 
   return (
     <>
@@ -131,7 +130,7 @@ function PostIdPage() {
             <p>편집하기</p>
           </Button>
           <div className={styles.cardList}>
-            <div className={buttonAndCardCombinedClass}>
+            <div className={styles.basicButton}>
               <PlusButton onClick={handleClick} />
             </div>
             {loadedMessageList?.map((item) => (
