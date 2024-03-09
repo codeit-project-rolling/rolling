@@ -1,6 +1,22 @@
 @import 'assets/styles/global.scss';
 // 1rem = 10px
+
 .container {
+  position: relative;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.1);
+    z-index: 1;
+  }
+  @include tablet {
+    &:hover {
+      transform: scale(1);
+      z-index: 0;
+    }
+  }
+}
+
+.content {
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -38,7 +54,9 @@
   position: absolute;
   width: 4rem;
   height: 4rem;
+  top: 2.4rem;
   right: 2.4rem;
+  z-index: 1;
 }
 
 .profile_detail {

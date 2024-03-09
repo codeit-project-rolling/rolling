@@ -135,7 +135,7 @@ function PostIdPage() {
               <PlusButton onClick={handleClick} />
             </div>
             {loadedMessageList?.map((item) => (
-              <Card onClick={() => handleCardClick(item)} className={styles.card} key={item.id} data={item} />
+              <Card onClick={() => handleCardClick(item)} key={item.id} data={item} />
             ))}
             {loading && <div>Loading...</div>}
           </div>
