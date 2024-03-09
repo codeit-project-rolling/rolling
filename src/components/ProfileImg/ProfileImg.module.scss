@@ -30,6 +30,7 @@
   background: $White;
   cursor: pointer;
   overflow: hidden;
+  margin-right: 0.2rem;
   @include mobile {
     width: 4rem;
     height: 4rem;

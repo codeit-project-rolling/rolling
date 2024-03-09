@@ -1,24 +1,23 @@
 /* eslint-disable react/no-array-index-key */
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+
+import useGetProfileImageList from 'hooks/useGetProfileImg';
 
 import styles from 'components/ProfileImg/ProfileImg.module.scss';
 
-const profileImages = [
-  'https://picsum.photos/id/522/100/100',
-  'https://picsum.photos/id/547/100/100',
-  'https://picsum.photos/id/268/100/100',
-  'https://picsum.photos/id/1082/100/100',
-  'https://picsum.photos/id/571/100/100',
-  'https://picsum.photos/id/494/100/100',
-  'https://picsum.photos/id/859/100/100',
-  'https://picsum.photos/id/437/100/100',
-  'https://picsum.photos/id/1064/100/100',
-];
-
 function ProfileImg({ onChange, selectedImgUrl }) {
+  const { loading, data, getProfileImageList } = useGetProfileImageList();
+
   const handleProfileImgClick = (imageUrl) => {
     onChange(imageUrl);
   };
+  useEffect(() => {
+    if (!loading) {
+      getProfileImageList();
+    }
+  }, [loading]);
+
   return (
     <div className={styles.profileContainer}>
       <div className={styles.defaultProfileImgContainer}>
@@ -27,9 +26,14 @@ function ProfileImg({ onChange, selectedImgUrl }) {
       <div className={styles.profileContent}>
         <p className={styles.profileImgSelect}>프로필 이미지를 선택해주세요!</p>
         <div className={styles.profileImgSelectContainer}>
-          {profileImages.map((image, i) => (
-            <button className={styles.profileImgContainer} type="submit" onClick={() => handleProfileImgClick(image)}>
-              <img className={styles.profileImg} key={i} src={image} alt="프로필 이미지" />
+          {data?.imageUrls.map((image) => (
+            <button
+              className={styles.profileImgContainer}
+              key={image}
+              type="submit"
+              onClick={() => handleProfileImgClick(image)}
+            >
+              <img className={styles.profileImg} src={image} alt="프로필 이미지" />
             </button>
           ))}
         </div>
