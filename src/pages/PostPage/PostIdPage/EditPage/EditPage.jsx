@@ -23,7 +23,7 @@ export const UserContext = React.createContext();
 
 function PostIdPage() {
   // 일반
-  const limit = 6;
+  const limit = 12;
   const [offset, setOffset] = useState(0);
   const { id } = useParams();
   const { data: recipientInfo } = useGetRecipient({ id });
