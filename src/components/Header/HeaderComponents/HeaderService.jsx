@@ -46,6 +46,29 @@ function HeaderService({ postId }) {
     getRecipient();
   }, [isEdit]);
 
+  // 드롭다운 외부 클릭해서 닫기
+  useEffect(() => {
+    function handleClickOutside() {
+      if (emojiDropdown) {
+        setEmojiDropdown(false);
+      }
+
+      if (shareDropdown) {
+        setShareDropdown(false);
+      }
+
+      if (emojiSelectDropdown) {
+        setEmojiSelectDropdown(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [emojiDropdown, shareDropdown, emojiSelectDropdown]);
+
   // 뷰포트 너비에 따라 buttonType 상태를 업데이트하는 효과
   useEffect(() => {
     function handleResize() {
