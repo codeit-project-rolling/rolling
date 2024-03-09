@@ -2,9 +2,10 @@
 import EmojiPicker from 'emoji-picker-react';
 import PropTypes from 'prop-types';
 import React, { useState, useEffect, useContext, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import arrowDownIcon from 'assets/images/arrow_down.svg';
+import LogoImg from 'assets/images/logo.svg';
 import { ReactComponent as ShareImg } from 'assets/images/share.svg';
 import { ReactComponent as SmileImg } from 'assets/images/smile.svg';
 
@@ -98,6 +99,9 @@ function HeaderService({ postId }) {
     <div className={HeaderServiceStyles.headerServiceContainer}>
       <div className={HeaderServiceStyles.headerContainer}>
         <div className={HeaderServiceStyles.headerNickName}>
+          <Link to="/">
+            <img className={HeaderServiceStyles.logoImg} src={LogoImg} alt="LogoImg" />
+          </Link>
           <p className={HeaderServiceStyles.toNickname}>To. {recipientInfo?.name}</p>
         </div>
         <hr className={HeaderServiceStyles.lineOnMobile} />
