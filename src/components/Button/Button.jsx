@@ -27,9 +27,9 @@ function Button({ className, buttonType, children, disabled, onClick }) {
 
   const buttonClassName = classNames(buttonStyle, className);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     if (!disabled) {
-      onClick();
+      onClick(e);
     }
   };
 

@@ -4,29 +4,30 @@ import React, { useState } from 'react';
 import styles from 'components/ToggleButton/ToggleButton.module.scss';
 
 function ToggleButton({ onSelect }) {
-  const [ColorSelected, setColorSelected] = useState(true);
+  const [colorSelected, setColorSelected] = useState(true);
 
   const handleButtonClick = (isColor) => {
     if (isColor) {
       setColorSelected(true);
+      onSelect('color');
     } else {
       setColorSelected(false);
+      onSelect('image');
     }
-    onSelect(isColor ? 'color' : 'image');
   };
 
   return (
     <div className={styles.toggleButtonBackground}>
       <button
         type="button"
-        className={ColorSelected ? styles.selectedButton : styles.unSelectedButton}
+        className={colorSelected ? styles.selectedButton : styles.unSelectedButton}
         onClick={() => handleButtonClick(true)}
       >
         <p>컬러</p>
       </button>
       <button
         type="button"
-        className={!ColorSelected ? styles.selectedButton : styles.unSelectedButton}
+        className={!colorSelected ? styles.selectedButton : styles.unSelectedButton}
         onClick={() => handleButtonClick(false)}
       >
         <p>이미지</p>

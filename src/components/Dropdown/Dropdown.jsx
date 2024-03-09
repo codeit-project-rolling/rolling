@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 import { React, useState, useEffect, useRef } from 'react';
 
-import downIcon from 'assets/images/arrow_down.svg';
 import upIcon from 'assets/images/arrow_top.svg';
 
 import style from './Dropdown.module.scss';
 
 function Dropdown({ options, onChange }) {
-  const [Selected, setSelected] = useState(options[0].name);
+  const [selected, setSelected] = useState(options[0].name);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -41,17 +40,17 @@ function Dropdown({ options, onChange }) {
         className={style.container}
         onClick={() => setIsOpen(!isOpen)}
         ref={dropdownRef}
-        style={isOpen ? { border: '2px solid #222' } : {}}
+        style={isOpen ? { border: '0.2rem solid #222', margin: `-0.1rem`, width: `32.2rem` } : {}}
       >
-        <button className={style.button} type="button" value={Selected}>
-          {Selected || `Placeholder`}
+        <button className={style.button} type="button" value={selected}>
+          {selected || `Placeholder`}
         </button>
-        <img src={isOpen ? upIcon : downIcon} alt="화살표아이콘" />
+        <img style={!isOpen ? { transform: `rotate(180deg)` } : {}} src={upIcon} alt="화살표아이콘" />
         <ul
           style={{
             overflow: isOpen ? 'visible' : 'hidden',
-            border: isOpen ? '1px solid #CCCCCC' : 'none',
-            maxHeight: isOpen ? '500px' : '0',
+            border: isOpen ? '0.1rem solid #CCCCCC' : 'none',
+            maxHeight: isOpen ? '50rem' : '0',
           }}
         >
           {options.map((option) => (
@@ -68,7 +67,7 @@ function Dropdown({ options, onChange }) {
 
 Dropdown.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  options: PropTypes.object.isRequired,
+  options: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 

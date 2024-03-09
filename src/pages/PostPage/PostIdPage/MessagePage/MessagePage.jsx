@@ -27,9 +27,9 @@ function MessagePage() {
   ];
   const fontOptions = [
     { id: 1, name: 'Noto Sans' },
-    { id: 2, name: 'Fira Sans' },
-    { id: 3, name: 'Droid Sans' },
-    { id: 4, name: 'Oxygen' },
+    { id: 2, name: 'Pretendard' },
+    { id: 3, name: '나눔명조' },
+    { id: 4, name: '나눔손글씨 손편지체' },
   ];
   const { id } = useParams();
   const [sender, setSender] = useState('');
@@ -94,7 +94,7 @@ function MessagePage() {
                 <p>롤링 페이퍼 만들기</p>
               </Button>
             ) : (
-              <Button className={styles.button} buttonType="primary56" disabled>
+              <Button onClick={handlebuttonClick} className={styles.button} buttonType="primary56" disabled>
                 <p>롤링 페이퍼 만들기</p>
               </Button>
             )}

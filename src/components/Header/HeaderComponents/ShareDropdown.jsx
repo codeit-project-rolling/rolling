@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import React, { useContext, useEffect } from 'react';
 
 import shareModalStyles from 'components/Header/HeaderComponents/ShareDropdown.module.scss';
 
@@ -7,8 +8,7 @@ import { UserContext } from 'pages/PostPage/PostIdPage/PostIdPage';
 
 const JS_KEY = process.env.REACT_APP_JS_KEY;
 
-function ShareDropdown() {
-  const editValue = React.useContext(UserContext);
+function ShareDropdown({ onClose }) {
   const { Kakao } = window;
   const realUrl = 'https://rolling-ryu-ji-youngs-projects.vercel.app/';
   // 로컬 주소 (localhost 3000 같은거)
@@ -18,7 +18,7 @@ function ShareDropdown() {
     // 자신의 js 키를 넣어준다.
     Kakao.init(JS_KEY);
     // 잘 적용되면 true 를 뱉는다.
-    console.log(Kakao.isInitialized());
+    // console.log(Kakao.isInitialized());
   }, []);
 
   const shareKakao = () => {
@@ -41,6 +41,13 @@ function ShareDropdown() {
         },
       ],
     });
+    onClose();
+  };
+
+  const editUrl = useContext(UserContext);
+  const shareUrl = () => {
+    editUrl();
+    onClose();
   };
 
   return (
@@ -48,11 +55,19 @@ function ShareDropdown() {
       <button type="button" onClick={shareKakao} className={shareModalStyles.shareKakao}>
         카카오톡 공유
       </button>
-      <button type="button" onClick={editValue} className={shareModalStyles.shareUrl}>
+      <button type="button" onClick={shareUrl} className={shareModalStyles.shareUrl}>
         URL 공유
       </button>
     </div>
   );
 }
+
+ShareDropdown.propTypes = {
+  onClose: PropTypes.func,
+};
+
+ShareDropdown.defaultProps = {
+  onClose: null,
+};
 
 export default ShareDropdown;

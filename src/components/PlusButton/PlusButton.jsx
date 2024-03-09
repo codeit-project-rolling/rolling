@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import Plus from 'assets/images/plus.png';
+import Plus from 'assets/images/plus.svg';
 
 import styles from 'components/PlusButton/PlusButton.module.scss';
 

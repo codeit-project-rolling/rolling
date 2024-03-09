@@ -1,10 +1,11 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import EmojiPicker from 'emoji-picker-react';
 import PropTypes from 'prop-types';
-import React, { useState, useEffect, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 import arrowDownIcon from 'assets/images/arrow_down.svg';
+import LogoImg from 'assets/images/logo.svg';
 import { ReactComponent as ShareImg } from 'assets/images/share.svg';
 import { ReactComponent as SmileImg } from 'assets/images/smile.svg';
 
@@ -22,29 +23,58 @@ import { UserContext } from 'pages/PostPage/PostIdPage/EditPage/EditPage';
 
 function HeaderService({ postId }) {
   const [buttonType, setButtonType] = useState('outlined36');
-  const [emojiDropdown, setEmojiDropdown] = useState(false);
-  const [shareDropdown, setShareDropdown] = useState(false);
-  const [emojiSelectDropdown, setEmojiSelectDropdown] = useState(false);
-  const { getRecipient, data: recipientInfo } = useGetRecipient({ id: postId });
-  const isEdit = useContext(UserContext);
+  const { getRecipient, data: recipientInfo, loading, error } = useGetRecipient({ id: postId });
+  const isEditLoading = useContext(UserContext);
   const { postReaction } = usePostReaction();
-  const handleClickBadge = async (emoji) => {
+
+  const emojiDropdownRef = useRef(null);
+  const emojiSelectDropdownRef = useRef(null);
+  const shareDropdownRef = useRef(null);
+  const [emojiDropdown, setEmojiDropdown] = useState(false);
+  const [emojiSelectDropdown, setEmojiSelectDropdown] = useState(false);
+  const [shareDropdown, setShareDropdown] = useState(false);
+
+  const handleClickBadge = (emoji) => {
     const postData = { id: postId, emoji, isIncrease: true };
-    await postReaction(postData);
+    postReaction(postData);
     getRecipient();
   };
 
   const location = useLocation();
   // const id = postId;
-  const handleEmojiClick = async (emojiObject) => {
+  const handleEmojiClick = (emojiObject) => {
     const postData = { id: postId, emoji: emojiObject.emoji, isIncrease: true };
-    await postReaction(postData);
+    postReaction(postData);
     getRecipient();
   };
 
   useEffect(() => {
-    getRecipient();
-  }, [isEdit]);
+    if (!isEditLoading && !loading && !error) {
+      getRecipient();
+    }
+  }, [isEditLoading, loading, error]);
+
+  // 드롭다운 외부 클릭해서 닫기
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (emojiDropdownRef.current && !emojiDropdownRef.current.contains(event.target)) {
+        setEmojiDropdown(false);
+      }
+
+      if (emojiSelectDropdownRef.current && !emojiSelectDropdownRef.current.contains(event.target)) {
+        setEmojiSelectDropdown(false);
+      }
+
+      if (shareDropdownRef.current && !shareDropdownRef.current.contains(event.target)) {
+        setShareDropdown(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [emojiDropdownRef, emojiSelectDropdownRef, shareDropdownRef]);
 
   // 뷰포트 너비에 따라 buttonType 상태를 업데이트하는 효과
   useEffect(() => {
@@ -69,6 +99,9 @@ function HeaderService({ postId }) {
     <div className={HeaderServiceStyles.headerServiceContainer}>
       <div className={HeaderServiceStyles.headerContainer}>
         <div className={HeaderServiceStyles.headerNickName}>
+          <Link to="/">
+            <img className={HeaderServiceStyles.logoImg} src={LogoImg} alt="LogoImg" />
+          </Link>
           <p className={HeaderServiceStyles.toNickname}>To. {recipientInfo?.name}</p>
         </div>
         <hr className={HeaderServiceStyles.lineOnMobile} />
@@ -95,9 +128,9 @@ function HeaderService({ postId }) {
             </p>
           </div>
           <div className={HeaderServiceStyles.selectionBar} />
-          {recipientInfo && recipientInfo.topReactions && recipientInfo.topReactions.length > 0 && (
+          {recipientInfo?.topReactions?.length > 0 && (
             <div className={HeaderServiceStyles.headerEmoji}>
-              {recipientInfo.topReactions.slice(0, 3).map((reaction) => (
+              {recipientInfo?.topReactions.slice(0, 3).map((reaction) => (
                 <button
                   type="button"
                   onClick={() => handleClickBadge(reaction.emoji)}
@@ -108,65 +141,68 @@ function HeaderService({ postId }) {
                   <BadgeEmoji emoji={reaction?.emoji} count={reaction?.count} />
                 </button>
               ))}
-              <button
-                onClick={() => {
-                  setEmojiDropdown(!emojiDropdown);
-                  setShareDropdown(false);
-                  setEmojiSelectDropdown(false);
-                }}
-                type="button"
-                className={HeaderServiceStyles.modalIcon}
-              >
-                <img className={HeaderServiceStyles.arrowDownIcon} src={arrowDownIcon} alt="arrowDownIcon" />
-                {emojiDropdown && <EmojiDropdown recipienId={postId} />}
-              </button>
+              <div ref={emojiDropdownRef} style={{ display: 'flex' }}>
+                <button
+                  onClick={() => {
+                    setEmojiDropdown(!emojiDropdown);
+                  }}
+                  type="button"
+                  className={HeaderServiceStyles.modalIcon}
+                >
+                  <img className={HeaderServiceStyles.arrowDownIcon} src={arrowDownIcon} alt="arrowDownIcon" />
+                </button>
+                {emojiDropdown && <EmojiDropdown recipienId={postId} getRecipient={getRecipient} />}
+              </div>
             </div>
           )}
-          <div>
+          <div ref={emojiSelectDropdownRef} style={{ display: 'flex', position: `relative` }}>
             <Button
               className={HeaderServiceStyles.headerRightButton}
               buttonType={buttonType}
               onClick={() => {
                 setEmojiSelectDropdown(!emojiSelectDropdown);
-                setEmojiDropdown(false);
-                setShareDropdown(false);
               }}
             >
               <SmileImg fill="black" />
               <p className={HeaderServiceStyles.onMobileHide}>추가</p>
             </Button>
-            <div className={HeaderServiceStyles.emojiSelect}>
-              {emojiSelectDropdown && <EmojiPicker autoFocusSearch={false} onEmojiClick={handleEmojiClick} />}
-            </div>
+            {emojiSelectDropdown && (
+              <div className={HeaderServiceStyles.emojiSelect}>
+                <EmojiPicker
+                  style={{ width: `32.5rem`, height: `40rem` }}
+                  autoFocusSearch={false}
+                  onEmojiClick={handleEmojiClick}
+                />
+              </div>
+            )}
           </div>
           <div className={HeaderServiceStyles.selectionBar2} />
           {location.pathname === `/post/${postId}/edit` ? (
-            <Button
-              className={HeaderServiceStyles.headerRightButton}
-              disabled
-              buttonType={buttonType}
-              onClick={() => {
-                setShareDropdown(!shareDropdown);
-                setEmojiDropdown(false);
-                setEmojiSelectDropdown(false);
-              }}
-            >
-              <ShareImg fill="white" />
-              {shareDropdown && <ShareDropdown />}
-            </Button>
+            <div ref={shareDropdownRef}>
+              <Button
+                className={HeaderServiceStyles.headerRightButton}
+                buttonType={buttonType}
+                onClick={() => {
+                  setShareDropdown(!shareDropdown);
+                }}
+                disabled
+              >
+                <ShareImg fill="white" />
+              </Button>
+            </div>
           ) : (
-            <Button
-              className={HeaderServiceStyles.headerRightButton}
-              buttonType={buttonType}
-              onClick={() => {
-                setShareDropdown(!shareDropdown);
-                setEmojiDropdown(false);
-                setEmojiSelectDropdown(false);
-              }}
-            >
-              <ShareImg fill="black" />
-              {shareDropdown && <ShareDropdown />}
-            </Button>
+            <div style={{ position: `relative` }} ref={shareDropdownRef}>
+              <Button
+                className={HeaderServiceStyles.headerRightButton}
+                buttonType={buttonType}
+                onClick={() => {
+                  setShareDropdown(!shareDropdown);
+                }}
+              >
+                <ShareImg fill="black" />
+              </Button>
+              {shareDropdown && <ShareDropdown onClose={() => setShareDropdown(false)} />}
+            </div>
           )}
         </div>
       </div>
