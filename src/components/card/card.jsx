@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import deleteIcon from 'assets/images/deletedIcon.svg';
@@ -50,5 +50,33 @@ function Card({ data, showDeleteIcon, onClick, onDelete }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.number,
+    profileImageURL: PropTypes.string,
+    sender: PropTypes.string,
+    relationship: PropTypes.string,
+    content: PropTypes.string,
+    createdAt: PropTypes.string,
+  }),
+  showDeleteIcon: PropTypes.bool,
+  onClick: PropTypes.func,
+  onDelete: PropTypes.func,
+};
+
+Card.defaultProps = {
+  data: PropTypes.shape({
+    id: 0,
+    profileImageURL: '',
+    sender: '',
+    relationship: '',
+    content: '',
+    createdAt: '',
+  }),
+  showDeleteIcon: false,
+  onClick: null,
+  onDelete: null,
+};
 
 export default Card;
