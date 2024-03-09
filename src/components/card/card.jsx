@@ -31,13 +31,12 @@ function Card({ data, showDeleteIcon, onClick, onDelete }) {
             <img src={data?.profileImageURL} alt={`${data?.sender} 이미지`} />
             <div className={CardStyle.profile_detail}>
               <div className={CardStyle.profile_name}>
-                From. <p>{data?.sender}</p>
+                From. <p style={showDeleteIcon ? { paddingRight: `4.2rem` } : {}}>{data?.sender}</p>
               </div>
               <Badge relationship={data?.relationship} />
             </div>
           </div>
         </div>
-
         <div className={CardStyle.text_box}>
           <div style={{ fontFamily: fontList[data?.font] }} className={CardStyle.text}>
             {data?.content}
