@@ -1,0 +1,142 @@
+@import 'assets/styles/global.scss';
+.container {
+  width: 27.5rem;
+  height: 26rem;
+  border-radius: 1.6rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0rem 0.2rem 1.2rem 0rem rgba(0, 0, 0, 0.08);
+  padding: 3rem 2.4rem 2rem 2.4rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include mobile {
+    width: 20.8rem;
+    height: 23.2rem;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: flex-start;
+  position: relative;
+  padding-bottom: 4.3rem;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.12);
+}
+
+.name {
+  font-weight: $fontWeightBold;
+  line-height: 3.6rem;
+  letter-spacing: -0.24px;
+  font-size: $fontSize24;
+  color: $Grayscale900;
+
+  @include mobile {
+    font-size: $fontSize18;
+    line-height: 2.8rem;
+    letter-spacing: -0.18px;
+  }
+}
+
+.message_count {
+  line-height: 2.6rem;
+  letter-spacing: -0.16px;
+  font-size: $fontSize16;
+  display: flex;
+  align-items: center;
+  color: $Grayscale700;
+
+  p {
+    font-weight: $fontWeightBold;
+  }
+
+  @include mobile {
+    font-size: $fontSize14;
+    line-height: 2rem; /* 142.857% */
+    letter-spacing: -0.07px;
+  }
+}
+
+.green {
+  background: $Green200;
+}
+
+.blue {
+  background: $Blue200;
+}
+
+.purple {
+  background: $Purple200;
+}
+
+.beige {
+  background: $Orange200;
+}
+
+.imagelist {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 1.2rem 0;
+  width: 100%;
+  img {
+    position: absolute;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 5rem;
+    border: 0.15rem solid $White;
+    background: $White;
+  }
+}
+
+.image_count {
+  position: absolute;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 5rem;
+  border: 0.15rem solid $White;
+  background: $White;
+  left: 12 * 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $fontSize12;
+  color: $Grayscale500;
+}
+
+.badge_emoji_list {
+  display: flex;
+  gap: 0.8rem;
+  position: relative;
+}
+.badge_emoji_box {
+  display: flex;
+  padding: 0.8rem 1.2rem;
+  align-items: flex-start;
+  border-radius: 3.2rem;
+  background: rgba(0, 0, 0, 0.54);
+  font-size: $fontSize16;
+
+  @include mobile {
+    padding: 0.6rem 0.8rem;
+    font-size: $fontSize14;
+  }
+}
+.badge_emoji {
+  font-size: $fontSize16;
+  color: $White;
+
+  @include mobile {
+    font-size: $fontSize12;
+  }
+}
+
+.card_background {
+  position: absolute;
+  right: 0;
+  bottom: -0.5rem;
+}

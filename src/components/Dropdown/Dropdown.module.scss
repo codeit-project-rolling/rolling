@@ -1,0 +1,118 @@
+@import 'assets/styles/global.scss';
+
+.container {
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  width: 32rem;
+  padding: 1.2rem 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.9rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid $Grayscale300;
+  z-index: 1;
+  @include font16Regular;
+  button {
+    color: $Grayscale500;
+  }
+  @include mobile {
+    width: 100%;
+  }
+
+  // &.disabled {
+  //   background: $Grayscale300;
+  //   border: 0.1rem solid $Grayscale300;
+  //   button {
+  //     color: $Grayscale300;
+  //   }
+  //   cursor: auto;
+  // }
+
+  &:hover {
+    border: 0.1rem solid $Grayscale500;
+    button {
+      color: $Grayscale500;
+    }
+  }
+
+  &:focus {
+    border: 0.2rem solid $Grayscale500;
+    button {
+      color: $Grayscale900;
+    }
+  }
+
+  &:active {
+    border: 0.2rem solid $Grayscale500;
+    button {
+      color: $Grayscale900;
+    }
+  }
+
+  ul {
+    width: 100%;
+    position: absolute;
+    top: 7rem;
+    left: 0;
+    background: $White;
+    color: $Grayscale900;
+    list-style-type: none;
+    padding: 0;
+    border-radius: 0.8rem;
+    max-height: 0;
+    box-shadow: 0rem 0.2rem 1.2rem 0rem rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease-in;
+  }
+}
+
+.container.active ul {
+  max-height: 50rem;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  width: inherit;
+  height: inherit;
+  border: 0 none;
+  outline: 0 none;
+
+  background: transparent;
+  cursor: pointer;
+}
+
+.title {
+  @include font16Regular;
+  color: $Grayscale900;
+}
+
+.list {
+  padding: 1.2rem 1.6rem;
+  transition: 0.1s;
+  overflow: hidden;
+  &:hover {
+    background: $Grayscale100;
+  }
+  &:first-child {
+    &:hover {
+      border-radius: 0.8rem 0.8rem 0 0;
+    }
+  }
+  &:last-child {
+    &:hover {
+      border-radius: 0 0 0.8rem 0.8rem;
+    }
+  }
+}
+
+.list:nth-child(0) {
+  &:hover {
+    border-radius: 0.8rem 0.8rem 0 0;
+    border-top: 0.1rem solid #222;
+  }
+}
+// .list:hover {
+//   background: $Grayscale100;
+// }

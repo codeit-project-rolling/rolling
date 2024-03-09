@@ -1,0 +1,145 @@
+/*
+* scss font 
+* @created 02.26 류지영
+*/
+
+/* 사용예시
+ @import 'assets/styles/global.scss';
+.클래스명 {
+  font-size: $fontSize12;
+  font-weight: $fontWeightBold
+
+  display: flex;
+}
+
+.클래스명 {
+  한줄로 깔끔하게할시에는
+  @include fontStyle($fontSize12, $fontWeightBold);
+
+  display: flex;
+
+} 
+*/
+
+$fontSize12: 1.2rem;
+$fontSize14: 1.4rem;
+$fontSize15: 1.5rem;
+$fontSize16: 1.6rem;
+$fontSize18: 1.8rem;
+$fontSize20: 2rem;
+$fontSize24: 2.4rem;
+$fontSize28: 2.8rem;
+
+$fontWeightRegular: 400;
+$fontWeightBold: 700;
+
+@mixin fontStyle($size, $weight: $fontWeightRegular) {
+  font-size: $size;
+  font-weight: $weight;
+}
+
+// 폰트 사전 설정
+// 사용 예시
+// @import 'assets/styles/global.scss';
+//  .class {
+//    @include font12Regular;
+//  }
+//
+
+@mixin font12Regular {
+  font-size: $fontSize12;
+  font-weight: $fontWeightRegular;
+  line-height: 1.8rem;
+  letter-spacing: -0.006rem;
+}
+
+@mixin font14Regular {
+  font-size: $fontSize14;
+  font-weight: $fontWeightRegular;
+  line-height: 2rem;
+  letter-spacing: -0.007rem;
+}
+
+@mixin font14Bold {
+  font-size: $fontSize14;
+  font-weight: $fontWeightBold;
+  line-height: 2rem;
+  letter-spacing: -0.007rem;
+}
+
+@mixin font15Regular {
+  font-size: $fontSize15;
+  font-weight: $fontWeightRegular;
+  line-height: 2.2rem;
+  letter-spacing: -0.015rem;
+}
+
+@mixin font15Bold {
+  font-size: $fontSize15;
+  font-weight: $fontWeightBold;
+  line-height: 2.2rem;
+  letter-spacing: -0.015rem;
+}
+
+@mixin font16Regular {
+  font-size: $fontSize16;
+  font-weight: $fontWeightRegular;
+  line-height: 2.6rem;
+  letter-spacing: -0.016rem;
+}
+
+@mixin font16Bold {
+  font-size: $fontSize16;
+  font-weight: $fontWeightBold;
+  line-height: 2.6rem;
+  letter-spacing: -0.016rem;
+}
+
+@mixin font18Regular {
+  font-size: $fontSize18;
+  font-weight: $fontWeightRegular;
+  line-height: 2.8rem;
+  letter-spacing: -0.018rem;
+}
+
+@mixin font18Bold {
+  font-size: $fontSize18;
+  font-weight: $fontWeightBold;
+  line-height: 2.8rem;
+  letter-spacing: -0.018rem;
+}
+
+@mixin font20Regular {
+  font-size: $fontSize20;
+  font-weight: $fontWeightRegular;
+  line-height: 3rem;
+  letter-spacing: -0.02rem;
+}
+
+@mixin font20Bold {
+  font-size: $fontSize20;
+  font-weight: $fontWeightBold;
+  line-height: 3rem;
+  letter-spacing: -0.02rem;
+}
+
+@mixin font24Regular {
+  font-size: $fontSize24;
+  font-weight: $fontWeightRegular;
+  line-height: 3.6rem;
+  letter-spacing: -0.024rem;
+}
+
+@mixin font24Bold {
+  font-size: $fontSize24;
+  font-weight: $fontWeightBold;
+  line-height: 3.6rem;
+  letter-spacing: -0.024rem;
+}
+
+@mixin font28Bold {
+  font-size: $fontSize24;
+  font-weight: $fontWeightBold;
+  line-height: 4.2rem;
+  letter-spacing: -0.028rem;
+}

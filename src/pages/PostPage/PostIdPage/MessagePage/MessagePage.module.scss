@@ -1,0 +1,56 @@
+@import 'assets/styles/global.scss';
+
+.headerContainer {
+  @include mobile {
+    display: none;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 11.2rem;
+  @include mobile {
+    padding: 5rem 2rem 2.4rem 2rem;
+  }
+}
+
+.messageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  width: 72rem;
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contentTitle {
+  color: $Grayscale900;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 3.6rem; /* 150% */
+  letter-spacing: -0.024rem;
+}
+
+.buttonContainer {
+  margin-top: 20rem;
+  margin-bottom: 6rem;
+}
+
+.button {
+  width: 100%;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+}

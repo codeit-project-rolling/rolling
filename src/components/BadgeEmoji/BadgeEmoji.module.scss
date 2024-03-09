@@ -1,0 +1,34 @@
+@import 'assets/styles/global.scss';
+
+.badgeEmoji {
+  display: inline-flex;
+  padding: 0.8rem 1.2rem;
+  border-radius: 3.2rem;
+  gap: 0.4rem;
+  align-items: flex-start;
+  background: rgba(0, 0, 0, 0.54);
+
+  @include mobile {
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+.emoji {
+  @include font16Regular;
+  line-height: 2.1rem;
+  color: $Black;
+
+  @include mobile {
+    @include font14Regular;
+  }
+}
+
+.count {
+  @include font16Regular;
+  line-height: 2rem;
+  color: $White;
+
+  @include mobile {
+    @include font14Regular;
+  }
+}

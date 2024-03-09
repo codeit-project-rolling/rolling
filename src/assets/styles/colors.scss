@@ -1,0 +1,55 @@
+/*
+* scss color palette
+* @created 02.26 류지영
+*/
+// 사용예시
+// @import 'assets/styles/global.scss';
+// body {
+//   background-color: $Purple100;
+// }
+
+$Purple100: #f8f0ff;
+$Purple200: #ecd9ff;
+$Purple300: #dcb9ff;
+$Purple400: #c894fd;
+$Purple500: #ab57ff;
+$Purple600: #9935ff;
+$Purple700: #861dee;
+$Purple800: #6e0ad1;
+$Purple900: #5603a7;
+
+$Orange100: #fff0d6;
+$Orange200: #ffe2ad;
+$Orange300: #ffc583;
+$Orange400: #ffae65;
+$Orange500: #ff8832;
+
+$Blue100: #e2f5ff;
+$Blue200: #b1e4ff;
+$Blue300: #7cd2ff;
+$Blue400: #7cd2ff;
+$Blue500: #00a2fe;
+
+$Green100: #e4fbdc;
+$Green200: #d0f5c3;
+$Green300: #9be282;
+$Green400: #60cf37;
+$Green500: #2ba600;
+
+$Grayscale100: #f6f6f6;
+$Grayscale200: #eeeeee;
+$Grayscale300: #cccccc;
+$Grayscale400: #999999;
+$Grayscale500: #555555;
+$Grayscale600: #4a4a4a;
+$Grayscale700: #3a3a3a;
+$Grayscale800: #2b2b2b;
+$Grayscale900: #181818;
+
+$White: #ffffff;
+
+$Black: #000000;
+
+$Error: #dc3a3a;
+
+$Surface: #f6f8ff;
