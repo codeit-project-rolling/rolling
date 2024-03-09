@@ -75,9 +75,15 @@
   font-weight: $fontWeightRegular;
   font-style: normal;
   line-height: 2.4rem;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
   p {
     font-weight: $fontWeightBold;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
   }
 }
 
