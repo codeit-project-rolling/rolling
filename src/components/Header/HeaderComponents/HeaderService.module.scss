@@ -193,8 +193,12 @@
 
 .emojiSelect {
   position: absolute;
-  top: 4rem;
-  right: 5rem;
+  top: 4.2rem;
+  right: 1.5rem;
+
+  @include mobile {
+    right: -7rem;
+  }
 }
 
 .headerRightButton {

@@ -149,7 +149,7 @@ function HeaderService({ postId }) {
               </div>
             </div>
           )}
-          <div ref={emojiSelectDropdownRef} style={{ display: 'flex' }}>
+          <div ref={emojiSelectDropdownRef} style={{ display: 'flex', position: `relative` }}>
             <Button
               className={HeaderServiceStyles.headerRightButton}
               buttonType={buttonType}
@@ -160,9 +160,15 @@ function HeaderService({ postId }) {
               <SmileImg fill="black" />
               <p className={HeaderServiceStyles.onMobileHide}>추가</p>
             </Button>
-            <div className={HeaderServiceStyles.emojiSelect}>
-              {emojiSelectDropdown && <EmojiPicker autoFocusSearch={false} onEmojiClick={handleEmojiClick} />}
-            </div>
+            {emojiSelectDropdown && (
+              <div className={HeaderServiceStyles.emojiSelect}>
+                <EmojiPicker
+                  style={{ width: `32.5rem`, height: `40rem` }}
+                  autoFocusSearch={false}
+                  onEmojiClick={handleEmojiClick}
+                />
+              </div>
+            )}
           </div>
           <div className={HeaderServiceStyles.selectionBar2} />
           {location.pathname === `/post/${postId}/edit` ? (
@@ -179,7 +185,7 @@ function HeaderService({ postId }) {
               </Button>
             </div>
           ) : (
-            <div ref={shareDropdownRef}>
+            <div style={{ position: `relative` }} ref={shareDropdownRef}>
               <Button
                 className={HeaderServiceStyles.headerRightButton}
                 buttonType={buttonType}
