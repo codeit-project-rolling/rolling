@@ -108,6 +108,7 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
+  line-break: anywhere;
 
   @include font18Regular;
   text-align: start;
