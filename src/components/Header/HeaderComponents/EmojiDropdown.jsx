@@ -11,25 +11,44 @@ import modalStyles from 'components/Header/HeaderComponents/EmojiDropdown.module
 function EmojiDropdown({ recipienId }) {
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.down('lg'));
-  const { data, loading, error } = useGetReactionList({ id: recipienId });
+  const { data: getData, loading: getLoading, error: getError } = useGetReactionList({ id: recipienId });
+  const { postReaction, data: postData, loading: postLoading, error: postError } = usePostReaction();
   const [reactionList, setReactionList] = useState([]);
 
-  useEffect(() => {
-    if (!loading && !error) {
-      setReactionList(data.results); // data.results를 사용하여 reactionList 설정
-    }
-  }, [data, loading, error]);
-
-  const { postReaction } = usePostReaction();
-  const handleClickBadge = (emoji) => async () => {
-    const postData = { id: recipienId, emoji, isIncrease: true };
-    await postReaction(postData);
+  const handleClickBadge = (emoji) => () => {
+    const post = { id: recipienId, emoji, isIncrease: true };
+    postReaction(post);
   };
+
+  useEffect(() => {
+    if (!getLoading && !getError) {
+      setReactionList(getData.results);
+    }
+  }, [getLoading, getError]);
+
+  useEffect(() => {
+    if (!postLoading && !postError) {
+      // console.log('postData', postData);
+      setReactionList((currentList) => {
+        // 새로운 반응의 id가 현재 리스트에 있는지 확인
+        const existingIndex = currentList.findIndex((reaction) => reaction.id === postData?.id);
+
+        if (existingIndex !== -1) {
+          // 존재하면, 해당 반응을 새로운 객체로 교체
+          const updatedList = [...currentList];
+          updatedList[existingIndex] = postData;
+          return updatedList;
+        }
+        // 존재하지 않으면, 새로운 객체를 배열에 추가
+        return [...currentList, postData];
+      });
+    }
+  }, [postData, postLoading, postError]);
 
   return (
     <div className={modalStyles.modalContainer}>
       <div className={`${modalStyles.emojiBtnContainer} ${isTablet ? modalStyles.tabletEmojiBtn : ''}`}>
-        {reactionList.slice(0, isTablet ? 6 : 8).map((reaction) => (
+        {reactionList?.slice(0, isTablet ? 6 : 8).map((reaction) => (
           <button
             key={reaction.id}
             type="button"
