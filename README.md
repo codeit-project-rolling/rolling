@@ -1,3 +1,5 @@
+<img src="https://capsule-render.vercel.app/api?type=Waving&color=gradient&height=250&section=header&text=Rolling-nl-&fontSize=90&desc=codeit%20part2%2021team&descSize=20&animation=fadeIn" />
+
 ## ⏰ 코어 타임
 
 휴일 제외 오후 3시 ~ 오후 6시
@@ -148,3 +150,4 @@ feature: 개발중인 기능
 ## PR 템플릿
 
 ## Issue 템플릿
+
