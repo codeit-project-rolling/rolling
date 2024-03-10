@@ -1,0 +1,482 @@
+@import 'assets/styles/global.scss';
+
+@mixin buttonStyleDelete {
+  border: 0;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.basicSet {
+  display: flex;
+  gap: 1rem;
+}
+
+.primaryButton56 {
+  @include buttonStyleDelete;
+  padding: 1.4rem 2.4rem;
+  border-radius: 1.2rem;
+  background: $Purple600;
+  border: 0.1rem solid $Purple600;
+  p {
+    color: $White;
+    text-align: center;
+    font-size: $fontSize18;
+    font-weight: $fontWeightBold;
+    line-height: 2.8rem;
+    letter-spacing: -0.018rem;
+  }
+
+  &.disabled {
+    background: $Grayscale300;
+    border: 0.1rem solid $Grayscale300;
+    cursor: auto;
+  }
+
+  &:not(.disabled):hover {
+    background: $Purple700;
+    border: 0.1rem solid $Purple700;
+  }
+  &:not(.disabled):focus {
+    border: 0.1rem solid $Purple900;
+    background: $Purple800;
+  }
+  &:not(.disabled):active {
+    background: $Purple800;
+    border: 0.1rem solid $Purple800;
+  }
+}
+
+.primaryButton40 {
+  @include buttonStyleDelete;
+  padding: 0.7rem 1.6rem;
+  border-radius: 0.6rem;
+  background: $Purple600;
+  border: 0.2rem solid $Purple600;
+  p {
+    color: $White;
+    text-align: center;
+    font-size: $fontSize16;
+    font-weight: $fontWeightRegular;
+    line-height: 2.6rem;
+    letter-spacing: -0.016rem;
+  }
+
+  &.disabled {
+    background: $Grayscale300;
+    border: 0.2rem solid $Grayscale300;
+    cursor: auto;
+  }
+
+  &:not(.disabled):hover {
+    background: $Purple700;
+    border: 0.2rem solid $Purple700;
+  }
+  &:not(.disabled):focus {
+    border: 0.2rem solid $Purple900;
+    background: $Purple800;
+  }
+  &:not(.disabled):active {
+    background: $Purple800;
+    border: 0.2rem solid $Purple800;
+  }
+}
+
+.secondaryButton40 {
+  @include buttonStyleDelete;
+  padding: 0.7rem 1.6rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Purple600;
+  background: $White;
+  p {
+    color: $Purple700;
+    text-align: center;
+    font-size: $fontSize16;
+    font-weight: $fontWeightRegular;
+    line-height: 2.6rem;
+    letter-spacing: -0.016rem;
+  }
+
+  &.disabled {
+    background: $Grayscale300;
+    border: 0.1rem solid $Grayscale300;
+    p {
+      color: $White;
+    }
+    cursor: auto;
+  }
+
+  &:not(.disabled):hover {
+    border: 0.1rem solid $Purple700;
+    background: $Purple100;
+    p {
+      color: $Purple600;
+    }
+  }
+  &:not(.disabled):focus {
+    border: 0.1rem solid $Purple800;
+    background: $White;
+    p {
+      color: #9747ff;
+    }
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Purple800;
+    background: $Purple100;
+    p {
+      color: $Purple600;
+    }
+  }
+}
+
+.outlinedButton56 {
+  @include buttonStyleDelete;
+  padding: 1.4rem 1.6rem;
+  border-radius: 1.2rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
+  p {
+    color: $Grayscale900;
+    text-align: center;
+    font-size: $fontSize18;
+    font-weight: $fontWeightBold;
+    line-height: 2.8rem; /* 155.556% */
+    letter-spacing: -0.018rem;
+  }
+
+  &.disabled {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
+    p {
+      color: $White;
+    }
+    cursor: auto;
+  }
+
+  &:not(.disabled):hover {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+  &:not(.disabled):focus {
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+}
+
+.outlinedButton40 {
+  @include buttonStyleDelete;
+  height: 4rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
+  p {
+    height: 2.4rem;
+    color: $Grayscale900;
+    text-align: center;
+    font-size: $fontSize16;
+    font-weight: $fontWeightRegular;
+    line-height: 2.6rem; /* 162.5% */
+    letter-spacing: -0.016rem;
+  }
+
+  &.disabled {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
+    p {
+      color: $White;
+    }
+    cursor: auto;
+  }
+
+  &:not(.disabled):hover {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+  &:not(.disabled):focus {
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+}
+
+.outlinedSmileButton40 {
+  @include buttonStyleDelete;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
+  p {
+    color: $Grayscale900;
+    font-size: $fontSize16;
+    font-weight: $fontWeightRegular;
+    line-height: 2.6rem; /* 150% */
+    letter-spacing: -0.016rem;
+  }
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  &.disabled {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
+    p {
+      color: $White;
+      text-align: center;
+    }
+
+    cursor: auto;
+  }
+
+  &:not(.disabled):hover {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+  &:not(.disabled):focus {
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+}
+
+.outlinedButton36 {
+  @include buttonStyleDelete;
+  height: 3.6rem;
+  padding: 0.6rem 1.6rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
+  p {
+    height: 2.4rem;
+    color: $Grayscale900;
+    text-align: center;
+    font-size: $fontSize16;
+    font-weight: 500;
+    line-height: 2.4rem; /* 150% */
+  }
+
+  &.disabled {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
+    p {
+      color: $White;
+    }
+    cursor: auto;
+  }
+
+  &:not(.disabled):hover {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+  &:not(.disabled):focus {
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+}
+
+.outlinedSmileButton36 {
+  @include buttonStyleDelete;
+  padding: 0.6rem 1.6rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
+  p {
+    color: $Grayscale900;
+    font-size: $fontSize16;
+    font-weight: 500;
+    line-height: 2.4rem;
+  }
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  &.disabled {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
+    p {
+      color: $White;
+    }
+    cursor: auto;
+  }
+
+  &:not(.disabled):hover {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+  &:not(.disabled):focus {
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+}
+
+.outlinedButton28 {
+  @include buttonStyleDelete;
+  height: 2.8rem;
+  padding: 0.2rem 1.6rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
+  p {
+    height: 2.4rem;
+    color: $Grayscale900;
+    text-align: center;
+    font-size: $fontSize14;
+    font-weight: $fontWeightRegular;
+    line-height: 2rem; /* 142.857% */
+    letter-spacing: -0.007rem;
+  }
+
+  &.disabled {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
+    p {
+      color: $White;
+    }
+    cursor: auto;
+  }
+
+  &:not(.disabled):hover {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+  &:not(.disabled):focus {
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+}
+
+.outlinedSmileButton28 {
+  @include buttonStyleDelete;
+  padding: 0.6rem 1.6rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
+  p {
+    color: $Grayscale900;
+    font-size: $fontSize14;
+    font-weight: $fontWeightRegular;
+    line-height: 2rem;
+    letter-spacing: -0.007rem;
+  }
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &.disabled {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
+    p {
+      color: $White;
+    }
+    cursor: auto;
+  }
+
+  &:not(.disabled):hover {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+  &:not(.disabled):focus {
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+}
+
+.outlinedSingleButton36 {
+  @include buttonStyleDelete;
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  &.disabled {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
+    cursor: auto;
+  }
+
+  &:not(.disabled):hover {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+  &:not(.disabled):focus {
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+}
+
+.outlinedSingleButton28 {
+  @include buttonStyleDelete;
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &.disabled {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale300;
+    cursor: auto;
+  }
+
+  &:not(.disabled):hover {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+  &:not(.disabled):focus {
+    border: 0.1rem solid $Grayscale500;
+    background: $White;
+  }
+  &:not(.disabled):active {
+    border: 0.1rem solid $Grayscale300;
+    background: $Grayscale100;
+  }
+}

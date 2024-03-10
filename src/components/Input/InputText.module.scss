@@ -1,0 +1,35 @@
+@import 'assets/styles/global.scss';
+
+.inputContainer {
+  border-radius: 0.8rem;
+  border: 0.1rem solid $Grayscale300;
+  background: $White;
+  width: 72rem;
+  height: 5rem;
+  padding: 1.2rem 1.6rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  @include mobile {
+    width: 100%;
+  }
+}
+.inputContainer:hover {
+  border: 0.1rem solid $Grayscale500;
+  padding: 1.2rem 1.6rem;
+}
+.inputContainer:focus {
+  border: 0.2rem solid $Grayscale700;
+  padding: 1.1rem 1.5rem;
+}
+.isInputValue {
+  border: 0.2rem solid $Grayscale700;
+  padding: 1.1rem 1.5rem;
+}
+.error {
+  border: 0.1rem solid $Error;
+}
+.errorMsg {
+  @include font12Regular;
+  color: $Error;
+  margin-top: 0.4rem;
+}

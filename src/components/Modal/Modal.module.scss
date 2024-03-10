@@ -1,0 +1,138 @@
+@import 'assets/styles/global.scss';
+
+.overlay {
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  position: fixed;
+  top: 34.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: $White;
+  width: 100%;
+  max-width: 60rem;
+  height: 47.6rem;
+  padding: 4rem;
+  border-radius: 1.6rem;
+  background: $White;
+  box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
+
+  @include tablet {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @include mobile {
+    width: calc(100% - 4rem);
+    padding: 3.2rem;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.9rem;
+
+  .profile {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+
+    .profileImg {
+      width: 5.6rem;
+      height: 5.6rem;
+      border-radius: 9999rem;
+      background: $White;
+    }
+
+    .senderContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6rem;
+      color: $Black;
+
+      .sender {
+        display: flex;
+        gap: 0.6rem;
+        line-height: 2.4rem;
+        letter-spacing: normal;
+
+        .senderFrom {
+          @include font20Regular;
+          line-height: inherit;
+          letter-spacing: inherit;
+        }
+
+        .senderName {
+          @include font20Bold;
+          line-height: inherit;
+          letter-spacing: inherit;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+      }
+    }
+  }
+
+  .createdDate {
+    @include font14Regular;
+    color: $Grayscale400;
+  }
+}
+
+.line {
+  height: 0.1rem;
+  background: $Grayscale200;
+  margin-bottom: 1.6rem;
+}
+
+.content {
+  @include font18Regular;
+  height: 23.6rem;
+  padding-right: 1.6rem;
+  text-align: left;
+  overflow: auto;
+  line-break: anywhere;
+  color: #5a5a5a;
+  margin-bottom: 2.4rem;
+
+  @include mobile {
+    height: 25.2rem;
+  }
+
+  //스크롤바
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+
+  //스크롤바 트랙
+  // &::-webkit-scrollbar-track {
+  // }
+
+  //스크롤바 핸들
+  &::-webkit-scrollbar-thumb {
+    background: $Grayscale300;
+    border-radius: 9999rem;
+
+    //스크롤바 핸들 호버
+    // &:hover {
+    // }
+  }
+}
+
+.submitButton {
+  width: 12rem;
+  display: flex;
+  margin: 0 auto;
+}

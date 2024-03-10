@@ -1,0 +1,235 @@
+@import 'assets/styles/global.scss';
+.headerServiceContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.3rem;
+  width: 100%;
+
+  @include mobile {
+    padding-top: 1.2rem;
+  }
+
+  .headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 124.8rem;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .lineOnMobile {
+      display: none;
+      border: none;
+      height: 0.1rem;
+      width: 100%;
+      background-color: #ededed;
+
+      @include mobile {
+        display: block;
+        margin: 1.2rem 0 0.8rem;
+      }
+    }
+  }
+
+  .headerNickName {
+    padding: 0 2.4rem;
+
+    @include mobile {
+      display: flex;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logoImg {
+      display: none;
+
+      @include mobile {
+        display: block;
+        width: 2.4rem;
+        height: 2.4rem;
+        margin-right: 0.8rem;
+      }
+    }
+
+    .toNickname {
+      @include font28Bold;
+
+      @include mobile {
+        @include font18Bold;
+      }
+    }
+  }
+
+  .headerRight {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 2.4rem;
+
+    @include mobile {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      padding: 0 2rem;
+    }
+
+    .howManyPerson {
+      display: flex;
+
+      @include tablet {
+        display: none;
+      }
+
+      .senderProfile {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-right: 1.1rem;
+
+        .senderProfileImg {
+          width: 2.8rem;
+          height: 2.8rem;
+          margin-right: -1.6rem;
+          border-radius: 14rem;
+          border: 0.14rem $White solid;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+
+        .disableMarginRight {
+          margin-right: 0;
+        }
+
+        .senderCount {
+          width: 2.8rem;
+          height: 2.8rem;
+          border-radius: 14rem;
+          border: 0.1rem #e3e3e3 solid;
+          background-color: $White;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2rem;
+          font-weight: 500;
+          line-height: 1.8rem;
+          color: #484848;
+        }
+      }
+
+      p {
+        z-index: 1;
+        color: var(--gray-900, $Grayscale900);
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 2.7rem;
+
+        span {
+          font-weight: 700;
+        }
+      }
+    }
+
+    .selectionBar {
+      width: 0.1rem;
+      height: 2.8rem;
+      margin: 0 2.8rem;
+      background-color: var(--gray-200, #eee);
+      @include tablet {
+        display: none;
+      }
+    }
+
+    .selectionBar2 {
+      width: 0.1rem;
+      height: 2.8rem;
+      background-color: var(--gray-200, #eee);
+      margin: 0 1.2rem;
+    }
+
+    .headerEmoji {
+      position: relative;
+      display: flex;
+      gap: 0.8rem;
+      margin-right: 1.4rem;
+      @include mobile {
+        margin-right: 0.8rem;
+      }
+
+      .badgeBtn {
+        border: none;
+        background-color: #ffffff;
+        cursor: pointer;
+      }
+
+      .modalIcon {
+        cursor: pointer;
+        position: relative;
+        border: none;
+        background-color: $White;
+      }
+
+      .arrowDownIcon {
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+    }
+
+    .addEmojiBtn {
+      display: flex;
+      align-items: center;
+      border-radius: 0.6rem;
+      border: 1px solid var(--gray-300, $Grayscale300);
+      background-color: $White;
+      padding: 0.6rem 1.6rem;
+      font-weight: 500;
+      font-size: 1.6rem;
+    }
+
+    .shareBtn {
+      display: flex;
+      align-items: center;
+      border-radius: 0.6rem;
+      border: 0.1rem solid var(--gray-300, $Grayscale300);
+      background: var(--white, $White);
+      padding: 0.6rem 1.6rem;
+    }
+  }
+}
+
+.emojiSelect {
+  position: absolute;
+  top: 4.2rem;
+  right: 1.5rem;
+
+  @include mobile {
+    right: -7rem;
+  }
+}
+
+.headerRightButton {
+  padding: 0.6rem 1.6rem;
+  @include mobile {
+    padding: 0.6rem 0.8rem;
+  }
+}
+
+.onMobileHide {
+  @include mobile {
+    display: none;
+  }
+}
+
+.line {
+  border: none;
+  height: 0.1rem;
+  margin-top: 1.2rem;
+  background-color: #ededed;
+}

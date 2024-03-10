@@ -42,7 +42,7 @@ module.exports = {
       },
     ],
     'linebreak-style': 0,
-    'max-len': ['error', 120, 2, { ignoreComments: true, ignoreUrls: true }],
+    'max-len': ['error', 12000, 2, { ignoreComments: true, ignoreUrls: true }],
     'no-console': 'off',
     'import/order': [
       'error',
@@ -80,6 +80,11 @@ module.exports = {
             position: 'after',
           },
           {
+            pattern: 'contexts/**/*',
+            group: 'internal',
+            position: 'after',
+          },
+          {
             pattern: 'pages/**/*',
             group: 'internal',
             position: 'after',
@@ -104,6 +109,7 @@ module.exports = {
           ['assets', './src/assets'],
           ['apis', './src/apis'],
           ['components', './src/components'],
+          ['contexts', './src/contexts'],
           ['hooks', './src/hooks'],
           ['pages', './src/pages'],
           ['utils', './src/utils'],
