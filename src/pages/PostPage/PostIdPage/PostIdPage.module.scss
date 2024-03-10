@@ -3,7 +3,6 @@
 .cardListOverContainer {
   display: flex;
   padding: 11.2rem 2.4rem 13.5rem;
-  min-height: calc(100vh - 11.9rem);
 
   @include tablet {
     padding: 9.2rem 2.4rem 13.5rem;
