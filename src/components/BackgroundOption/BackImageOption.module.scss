@@ -1,19 +1,25 @@
 @import 'assets/styles/global.scss';
 .backgroundOption {
   display: flex;
+  margin-top: 4.5rem;
+
+  @include tablet {
+    margin-top: 4rem;
+  }
+
   @include mobile {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1.2rem;
+    margin-top: 2.8rem;
   }
   .option {
     border: none;
-    max-width: 16.8rem;
+    width: 16.8rem;
     height: 16.8rem;
     margin-right: 1.6rem;
-    margin-top: 4.5rem;
     border-radius: 1.6rem;
-    border: 1px rgba(0, 0, 0, 0.08) solid;
+    border: 0.1rem rgba(0, 0, 0, 0.08) solid;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +28,9 @@
     @include mobile {
       width: 15.4rem;
       height: 15.4rem;
+      margin: 0;
     }
+
     .image {
       width: 100%;
       height: 100%;
